@@ -1,6 +1,6 @@
 #ifndef __TOOLS_HPP
-#define __TOOLS_HPP
-#include "globals.hpp"
+    #define __TOOLS_HPP
+    #include "globals.hpp"
 //
 //
 //

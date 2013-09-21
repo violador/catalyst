@@ -1,11 +1,11 @@
 #ifndef __STO3G_HPP
-#define __STO3G_HPP
-#include "globals.hpp"
-#include "settings.hpp"
-#include "tools.hpp"
-#include "array.hpp"
-#include "scf.hpp"
-#include "log_file_handler.hpp"
+    #define __STO3G_HPP
+    #include "globals.hpp"
+    #include "settings.hpp"
+    #include "tools.hpp"
+    #include "array.hpp"
+    #include "scf.hpp"
+    #include "log_file_handler.hpp"
 //
 //
 //

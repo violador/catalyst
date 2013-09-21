@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
     B.array::set(2, 2, 0.0);
     //double b = 2.0;
     //C = A*B;
-    A *= B;
+    C = A*B;
     std::cout << "A11 = " << A.array::get(1, 1) << std::endl; 
     std::cout << "A12 = " << A.array::get(1, 2) << std::endl; 
     std::cout << "A21 = " << A.array::get(2, 1) << std::endl; 

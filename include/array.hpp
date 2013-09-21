@@ -1,9 +1,9 @@
 #ifndef __ARRAY_HPP
-#define __ARRAY_HPP
-#include "globals.hpp"
-#include "settings.hpp"
-#include "tools.hpp"
-#include "file_system.hpp"
+    #define __ARRAY_HPP
+    #include "globals.hpp"
+    #include "settings.hpp"
+    #include "tools.hpp"
+    #include "file_system.hpp"
 //
 //
 //

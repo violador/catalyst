@@ -1,12 +1,12 @@
 #ifndef __MOLECULAR_SYSTEM_HPP
-#define __MOLECULAR_SYSTEM_HPP
-#include "globals.hpp"
-#include "settings.hpp"
-#include "periodic_table.hpp"
-#include "sto3g.hpp"
-#include "scf.hpp"
-#include "tools.hpp"
-#include "log_file_handler.hpp"
+    #define __MOLECULAR_SYSTEM_HPP
+    #include "globals.hpp"
+    #include "settings.hpp"
+    #include "periodic_table.hpp"
+    #include "sto3g.hpp"
+    #include "scf.hpp"
+    #include "tools.hpp"
+    #include "log_file_handler.hpp"
 //
 //
 //

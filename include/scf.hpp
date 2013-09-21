@@ -1,9 +1,8 @@
 #ifndef __SCF_HPP
-#define __SCF_HPP
-//
-#include "settings.hpp"
-#include "tools.hpp"
-#include "array.hpp"
+    #define __SCF_HPP
+    #include "settings.hpp"
+    #include "tools.hpp"
+    #include "array.hpp"
 //
 //
 //

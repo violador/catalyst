@@ -1,6 +1,6 @@
 #ifndef __FILE_SYSTEM_HPP
-#define __FILE_SYSTEM_HPP
-#include "globals.hpp"
+    #define __FILE_SYSTEM_HPP
+    #include "globals.hpp"
 //
 //
 //
@@ -18,7 +18,6 @@ private:
     bool no_valid_path;                    // The path state, true if a no valid path is given. False otherwise.
     bool no_file;                          // The file state, true if there is no file. False otherwise.
     bool fstream_created;                  // The fstream creation state, true if a fstream file was created. False otherwise.
-//
 public:
 //
 //  Class identifier:

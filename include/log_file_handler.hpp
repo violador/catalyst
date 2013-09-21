@@ -1,8 +1,8 @@
 #ifndef __LOG_FILE_HANDLER_HPP
-#define __LOG_FILE_HANDLER_HPP
-#include "globals.hpp"
-#include "settings.hpp"
-#include "file_system.hpp"
+    #define __LOG_FILE_HANDLER_HPP
+    #include "globals.hpp"
+    #include "settings.hpp"
+    #include "file_system.hpp"
 //
 //
 //

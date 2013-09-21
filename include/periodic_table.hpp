@@ -1,6 +1,6 @@
 #ifndef __PERIODIC_TABLE_HPP
 #define __PERIODIC_TABLE_HPP
-#include "globals.hpp"
+    #include "globals.hpp"
 //
 //
 //
@@ -25,8 +25,6 @@ private:
 //  database(): Overloaded member function to set the data member values of a given element,
 //              as std::string.
     void database(const std::string &symbol);
-//
-//
 public:
 //
 // Declaring and defining the inline class constructor:
@@ -58,7 +56,5 @@ public:
 //
 //  name(): To get the name of a given element. 
     std::string name(const unsigned int &element);
-//
-//
 };
 #endif

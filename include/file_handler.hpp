@@ -1,6 +1,6 @@
 #ifndef __FILE_SYSTEM_HANDLER_HPP
-#define __FILE_SYSTEM_HANDLER_HPP
-#include "globals.hpp"
+    #define __FILE_SYSTEM_HANDLER_HPP
+    #include "globals.hpp"
 //
 //
 //

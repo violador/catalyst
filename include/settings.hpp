@@ -12,11 +12,10 @@
 //
 // References:
 //
-//
 // ---------------------------------------------------------------------------- //
 #ifndef __SETTINGS_HPP
-#define __SETTINGS_HPP
-#include "globals.hpp"
+    #define __SETTINGS_HPP
+    #include "globals.hpp"
 //
 //
 //
@@ -66,11 +65,8 @@ private:
 //  read_value_of(): To get a double number in a given option from the user's config file.
     double read_value_of(const std::string option, const int option_length, const unsigned int default_value);    
 //
-//  check_number_of_cpus(): To check the total number of CPUs available.
-    unsigned int check_number_of_cpus();
-//
 //  pattern_length(): To help in some tasks. It will return the number of characters of a given string.
-    unsigned int pattern_length(const std::string pattern);
+    #include "settings__pattern_length.cpp"
 public:
 //
 //  Class identifier:
@@ -133,6 +129,9 @@ public:
 //
 //  check_time(): To return the current date/time.
     char* check_current_time();
+//
+//  check_current_cpus(): To check the total number of CPUs available.
+    unsigned int check_current_cpus();
 //
 //  numeric_precision(): To get the user's preference value for the numeric precision.
     #include "settings__numeric_precision.cpp"

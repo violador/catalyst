@@ -819,8 +819,8 @@ array array::operator*(const array &b)
             and (this -> sizeof_row == b.sizeof_row) 
             and (this -> sizeof_column == b.sizeof_column))
     {
-        array c(this -> sizeof_row, this -> sizeof_column);
-        c = *this;
+        array c = array(*this);//(this -> sizeof_row, this -> sizeof_column);
+        //c = *this;
 //
         gsl_blas_dgemm((this -> is_transposed? CblasTrans : CblasNoTrans),
                        (b.is_transposed? CblasTrans : CblasNoTrans),
