@@ -28,9 +28,7 @@ protected:
     bool is_transposed;
     bool created_array;             // True, if it was created already by constructors or create_array(), false otherwise.
     bool deleted_array;             // True, if it was deleted already by delete_array(), false otherwise.
-    bool print_by_lines;            // True, if the current array must be printed line by line.
     bool lowend_mode_on;            // True, if the high-end mode is off, false otherwise.
-    bool debug_mode_on;             //
     bool setup_ready;               //
     bool logfile_ready;
     gsl_vector *user_1d_array;      // The current user's 1D array.
@@ -46,6 +44,10 @@ protected:
     std::fstream log_file;
     //gsl_ntuple *array_f;
 //
+//
+    #include "array__init_properties.cpp"
+    #include "array__init_3d_array.cpp"
+    #include "array__init_4d_array.cpp"
 /*
     struct data_book
     {
@@ -116,13 +118,14 @@ public:
     bool check_if(const unsigned int &option);
 //
 //  Defining some alias for the check_if() member function options:
-    #define IS_POSITIVE 1
-    #define IS_NEGATIVE 2
-    #define IS_NULL     3
-    #define IS_CONSTANT 4
-    #define IS_SQUARE   5
-    #define IS_CREATED  6
-    #define IS_DELETED  7
+    #define IS_POSITIVE   1
+    #define IS_NEGATIVE   2
+    #define IS_NULL       3
+    #define IS_CONSTANT   4
+    #define IS_SQUARE     5
+    #define IS_CREATED    6
+    #define IS_DELETED    7
+    #define IS_TRANSPOSED 8
 //
 //
     bool check_if_column_is(const unsigned int &option, const unsigned int &j);

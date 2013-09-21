@@ -1,0 +1,22 @@
+#!/bin/bash
+echo "----------------------------------------------"
+echo
+#
+#
+mpic++ -Iusr/local/include/boost/mpi -O3 -Wall -DHAVE_INLINE -o test__catalyst.out test__catalyst.cpp periodic_table__mass.cpp periodic_table__electrons.cpp periodic_table__name.cpp periodic_table__symbol.cpp periodic_table__database.cpp periodic_table__type.cpp settings__get_state.cpp settings__get_total_atoms.cpp settings__get_total_cpus.cpp settings__get_total_sys.cpp settings__get_total_tasks.cpp settings__check_memory.cpp settings__pattern_length.cpp settings__get_number_of.cpp settings__get_preference.cpp settings__dir.cpp settings__filename.cpp settings__state.cpp settings__string_state.cpp settings__number_of.cpp settings__log.cpp settings__log_initialized.cpp settings__init_log.cpp settings__precision.cpp settings__constructor.cpp molecular_system__constructor.cpp molecular_system__x.cpp molecular_system__y.cpp molecular_system__z.cpp molecular_system__number_of_atoms.cpp molecular_system__mass.cpp sto3g__constructor.cpp molecular_system__get_total_atoms.cpp molecular_system__interatomic_distance.cpp molecular_system__type.cpp molecular_system__atomic_number.cpp sto3g__gf_overlaping.cpp sto3g__s.cpp sto3g__t.cpp sto3g__v.cpp sto3g__exp.cpp sto3g__coeff.cpp sto3g__gf_midpoint.cpp sto3g__error_function.cpp sto3g__gf_product_const.cpp tools__module.cpp tools__matrix_writer.cpp tools__get_matrix_columns.cpp tools__get_matrix_precision.cpp tools__get_matrix_rows.cpp array.hpp scf.hpp scf__constructor.cpp -lgsl -lgslcblas -lm -L/usr/local/lib -lboost_mpi -lboost_serialization -fopenmp
+#
+#
+export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+#
+#
+if [ -e test__catalyst.out ];
+then
+    chmod 777 test_catalyst.out
+    /usr/local/bin/mpirun -np 8 $PWD/test_catalyst.out 
+    #./test__catalyst.out
+    rm -rf test__catalyst.out
+fi
+#
+#
+echo
+echo "----------------------------------------------"

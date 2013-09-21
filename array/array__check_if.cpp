@@ -92,6 +92,11 @@ bool array::check_if(const unsigned int &option)
         return deleted_array;
     }
     break;
+    case 8: // IS_TRANSPOSED
+    {
+        return is_transposed;
+    }
+    break;
     default: return false;
     }
     return false;
