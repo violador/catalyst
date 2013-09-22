@@ -10,8 +10,6 @@ void array::save()
         {
             if(is_1d_array)
             {
-                tools convert;
-                array_filename = "array." + convert.to_string_from(array_id);
                 array_file = fopen(array_filename.c_str(), "w");
                 gsl_vector_fwrite(array_file, user_1d_array);
             }
@@ -20,8 +18,6 @@ void array::save()
         {
             if(is_2d_array)
             {
-                tools convert;
-                array_filename = "array." + convert.to_string_from(array_id);
                 array_file = fopen(array_filename.c_str(), "w");
                 gsl_matrix_fwrite(array_file, user_2d_array);
             }

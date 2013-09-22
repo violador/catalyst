@@ -11,7 +11,7 @@ void algorithm::scf::roothaan_equation_solver(array &h_matrix, array &s_matrix, 
     f_matrix.create_array(s_matrix.size_of_row(), s_matrix.size_of_column());         // (1)
 //
 //  First guess of a Fock matrix:
-    h_matrix.copy_to(f_matrix);
+    f_matrix = h_matrix;
     if(config -> state_of(DEBUG_MODE))
     {
         //f_matrix.set_name("Initial Fock matrix");

@@ -414,30 +414,28 @@ array array::operator+(const double &b)
     if(this -> is_1d_array)
     {
         array c(this -> sizeof_row);
-        c = *this;
         gsl_vector_add_constant(c.user_1d_array, b);
         return c;
     }
     if(this -> is_2d_array)
     {
         array c(this -> sizeof_row, this -> sizeof_column);
-        c = *this;
         gsl_matrix_add_constant(c.user_2d_array, b);
         return c;
     }
     if(this -> is_3d_array)
     {
         array c(this -> sizeof_row, this -> sizeof_column, this -> sizeof_1st_layer);
-        c = *this;
-        unsigned int i = 0;
+//
+// 
+//
+        unsigned int i = 0, j = 0, m = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
         for(i = 0; i < sizeof_row; i++)
         {
-            unsigned int j = 0;
             #pragma omp parallel for private(j) ordered schedule(dynamic)
             for(j = 0; j < sizeof_column; j++)
             {
-                unsigned int m = 0;
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
                 for(m = 0; m < sizeof_1st_layer; m++)
                 {
@@ -450,20 +448,19 @@ array array::operator+(const double &b)
     if(this -> is_4d_array)
     {
         array c(this -> sizeof_row, this -> sizeof_column, this -> sizeof_1st_layer, this -> sizeof_2nd_layer);
-        c = *this;
-        unsigned int i = 0;
+//
+//      To summ a and b:
+//
+        unsigned int i = 0, j = 0, m = 0, n = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
         for(i = 0; i < sizeof_row; i++)
         {
-            unsigned int j = 0;
             #pragma omp parallel for private(j) ordered schedule(dynamic)
             for(j = 0; j < sizeof_column; j++)
             {
-                unsigned int m = 0;
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
                 for(m = 0; m < sizeof_1st_layer; m++)
                 {
-                    unsigned int n = 0;
                     #pragma omp parallel for private(n) ordered schedule(dynamic)
                     for(n = 0; n < sizeof_2nd_layer; n++)
                     {
@@ -484,10 +481,19 @@ array array::operator+(const double &b)
 //
 array array::operator+(const array &b)
 {
+//
+//  Given the arrays a, b and c: c = a + b
+//
     if(this -> is_1d_array and b.is_1d_array and (this -> sizeof_row == b.sizeof_row))
     {
         array c(b.sizeof_row);
-        c = *this;
+//
+//      To build the temp c from a:
+//
+        gsl_vector_memcpy(c.user_1d_array, this -> user_1d_array);
+//
+//      To summ the temp c and b: 
+//
         gsl_vector_add(c.user_1d_array, b.user_1d_array);
         return c;
     }
@@ -497,7 +503,13 @@ array array::operator+(const array &b)
             and (this -> sizeof_column == b.sizeof_column))
     {
         array c(b.sizeof_row, b.sizeof_column);
-        c = *this;
+//
+//      To build the temp c from a: 
+//
+        gsl_matrix_memcpy(c.user_2d_array, this -> user_2d_array);
+//
+//      To summ the temp c and b: 
+//
         gsl_matrix_add(c.user_2d_array, b.user_2d_array);
         return c;
     }
@@ -508,16 +520,16 @@ array array::operator+(const array &b)
             and (this -> sizeof_1st_layer == b.sizeof_1st_layer))
     {
         array c(this -> sizeof_row, this -> sizeof_column, this -> sizeof_1st_layer);
-        c = *this;
-        unsigned int i = 0;
+//
+//      To summ a and b: 
+//
+        unsigned int i = 0, j = 0, m = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
         for(i = 0; i < sizeof_row; i++)
         {
-            unsigned int j = 0;
             #pragma omp parallel for private(j) ordered schedule(dynamic)
             for(j = 0; j < sizeof_column; j++)
             {
-                unsigned int m = 0;
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
                 for(m = 0; m < sizeof_1st_layer; m++)
                 {
@@ -535,24 +547,24 @@ array array::operator+(const array &b)
             and (this -> sizeof_2nd_layer == b.sizeof_2nd_layer))
     {
         array c(this -> sizeof_row, this -> sizeof_column, this -> sizeof_1st_layer, this -> sizeof_2nd_layer);
-        c = *this;
-        unsigned int i = 0;
+//
+//      To summ a and b:
+//
+        unsigned int i = 0, j = 0, m = 0, n = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
-        for(i = 0; i < sizeof_row; i++)
+        for(i = 0; i < this -> sizeof_row; i++)
         {
-            unsigned int j = 0;
             #pragma omp parallel for private(j) ordered schedule(dynamic)
-            for(j = 0; j < sizeof_column; j++)
+            for(j = 0; j < this -> sizeof_column; j++)
             {
-                unsigned int m = 0;
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
-                for(m = 0; m < sizeof_1st_layer; m++)
+                for(m = 0; m < this -> sizeof_1st_layer; m++)
                 {
-                    unsigned int n = 0;
                     #pragma omp parallel for private(n) ordered schedule(dynamic)
-                    for(n = 0; n < sizeof_2nd_layer; n++)
+                    for(n = 0; n < this -> sizeof_2nd_layer; n++)
                     {
-                        c.user_4d_array[i][j][m][n] = this -> user_4d_array[i][j][m][n] + b.user_4d_array[i][j][m][n];
+                        c.user_4d_array[i][j][m][n] = this -> user_4d_array[i][j][m][n] 
+                                                    + b.user_4d_array[i][j][m][n];
                     }
                 }
             }
@@ -569,35 +581,50 @@ array array::operator+(const array &b)
 //
 array array::operator-(const double &b)
 {
+//
+//  Given the arrays a, c and the number b: c = a - b
+//
     if(this -> is_1d_array)
     {
         array c(this -> sizeof_row);
-        c = *this;
+//
+//      To build the temp c from a:
+//
+        gsl_vector_memcpy(c.user_1d_array, this -> user_1d_array);
+//
+//      To sub a from temp c:
+//
         gsl_vector_add_constant(c.user_1d_array, -b);
         return c;
     }
     if(this -> is_2d_array)
     {
         array c(this -> sizeof_row, this -> sizeof_column);
-        c = *this;
+//
+//      To build the temp c from a:
+//
+        gsl_matrix_memcpy(c.user_2d_array, this -> user_2d_array);
+//
+//      To sub a from temp c:
+//
         gsl_matrix_add_constant(c.user_2d_array, -b);
         return c;
     }
     if(this -> is_3d_array)
     {
         array c(this -> sizeof_row, this -> sizeof_column, this -> sizeof_1st_layer);
-        c = *this;
-        unsigned int i = 0;
+//
+//      To sub b from a:
+//
+        unsigned int i = 0, j = 0, m = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
-        for(i = 0; i < sizeof_row; i++)
+        for(i = 0; i < this -> sizeof_row; i++)
         {
-            unsigned int j = 0;
             #pragma omp parallel for private(j) ordered schedule(dynamic)
-            for(j = 0; j < sizeof_column; j++)
+            for(j = 0; j < this -> sizeof_column; j++)
             {
-                unsigned int m = 0;
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
-                for(m = 0; m < sizeof_1st_layer; m++)
+                for(m = 0; m < this -> sizeof_1st_layer; m++)
                 {
                     c.user_3d_array[i][j][m] = this -> user_3d_array[i][j][m] - b;
                 }
@@ -608,22 +635,21 @@ array array::operator-(const double &b)
     if(this -> is_4d_array)
     {
         array c(this -> sizeof_row, this -> sizeof_column, this -> sizeof_1st_layer, this -> sizeof_2nd_layer);
-        c = *this;
-        unsigned int i = 0;
+//
+//      To sub b from a:
+//
+        unsigned int i = 0, j = 0, m = 0, n = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
-        for(i = 0; i < sizeof_row; i++)
+        for(i = 0; i < this -> sizeof_row; i++)
         {
-            unsigned int j = 0;
             #pragma omp parallel for private(j) ordered schedule(dynamic)
-            for(j = 0; j < sizeof_column; j++)
+            for(j = 0; j < this -> sizeof_column; j++)
             {
-                unsigned int m = 0;
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
-                for(m = 0; m < sizeof_1st_layer; m++)
+                for(m = 0; m < this -> sizeof_1st_layer; m++)
                 {
-                    unsigned int n = 0;
                     #pragma omp parallel for private(n) ordered schedule(dynamic)
-                    for(n = 0; n < sizeof_2nd_layer; n++)
+                    for(n = 0; n < this -> sizeof_2nd_layer; n++)
                     {
                         c.user_4d_array[i][j][m][n] = this -> user_4d_array[i][j][m][n] - b;
                     }
@@ -642,10 +668,19 @@ array array::operator-(const double &b)
 //
 array array::operator-(const array &b)
 {
+//
+//  Given the arrays a, b and c: c = a - b
+//
     if(this -> is_1d_array and b.is_1d_array and (this -> sizeof_row == b.sizeof_row))
     {
         array c(b.sizeof_row);
-        c = *this;
+//
+//      To build the temp c from a:
+//
+        gsl_vector_memcpy(c.user_1d_array, this -> user_1d_array);
+//
+//      To sub b from temp c:
+//
         gsl_vector_sub(c.user_1d_array, b.user_1d_array);
         return c;
     }
@@ -655,7 +690,13 @@ array array::operator-(const array &b)
             and (this -> sizeof_column == b.sizeof_column))
     {
         array c(b.sizeof_row, b.sizeof_column);
-        c = *this;
+//
+//      To build the temp c from a:
+//
+        gsl_matrix_memcpy(c.user_2d_array, this -> user_2d_array);
+//
+//      To sub b from temp c:
+//
         gsl_matrix_sub(c.user_2d_array, b.user_2d_array);
         return c;
     }
@@ -666,18 +707,18 @@ array array::operator-(const array &b)
             and (this -> sizeof_1st_layer == b.sizeof_1st_layer))
     {
         array c(this -> sizeof_row, this -> sizeof_column, this -> sizeof_1st_layer);
-        c = *this;
-        unsigned int i = 0;
+//
+//      To sub b from a:
+//
+        unsigned int i = 0, j = 0, m = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
-        for(i = 0; i < sizeof_row; i++)
+        for(i = 0; i < this -> sizeof_row; i++)
         {
-            unsigned int j = 0;
             #pragma omp parallel for private(j) ordered schedule(dynamic)
-            for(j = 0; j < sizeof_column; j++)
+            for(j = 0; j < this -> sizeof_column; j++)
             {
-                unsigned int m = 0;
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
-                for(m = 0; m < sizeof_1st_layer; m++)
+                for(m = 0; m < this -> sizeof_1st_layer; m++)
                 {
                     c.user_3d_array[i][j][m] = this -> user_3d_array[i][j][m] - b.user_3d_array[i][j][m];
                 }
@@ -693,24 +734,24 @@ array array::operator-(const array &b)
             and (this -> sizeof_2nd_layer == b.sizeof_2nd_layer))
     {
         array c(this -> sizeof_row, this -> sizeof_column, this -> sizeof_1st_layer, this -> sizeof_2nd_layer);
-        c = *this;
-        unsigned int i = 0;
+//
+//      To sub b from a:
+//
+        unsigned int i = 0, j = 0, m = 0, n = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
-        for(i = 0; i < sizeof_row; i++)
+        for(i = 0; i < this -> sizeof_row; i++)
         {
-            unsigned int j = 0;
             #pragma omp parallel for private(j) ordered schedule(dynamic)
-            for(j = 0; j < sizeof_column; j++)
+            for(j = 0; j < this -> sizeof_column; j++)
             {
-                unsigned int m = 0;
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
-                for(m = 0; m < sizeof_1st_layer; m++)
+                for(m = 0; m < this -> sizeof_1st_layer; m++)
                 {
-                    unsigned int n = 0;
                     #pragma omp parallel for private(n) ordered schedule(dynamic)
-                    for(n = 0; n < sizeof_2nd_layer; n++)
+                    for(n = 0; n < this -> sizeof_2nd_layer; n++)
                     {
-                        c.user_4d_array[i][j][m][n] = this -> user_4d_array[i][j][m][n] - b.user_4d_array[i][j][m][n];
+                        c.user_4d_array[i][j][m][n] = this -> user_4d_array[i][j][m][n]
+                                                    - b.user_4d_array[i][j][m][n];
                     }
                 }
             }
@@ -730,21 +771,20 @@ array array::operator*(const double &b)
     if(this -> is_1d_array)
     {
         array c(this -> sizeof_row);
-        c = *this;
+        gsl_vector_memcpy(c.user_1d_array, this -> user_1d_array);
         gsl_vector_scale(c.user_1d_array, b);
         return c;
     }
     if(this -> is_2d_array)
     {
         array c(this -> sizeof_row, this -> sizeof_column);
-        c = *this;
+        gsl_matrix_memcpy(c.user_2d_array, this -> user_2d_array);
         gsl_matrix_scale(c.user_2d_array, b);
         return c;
     }
     if(this -> is_3d_array)
     {
         array c(this -> sizeof_row, this -> sizeof_column, this -> sizeof_1st_layer);
-        c = *this;
         unsigned int i = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
         for(i = 0; i < sizeof_row; i++)
@@ -766,7 +806,6 @@ array array::operator*(const double &b)
     if(this -> is_4d_array)
     {
         array c(this -> sizeof_row, this -> sizeof_column, this -> sizeof_1st_layer, this -> sizeof_2nd_layer);
-        c = *this;
         unsigned int i = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
         for(i = 0; i < sizeof_row; i++)
@@ -803,7 +842,6 @@ array array::operator*(const array &b)
     if(this -> is_2d_array and b.is_1d_array and (this -> sizeof_column == b.sizeof_row))
     {
         array c(this -> sizeof_row);
-        c = *this;
 //
         gsl_blas_dgemv((this -> is_transposed? CblasTrans : CblasNoTrans),
                        1.0,
@@ -819,8 +857,7 @@ array array::operator*(const array &b)
             and (this -> sizeof_row == b.sizeof_row) 
             and (this -> sizeof_column == b.sizeof_column))
     {
-        array c = array(*this);//(this -> sizeof_row, this -> sizeof_column);
-        //c = *this;
+        array c(this -> sizeof_row, this -> sizeof_column);
 //
         gsl_blas_dgemm((this -> is_transposed? CblasTrans : CblasNoTrans),
                        (b.is_transposed? CblasTrans : CblasNoTrans),

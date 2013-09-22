@@ -161,30 +161,9 @@ public:
         return gsl_vector_max_index(user_1d_array) + 1;
     };
 //
-//  copy_to(): To copy the content from the current array to the given one.
-    void copy_to(array &given_array);
-//
-//  multiply_by(): To multiply the current array (on the left) by the given one 
-//                 on the right (1D and 2D arrays only). The current array will 
-//                 be replaced by the product result.
-//                 
-    void multiply_by(array &given_array);
-//
 //  save_transpose_to(): To save the transpose of the current array in the given one (2D
 //                       array only).
     void save_transpose_to(array &given_array);
-//
-//  transposed_multiply_by(): To transpose the current array and multiply by the given one.
-//                            The current array will be replaced by the product result (2D
-//                            array only).
-    void transposed_multiply_by(array &given_array);
-//
-//  multiply_by_transpose_of(): To multiply by the given transposed array. The current array
-//                              will be replaced by the product result (2D array only).
-    void multiply_by_transpose_of(array &given_array);
-//
-//  add_to(): To add the current array to the given one. The given array will be replaced.
-    void add_to(array &given_array);
 //
 //  save_jacobi_svd_to(): To calculate (2D array only) the singular value decompositions (SVD) using the
 //                        Jacobi's method and to store the transformation matrix, U, and the eigenvalues in 

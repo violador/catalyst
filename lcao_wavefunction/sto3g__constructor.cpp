@@ -47,8 +47,10 @@ lcao_wavefunction::sto3g::sto3g(unsigned int &total_atoms,
             two_electrons_repulsion();                               // (5)
         }
     }
-    t_matrix.add_to(h_matrix);        // (6)
-    v_matrix.add_to(h_matrix);        // (6)
+    h_matrix += t_matrix;
+    h_matrix += v_matrix;
+    //t_matrix.add_to(h_matrix);        // (6)
+    //v_matrix.add_to(h_matrix);        // (6)
     if(runtime_setup.settings::state_of(DEBUG_MODE))
     {
         //runtime_setup.settings::log("\n@lcao_wavefunction::sto3g::sto3g(): Follows the calculated T and V matrices");

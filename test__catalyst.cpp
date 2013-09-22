@@ -24,18 +24,27 @@ int main(int argc, char* argv[])
     array A(2, 2);
     array B(2, 2);
     array C(2, 2);
-    //array D(2, 2);
-    A.array::set(1, 1, 7.0); 
-    A.array::set(1, 2, 3.0); 
+    A.array::set(1, 1, 1.0); 
+    A.array::set(1, 2, 1.0); 
     A.array::set(2, 1, 1.0); 
-    A.array::set(2, 2, 0.0);
+    A.array::set(2, 2, 1.0);
     B.array::set(1, 1, 2.0); 
-    B.array::set(1, 2, 1.0); 
-    B.array::set(2, 1, 4.0); 
-    B.array::set(2, 2, 0.0);
-    //double b = 2.0;
-    //C = A*B;
-    C = A*B;
+    B.array::set(1, 2, 2.0); 
+    B.array::set(2, 1, 2.0); 
+    B.array::set(2, 2, 2.0);
+    std::cout << "SOMA" << std::endl;
+    C = A + B;
+    std::cout << "C11 = " << C.array::get(1, 1) << std::endl; 
+    std::cout << "C12 = " << C.array::get(1, 2) << std::endl; 
+    std::cout << "C21 = " << C.array::get(2, 1) << std::endl; 
+    std::cout << "C22 = " << C.array::get(2, 2) << std::endl; 
+    std::cout << "SUB" << std::endl;
+    C = A - B;
+    std::cout << "C11 = " << C.array::get(1, 1) << std::endl; 
+    std::cout << "C12 = " << C.array::get(1, 2) << std::endl; 
+    std::cout << "C21 = " << C.array::get(2, 1) << std::endl; 
+    std::cout << "C22 = " << C.array::get(2, 2) << std::endl; 
+/*
     std::cout << "A11 = " << A.array::get(1, 1) << std::endl; 
     std::cout << "A12 = " << A.array::get(1, 2) << std::endl; 
     std::cout << "A21 = " << A.array::get(2, 1) << std::endl; 
@@ -46,6 +55,9 @@ int main(int argc, char* argv[])
     std::cout << "B12 = " << B.array::get(1, 2) << std::endl; 
     std::cout << "B21 = " << B.array::get(2, 1) << std::endl; 
     std::cout << "B22 = " << B.array::get(2, 2) << std::endl; 
+*/
+/*
+    std::cout << "A is transposed = " << A.array::check_if(IS_TRANSPOSED) << std::endl;
     std::cout << "B is transposed = " << B.array::check_if(IS_TRANSPOSED) << std::endl;
     std::cout << " " << std::endl;
     std::cout << "C11 = " << C.array::get(1, 1) << std::endl; 
@@ -53,12 +65,15 @@ int main(int argc, char* argv[])
     std::cout << "C21 = " << C.array::get(2, 1) << std::endl; 
     std::cout << "C22 = " << C.array::get(2, 2) << std::endl; 
     std::cout << "C is transposed = " << C.array::check_if(IS_TRANSPOSED) << std::endl;
+*/
+/*
     std::cout << "A11 = " << A.array::get(1, 1) << std::endl; 
     std::cout << "A12 = " << A.array::get(1, 2) << std::endl; 
     std::cout << "A21 = " << A.array::get(2, 1) << std::endl; 
     std::cout << "A22 = " << A.array::get(2, 2) << std::endl; 
     std::cout << "A is transposed = " << A.array::check_if(IS_TRANSPOSED) << std::endl;
     std::cout << " " << std::endl;
+*/
 /*
     C = A*B;
     D = C*A;
