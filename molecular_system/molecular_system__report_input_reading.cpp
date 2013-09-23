@@ -243,10 +243,21 @@ void molecular_system::report_input_reading()
             log_file -> output << std::right << mass(i_atom) << std::endl;
 //
         } // for(i_atom)
-        log_file -> output << "\n- Input file               = " << name()
-                           << "\n- Total atoms              = " << number_of_atoms()
-                           << "\n- Charge                   = " << charge
-                           << "\n- Nuclear repulsion energy = " << nuclear_repulsion_energy() << " a.u."
+        log_file -> output << "\n- Input file               = "
+                           << name()
+                           << "\n- Total atoms              = "
+                           << number_of_atoms()
+                           << "\n- Charge                   = "
+                           << charge
+                           << "\n- Nuclear repulsion energy = "
+                           << nuclear_repulsion_energy()
+                           << " a.u."
+                           << "\n- Vibration mode           = "
+                           << config -> control_key_of(config -> state_of(VIBRATION_MODE))
+                           << "\n- Rotation mode            = "
+                           << config -> control_key_of(config -> state_of(ROTATIONAL_MODE))
+                           << "\n- Translation mode         = "
+                           << config -> control_key_of(config -> state_of(TRANSLATION_MODE))
                            << std::endl;
         #undef FIRST_COLUMN_LENGTH
         #undef SECOND_COLUMN_LENGTH

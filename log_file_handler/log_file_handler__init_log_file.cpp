@@ -39,12 +39,6 @@ void log_file_handler::init_log_file()
                  << config -> control_key_of(config -> state_of(STANDBY_MODE))
                  << "\n- Debug mode                          = " 
                  << config -> control_key_of(config -> state_of(DEBUG_MODE)) 
-                 << "\n- Vibration mode                      = " 
-                 << config -> control_key_of(config -> state_of(VIBRATION_MODE)) 
-                 << "\n- Rotation mode                       = " 
-                 << config -> control_key_of(config -> state_of(ROTATIONAL_MODE))  
-                 << "\n- Translation mode                    = " 
-                 << config -> control_key_of(config -> state_of(TRANSLATION_MODE))  
                  << "\n- Scratch directory                   = "
                  << config -> dir_path_of(SCRATCH)
                  << "\n- SCF convergence criteria            = "

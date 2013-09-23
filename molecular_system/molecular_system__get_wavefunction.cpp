@@ -12,7 +12,7 @@ void molecular_system::get_wavefunction(unsigned int theory_level)
         {
             //log_file -> report("\n- Task ", task_number, " > STO-3G level of theory\n");
             lcao_wavefunction::sto3g psi(total_atoms, position_x, position_y, position_z, atom_type, *config);
-            wavefunction = &psi.lcao_wavefunction::sto3g::ab_initio_calculation;
+            //wavefunction = &psi.lcao_wavefunction::sto3g::ab_initio_calculation;
             ab_initio_ready = true;
         }
     }

@@ -85,7 +85,7 @@ inline void init_properties(const unsigned int local_row_size = 0,
         }
         #pragma omp section
         {
-            #pragma omp parallel sections num_threads(10)
+            #pragma omp parallel sections num_threads(9)
             {
                 #pragma omp section
                 {
@@ -120,10 +120,6 @@ inline void init_properties(const unsigned int local_row_size = 0,
                 #pragma omp section
                 {
                     setup_ready = false;
-                }
-                #pragma omp section
-                {
-                    logfile_ready = false;
                 }
                 #pragma omp section
                 {

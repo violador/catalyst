@@ -4,6 +4,7 @@
     #include "settings.hpp"
     #include "tools.hpp"
     #include "file_system.hpp"
+    #include "log_file_handler.hpp"
 //
 //
 //
@@ -12,7 +13,7 @@ struct array
 protected:
 //
 //  Declaring the data members: 
-    settings *config;
+    settings *config;               // A pointer-object to link with any object of settings type.
     unsigned int sizeof_row;        // The size of row. 
     unsigned int sizeof_column;     // The size of column.
     unsigned int sizeof_1st_layer;  // The size of first layer.
@@ -25,23 +26,22 @@ protected:
     bool is_4d_array;               // True, if it is a 4D array, false otherwise.
     bool is_const_array;            // True, if it is a constant array, false otherwise.
     bool is_square_array;           // True, if it is a square array, false otherwise.
-    bool is_transposed;
+    bool is_transposed;             // True, if it is a transposed array, false otherwise.
     bool created_array;             // True, if it was created already by constructors or create_array(), false otherwise.
     bool deleted_array;             // True, if it was deleted already by delete_array(), false otherwise.
     bool lowend_mode_on;            // True, if the high-end mode is off, false otherwise.
-    bool setup_ready;               //
-    bool logfile_ready;
+    bool setup_ready;               // True, if the *config pointer is already liked. False otherwise.
     gsl_vector *user_1d_array;      // The current user's 1D array.
-    gsl_matrix *user_2d_array;      // The current user's 2D array
-    double   ***user_3d_array;      // The current user's 3D array
-    double  ****user_4d_array;      // The current user's 4D array
+    gsl_matrix *user_2d_array;      // The current user's 2D array.
+    double   ***user_3d_array;      // The current user's 3D array.
+    double  ****user_4d_array;      // The current user's 4D array.
     std::string array_name;         // The array name, if any.
-    std::string array_filename;     //
+    std::string array_filename;     // 
     file_system array_file_manager; //
-    file_system log_file_manager;
+    file_system log_file_manager;   // A pointer-object to link with any object of file_system type.
     FILE* array_file;
     //std::fstream array_file; 
-    std::fstream log_file;
+    log_file_handler *log_file;     // A pointer-object to link with any object of log_file_handler type.
     //gsl_ntuple *array_f;
 //
 //

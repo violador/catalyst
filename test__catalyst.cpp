@@ -14,16 +14,19 @@ int main(int argc, char* argv[])
 {
     settings config;
     //log_file_handler file(config);
-    //molecular_system pyr("data/pyr.xyz", config);
+    molecular_system pyr("data/H.xyz", config);
+    pyr.molecular_system::electronic_energy();
 /*
     file.output << "testando do main" << std::endl;
     file.output.width(50);
     file.output.fill(' ');
     file.output << "Positions";
 */
+/*
     array A(2, 2);
     array B(2, 2);
     array C(2, 2);
+    double a = 2.0;
     A.array::set(1, 1, 1.0); 
     A.array::set(1, 2, 1.0); 
     A.array::set(2, 1, 1.0); 
@@ -33,7 +36,7 @@ int main(int argc, char* argv[])
     B.array::set(2, 1, 2.0); 
     B.array::set(2, 2, 2.0);
     std::cout << "SOMA" << std::endl;
-    C = A + B;
+    C = A * a;
     std::cout << "C11 = " << C.array::get(1, 1) << std::endl; 
     std::cout << "C12 = " << C.array::get(1, 2) << std::endl; 
     std::cout << "C21 = " << C.array::get(2, 1) << std::endl; 
@@ -44,6 +47,7 @@ int main(int argc, char* argv[])
     std::cout << "C12 = " << C.array::get(1, 2) << std::endl; 
     std::cout << "C21 = " << C.array::get(2, 1) << std::endl; 
     std::cout << "C22 = " << C.array::get(2, 2) << std::endl; 
+*/
 /*
     std::cout << "A11 = " << A.array::get(1, 1) << std::endl; 
     std::cout << "A12 = " << A.array::get(1, 2) << std::endl; 

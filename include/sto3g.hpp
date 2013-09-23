@@ -20,6 +20,7 @@ namespace lcao_wavefunction
     private:
 //
 //      Declaring the data members:
+        settings *config;
         log_file_handler *log_file;
         array *x;                     // A pointer-object to link with any array of atomic x axis positions.
         array *y;                     // A pointer-object to link with any array of atomic y axis positions.

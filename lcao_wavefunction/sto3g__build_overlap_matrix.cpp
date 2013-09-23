@@ -4,28 +4,24 @@
 //
 void lcao_wavefunction::sto3g::build_overlap_matrix()
 {
-//  (1) To calculate the overlap integral between the ith-atom and the jth-atom, 
-//  s_integral, over the set of primitive gf.
-    s_matrix.create_array(number_of_atoms, number_of_atoms);
-    s_matrix.set_name("Overlap matrix");
+//
+    s_matrix.array::create_array(number_of_atoms, number_of_atoms);
+    s_matrix.array::set_config(*config, *log_file);
+    s_matrix.array::set_name("Overlap matrix");
     s_matrix.set_all(1.0);
-    double s_integral = 0.0;
-    double ij_distance  = 0.0;
-    double a = 0.0;
-    double b = 0.0;
-    unsigned int i_atom = 0;
-    unsigned int i_type = 0;
+//
+    double s_integral = 0.0, ij_distance = 0.0, a = 0.0, b = 0.0;
+    unsigned int i_atom = 0, i_type = 0;
     #pragma omp parallel for private(i_atom, i_type, ij_distance, a, b) reduction(+:s_integral) ordered schedule(dynamic)
     for(i_atom = 1; i_atom <= number_of_atoms; i_atom++)  
     {  
-        i_type = (type -> get(i_atom));
-        unsigned int j_atom = 0;
-        unsigned int j_type = 0;
+        i_type = type -> get(i_atom);
+        unsigned int j_atom = 0, j_type = 0;
         #pragma omp parallel for private(j_atom, j_type, ij_distance, a, b) reduction(+:s_integral) ordered schedule(dynamic)
         for(j_atom = i_atom; j_atom <= number_of_atoms; j_atom++)
         {
-            j_type = (type -> get(j_atom));
-            if(i_atom != j_atom)
+            j_type = type -> get(j_atom);
+            if(i_atom not_eq j_atom)
             {
                 ij_distance = interatomic_distance(i_atom, j_atom);
                 unsigned int m_primitive = 0;
@@ -48,19 +44,22 @@ void lcao_wavefunction::sto3g::build_overlap_matrix()
                             }
                         }
 //
-//                      A. Szabo and N. Ostlund; Modern Quantum Chemistry - Introduction to Advanced Electronic Sctructure;
-//                      Appendix A; pag. 412; equation (A.9):
+//                      A. Szabo and N. Ostlund; 
+//                      Modern Quantum Chemistry - Introduction to Advanced Electronic Sctructure;
+//                      Appendix A; 
+//                      pag. 412; 
+//                      equation (A.9):
                         #pragma omp atomic
                         s_integral += a*b;
 //
                         a = b = 0.0; 
                     } // for(n_primitive)
                 } // for(m_primitive)
-                s_matrix.set(i_atom, j_atom, s_integral);
-                s_matrix.set(j_atom, i_atom, s_integral);
+                s_matrix.array::set(i_atom, j_atom, s_integral);
+                s_matrix.array::set(j_atom, i_atom, s_integral);
                 s_integral = ij_distance = a = b = 0.0;
                 i_type = j_type = 0;
-            }
+            } // if(i_atom == j_atom)
         } // for(j_atom) 
     } // for(i_atom)
 } 

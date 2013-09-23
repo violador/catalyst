@@ -4,28 +4,22 @@
 //
 void lcao_wavefunction::sto3g::build_kinetic_matrix()
 {
-    t_matrix.create_array(number_of_atoms, number_of_atoms);
-    t_matrix.set_name("Kinetic energy matrix");
-    double t_integral  = 0.0;
-    double ij_distance = 0.0;
-    double a = 0.0;
-    double b = 0.0;
-    double c = 0.0;
-    double d = 0.0;
-    double e = 0.0;
-    double f = 0.0;
-    unsigned int i_type = 0;
-    unsigned int i_atom = 0;
+//
+    t_matrix.array::create_array(number_of_atoms, number_of_atoms);
+    t_matrix.array::set_config(*config, *log_file);
+    t_matrix.array::set_name("Kinetic energy matrix");
+//
+    double t_integral = 0.0, ij_distance = 0.0, a = 0.0, b = 0.0, c = 0.0, d = 0.0, e = 0.0, f = 0.0;
+    unsigned int i_type = 0, i_atom = 0;
     #pragma omp parallel for private(i_atom, i_type, ij_distance, a, b, c, d, e, f) reduction(+:t_integral) ordered schedule(dynamic)
     for(i_atom = 1; i_atom <= number_of_atoms; i_atom++)
     {
-        i_type = (type -> get(i_atom));
-        unsigned int j_atom = 0;
-        unsigned int j_type = 0;
+        i_type = type -> get(i_atom);
+        unsigned int j_atom = 0, j_type = 0;
         #pragma omp parallel for private(j_atom, j_type, ij_distance, a, b, c, d, e, f) reduction(+:t_integral) ordered schedule(dynamic)
         for(j_atom = i_atom; j_atom <= number_of_atoms; j_atom++)
         {
-            j_type = (type -> get(j_atom));
+            j_type = type -> get(j_atom);
             ij_distance = (i_atom == j_atom? 0.0 : interatomic_distance(i_atom, j_atom));
             unsigned int m_primitive = 0;
             #pragma omp parallel for private(m_primitive, a, b, c, d, e, f) reduction(+:t_integral) ordered schedule(dynamic)
@@ -60,16 +54,19 @@ void lcao_wavefunction::sto3g::build_kinetic_matrix()
                         }
                     }
 //
-//                  A. Szabo and N. Ostlund; Modern Quantum Chemistry - Introduction to Advanced Electronic Sctructure;
-//                  Appendix A; pag. 412; equation (A.11):
+//                  A. Szabo and N. Ostlund;
+//                  Modern Quantum Chemistry - Introduction to Advanced Electronic Sctructure;
+//                  Appendix A; 
+//                  pag. 412; 
+//                  equation (A.11):
                     #pragma omp atomic
                     t_integral += b*c*d*e*f;
 //
                     a = b = c = d = e = f = 0.0;
                 } // for(n_primitive)
             } // for(m_primitive)
-            t_matrix.set(i_atom, j_atom, t_integral);
-            t_matrix.set(j_atom, i_atom, t_integral);
+            t_matrix.array::set(i_atom, j_atom, t_integral);
+            t_matrix.array::set(j_atom, i_atom, t_integral);
             t_integral = ij_distance = 0.0;
         } // for(j_atom)
     } // for(i_atom)
