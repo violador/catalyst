@@ -31,6 +31,9 @@ public:
     log_file_handler(log_file_handler &given_log_file);
 //
 //
+//  #include "log_file_handler__operator.cpp"
+//
+//
     #include "log_file_handler__operator.cpp"
 //
 //
@@ -43,8 +46,16 @@ public:
 //            The report() member function accepts until 10 arguments of any standard
 //            type.
     #include "log_file_handler__report.cpp"
-//
-//
+    #include "log_file_handler__write.cpp"
     #include "log_file_handler__exists.cpp"    
+    #include "log_file_handler__set_scientific_notation.cpp"
+    #include "log_file_handler__set_fixed.cpp"
+    #include "log_file_handler__set_width.cpp"
+    #include "log_file_handler__set_right.cpp"
+    #include "log_file_handler__set_left.cpp"
+    #include "log_file_handler__set_new_line.cpp"
+    #include "log_file_handler__close.cpp"
+    #include "log_file_handler__fill_line_with.cpp"
+    #include "log_file_handler__write_title_bar.cpp"
 };
 #endif

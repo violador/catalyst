@@ -33,6 +33,8 @@
     #define BIN_FILE_EXTENSION   ".bin"
     #define TXT_FILE_EXTENSION   ".txt"
     #define SPACE_LENGTH         5    
+    #define TITLE_BAR_SYMBOL     '='
+    #define BYTE_TO_KILOBYTE     0.0009765625
 //
     #ifndef EXIT_SUCCESS
         #define EXIT_SUCCESS     0              // Tag for success operations.
@@ -91,6 +93,7 @@
     #endif
     #include <boost/preprocessor/repetition/enum_params.hpp>
     #include <boost/preprocessor/iteration/local.hpp>
+    #include <boost/preprocessor/repetition/repeat.hpp>
 //
 //  Including Linux only headers:
     #ifdef LINUX

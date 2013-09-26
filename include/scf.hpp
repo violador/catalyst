@@ -3,6 +3,7 @@
     #include "settings.hpp"
     #include "tools.hpp"
     #include "array.hpp"
+    #include "log_file_handler.hpp"
 //
 //
 //
@@ -14,6 +15,7 @@ namespace algorithm
 //
 //      Declaring the data members:
         settings *config;       // An empty object to the settings class.
+        log_file_handler *log_file;
         bool scf_converged;     // To store the convergence state (converged/true or not converged/false).  
         unsigned int iteration; // To store the number of iterations.
         array scf_energy;       // To store the SCF energy for each iteration.
@@ -55,7 +57,7 @@ namespace algorithm
     public:
 //
 //
-        static const int class_id = 13836;
+        static const int id = 13836;
 //
 //      Declaring the overloaded class constructor:
         scf();

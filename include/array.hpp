@@ -4,13 +4,13 @@
     #include "settings.hpp"
     #include "tools.hpp"
     #include "file_system.hpp"
-    #include "log_file_handler.hpp"
+    #include "global_log.hpp"
 //
 //
 //
 struct array
 {
-protected:
+    protected:
 //
 //  Declaring the data members: 
     settings *config;               // A pointer-object to link with any object of settings type.
@@ -40,21 +40,13 @@ protected:
     file_system array_file_manager; //
     file_system log_file_manager;   // A pointer-object to link with any object of file_system type.
     FILE* array_file;
-    //std::fstream array_file; 
-    log_file_handler *log_file;     // A pointer-object to link with any object of log_file_handler type.
-    //gsl_ntuple *array_f;
 //
-//
+//  Including the inline/template/private member functions: 
     #include "array__init_properties.cpp"
     #include "array__init_3d_array.cpp"
     #include "array__init_4d_array.cpp"
-/*
-    struct data_book
-    {
-        double a;
-    };
-*/
-public:
+//
+    public:
 //
 //  Struct identifier:
     static const int id = 2431;
@@ -101,18 +93,31 @@ public:
 //  delete_array(): Frees the allocated memory of the current array.
     void delete_array();
 //
+//  Including the inline/template/public member functions: 
+    #include "array__size_of.cpp"
+    #include "array__set_constant.cpp"
+    #include "array__unset_constant.cpp"
+    #include "array__check_array_id.cpp"
+    #include "array__set.cpp"
+    #include "array__set_all.cpp"
+    #include "array__get.cpp"
+    #include "array__set_name.cpp"
+    #include "array__get_name.cpp"
+    #include "array__build_identity_form.cpp"
+    #include "array__unset_lowend_mode.cpp"
+    #include "array__set_config.cpp"
+    #include "array__set_transpose.cpp"
+    #include "array__unset_transpose.cpp"
+    #include "array__norm.cpp"
+//
 //  size_of_row(), size_of_column(), size_of_1st_layer() and size_of_2nd_layer(): 
 //  A set of inlined member functions to return the respective size of each dimension.
-    #include "array__size_of.cpp"
 //
 //  set_constant(): To set up the current array as constant (change the behavior of some functions).
-    #include "array__set_constant.cpp"
 //
 //  unset_constant(): To set up the current array as non constant (change the behavior of some functions).
-    #include "array__unset_constant.cpp"
 //
 //  check_array_id(): To check the identifier number of the current array.
-    #include "array__check_array_id.cpp"
 //
 //  check_if(): To check properties in the current array.
     bool check_if(const unsigned int &option);
@@ -135,19 +140,14 @@ public:
     #define NEGATIVE 2
 //
 //  set(): A set of overloaded inlined member functions to set the given value in the given position.
-    #include "array__set.cpp"
 //
 //  set_all(): To fill up the array with the given value.
-    #include "array__set_all.cpp"
 //
 //  get(): A set of overloaded inlined member functions to return the current value of the given position.
-    #include "array__get.cpp"
 //
 //  set_name(): An inlined member function to set the name of the current array.
-    #include "array__set_name.cpp"
 //
 //  get_name(): To return the name of the current array.
-    #include "array__get_name.cpp"
 //
 //
     unsigned int get_min_index()
@@ -188,7 +188,6 @@ public:
     void restore_original_basis_of(array &given_array);
 //
 //  build_identity_form(): To replace the content of the current array by its identity form (2D array only).
-    #include "array__build_identity_form.cpp"
 //
 //  save(): To save the current array in a binary file.
     void save();
@@ -283,22 +282,6 @@ public:
 */
     };
 //
-//
-    #include "array__unset_lowend_mode.cpp"
-//
-//
-    #include "array__set_config.cpp"
-//
-//
     void report();
-//
-//
-    #include "array__set_transpose.cpp"
-//
-//
-    #include "array__unset_transpose.cpp"
-//
-//
-    #include "array__norm.cpp"
 };
 #endif

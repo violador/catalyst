@@ -6,7 +6,7 @@ void lcao_wavefunction::sto3g::build_kinetic_matrix()
 {
 //
     t_matrix.array::create_array(number_of_atoms, number_of_atoms);
-    t_matrix.array::set_config(*config, *log_file);
+    t_matrix.array::set_config(*config);
     t_matrix.array::set_name("Kinetic energy matrix");
 //
     double t_integral = 0.0, ij_distance = 0.0, a = 0.0, b = 0.0, c = 0.0, d = 0.0, e = 0.0, f = 0.0;

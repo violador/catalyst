@@ -5,7 +5,7 @@
 molecular_system::molecular_system(const std::string &input_filename)
 {
     settings runtime_setup;
-    *this = molecular_system(input_filename, runtime_setup);
+    molecular_system(input_filename, runtime_setup);
 }
 //
 //
@@ -13,8 +13,7 @@ molecular_system::molecular_system(const std::string &input_filename)
 molecular_system::molecular_system(const std::string &input_filename, settings &runtime_setup)
 {
     config = &runtime_setup;
-    log_file_handler init_file(runtime_setup);
-    #pragma omp parallel sections num_threads(8)
+    #pragma omp parallel sections num_threads(7)
     {
         #pragma omp section
         {
@@ -44,10 +43,6 @@ molecular_system::molecular_system(const std::string &input_filename, settings &
             atom_positions_ready = false;
             atom_velocities_ready = false;
             read_input_file(input_filename);
-        }
-        #pragma omp section
-        {
-            log_file = &init_file;
         }
         #pragma omp section
         {

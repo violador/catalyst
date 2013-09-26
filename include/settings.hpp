@@ -95,7 +95,7 @@ public:
     #define INPUT_FILE 2
 //
 //  control_key_of(): To get the current control key (on/off) for a given state (true/false).
-    std::string control_key_of(const bool &state);
+    #include "settings__control_key_of.cpp"
 //
 //  state_of(): To get the state (true/false) of a given option.
     bool state_of(const unsigned int option);
@@ -141,5 +141,6 @@ public:
 //
 //
     #include "settings__wavefunction_type.cpp"
+    #include "settings__my_size.cpp"
 };
 #endif

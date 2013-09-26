@@ -7,7 +7,7 @@ inline void set(const unsigned int &i, const double &value)
     {
         if((i > 0) and (i <= sizeof_row))
         {
-            gsl_vector_set(user_1d_array, i - 1, value);
+            user_1d_array -> data[(i - 1)*user_1d_array -> stride] = value;
         }
     }
 };
@@ -20,7 +20,7 @@ inline void set(const unsigned int &i, const unsigned int &j, const double &valu
     {
         if((i > 0) and (j > 0) and (i <= sizeof_row) and (j <= sizeof_column))
         {
-            gsl_matrix_set(user_2d_array, i - 1, j - 1, value);
+            user_2d_array -> data[(i - 1)*user_2d_array -> tda + (j - 1)] = value;
         }
     }
 };

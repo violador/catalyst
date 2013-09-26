@@ -75,5 +75,4 @@ log_file_handler::log_file_handler(log_file_handler &given_log_file)
             }
         } 
     }
- 
 }

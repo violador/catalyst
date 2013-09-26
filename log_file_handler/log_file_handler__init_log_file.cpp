@@ -45,16 +45,20 @@ void log_file_handler::init_log_file()
                  << config -> scf_convergence_criteria()
                  << "\n- Numeric precision                   = " 
                  << config -> numeric_precision()
-                 << "/10" 
+                 << "/6" 
                  #ifdef USE_OMP
                  << "\n- Open multi-processing               = on"
                  #else
                  << "\n- Open multi-processing               = off"
                  #endif
                  #ifdef USE_MPI
-                 << "\n- Message passing interface           = on" << std::endl;
+                 << "\n- Message passing interface           = on"
                  #else
-                 << "\n- Message passing interface           = off" << std::endl;
+                 << "\n- Message passing interface           = off"
                  #endif
+                 << "\n- Settings memory usage               = "
+                 << config -> my_size()
+                 << " kB"
+                 << std::endl;
     } // if(file_manager -> exists() and (not config -> state_of(OUTPUT_MODE)) or (not log_file_ready)) 
 }

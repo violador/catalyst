@@ -6,7 +6,7 @@ void lcao_wavefunction::sto3g::build_overlap_matrix()
 {
 //
     s_matrix.array::create_array(number_of_atoms, number_of_atoms);
-    s_matrix.array::set_config(*config, *log_file);
+    s_matrix.array::set_config(*config);
     s_matrix.array::set_name("Overlap matrix");
     s_matrix.set_all(1.0);
 //

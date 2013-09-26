@@ -15,43 +15,43 @@ void molecular_system::read_input_file(const std::string &input_filename)
                 {
                     atom_type.array::create_array(total_atoms);
                     atom_type.array::set_name("Atom types");
-                    atom_type.array::set_config(*config, *log_file);
+                    atom_type.array::set_config(*config);
                 }
                 #pragma omp section
                 {
                     position_x.array::create_array(total_atoms);
                     position_x.array::set_name("x-axis");
-                    position_x.array::set_config(*config, *log_file);
+                    position_x.array::set_config(*config);
                 }
                 #pragma omp section
                 {
                     position_y.array::create_array(total_atoms);
                     position_y.array::set_name("y-axis");
-                    position_y.array::set_config(*config, *log_file);
+                    position_y.array::set_config(*config);
                 }
                 #pragma omp section
                 {
                     position_z.array::create_array(total_atoms);
                     position_z.array::set_name("z-axis");
-                    position_z.array::set_config(*config, *log_file);
+                    position_z.array::set_config(*config);
                 }
                 #pragma omp section
                 {
                     velocity_x.array::create_array(total_atoms);
                     velocity_x.array::set_name("x-axis");
-                    velocity_x.array::set_config(*config, *log_file);
+                    velocity_x.array::set_config(*config);
                 }
                 #pragma omp section
                 {
                     velocity_y.array::create_array(total_atoms);
                     velocity_y.array::set_name("y-axis");
-                    velocity_y.array::set_config(*config, *log_file);
+                    velocity_y.array::set_config(*config);
                 }
                 #pragma omp section
                 {
                     velocity_z.array::create_array(total_atoms);
                     velocity_z.array::set_name("z-axis");
-                    velocity_z.array::set_config(*config, *log_file);
+                    velocity_z.array::set_config(*config);
                 }
             }
             total_mass = 0.0;
@@ -71,23 +71,23 @@ void molecular_system::read_input_file(const std::string &input_filename)
 //          (9) To update the total mass.
             for(i = 1; i <= total_atoms; i++)
             {
-                geometry_file >> element_symbol;                                    // (1)
-                geometry_file >> x;                                                 // (2)
-                geometry_file >> y;                                                 // (3)
-                geometry_file >> z;                                                 // (4)
+                geometry_file >> element_symbol;                                   // (1)
+                geometry_file >> x;                                                // (2)
+                geometry_file >> y;                                                // (3)
+                geometry_file >> z;                                                // (4)
                 position_x.array::set(i, x);
                 position_y.array::set(i, y);
                 position_z.array::set(i, z);
                 x = y = z = 0.0;
-                geometry_file >> x;                                                 // (5)
-                geometry_file >> y;                                                 // (6)
-                geometry_file >> z;                                                 // (7) 
+                geometry_file >> x;                                                // (5)
+                geometry_file >> y;                                                // (6)
+                geometry_file >> z;                                                // (7) 
                 velocity_x.array::set(i, x);
                 velocity_y.array::set(i, y);
                 velocity_z.array::set(i, z);
                 x = y = z = 0.0;
-                atom_type.array::set(i, get.periodic_table::type(element_symbol));  // (8)
-                total_mass += get.periodic_table::mass(atom_type.array::get(i));    // (9)
+                atom_type.array::set(i, get.periodic_table::type(element_symbol)); // (8)
+                total_mass += get.periodic_table::mass(atom_type.array::get(i));   // (9)
             }
 //
             geometry_file.close();
@@ -95,9 +95,9 @@ void molecular_system::read_input_file(const std::string &input_filename)
             atom_positions_ready = true;
             atom_velocities_ready = true;
         }
-        else // if(!geometry_file.is_open() || !geometry_file.good() || !(total_atoms > 0))
-        {
-           // file not open! 
+        else // if(not geometry_file.is_open() or (not geometry_file.good()) or (not total_atoms > 0))
+        { 
+            std::cout << "\nfile not opened." << std::endl;
         }
     }
 }

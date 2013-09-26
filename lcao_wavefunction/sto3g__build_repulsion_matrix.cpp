@@ -4,8 +4,11 @@
 //
 void lcao_wavefunction::sto3g::build_repulsion_matrix()
 {
+//
     v_matrix.create_array(number_of_atoms, number_of_atoms);
+    v_matrix.array::set_config(*config);
     v_matrix.set_name("One electron Coulomb repulsion matrix");
+//
     double ii_integral = 0.0;
     double ij_integral = 0.0;
     double jj_integral = 0.0; 

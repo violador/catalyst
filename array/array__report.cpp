@@ -6,151 +6,128 @@ void array::report()
 {
     if(setup_ready and config -> state_of(OUTPUT_MODE) and is_2d_array)
     {
-        if(log_file -> exists())
+        if(global_log::file.exists())
         {
             LOGFILE_IS_READY:
-            log_file -> output << "\n- " << get_name() << ":" << std::endl;
+            global_log::file << "\n- ";
+            global_log::file << get_name();
+            global_log::file << ":";
+            global_log::file.set_new_line();
             if(size_of_column() <= 5)
             {
 //
-                log_file -> output.width(MAX_PRECISION + 8);
-                log_file -> output.fill(' ');
-                log_file -> output << std::right << (size_of_column() >= 1? "1" : "");
+                global_log::file.set_width(MAX_PRECISION + 8);
+                global_log::file.set_right();
+                global_log::file << (size_of_column() >= 1? "1" : "");
 //
-                log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                log_file -> output.fill(' ');
-                log_file -> output << std::right << (size_of_column() >= 2? "2" : "");
+                global_log::file.set_width(MAX_PRECISION + SPACE_LENGTH);
+                global_log::file.set_right();
+                global_log::file << (size_of_column() >= 2? "2" : "");
 //
-                log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                log_file -> output.fill(' ');
-                log_file -> output << std::right << (size_of_column() >= 3? "3" : "");
+                global_log::file.set_width(MAX_PRECISION + SPACE_LENGTH);
+                global_log::file.set_right();
+                global_log::file << (size_of_column() >= 3? "3" : "");
 //
-                log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                log_file -> output.fill(' ');
-                log_file -> output << std::right << (size_of_column() >= 4? "4" : "");
+                global_log::file.set_width(MAX_PRECISION + SPACE_LENGTH);
+                global_log::file.set_right();
+                global_log::file << (size_of_column() >= 4? "4" : "");
 //
-                log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                log_file -> output.fill(' ');
-                log_file -> output << std::right << (size_of_column() >= 5? "5" : "");
+                global_log::file.set_width(MAX_PRECISION + SPACE_LENGTH);
+                global_log::file.set_right();
+                global_log::file << (size_of_column() >= 5? "5" : "");
 //
-                log_file -> output << std::endl;
+                global_log::file.set_new_line();
                 for(unsigned int i = 1; i <= size_of_row(); i++)
                 {
                     if(size_of_column() == 1)
                     {
 //
-                        log_file -> output.width(5);
-                        log_file -> output.fill(' ');
-                        log_file -> output << std::right << i;
+                        global_log::file.set_width(5);
+                        global_log::file.set_right();
+                        global_log::file << i;
 //
-                        log_file -> output << std::scientific;
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.fill(' ');
-                        log_file -> output.precision(config -> numeric_precision());
-                        log_file -> output << std::right << get(i, 1) << std::endl;
+                        global_log::file.set_scientific_notation();
+                        global_log::file << get(i, 1);
 //
+                        global_log::file.set_new_line();
                     }
                     else if(size_of_column() == 2)
                     {
 //
-                        log_file -> output.width(5);
-                        log_file -> output.fill(' ');
-                        log_file -> output << std::right << i;
+                        global_log::file.set_width(5);
+                        global_log::file.set_right();
+                        global_log::file << i;
 //
-                        log_file -> output << std::scientific;
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.precision(config -> numeric_precision());
-                        log_file -> output << std::right << get(i, 1);
+                        global_log::file.set_scientific_notation();
+                        global_log::file << get(i, 1);
 //
-                        log_file -> output << std::scientific;
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.precision(config -> numeric_precision());
-                        log_file -> output << std::right << get(i, 2) << std::endl;
+                        global_log::file.set_scientific_notation();
+                        global_log::file << get(i, 2);
 //
+                        global_log::file.set_new_line();
                     }
                     else if(size_of_column() == 3)
                     {
 //
-                        log_file -> output.width(5);
-                        log_file -> output.fill(' ');
-                        log_file -> output << std::right << i;
+                        global_log::file.set_width(5);
+                        global_log::file.set_right();
+                        global_log::file << i;
 //
-                        log_file -> output << std::scientific;
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.precision(config -> numeric_precision());
-                        log_file -> output << std::right << get(i, 1);
+                        global_log::file.set_scientific_notation();
+                        global_log::file << get(i, 1);
 //
-                        log_file -> output << std::scientific;
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.precision(config -> numeric_precision());
-                        log_file -> output << std::right << get(i, 2);
+                        global_log::file.set_scientific_notation();
+                        global_log::file << get(i, 2);
 //
-                        log_file -> output << std::scientific;
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.precision(config -> numeric_precision());
-                        log_file -> output << std::right << get(i, SPACE_LENGTH) << std::endl;
+                        global_log::file.set_scientific_notation();
+                        global_log::file << get(i, 3);
 //
+                        global_log::file.set_new_line();
                     }
                     else if(size_of_column() == 4)
                     {
 //
-                        log_file -> output.width(5);
-                        log_file -> output.fill(' ');
-                        log_file -> output << std::right << i;
+                        global_log::file.set_width(5);
+                        global_log::file.set_right();
+                        global_log::file << i;
 //
-                        log_file -> output << std::scientific;
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.precision(config -> numeric_precision());
-                        log_file -> output << std::right << get(i, 1);
+                        global_log::file.set_scientific_notation();
+                        global_log::file << get(i, 1);
 //
-                        log_file -> output << std::scientific;
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.precision(config -> numeric_precision());
-                        log_file -> output << std::right << get(i, 2);
+                        global_log::file.set_scientific_notation();
+                        global_log::file << get(i, 2);
 //
-                        log_file -> output << std::scientific;
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.precision(config -> numeric_precision());
-                        log_file -> output << std::right << get(i, SPACE_LENGTH);
+                        global_log::file.set_scientific_notation();
+                        global_log::file << get(i, 3);
 //
-                        log_file -> output << std::scientific;
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.precision(config -> numeric_precision());
-                        log_file -> output << std::right << get(i, 4) << std::endl;
+                        global_log::file.set_scientific_notation();
+                        global_log::file << get(i, 4);
 //
+                        global_log::file.set_new_line();
                     }
                     else if(size_of_column() == 5)
                     {
 //
-                        log_file -> output.width(5);
-                        log_file -> output.fill(' ');
-                        log_file -> output << std::right << i;
+                        global_log::file.set_width(5);
+                        global_log::file.set_right();
+                        global_log::file << i;
 //
-                        log_file -> output << std::scientific;
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.precision(config -> numeric_precision());
-                        log_file -> output << std::right << get(i, 1);
+                        global_log::file.set_scientific_notation();
+                        global_log::file << get(i, 1);
 //
-                        log_file -> output << std::scientific;
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.precision(config -> numeric_precision());
-                        log_file -> output << std::right << get(i, 2);
+                        global_log::file.set_scientific_notation();
+                        global_log::file << get(i, 2);
 //
-                        log_file -> output << std::scientific;
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.precision(config -> numeric_precision());
-                        log_file -> output << std::right << get(i, SPACE_LENGTH);
+                        global_log::file.set_scientific_notation();
+                        global_log::file << get(i, 3);
 //
-                        log_file -> output << std::scientific;
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.precision(config -> numeric_precision());
-                        log_file -> output << std::right << get(i, 4);
+                        global_log::file.set_scientific_notation();
+                        global_log::file << get(i, 4);
 //
-                        log_file -> output << std::scientific;
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.precision(config -> numeric_precision());
-                        log_file -> output << std::right << get(i, 5) << std::endl;
+                        global_log::file.set_scientific_notation();
+                        global_log::file << get(i, 5);
 //
+                        global_log::file.set_new_line();
                     }
                 }
             }
@@ -162,57 +139,49 @@ void array::report()
                     for(unsigned int i = 1; i <= size_of_column()/5; i++)
                     {
 //
-                        log_file -> output.width(MAX_PRECISION + 8);
-                        log_file -> output.fill(' ');
-                        log_file -> output << std::right << i + column_counter;
+                        global_log::file.set_width(MAX_PRECISION + 8);
+                        global_log::file.set_right();
+                        global_log::file << i + column_counter;
 //
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.fill(' ');
-                        log_file -> output << std::right << i + 1 + column_counter;
+                        global_log::file.set_width(MAX_PRECISION + SPACE_LENGTH);
+                        global_log::file.set_right();
+                        global_log::file << i + 1 + column_counter;
 //
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.fill(' ');
-                        log_file -> output << std::right << i + 2 + column_counter;
+                        global_log::file.set_width(MAX_PRECISION + SPACE_LENGTH);
+                        global_log::file.set_right();
+                        global_log::file << i + 2 + column_counter;
 //
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.fill(' ');
-                        log_file -> output << std::right << i + SPACE_LENGTH + column_counter;
+                        global_log::file.set_width(MAX_PRECISION + SPACE_LENGTH);
+                        global_log::file.set_right();
+                        global_log::file << i + SPACE_LENGTH + column_counter;
 //
-                        log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                        log_file -> output.fill(' ');
-                        log_file -> output << std::right << i + 4 + column_counter << std::endl;
+                        global_log::file.set_width(MAX_PRECISION + SPACE_LENGTH);
+                        global_log::file.set_right();
+                        global_log::file << i + 4 + column_counter;
 //
+                        global_log::file.set_new_line();
                         for(unsigned int j = 1; j <= size_of_row(); j++)
                         {
 //
-                            log_file -> output.width(5);
-                            log_file -> output << std::right << j;
+                            global_log::file.set_width(5);
+                            global_log::file << j;
 //
-                            log_file -> output << std::scientific;
-                            log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                            log_file -> output.precision(config -> numeric_precision());
-                            log_file -> output << std::right << get(j, i + column_counter);
+                            global_log::file.set_scientific_notation();
+                            global_log::file << get(j, i + column_counter);
 //
-                            log_file -> output << std::scientific;
-                            log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                            log_file -> output.precision(config -> numeric_precision());
-                            log_file -> output << std::right << get(j, i + 1 + column_counter);
+                            global_log::file.set_scientific_notation();
+                            global_log::file << get(j, i + 1 + column_counter);
 //
-                            log_file -> output << std::scientific;
-                            log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                            log_file -> output.precision(config -> numeric_precision());
-                            log_file -> output << std::right << get(j, i + 2 + column_counter);
+                            global_log::file.set_scientific_notation();
+                            global_log::file << get(j, i + 2 + column_counter);
 //
-                            log_file -> output << std::scientific;
-                            log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                            log_file -> output.precision(config -> numeric_precision());
-                            log_file -> output << std::right << get(j, i + SPACE_LENGTH + column_counter);
+                            global_log::file.set_scientific_notation();
+                            global_log::file << get(j, i + SPACE_LENGTH + column_counter);
 //
-                            log_file -> output << std::scientific;
-                            log_file -> output.width(MAX_PRECISION + SPACE_LENGTH);
-                            log_file -> output.precision(config -> numeric_precision());
-                            log_file -> output << std::right << get(j, i + 4 + column_counter) << std::endl;
+                            global_log::file.set_scientific_notation();
+                            global_log::file << get(j, i + 4 + column_counter);
 //
+                            global_log::file.set_new_line();
                         } // for(j)
                         column_counter += 4;
                     } // for (i)
@@ -222,10 +191,10 @@ void array::report()
                 }
             }  
         }
-        else // if(not log_file -> exists())
+        else // if(not global_log::file -> exists())
         {
-            log_file -> init_log_file();
-            if(log_file -> exists())
+            global_log::file.init_log_file();
+            if(global_log::file.exists())
             {
                 goto LOGFILE_IS_READY;
             }

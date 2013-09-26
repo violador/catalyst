@@ -5,7 +5,7 @@
     #include "tools.hpp"
     #include "array.hpp"
     #include "scf.hpp"
-    #include "log_file_handler.hpp"
+    #include "global_log.hpp"
 //
 //
 //
@@ -55,7 +55,7 @@ namespace lcao_wavefunction
     public:
 //
 //
-        static const int class_id = 30988;
+        static const int id = 30988;
 //
 //
         algorithm::scf ab_initio_calculation;

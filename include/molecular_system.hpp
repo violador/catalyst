@@ -6,7 +6,7 @@
     #include "sto3g.hpp"
     #include "scf.hpp"
     #include "tools.hpp"
-    #include "log_file_handler.hpp"
+    #include "global_log.hpp"
 //
 //
 //
@@ -16,7 +16,6 @@ private:
 //
 //  Declaring the data members:
     settings *config;             // A pointer-object to link with any object of settings type.
-    log_file_handler *log_file;   // A pointer-object to link with any object of log_file_handler type. 
     unsigned int task_number;     // The number of the current task.
     unsigned int total_electrons; // The total number of electrons.
     unsigned int total_atoms;     // The total number of atoms.
