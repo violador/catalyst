@@ -2,12 +2,12 @@
 Catalyst ver. experimental
 - Compilation number = experimental
 
-== General settings =======================================================================
+[thread 0, 16:45:54] General settings =========================================
 
 - Invoked in                          = /home/violador/pyrene/test/
 - By                                  = violador
 - From                                = 
-- At                                  = Wed Sep 25 23:56:08 2013
+- At                                  = Wed Oct  2 16:45:54 2013
 - Number of tasks requested           = 1
 - Memory available at the starting up = 0 of 0 bytes
 - Number of CPUs available            = 8
@@ -22,3 +22,4 @@ Catalyst ver. experimental
 - Open multi-processing               = on
 - Message passing interface           = off
 - Settings memory usage               = 0.117188 kB
+

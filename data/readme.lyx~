@@ -2,8 +2,13 @@
 \lyxformat 413
 \begin_document
 \begin_header
-\textclass article
+\textclass paper
 \use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -25,9 +30,10 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing onehalf
 \use_hyperref false
-\papersize default
-\use_geometry false
+\papersize a4paper
+\use_geometry true
 \use_amsmath 1
 \use_esint 1
 \use_mhchem 1
@@ -42,6 +48,8 @@
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 2cm
+\rightmargin 2cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
@@ -68,9 +76,9 @@ So, I am going to quickly introduce the *.hpp and *.cpp files that I have
  been writing these days.
  And how do you guys could compile and use them.
  Moreover, I am going to set here some philosophy and good practices.
- Even been something quite personal, it is interesting to have everybody
+ Even being something quite personal, it is interesting to have everybody
  writing the -- same -- code using more or less the same style.
- None mandatory, of course.
+ Nothing mandatory, of course.
 \end_layout
 
 \begin_layout Section
@@ -119,7 +127,7 @@ target "https://www.gnu.org/software/gsl/manual/gsl-ref.pdf"
  Used in several other packages and cover almost everything one may need
  in a scientific application.
  Not just the GSL lib for mathematical operations, but to start it has all
- we need and probably it will keep been enough some years later.
+ we need and probably it will keep being enough some years later.
  It is really powerfull.
  There is a copy of the last GSL release in the 
 \family typewriter
@@ -167,7 +175,7 @@ readme.txt
 \end_layout
 
 \begin_layout Standard
-5) Macros to control things inside the code are forbidden.
+5) Macros to control things like a function inside the code are forbidden.
  To do such things, please use the C struct or C++ class.
  We can use macros just to replace strings in the compilation time and no
  more.
@@ -311,6 +319,33 @@ my_function()
  Just inline members of C++ classes or C structures must be declared and
  also defined in the head file.
  Keep on mind: encapsulation and object-orientation.
+ Huge functions must not have the 
+\family typewriter
+\color blue
+inline
+\family default
+\color inherit
+ statement but only those of high priority in terms of performance or the
+ small ones (like five lines of implementation).
+ Inlined functions must have they implementation file included in the head
+ file with 
+\family typewriter
+\color blue
+#include 
+\begin_inset Quotes eld
+\end_inset
+
+my_class__my_function.cpp
+\family default
+\color inherit
+
+\begin_inset Quotes erd
+\end_inset
+
+ inside the head file.
+ Non inlined functions must be included in the compiler comand line to be
+ included in the project.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -361,7 +396,7 @@ my_struct
 my_fucntion()
 \family default
 \color inherit
- with 
+ with just 
 \family typewriter
 \color blue
 var.my_function()
@@ -491,10 +526,197 @@ Z
 \end_layout
 
 \begin_layout Standard
-11) Comments.
- Before something else the code is for academic purpose.
- If one are reading it to learn something (C++? physics? quantum chemistry?)
- it have to, at least, looks like clean and well commented.
+11) The directories order: The main directory should be the 
+\family typewriter
+\color blue
+../src
+\family default
+\color inherit
+ and inside of it, every directory of source code must carry the name of
+ one class.
+ Finally, inside of each class-named directory, only files of the current
+ class.
+ So, the full path of function 
+\family typewriter
+\color blue
+my_function()
+\family default
+\color inherit
+ from the class 
+\family typewriter
+\color blue
+my_class
+\family default
+\color inherit
+ should be something like: 
+\family typewriter
+\color blue
+../src/my_class/my_class__my_function.cpp
+\family default
+\color inherit
+.
+ And all the head files .hpp must live in the 
+\family typewriter
+\color blue
+/include
+\family default
+\color inherit
+ directory.
+\end_layout
+
+\begin_layout Standard
+12) The most fundamental head file should be the 
+\family typewriter
+\color blue
+globals.hpp
+\family default
+\color inherit
+.
+ In this file we define all the internal settings and to include all the
+ third libraries.
+ And this 
+\family typewriter
+\color blue
+globals.hpp
+\family default
+\color inherit
+ included in your own head file.
+ In the compile comand line used to compile the code is mandatory to use
+ the 
+\family typewriter
+\color blue
+-D
+\family default
+\color inherit
+ (for now, in the g++ compiler) comand to define some macros.
+ At least the macro 
+\family typewriter
+\color blue
+LINUX
+\family default
+\color inherit
+ with 
+\family typewriter
+\color blue
+-DLINUX
+\family default
+\color inherit
+ or 
+\family typewriter
+\color blue
+-D
+\begin_inset Quotes erd
+\end_inset
+
+LINUX
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+\color inherit
+ should be used because some parts of the code are linux-only and must be
+ compiled, other parts (for Windows and OS-X someday) do not.
+ The macro 
+\family typewriter
+\color blue
+USE_OMP
+\family default
+\color inherit
+ with 
+\family typewriter
+\color blue
+-DUSE_OMP
+\family default
+\color inherit
+ to turn on the OpenMP usage.
+ If not used the maximun number of threads will be one, is say a single
+ core runtime.
+ Also the macros 
+\family typewriter
+\color blue
+USE_MPI
+\family default
+\color inherit
+ and 
+\family typewriter
+\color blue
+USE_CUDA
+\family default
+\color inherit
+ are already available but do not turn it on yet because these parts of
+ the code are not ready.
+ You are going to see just lots of errors using these two last ones.
+\end_layout
+
+\begin_layout Standard
+13) To compile.
+ Nowadays there is no makefile (yet!).
+ I have my own script to compile if you want.
+ The comand line should be as follows; given your 
+\family typewriter
+\color blue
+main()
+\family default
+\color inherit
+ function in a file called as 
+\family typewriter
+\color blue
+main.cpp
+\family default
+\color inherit
+ and all the other files of the project in a bash shell variable like 
+\family typewriter
+\color blue
+src=file1.cpp file2.cpp file3.cpp file4.cpp
+\family default
+\color inherit
+ etc to generate the executable 
+\family typewriter
+\color blue
+main.out
+\family default
+\color inherit
+: g++ -O3 -Wall -DLINUX -DUSE_OMP -o 
+\family typewriter
+\color blue
+main.out main.cpp $src
+\family default
+\color inherit
+ -L/usr/local/lib -lgsl -lgslcblas -lm -lpthread -lboost_mpi -lboost_serializati
+on -lboost_system -lboost_filesystem -fopenmp.
+ The 
+\family typewriter
+\color blue
+-l
+\family default
+\color inherit
+ comands are to link these libraries (so, make sure to have the GSL and
+ Boost lib already installed before start to use the catalyst.
+ It will be one step in the 
+\begin_inset Quotes eld
+\end_inset
+
+catalyst installation
+\begin_inset Quotes erd
+\end_inset
+
+ someday).
+ The 
+\family typewriter
+\color blue
+openmp 
+\family default
+\color inherit
+is concerning the OpenMP and if not given all the Open MP statements will
+ be ignored by the compiler, is say the code will be purely single core
+ designed.
+ In such way you are going to see lots of warnings but not errors in the
+ compilation.
+\end_layout
+
+\begin_layout Standard
+14) All inside the code in english-only!
 \end_layout
 
 \end_body
