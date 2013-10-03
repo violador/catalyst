@@ -8,22 +8,47 @@ void algorithm::scf::roothaan_equation_solver(array &h_matrix, array &s_matrix, 
 //  (2) To allocate memory for eigenvectors of f_matrix, f_eigenvectors (a matrix with the sizes of s_matrix).
 //  (3) To allocate memory for eigenvalues of f_matrix, f_eigenvalues (a vector with the size of a s_matrix row).
 //  (4) To allocate memory for a density (P) matrix, p_matrix (a matrix with the sizes of s_matrix).
-    f_matrix.create_array(s_matrix.size_of_row(), s_matrix.size_of_column());         // (1)
-//
-//  First guess of a Fock matrix:
-    f_matrix = h_matrix;
-    if(config -> state_of(DEBUG_MODE))
+    #pragma omp parallel sections num_threads(5)
     {
-        //f_matrix.set_name("Initial Fock matrix");
-        //config -> log("algorithm::scf::roothaan_equation_solver() debug mode: Follows the starting Fock matrix\n");
-        //config -> log(f_matrix);
-    }
+        #pragma omp section
+        {
+            f_matrix.array::create_array(s_matrix.size_of_row(), s_matrix.size_of_column()); // (1)
+            f_matrix.array::set_name("Initial Fock matrix");
+            f_matrix.array::set_config(*config);
 //
+//          First guess of a Fock matrix:
+            f_matrix = h_matrix;
 //
-    f_eigenvectors.create_array(s_matrix.size_of_row(), s_matrix.size_of_column());   // (2)
-    f_eigenvalues.create_array(s_matrix.size_of_row());                               // (3)
-    p_matrix.create_array(s_matrix.size_of_row(), s_matrix.size_of_column());         // (4)
-    scf_energy.create_array(1000);
+            if(config -> state_of(DEBUG_MODE))
+            {
+                 global_log::file.write("@algorithm::scf::roothaan_equation_solver()");
+                 global_log::file.write("@algorithm::scf::roothaan_equation_solver():");
+                 f_matrix.array::write();
+            }
+        }
+        #pragma omp section
+        {
+            f_eigenvectors.array::create_array(s_matrix.size_of_row(), s_matrix.size_of_column()); // (2)
+            f_matrix.array::set_name("Fock matrix eigenvectors");
+            f_matrix.array::set_config(*config);
+        }
+        #pragma omp section
+        {
+            f_eigenvalues.array::create_array(s_matrix.size_of_row());                             // (3)
+            f_matrix.array::set_name("Fock matrix eigenvalues");
+            f_matrix.array::set_config(*config);
+        }
+        #pragma omp section
+        {
+            p_matrix.array::create_array(s_matrix.size_of_row(), s_matrix.size_of_column());       // (4)
+            f_matrix.array::set_name("Density matrix");
+            f_matrix.array::set_config(*config);
+        }
+        #pragma omp section
+        {
+            scf_energy.create_array(1000);
+        }
+    } // pragma omp parallel sections num_threads(5)
 //
 //  SCF iteration 1:
 //  (5)  To check the energy of the current Fock matrix.
@@ -51,7 +76,7 @@ void algorithm::scf::roothaan_equation_solver(array &h_matrix, array &s_matrix, 
 //
 //  SCF ith-iterations until reach the energy convergence criteria:
     iteration = 2;
-    while(check_convergence() not_eq true)                                                // (12)
+    while(check_convergence() not_eq true)                                            // (12)
     {
         ++iteration;
         scf_energy.set(iteration, get_energy(p_matrix, h_matrix, f_matrix));
@@ -61,22 +86,48 @@ void algorithm::scf::roothaan_equation_solver(array &h_matrix, array &s_matrix, 
         build_density_matrix(f_eigenvectors, p_matrix);
         update_fock_matrix(f_matrix, h_matrix, p_matrix, two_electrons_interaction);
     }
-    if(scf_converged)
+//
+    #pragma omp parallel sections num_threads(6)
     {
-        f_matrix.set_name("Converged Fock matrix");
-        f_eigenvectors.set_name("Converged wavefunction matrix");
-        p_matrix.set_name("Converged density matrix");
-    }
-    else
-    {
-        f_matrix.set_name("Unconverged Fock matrix");
-        f_eigenvectors.set_name("Unconverged wavefunction matrix");
-        p_matrix.set_name("Unconverged density matrix");
+        #pragma omp section
+        {
+            f_matrix.array::save();
+        }
+        #pragma omp section
+        {
+            p_matrix.array::save();
+        }
+        #pragma omp section
+        {
+            f_eigenvectors.array::save();
+        }
+        #pragma omp section
+        {
+            f_eigenvalues.array::save();
+        }
+        #pragma omp section
+        {
+            if(scf_converged)
+            {
+                f_matrix.array::set_name("Converged Fock matrix");
+                f_eigenvectors.array::set_name("Converged wavefunction matrix");
+                p_matrix.array::set_name("Converged density matrix");
+            }
+        }
+        #pragma omp section
+        {
+            if(not scf_converged)
+            {
+                f_matrix.array::set_name("Unconverged Fock matrix");
+                f_eigenvectors.array::set_name("Unconverged wavefunction matrix");
+                p_matrix.array::set_name("Unconverged density matrix");
+            }
+        }
     }
     if(config -> state_of(DEBUG_MODE))
     {
-        //config -> log("algorithm::scf::roothaan_equation_solver() debug mode: Follows the final Fock matrix\n");
-        //config -> log(f_matrix);
+        global_log::file.write("algorithm::scf::roothaan_equation_solver():");
+        f_matrix.array::write();
     }
     //config -> log(f_eigenvectors);
     //config -> log(p_matrix);

@@ -1,3 +1,18 @@
+// ../src/include/file_system.hpp -------------------------------------------------------- //
+//
+// File author: Humberto Jr. 
+//
+// Date: 07/2013
+//
+// Description: The file system class defines the type of variables designed to handle
+//              given filenames and (optional) pathnames. It will check if the given 
+//              path + file, or at least just a file, exists and provide several infos 
+//              about it. It can also open the files as plain text or binary. If a fi-
+//              le-only is provided, it assumes the path as the current directory.
+//
+// References: http://www.boost.org/doc/libs/1_54_0/libs/filesystem/doc/index.htm
+//
+// ------------------------------------------------------------------------------------- //
 #ifndef __FILE_SYSTEM_HPP
     #define __FILE_SYSTEM_HPP
     #include "globals.hpp"
@@ -29,41 +44,8 @@ public:
 //  init(): To initialize the class if needed (a constructor copy).
     void init(std::string given_filename = "", std::string given_pathname = DEFAULT_CURRENT_DIR);
 //
-//  extension(): To return the current file extension, if any.
-    #include "file_system__extension.cpp"
-//
-//  full_name(): To return the current full name (full path + filename, if any).
-    #include "file_system__full_name.cpp"
-//
-//  name(): To return the current filename (name + extension, if any).
-    #include "file_system__name.cpp"
-//
-//  is_dir(): To return the directory state (true if there is no file, just a directory path).
-    #include "file_system__is_dir.cpp"
-//
-//  is_file(): To return the file state (true if the path ends in a filename).
-    #include "file_system__is_file.cpp"
-//
-//  exists(): To return true if the current path (path + file, if any) exists.
-    #include "file_system__exists.cpp"
-//
-//  size(): To return the size in bytes of the current file (if any).
+//  size(): To return the current file (if any) size in bytes.
     double size();
-//
-//  root_dir(): To return the current root directory.
-    #include "file_system__root_dir.cpp"
-//
-//  parent_dir(): To return the current parent directory.
-    #include "file_system__parent_dir.cpp"
-//
-//  relative_dir(): To return the current relative directory.
-    #include "file_system__relative_dir.cpp"
-//
-//  no_such_file(): To return true if there is no file.
-    #include "file_system__no_such_file.cpp"
-//
-//  no_such_path(): To return true if there is no path.
-    #include "file_system__no_such_path.cpp"
 //
 //  open_txt_output(): To open the current file (if any) and to store its
 //                     current fstream object in the given one. It will be
@@ -80,11 +62,20 @@ public:
 //                     open as binary to write only.
     void open_bin_output(std::fstream &file);
 //
-//
+//  Including the inline/template/public member functions:
+    #include "file_system__extension.cpp"
+    #include "file_system__full_name.cpp"
+    #include "file_system__name.cpp"
+    #include "file_system__is_dir.cpp"
+    #include "file_system__is_file.cpp"
+    #include "file_system__exists.cpp"
+    #include "file_system__root_dir.cpp"
+    #include "file_system__parent_dir.cpp"
+    #include "file_system__relative_dir.cpp"
+    #include "file_system__no_such_file.cpp"
+    #include "file_system__no_such_path.cpp"
     #include "file_system__close.cpp"
-//
-//  is_open(): To return true if the current fstream object was created 
-//             properly.
     #include "file_system__is_open.cpp"
+    #include "file_system__my_size.cpp"
 };
 #endif

@@ -6,13 +6,15 @@ void log_file_handler::init_log_file()
 {
     if((not file_manager -> exists()) and config -> state_of(OUTPUT_MODE) and log_file_ready)
     {
+//
         log_file << "\nCatalyst ver. "
                  << CATALYST_VERSION
                  << "\n- Compilation number = "
                  << COMPILATION_NUMBER
-                 << "\n"
-                 << "\n== General settings =======================================================================\n"
-                 << "\n- Invoked in                          = "
+                 << std::endl;
+//
+        write_title_bar("General settings", 80);
+        log_file << "- Invoked in                          = "
                  << config -> dir_path_of(WORK)
                  << "\n- By                                  = "
                  << config -> check_current_username()
@@ -59,6 +61,6 @@ void log_file_handler::init_log_file()
                  << "\n- Settings memory usage               = "
                  << config -> my_size()
                  << " kB"
-                 << std::endl;
+                 << "\n" << std::endl;
     } // if(file_manager -> exists() and (not config -> state_of(OUTPUT_MODE)) or (not log_file_ready)) 
 }

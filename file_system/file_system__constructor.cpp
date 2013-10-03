@@ -56,7 +56,7 @@ file_system::file_system(std::string given_filename, std::string given_pathname)
         }
         #pragma omp section
         {
-            if(!no_file)
+            if(not no_file)
             {
                 boost::filesystem::path temp_filename(given_pathname + given_filename);
                 temp_filename = file.boost::filesystem::path::extension();

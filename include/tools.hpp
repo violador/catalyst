@@ -1,3 +1,18 @@
+// ../src/include/tools.hpp ------------------------------------------------------------- //
+//
+// File author: Humberto Jr. 
+//
+// Date: 06/2013
+//
+// Description: This data struct aims to keep together general non-class
+//              data and functions.
+//
+// References: http://www.codata.org/
+//             R. T. Sanderson. Inorganic Chemistry, Reinhold, 1967.
+//             CRC Handbook of Chemistry and Physics, 1989.
+//             http://www.gnu.org/software/gsl/manual/html_node/Physical-Constants.html#Physical-Constants
+//
+// ------------------------------------------------------------------------------------- //
 #ifndef __TOOLS_HPP
     #define __TOOLS_HPP
     #include "globals.hpp"
@@ -6,6 +21,9 @@
 //
 struct tools
 {
+//
+//  Struct identifier:
+    static const int id = 8108;
 //
 //  The speed of light in vacuum, c: 
     static const double c = GSL_CONST_MKSA_SPEED_OF_LIGHT;
@@ -53,16 +71,20 @@ struct tools
     static const double pi = M_PI;
 //
 //  Declaring data members to unit conversion:
-    static const double ang_to_au = 1.0/0.529177208;        // From angstron to atomic unit.
-    static const double au_to_ang = 0.529177208;            // From atomic unit to angstron.
-    static const double ev_to_au  = 1.0/27.211396;          // From electron volt to atomic unit.
-    static const double au_to_ev  = 27.211396;              // From atomic unit to electron volt.
-    static const double s_to_au   = 1.0/2.418884326505e-17; // From second to atomic unit.
-    static const double au_to_s   = 2.418884326505e-17;     // From atomic unit to second.
+    static const double ang_to_au = 1.0/0.529177208;      // From angstron to atomic unit.
+    static const double au_to_ang = 0.529177208;          // From atomic unit to angstron.
+    static const double ev_to_au = 1.0/27.211396;         // From electron volt to atomic unit.
+    static const double au_to_ev = 27.211396;             // From atomic unit to electron volt.
+    static const double s_to_au = 1.0/2.418884326505e-17; // From second to atomic unit.
+    static const double au_to_s = 2.418884326505e-17;     // From atomic unit to second.
 //
-//  module() and square_module(): A set of overloaded template member functions to calculate
-//                                the module of numbers and vectors.
-    #include "tools__module.cpp"
+//  generate_integral_type(): To generate a long integral random number for a given (not mandatory) seed number and
+//                            random number generator algorithm.
+    unsigned long int generate_integral_type(const unsigned long int seed = time(NULL), const unsigned int option = 1);
+//
+//  generate_double_type(): To generate a double random number for a given (not mandatory) seed number and
+//                          random number generator algorithm.
+    double generate_double_type(const unsigned long int seed = time(NULL), const unsigned int option = 1);
 //
 //  Defining some alias for the generate_integral_type() and generate_double_type() member function options
 //  (random number generators):
@@ -74,20 +96,9 @@ struct tools
     #define RANLUX389 6
     #define GFSR4     7
 //
-//  generate_integral_type(): To generate a long integral random number for a given (not mandatory) seed number and
-//                            random number generator algorithm.
-    unsigned long int generate_integral_type(const unsigned long int seed = time(NULL), const unsigned int option = 1);
-//
-//  generate_double_type(): To generate a double random number for a given (not mandatory) seed number and
-//                          random number generator algorithm.
-    double generate_double_type(const unsigned long int seed = time(NULL), const unsigned int option = 1);
-//
-//
+//  Including the inline/template/public member functions:
+    #include "tools__module.cpp"
     #include "tools__to_string_from.cpp"
-//
-//
     #include "tools__to_number_from.cpp"
-//
-//
 };
 #endif

@@ -1,12 +1,11 @@
-#include "periodic_table.hpp"
 //
 //
 //
-unsigned int periodic_table::type(const std::string symbol)
+inline unsigned int type(const std::string &given_symbol)
 {
     for(unsigned int i = 1; i <= total_elements; i++)
     {
-        if(periodic_table::symbol(i) == symbol)
+        if(symbol(i) == given_symbol)
         {
             return i;
         }

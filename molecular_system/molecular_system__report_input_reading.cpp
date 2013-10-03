@@ -4,6 +4,10 @@
 //
 void molecular_system::report_input_reading() 
 {
+    if(config -> state_of(DEBUG_MODE))
+    {
+        global_log::file.write("@molecular_system::molecular_system(): Invoking report_input_reading()");
+    }
     if(config -> state_of(OUTPUT_MODE))                                                                   
     {
         #ifdef FIRST_COLUMN_LENGTH
@@ -228,6 +232,7 @@ void molecular_system::report_input_reading()
         global_log::file << config -> control_key_of(config -> state_of(ROTATIONAL_MODE));
         global_log::file << "\n- Translation mode         = ";
         global_log::file << config -> control_key_of(config -> state_of(TRANSLATION_MODE));
+        global_log::file << "\n";
         global_log::file.set_new_line();
         #undef FIRST_COLUMN_LENGTH
         #undef SECOND_COLUMN_LENGTH

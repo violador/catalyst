@@ -1,8 +1,26 @@
+// ../src/include/globals.hpp ----------------------------------------------------------- //
+//
+// File author: Humberto Jr. 
+//
+// Date: 08/2013
+//
+// Description: The globals.hpp must define the most fundamental configurations and
+//              also include the respective libraries used by the Catalyst. These
+//              configurations may or may not be changed by the user in the runtime.
+//              The only way should be by any outside script in the Catalyst insta-
+//              ll process, just before the compilation. Any new library have to be
+//              included here in the proper location and the conditional compilati-
+//              on must be previously checked by a given macro, if needed. Do not 
+//              edit this file if there is any doubt or it may cause an entire bad
+//              behavior.
+//
+// References:
+//
+// ------------------------------------------------------------------------------------- //
 #ifndef __GLOBALS_HPP
     #define __GLOBALS_HPP
 //
 //  Internal settings:
-//
     #ifdef LINUX
         #define OS_TYPE          "GNU/Linux"
     #elif WIN32
@@ -11,46 +29,49 @@
         #define OS_TYPE          "Apple OS X"
     #endif
 //
-    #define CATALYST_VERSION     "experimental" // The current version of the catalyst.
-    #define COMPILATION_NUMBER   "experimental" // A random number to identify the compilation.
-    #define USER_CONFIG_FILENAME ".catalystrc"  // The name of the user's preferences file.
-    #define COMMENT_TAG          "#"            // Tag for comment lines in any input file.
-    #define AU_UNIT              "a.u."         // Tag for atomic unit reference.
-    #define EV_UNIT              "eV"           // Tag for electron volt unit reference.
-    #define ANG_UNIT             "A"            // Tag for angstron unit reference.
-    #define S_UNIT               "s"            // Tag for second unit reference.
-    #define FS_UNIT              "fs"           // Tag for femtosecond unit reference.
-    #define K_UNIT               "K"            // Tag for kelvin unit reference.
-    #define PROB_UNIT            "%"            // Tag for probabilty unit reference.
-    #define MAX_PRECISION        10             // Tag for the maximum numeric precision.
-    #define DEFAULT_NOT_DEFINED  "not defined"
-    #define DEFAULT_SCF_CRITERIA 0.00000001
-    #define DEFAULT_PRECISION    6
-    #define DEFAULT_TASK_NUMBER  1
-    #define DEFAULT_ARRAY_NAME   "Unknown array"
-    #define ON_KEY_CONTROL       "on"
-    #define OFF_KEY_CONTROL      "off"
-    #define BIN_FILE_EXTENSION   ".bin"
-    #define TXT_FILE_EXTENSION   ".txt"
-    #define SPACE_LENGTH         5    
-    #define TITLE_BAR_SYMBOL     '='
-    #define BYTE_TO_KILOBYTE     0.0009765625
+    #define CATALYST_VERSION     "experimental"     // The current version of the catalyst.
+    #define COMPILATION_NUMBER   "experimental"     // A random number to identify the compilation.
+    #define USER_CONFIG_FILENAME ".catalystrc"      // The name of the config file.
+    #define COMMENT_TAG          "#"                // Tag for comment lines in any input file.
+    #define AU_UNIT              "a.u."             // Tag for atomic unit reference.
+    #define EV_UNIT              "eV"               // Tag for electron volt unit reference.
+    #define ANG_UNIT             "A"                // Tag for angstron unit reference.
+    #define S_UNIT               "s"                // Tag for second unit reference.
+    #define FS_UNIT              "fs"               // Tag for femtosecond unit reference.
+    #define K_UNIT               "K"                // Tag for kelvin unit reference.
+    #define PROB_UNIT            "%"                // Tag for probabilty unit reference.
+    #define MAX_PRECISION        10                 // Tag for the maximum numeric precision.
+    #define DEFAULT_NOT_DEFINED  "not defined"      // The default "not defined" content of some std::string types.
+    #define DEFAULT_SCF_CRITERIA 0.00000001         // The default value if the user do not gave it in the config file.
+    #define DEFAULT_PRECISION    6                  // The default value if the user do not gave it in the config file.
+    #define DEFAULT_TASK_NUMBER  1                  // The default task number when there is no actually multi-tasks.
+    #define DEFAULT_ARRAY_NAME   "Unknown array"    // The default array name while the user do not set they own.
+    #define DEFAULT_NO_FILENAME  "no such filename" // The default content of std::string filenames for no valid files.
+    #define DEFAULT_TIMER_LENGTH 10                 // The default length of time measurements for benchmarks.
+    #define WARNING_MSG_TITLE    "WARNING: "        // The warning mensage title.
+    #define ON_KEY_CONTROL       "on"               // The true pattern used in the config file.
+    #define OFF_KEY_CONTROL      "off"              // The false pattern used in the config file (not really needed).
+    #define BIN_FILE_EXTENSION   ".bin"             // The binary extension.
+    #define TXT_FILE_EXTENSION   ".txt"             // The plain text extension.
+    #define SPACE_LENGTH         5                  // The space length between numbers, used in the file writer funtions.
+    #define ARRAY_INDEX_LENGTH   5                  // The size of the indexes of arrays, used in the file writer functions.
+    #define TITLE_BAR_SYMBOL     '='                // The symbol used to design the title bars.
+    #define BYTE_TO_KILOBYTE     0.0009765625       // The byte to kilobyte conversion factor.
 //
     #ifndef EXIT_SUCCESS
-        #define EXIT_SUCCESS     0              // Tag for success operations.
+        #define EXIT_SUCCESS     0                  // Tag for success operations.
     #endif
 //
     #ifndef EXIT_FAILURE
-        #define EXIT_FAILURE     1              // Tag for fail operations.
+        #define EXIT_FAILURE     1                  // Tag for fail operations.
     #endif
 //
     #ifdef LINUX
-        #define DEFAULT_CURRENT_DIR "./"
+        #define DEFAULT_CURRENT_DIR "./"            // The default directory for Unix-like OS.
     #endif
 //
 //  Including C standard headers:
     #include <stdlib.h>
-    #include <math.h>
     #ifdef USE_OMP
         #include <omp.h>
     #endif
@@ -66,6 +87,8 @@
     #include <ios>
     #include <ctime>
     #include <new>
+    #include <cmath>
+    #include <map>
 //
 //  Including GSL headers ("-lgsl" and "-lgslcblas" to linkage):
     #include <gsl/gsl_errno.h>
@@ -84,16 +107,13 @@
 //
 //  Including Boost C++ headers:
     #include <boost/filesystem.hpp> // "-lboost_filesystem" to linkage.
-//  #include <boost/signals2.hpp>
+    #include <boost/timer/timer.hpp>
     #ifdef USE_MPI
         #include <boost/mpi.hpp> // "-lboost_mpi" to linkage.
         #include <boost/mpi/environment.hpp>
         #include <boost/mpi/communicator.hpp>
         #include <boost/mpi/nonblocking.hpp>
     #endif
-    #include <boost/preprocessor/repetition/enum_params.hpp>
-    #include <boost/preprocessor/iteration/local.hpp>
-    #include <boost/preprocessor/repetition/repeat.hpp>
 //
 //  Including Linux only headers:
     #ifdef LINUX
@@ -112,12 +132,10 @@
     #endif
 //
 //  GSL lib controls:
-//
     #define HAVE_INLINE
     #define GSL_RANGE_CHECK_OFF
 //
 //  Multi-task/core controls:
-//
     #ifndef USE_OMP
         #define omp_get_thread_num() 0
     #endif

@@ -8,7 +8,7 @@ template<typename data_type1> void write(const data_type1 &text1)
         if(file_manager -> exists())
         {
             LOGFILE_IS_READY:
-            log_file << text1;
+            log_file << timestamp() << text1 << std::endl;
         }
         else
         {
@@ -29,8 +29,8 @@ template<typename data_type1,
         if(file_manager -> exists())
         {
             LOGFILE_IS_READY:
-            log_file << text1
-                     << text2;
+            log_file << timestamp() << text1
+                                    << text2 << std::endl;
         }
         else
         {
@@ -53,9 +53,9 @@ template<typename data_type1,
         if(file_manager -> exists())
         {
             LOGFILE_IS_READY:
-            log_file << text1 
-                     << text2 
-                     << text3;
+            log_file << timestamp() << text1 
+                                    << text2 
+                                    << text3 << std::endl;
         }
         else
         {
@@ -80,10 +80,10 @@ template<typename data_type1,
         if(file_manager -> exists())
         {
             LOGFILE_IS_READY:
-            log_file << text1 
-                     << text2 
-                     << text3 
-                     << text4;
+            log_file << timestamp() << text1 
+                                    << text2 
+                                    << text3 
+                                    << text4 << std::endl;
         }
         else
         {
@@ -110,11 +110,11 @@ template<typename data_type1,
         if(file_manager -> exists())
         {
             LOGFILE_IS_READY:
-            log_file << text1
-                     << text2 
-                     << text3 
-                     << text4 
-                     << text5;
+            log_file << timestamp() << text1
+                                    << text2 
+                                    << text3 
+                                    << text4 
+                                    << text5 << std::endl;
         }
         else
         {
@@ -143,12 +143,12 @@ template<typename data_type1,
         if(file_manager -> exists())
         {
             LOGFILE_IS_READY:
-            log_file << text1
-                     << text2 
-                     << text3 
-                     << text4 
-                     << text5
-                     << text6;
+            log_file << timestamp() << text1
+                                    << text2 
+                                    << text3 
+                                    << text4 
+                                    << text5
+                                    << text6 << std::endl;
         }
         else
         {
@@ -179,13 +179,13 @@ template<typename data_type1,
         if(file_manager -> exists())
         {
             LOGFILE_IS_READY:
-            log_file << text1
-                     << text2
-                     << text3
-                     << text4
-                     << text5
-                     << text6
-                     << text7;
+            log_file << timestamp() << text1
+                                    << text2
+                                    << text3
+                                    << text4
+                                    << text5
+                                    << text6
+                                    << text7 << std::endl;
         }
         else
         {
@@ -218,14 +218,14 @@ template<typename data_type1,
         if(file_manager -> exists())
         {
             LOGFILE_IS_READY:
-            log_file << text1
-                     << text2
-                     << text3
-                     << text4
-                     << text5
-                     << text6
-                     << text7
-                     << text8;
+            log_file << timestamp() << text1
+                                    << text2
+                                    << text3
+                                    << text4
+                                    << text5
+                                    << text6
+                                    << text7
+                                    << text8 << std::endl;
         }
         else
         {
@@ -260,15 +260,15 @@ template<typename data_type1,
         if(file_manager -> exists())
         {
             LOGFILE_IS_READY:
-            log_file << text1
-                     << text2
-                     << text3
-                     << text4
-                     << text5
-                     << text6
-                     << text7
-                     << text8
-                     << text9;
+            log_file << timestamp() << text1
+                                    << text2
+                                    << text3
+                                    << text4
+                                    << text5
+                                    << text6
+                                    << text7
+                                    << text8
+                                    << text9 << std::endl;
         }
         else
         {
@@ -305,16 +305,16 @@ template<typename data_type1,
         if(file_manager -> exists())
         {
             LOGFILE_IS_READY:
-            log_file << text1
-                     << text2
-                     << text3
-                     << text4
-                     << text5
-                     << text6
-                     << text7
-                     << text8
-                     << text9
-                     << text10;
+            log_file << timestamp() << text1
+                                    << text2
+                                    << text3
+                                    << text4
+                                    << text5
+                                    << text6
+                                    << text7
+                                    << text8
+                                    << text9
+                                    << text10 << std::endl;
         }
         else
         {

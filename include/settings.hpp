@@ -1,18 +1,22 @@
-// ../src/include/settings.hpp ------------------------------------------------- //
+// ../src/include/settings.hpp ---------------------------------------------------------- //
 //
 // File author: Humberto Jr. 
 //
 // Date: 05/2013
 //
-// Description: To declare all the data members and member functions 
-//              of the class "settings", designed to read all the m-
-//              ain information used to control all the other routi-
-//              nes (runtime and compilation time). Also to write o-
-//              ut any required data in the log file.
+// Description: The settings class defines the type of variables used to handle
+//              the current configuration given by the user. This should be the 
+//              most important type and these variables should be given as arg-
+//              ument in the constructor calls of several other classes. In the
+//              declaration of a variable of settings type, the user's config 
+//              file should be readed several times to store all the settings.
+//              Thus, it is recomended to avoid to declare several objects of
+//              this type. Usually just one, and to pass its reference or a po-
+//              inter.
 //
 // References:
 //
-// ---------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------- //
 #ifndef __SETTINGS_HPP
     #define __SETTINGS_HPP
     #include "globals.hpp"
@@ -21,7 +25,7 @@
 //
 class settings
 {
-private:
+    private:
 //
 //  Declaring the data members:
     bool logfile_ready;               // To store the logfile state. True if it exist already, false otherwise.
@@ -65,9 +69,10 @@ private:
 //  read_value_of(): To get a double number in a given option from the user's config file.
     double read_value_of(const std::string option, const int option_length, const unsigned int default_value);    
 //
-//  pattern_length(): To help in some tasks. It will return the number of characters of a given string.
+//  Including the inline/template/private member functions:
     #include "settings__pattern_length.cpp"
-public:
+//
+    public:
 //
 //  Class identifier:
     static const int id = 29254;
@@ -133,13 +138,9 @@ public:
 //  check_current_cpus(): To check the total number of CPUs available.
     unsigned int check_current_cpus();
 //
-//  numeric_precision(): To get the user's preference value for the numeric precision.
+//  Including the inline/template/public member functions: 
     #include "settings__numeric_precision.cpp"
-//
-//  scf_convergence_criteria(): To get the energy convergence criteria for any SCF iterative calculation.
     #include "settings__scf_convergence_criteria.cpp"
-//
-//
     #include "settings__wavefunction_type.cpp"
     #include "settings__my_size.cpp"
 };

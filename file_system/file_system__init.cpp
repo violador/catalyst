@@ -4,7 +4,7 @@
 //
 void file_system::init(std::string given_filename, std::string given_pathname)
 {
-    if(given_filename != "")
+    if(given_filename not_eq "")
     {
         filename = given_filename;
         no_file = false;

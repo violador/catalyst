@@ -4,11 +4,9 @@
 //
 void algorithm::scf::build_density_matrix(array &f_eigenvectors, array &p_matrix)
 {
+    p_matrix.array::set_all(0.0);
     double density = 0.0;
-    p_matrix.set_all(0.0);
-    unsigned int i = 0;
-    unsigned int j = 0;
-    unsigned int m = 0;
+    unsigned int i = 0, j = 0, m = 0;
     #pragma omp parallel for private(i, j, m) ordered schedule(dynamic)
     for(i = 1; i <= p_matrix.size_of_row(); i++)
     {

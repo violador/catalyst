@@ -6,11 +6,11 @@ std::string algorithm::scf::check_mo_type(const unsigned int &mo_num)
 {
     if((mo_num > 0) && (mo_num <= f_eigenvectors.size_of_row()))
     {
-        if(f_eigenvectors.check_if_column_is(POSITIVE, mo_num))
+        if(f_eigenvectors.check_if_column_is(IS_POSITIVE, mo_num))
         {
             return "bonding";
         }
-        else if(f_eigenvectors.check_if_column_is(NEGATIVE, mo_num))
+        else if(f_eigenvectors.check_if_column_is(IS_NEGATIVE, mo_num))
         {
             return "bonding";
         }

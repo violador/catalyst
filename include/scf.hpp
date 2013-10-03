@@ -1,9 +1,22 @@
+// ../src/include/scf.hpp --------------------------------------------------------------- //
+//
+// File author: Humberto Jr. 
+//
+// Date: 08/2013
+//
+// Description: The SCF class defines the type of variables that handle the self-
+//              consistent field algorithm for a given Core-Hamiltonian, overlap 
+//              and two electrons interaction matrix of array type or in a file.
+//
+// References: 
+//
+// ------------------------------------------------------------------------------------- //
 #ifndef __SCF_HPP
     #define __SCF_HPP
     #include "settings.hpp"
     #include "tools.hpp"
     #include "array.hpp"
-    #include "log_file_handler.hpp"
+    #include "global_log.hpp"
 //
 //
 //
@@ -11,11 +24,10 @@ namespace algorithm
 {
     class scf
     {
-    private:
+        private:
 //
 //      Declaring the data members:
         settings *config;       // An empty object to the settings class.
-        log_file_handler *log_file;
         bool scf_converged;     // To store the convergence state (converged/true or not converged/false).  
         unsigned int iteration; // To store the number of iterations.
         array scf_energy;       // To store the SCF energy for each iteration.
@@ -53,9 +65,7 @@ namespace algorithm
 //      report_scf_iterations(): To report the SCF iterative procedure in the logfile.
         void report_scf_iterations();
 //
-//
-    public:
-//
+        public:
 //
         static const int id = 13836;
 //
@@ -69,7 +79,7 @@ namespace algorithm
         scf(array &core_hamiltonian, array &overlap, array &two_electrons_interaction, settings &runtime_setup);
 //
 //      init_scf(): To start the iterative procedure if the class was invoked by the empty constructor.
-        void init_scf(array &core_hamiltonian, array &overlap, array &two_electrons_interaction, settings &runtime_setup);
+        void init(array &core_hamiltonian, array &overlap, array &two_electrons_interaction, settings &runtime_setup);
 //
 //      number_of_iterations(): To get the number of iterations used.
         unsigned int number_of_iterations();

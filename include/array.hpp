@@ -1,3 +1,27 @@
+// ../src/include/array.hpp ------------------------------------------------------------- //
+//
+// File author: Humberto Jr. 
+//
+// Date: 07/2013
+//
+// Description: The array class defines the type of variables used to easily handle
+//              1D, 2D, 3D and 4D arrays. The 1D and 2D types has most of its oper-
+//              ations handled by the GSL library. This operations includes linear 
+//              algebra tasks by an user given CBLAS interface. If not given, the 
+//              installed GSL lib provides its own CBLAS. Some of the member funct-
+//              ions are designed to some sort of arrays only. Its usage also may
+//              or may not change internal properties of an array and it will chan-
+//              ge the behavior of the following members. These properties can be 
+//              turned on or off by the respective setter. For instance the members
+//              array::set_constant() and array::unset_constant() allows or not the
+//              given array to be rewritten. The arithmetic operators "+", "-", "*" 
+//              and "/" are overloaded to recognize operations between number types 
+//              or arrays types (1D and 2D only). In the array types operations so-
+//              me common properties like dimension sizes will be checked first.
+//
+// References: M. Galassi et al, GNU Scientific Library Reference Manual (3rd Ed.), ISBN 0954612078.
+//
+// ------------------------------------------------------------------------------------- //
 #ifndef __ARRAY_HPP
     #define __ARRAY_HPP
     #include "globals.hpp"
@@ -36,15 +60,16 @@ struct array
     double   ***user_3d_array;      // The current user's 3D array.
     double  ****user_4d_array;      // The current user's 4D array.
     std::string array_name;         // The array name, if any.
-    std::string array_filename;     // 
-    file_system array_file_manager; //
+    std::string array_filename;     // The array filename to save() and open() member functions. 
     file_system log_file_manager;   // A pointer-object to link with any object of file_system type.
-    FILE* array_file;
+    FILE* array_file;               // A FILE* type object used by the GSL lib to write the vectors and matrices.
 //
 //  Including the inline/template/private member functions: 
     #include "array__init_properties.cpp"
     #include "array__init_3d_array.cpp"
     #include "array__init_4d_array.cpp"
+    #include "array__delete_3d_array.cpp"
+    #include "array__delete_4d_array.cpp"
 //
     public:
 //
@@ -69,57 +94,34 @@ struct array
           const unsigned int &local_row_size, 
           const unsigned int &local_column_size);
 //
+//  Declaring the class destructor:
+    ~array();
+//
 //  Declaring the class copy constructor:
     array(const array &given_array);
 //
 //  Declaring the class operators:
-    void  operator=(const array &b);
-    array operator+(const double &b);
-    array operator+(const array &b);
-    array operator-(const double &b);
-    array operator-(const array &b);
-    array operator*(const double &b);
-    array operator*(const array &b);
-    void  operator+=(const array &a);
-    void  operator-=(const array &a);
-    void  operator*=(const array &a);
+    void  operator  =(const array &b);
+    array operator  +(const double &b);
+    array operator  +(const array &b);
+    array operator  -(const double &b);
+    array operator  -(const array &b);
+    array operator  *(const double &b);
+    array operator  *(const array &b);
+    void  operator +=(const array &a);
+    void  operator -=(const array &a);
+    void  operator *=(const array &a);
 //
 //  create_array(): To allocate memory for the requested size.
-    void create_array(const unsigned int local_1st_layer_size = 0,
-                      const unsigned int local_2nd_layer_size = 0,
-                      const unsigned int local_row_size = 0,
-                      const unsigned int local_column_size = 0);
+    void create_array(const unsigned int local_row_size = 0,
+                      const unsigned int local_column_size = 0,
+                      const unsigned int local_1st_layer_size = 0,
+                      const unsigned int local_2nd_layer_size = 0);
 //
 //  delete_array(): Frees the allocated memory of the current array.
     void delete_array();
 //
-//  Including the inline/template/public member functions: 
-    #include "array__size_of.cpp"
-    #include "array__set_constant.cpp"
-    #include "array__unset_constant.cpp"
-    #include "array__check_array_id.cpp"
-    #include "array__set.cpp"
-    #include "array__set_all.cpp"
-    #include "array__get.cpp"
-    #include "array__set_name.cpp"
-    #include "array__get_name.cpp"
-    #include "array__build_identity_form.cpp"
-    #include "array__unset_lowend_mode.cpp"
-    #include "array__set_config.cpp"
-    #include "array__set_transpose.cpp"
-    #include "array__unset_transpose.cpp"
-    #include "array__norm.cpp"
-//
-//  size_of_row(), size_of_column(), size_of_1st_layer() and size_of_2nd_layer(): 
-//  A set of inlined member functions to return the respective size of each dimension.
-//
-//  set_constant(): To set up the current array as constant (change the behavior of some functions).
-//
-//  unset_constant(): To set up the current array as non constant (change the behavior of some functions).
-//
-//  check_array_id(): To check the identifier number of the current array.
-//
-//  check_if(): To check properties in the current array.
+//  check_if(): To check properties (option) in the current array.
     bool check_if(const unsigned int &option);
 //
 //  Defining some alias for the check_if() member function options:
@@ -132,22 +134,8 @@ struct array
     #define IS_DELETED    7
     #define IS_TRANSPOSED 8
 //
-//
+//  check_if_column(): To check properties (option) of a given column from a 2D array.
     bool check_if_column_is(const unsigned int &option, const unsigned int &j);
-//
-// 
-    #define POSITIVE 1
-    #define NEGATIVE 2
-//
-//  set(): A set of overloaded inlined member functions to set the given value in the given position.
-//
-//  set_all(): To fill up the array with the given value.
-//
-//  get(): A set of overloaded inlined member functions to return the current value of the given position.
-//
-//  set_name(): An inlined member function to set the name of the current array.
-//
-//  get_name(): To return the name of the current array.
 //
 //
     unsigned int get_min_index()
@@ -187,14 +175,34 @@ struct array
 //                               current internal state is_const_array must be true.
     void restore_original_basis_of(array &given_array);
 //
-//  build_identity_form(): To replace the content of the current array by its identity form (2D array only).
-//
-//  save(): To save the current array in a binary file.
+//  save(): To save the current array in a binary file (1D and 2D only).
     void save();
 //
-//  open(): To read the current array from a binary file.
+//  open(): To read the current array from a binary file (1D and 2D only).
     void open();
 //
+//  write(): To report the current array (2D only) in the global log file.
+    void write();
+//
+//  Including the inline/template/public member functions: 
+    #include "array__size_of.cpp"
+    #include "array__set_constant.cpp"
+    #include "array__unset_constant.cpp"
+    #include "array__check_array_id.cpp"
+    #include "array__set.cpp"
+    #include "array__set_all.cpp"
+    #include "array__get.cpp"
+    #include "array__set_name.cpp"
+    #include "array__get_name.cpp"
+    #include "array__build_identity_form.cpp"
+    #include "array__unset_lowend_mode.cpp"
+    #include "array__set_config.cpp"
+    #include "array__set_transpose.cpp"
+    #include "array__unset_transpose.cpp"
+    #include "array__norm.cpp"
+    #include "array__my_size.cpp"
+//
+//  ADVICE: The following piece of code is under work and should not be used yet.
 //
     double read_array_file(const unsigned int &i_given, const unsigned int &j_given)
     {
@@ -281,7 +289,5 @@ struct array
         }
 */
     };
-//
-    void report();
 };
 #endif

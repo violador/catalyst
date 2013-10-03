@@ -1,3 +1,18 @@
+// ../src/include/molecular_system.hpp -------------------------------------------------- //
+//
+// File author: Humberto Jr. 
+//
+// Date: 06/2013
+//
+// Description: The molecular system class defines the type of variables that aims to
+//              handle everything concerning the molecular systems like molecules and
+//              solids. Given an input file, the class will read the molecular geome-
+//              try and provide the member functions to controls its motion, ab-init-
+//              io tasks and properties.
+//
+// References:
+//
+// ------------------------------------------------------------------------------------- //
 #ifndef __MOLECULAR_SYSTEM_HPP
     #define __MOLECULAR_SYSTEM_HPP
     #include "globals.hpp"
@@ -12,7 +27,7 @@
 //
 class molecular_system
 {
-private:
+    private:
 //
 //  Declaring the data members:
     settings *config;             // A pointer-object to link with any object of settings type.
@@ -61,7 +76,8 @@ private:
 //  get_wavefunction(): To start the calculation of all ab-initio datas. Caution: The usage of this member function
 //                      may be the most expensive part of the entire runtime. 
     void get_wavefunction(unsigned int theory_level);
-public:
+//
+    public:
 //
 //  Class identifier:
     static const int id = 5127;
@@ -72,63 +88,28 @@ public:
 //  Declaring the class constructor:
     molecular_system(const std::string &input_filename, settings &runtime_setup);
 //
-//  number_of_atoms(): To return the total number of atoms.
+//  interatomic_distance(): To return the distance between two given atoms.
+    double interatomic_distance(const unsigned int &first_atom, const unsigned int &second_atom);
+//
+//  Including the inline/template/public member functions:
     #include "molecular_system__number_of_atoms.cpp"
-//
-//  x(): To return the COM position in the x-axis when used without arguments.
-//       When given an option (velocity or position) and an atom number it will return
-//       the x-axis value of the current atom.
     #include "molecular_system__x.cpp"
-//
-//  y(): To return the COM position in the y-axis when used without arguments.
-//       When given an option (velocity or position) and an atom number it will return
-//       the y-axis value of the current atom.
     #include "molecular_system__y.cpp"
-//
-//  z(): To return the COM position in the z-axis when used without arguments.
-//       When given an option (velocity or position) and an atom number it will return
-//       the z-axis value of the current atom.
     #include "molecular_system__z.cpp"
+    #include "molecular_system__mass.cpp"
+    #include "molecular_system__atomic_number.cpp"
+    #include "molecular_system__type.cpp"
+    #include "molecular_system__nuclear_repulsion_energy.cpp"
+    #include "molecular_system__electronic_energy.cpp"
+    #include "molecular_system__name.cpp"
+    #include "molecular_system__set_task_number.cpp" 
+    #include "molecular_system__set_name.cpp"
+    #include "molecular_system__set_system_com.cpp"
+    #include "molecular_system__density.cpp"
 //
 //  Defining some alias for the x(), y() and z() members options:
     #define POSITION 1
     #define VELOCITY 2
 //
-//  mass(): To return the mass of a atom if its number as an unsigned integral type 
-//          argument is given. Otherwise it will return the system total mass.
-    #include "molecular_system__mass.cpp"
-//
-//  interatomic_distance(): To return the distance between two given atoms.
-    double interatomic_distance(const unsigned int &first_atom, const unsigned int &second_atom);
-//
-//  atomic_number(): To return the atomic number (Z) of the given atom.
-    #include "molecular_system__atomic_number.cpp"
-//
-//  type(): To return the type of a given atom (Z) as an unsigned integral type.
-    #include "molecular_system__type.cpp"
-//
-//  density(): To return the value of the density matrix for two given atoms.
-    double density(const unsigned int &first_atom, const unsigned int &second_atom);
-//
-//  nuclear_repulsion_energy(): To return the nuclear repulsion energy.
-    #include "molecular_system__nuclear_repulsion_energy.cpp"
-//
-//  electronic_energy(): To return the converged energy from any SCF routine.
-    #include "molecular_system__electronic_energy.cpp"
-//
-//  name(): To return the current system's name if any.
-    #include "molecular_system__name.cpp"
-//
-//  set_task_number(): To set the task number of the current molecular system.
-    #include "molecular_system__set_task_number.cpp" 
-//
-//  set_name(): To set the name of the current molecular system. The default name given by the
-//              constructor is the system input filename.
-    #include "molecular_system__set_name.cpp"
-//
-//  set_system_com(): To set a new COM for a given double type x-axis, y-axis and z-axis point. 
-//                    Caution: The usage of this member function imply to update the position of
-//                    each atom with respect to the new COM.
-    #include "molecular_system__set_system_com.cpp"
 };
 #endif

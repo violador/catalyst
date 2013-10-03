@@ -13,8 +13,16 @@ molecular_system::molecular_system(const std::string &input_filename)
 molecular_system::molecular_system(const std::string &input_filename, settings &runtime_setup)
 {
     config = &runtime_setup;
-    #pragma omp parallel sections num_threads(7)
+    #pragma omp parallel sections num_threads(8)
     {
+        #pragma omp section
+        {
+            if(config -> state_of(DEBUG_MODE))
+            {
+                global_log::file.write("@molecular_system::molecular_system()");
+                global_log::file.write("@molecular_system::molecular_system(): Init data from ", input_filename);
+            }
+        }
         #pragma omp section
         {
             task_number = DEFAULT_TASK_NUMBER;

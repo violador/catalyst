@@ -1,3 +1,14 @@
+// ../src/include/sto3g.hpp ------------------------------------------------------------- //
+//
+// File author: Humberto Jr. 
+//
+// Date: 06/2013
+//
+// Description: THIS CLASS IS NOT FINISHED YET AND SHOULD NOT BE USED SO FAR.
+//
+// References:
+//
+// ------------------------------------------------------------------------------------- //
 #ifndef __STO3G_HPP
     #define __STO3G_HPP
     #include "globals.hpp"
@@ -17,7 +28,7 @@ namespace lcao_wavefunction
 {
     class sto3g
     {
-    private:
+        private:
 //
 //      Declaring the data members:
         settings *config;
@@ -52,7 +63,7 @@ namespace lcao_wavefunction
         double interatomic_distance(const unsigned int &first_atom, const unsigned int &second_atom);
 //
 //
-    public:
+        public:
 //
 //
         static const int id = 30988;

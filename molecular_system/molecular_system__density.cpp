@@ -1,8 +1,7 @@
-#include "molecular_system.hpp"
 //
 //
 //
-double molecular_system::density(const unsigned int &i, const unsigned int &j)
+inline double density(const unsigned int &i, const unsigned int &j)
 {
     if(ab_initio_ready 
        and (i > 0) 
@@ -17,4 +16,4 @@ double molecular_system::density(const unsigned int &i, const unsigned int &j)
         get_wavefunction(config -> wavefunction_type(task_number));
         return (wavefunction -> density_matrix(i, j));
     }
-}
+};
