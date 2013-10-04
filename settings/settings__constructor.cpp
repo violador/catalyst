@@ -5,6 +5,9 @@
 #ifndef USE_MPI
 settings::settings()
 {
+    total_tasks = read_number_of("tasksnumber=", 
+                                  pattern_length("tasksnumber="), 
+                                  0);
     #pragma omp parallel sections num_threads(14)
     {
         #pragma omp section
@@ -72,37 +75,49 @@ settings::settings()
 //
         #pragma omp section
         {
-            log_filename = read_preference("logfilename=", pattern_length("logfilename="), "catalyst.log");
+            log_filename = read_preference("logfilename=", 
+                                           pattern_length("logfilename="), 
+                                           "catalyst.log");
         }
 //
         #pragma omp section
         {
-            input_filename = read_preference("inputname=", pattern_length("inputname="), DEFAULT_NOT_DEFINED);
+            input_filename = read_preference("inputname=", 
+                                             pattern_length("inputname="), 
+                                             DEFAULT_NOT_DEFINED);
         }
 //
         #pragma omp section
         {
-            scratch_dir = read_preference("scratchdirectory=", pattern_length("scratchdirectory="), DEFAULT_NOT_DEFINED);
+            scratch_dir = read_preference("scratchdirectory=", 
+                                          pattern_length("scratchdirectory="), 
+                                          DEFAULT_NOT_DEFINED);
         }
 //
         #pragma omp section
         {
-            work_dir = read_preference("workdirectory=", pattern_length("workdirectory="), DEFAULT_NOT_DEFINED);
+            work_dir = read_preference("workdirectory=", 
+                                       pattern_length("workdirectory="), 
+                                       DEFAULT_NOT_DEFINED);
         }
 //
         #pragma omp section
         {
-            total_tasks  = read_number_of("tasksnumber=", pattern_length("tasksnumber="), 0);
             if(total_tasks > 0)
             {
-                //theory_level = new (unsigned int) theory_level[total_tasks];
+                theory_level = new unsigned int[total_tasks];
             }
-            theory_level[0] = 1;
+            else
+            {
+                theory_level = 0;
+            }
         }
 //
         #pragma omp section 
         {
-            precision = read_number_of("numericprecision=", pattern_length("numericprecision="), 8);
+            precision = read_number_of("numericprecision=", 
+                                       pattern_length("numericprecision="), 
+                                       DEFAULT_PRECISION);
             if((precision < 1) and (precision > DEFAULT_PRECISION))
             {
                 precision = DEFAULT_PRECISION;
@@ -111,11 +126,12 @@ settings::settings()
 //
         #pragma omp section 
         {
-            scf_criteria = read_value_of("scfconvergencecriteria=", pattern_length("scfconvergencecriteria="), DEFAULT_SCF_CRITERIA);
+            scf_criteria = read_value_of("scfconvergencecriteria=", 
+                                         pattern_length("scfconvergencecriteria="), 
+                                         DEFAULT_SCF_CRITERIA);
         }
 //
     }
-    logfile_ready = false;
 }
 #endif
 //

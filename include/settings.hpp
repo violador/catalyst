@@ -20,6 +20,7 @@
 #ifndef __SETTINGS_HPP
     #define __SETTINGS_HPP
     #include "globals.hpp"
+    #include "tools.hpp"
 //
 //
 //
@@ -28,7 +29,6 @@ class settings
     private:
 //
 //  Declaring the data members:
-    bool logfile_ready;               // To store the logfile state. True if it exist already, false otherwise.
     bool output_mode_on;              // To store the output state (on/off).
     bool vibration_mode_on;           // To store the molecular vibration state (on/off).
     bool rotation_mode_on;            // To store the molecular rotation state (on/off).
@@ -37,8 +37,6 @@ class settings
     bool highend_mode_on;             // To store the high-end mode state (on/off).
     bool standby_mode_on;             // To store the stand-by mode state (on/off).
     unsigned int total_tasks;         // To store the total number of tasks.
-    unsigned int total_molecular_sys; // To store the total number of molecular systems.
-    unsigned int total_atoms;         // To store the total number of atoms.
     unsigned short int precision;     // To store the number precision in the log file.
     std::string log_filename;         // To store the log filename. 
     std::string input_filename;       // To store the input filename.
@@ -51,7 +49,7 @@ class settings
     std::string out_length_unit;      // To store the output length unit.
     std::string out_time_unit;        // To store the output time unit.
     double scf_criteria;              // To store the energy convergence criteria for any SCF routine.
-    unsigned int theory_level[2];
+    unsigned int *theory_level;
 //
 //  read_preference(): To get the user's preference in a given option pattern like "option = preference". 
     std::string read_preference(const std::string option, const int option_length, const std::string default_preference);
@@ -85,25 +83,29 @@ class settings
     settings(boost::mpi::communicator process);
     #endif
 //
-//  dir_path_of(): To get the path of a given (option) directory.
-    std::string dir_path_of(const unsigned int option);
+//  Including the inline/template/public member functions: 
+    #include "settings__numeric_precision.cpp"
+    #include "settings__scf_convergence_criteria.cpp"
+    #include "settings__wavefunction_type.cpp"
+    #include "settings__my_size.cpp"
+    #include "settings__state_of.cpp"
+    #include "settings__number_of.cpp"
+    #include "settings__dir_path_of.cpp"
+    #include "settings__filename_of.cpp"
+    #include "settings__control_key_of.cpp"
+    #include "settings__check_current_username.cpp"
+    #include "settings__check_current_hostname.cpp"
+    #include "settings__check_current_time.cpp"
+    #include "settings__check_current_cpus.cpp"
+    #include "settings__check_current_memory.cpp"
 //
 //  Defining some alias for the dir_path_of() member function options:
     #define SCRATCH 1
     #define WORK    2
 //
-//  filename_of(): To get the filename_of a given (option) file.
-    std::string filename_of(const unsigned int option);
-//
 //  Defining some alias for the filename_of() member function options:
     #define LOG_FILE   1
     #define INPUT_FILE 2
-//
-//  control_key_of(): To get the current control key (on/off) for a given state (true/false).
-    #include "settings__control_key_of.cpp"
-//
-//  state_of(): To get the state (true/false) of a given option.
-    bool state_of(const unsigned int option);
 //
 //  Defining some alias for the state_of() member function options:
     #define OUTPUT_MODE      1
@@ -114,34 +116,8 @@ class settings
     #define HIGHEND_MODE     6
     #define STANDBY_MODE     7
 //
-//  number_of(): To get the number of something in a given option.
-    unsigned int number_of(unsigned int option);
-//
 //  Defining some alias for the number_of() member function options:
-    #define TASKS         1
-    #define MOLECULAR_SYS 2
-    #define ATOMS         3
-    #define CPUS          4
-//
-//  check_memory(): To check the current memory available or the total memory.
-    double check_current_memory(const int option);
-//
-//  check_username(): To return the current username.
-    std::string check_current_username();
-//
-//  check_hostname(): To return the current hostname.
-    std::string check_current_hostname();
-//
-//  check_time(): To return the current date/time.
-    char* check_current_time();
-//
-//  check_current_cpus(): To check the total number of CPUs available.
-    unsigned int check_current_cpus();
-//
-//  Including the inline/template/public member functions: 
-    #include "settings__numeric_precision.cpp"
-    #include "settings__scf_convergence_criteria.cpp"
-    #include "settings__wavefunction_type.cpp"
-    #include "settings__my_size.cpp"
+    #define TASKS 1
+    #define CPUS  2
 };
 #endif

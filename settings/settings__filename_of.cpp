@@ -1,8 +1,7 @@
-#include "settings.hpp"
 //
 //
 //
-std::string settings::filename_of(const unsigned int option)
+inline std::string filename_of(const unsigned int option)
 {
     switch(option)
     {    
@@ -10,4 +9,4 @@ std::string settings::filename_of(const unsigned int option)
         case 2: return input_filename; break;
        default: return DEFAULT_NO_FILENAME;
     }    
-}
+};

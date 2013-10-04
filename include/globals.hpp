@@ -56,7 +56,9 @@
     #define SPACE_LENGTH         5                  // The space length between numbers, used in the file writer funtions.
     #define ARRAY_INDEX_LENGTH   5                  // The size of the indexes of arrays, used in the file writer functions.
     #define TITLE_BAR_SYMBOL     '='                // The symbol used to design the title bars.
-    #define BYTE_TO_KILOBYTE     0.0009765625       // The byte to kilobyte conversion factor.
+    #define BYTE_TO_KILOBYTE     0.0009765625       // The byte to kilobyte conversion factor, B*(1 kB/1024 B).
+    #define BYTE_TO_MEGABYTE     0.000000954        // The byte to megabyte conversion factor, B*(1 MB/1048576 B).
+    #define LINUX_MEMINFO_FILE   "/proc/meminfo"    // The system memory information file.
 //
     #ifndef EXIT_SUCCESS
         #define EXIT_SUCCESS     0                  // Tag for success operations.
@@ -123,7 +125,7 @@
 //
 //  Includind Windows only headers:
     #ifdef WIN32
-//      Empty, so far.
+        #include <windows.h>
     #endif
 //
 //  Including OSX only headers:

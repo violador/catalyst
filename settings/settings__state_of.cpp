@@ -1,8 +1,7 @@
-#include "settings.hpp"
 //
 //
 //
-bool settings::state_of(const unsigned int option)
+inline bool state_of(const unsigned int option)
 {
     switch(option)
     {
@@ -15,4 +14,4 @@ bool settings::state_of(const unsigned int option)
         case 7: return standby_mode_on;     break;
        default: return false;
     }
-}
+};
