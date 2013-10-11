@@ -15,8 +15,7 @@ numeric precision        = 6
 #
 # == Tasks ==========================================
 #
-work directory    = /home/violador/pyrene/test/
-tasks number      = 1
-molecular systems = 1
-1                 = data/H.xyz
-2                 = data/pyr.xyz
+work directory = /home/violador/pyrene/test/
+tasks number   = 0
+1              = data/H.xyz
+2              = data/pyr.xyz
