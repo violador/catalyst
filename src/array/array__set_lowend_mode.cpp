@@ -16,21 +16,8 @@ inline void set_lowend_mode(std::string scratch_dir = DEFAULT_CURRENT_DIR)
                                      array_id, 
                                      ", temp file = ", 
                                      temp_filename,
-                                     ". Invoking array::book_data().");
+                                     ". Invoking array::book_data()");
 //
-    #pragma omp parallel sections num_threads(3)
-    {
-        #pragma omp section
-        {
-            book_data();
-        }
-        #pragma omp section
-        {
-            lowend_mode_on = true;
-        }
-        #pragma omp section
-        {
-            array_file_reader.std::ifstream::open(temp_filename.c_str(), std::ofstream::binary);
-        }
-    }
+    book_data();
+    lowend_mode_on = true;
 };

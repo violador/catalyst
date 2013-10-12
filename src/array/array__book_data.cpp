@@ -27,19 +27,19 @@ void array::book_data()
         {
             if(is_2d_array and (not deleted_array))
             {
-                //array_file_writer.std::ofstream::open(temp_filename.c_str(), std::ofstream::binary);
+                array_file_writer.std::ofstream::open(temp_filename.c_str(), std::ofstream::binary);
 //
                 for(unsigned int i = 0; i < sizeof_row; i++)
                 {
                     for(unsigned int j = 0; j < sizeof_column; j++)
                     {
-                        //array_file_writer.std::ofstream::write((char*) &user_2d_array -> data[i*user_2d_array -> tda + j], 
-                        //                                       sizeof(double));
+                        array_file_writer.std::ofstream::write((char*) &user_2d_array -> data[i*user_2d_array -> tda + j], 
+                                                               sizeof(double));
                     }
                 }
 //
-                //array_file_writer.std::ofstream::close();
-                gsl_matrix_free(user_2d_array);
+                array_file_writer.std::ofstream::close();
+                //gsl_matrix_free(user_2d_array);
             }
         }
         #pragma omp section

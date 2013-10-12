@@ -4,7 +4,7 @@
 //
 void array::delete_array()
 {
-    #pragma omp parallel sections num_threads(5)
+    #pragma omp parallel sections num_threads(4)
     {
         #pragma omp section
         {
@@ -36,13 +36,6 @@ void array::delete_array()
             {
                 delete_4d_array();
                 deleted_array = true;
-            }
-        }
-        #pragma omp section
-        {
-            if(lowend_mode_on)
-            {
-                array_file_reader.std::ifstream::close();
             }
         }
     }

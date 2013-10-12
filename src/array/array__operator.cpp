@@ -182,7 +182,7 @@ void array::operator=(const array &b)
 //
 //
 //
-void array::operator+=(const array &b)
+void array::operator +=(const array &b)
 {
     #pragma omp parallel sections num_threads(4)
     {
@@ -277,7 +277,7 @@ void array::operator+=(const array &b)
 //
 //
 //
-void array::operator-=(const array &b)
+void array::operator -=(const array &b)
 {
     #pragma omp parallel sections num_threads(4)
     {

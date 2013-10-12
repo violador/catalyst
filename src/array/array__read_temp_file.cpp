@@ -5,6 +5,7 @@
 double array::read_temp_file(const unsigned int &i_given)
 {
     double temp_value = 0.0;
+    array_file_reader.std::ifstream::open(temp_filename.c_str(), std::ofstream::binary);
     for(unsigned int i = 0; i < sizeof_row; i++)
     {
 //
@@ -12,9 +13,14 @@ double array::read_temp_file(const unsigned int &i_given)
 //
         if(i == i_given)
         {
+            array_file_reader.std::ifstream::close();
             return temp_value;
         }
-    }
+    } 
+    array_file_reader.std::ifstream::close();
+    global_log::file.write_debug_msg("array::get(): Array ID = ",
+                                     array_id,
+                                     ", requested element not found in the temp file! Returning safe double-type null value...");
     return 0.0;
 }
 //
@@ -24,6 +30,7 @@ double array::read_temp_file(const unsigned int &i_given,
                              const unsigned int &j_given)
 {
     double temp_value = 0.0;
+    array_file_reader.std::ifstream::open(temp_filename.c_str(), std::ofstream::binary);
     for(unsigned int i = 0; i < sizeof_row; i++)
     {
         for(unsigned int j = 0; j < sizeof_column; j++)
@@ -33,10 +40,15 @@ double array::read_temp_file(const unsigned int &i_given,
 //
             if((i == i_given) and (j == j_given))
             {
+                array_file_reader.std::ifstream::close();
                 return temp_value;
             }
         }
     }
+    array_file_reader.std::ifstream::close();
+    global_log::file.write_debug_msg("array::get(): Array ID = ",
+                                     array_id,
+                                     ", requested element not found in the temp file! Returning safe double-type null value...");
     return 0.0;
 }
 //
@@ -47,6 +59,7 @@ double array::read_temp_file(const unsigned int &i_given,
                              const unsigned int &m_given)
 {
     double temp_value = 0.0;
+    array_file_reader.std::ifstream::open(temp_filename.c_str(), std::ofstream::binary);
     for(unsigned int i = 0; i < sizeof_row; i++)
     {
         for(unsigned int j = 0; j < sizeof_column; j++)
@@ -58,11 +71,16 @@ double array::read_temp_file(const unsigned int &i_given,
 //
                 if((i == i_given) and (j == j_given) and (m == m_given))
                 {
+                    array_file_reader.std::ifstream::close();
                     return temp_value;
                 }
             }
         }
     }
+    array_file_reader.std::ifstream::close();
+    global_log::file.write_debug_msg("array::get(): Array ID = ",
+                                     array_id,
+                                     ", requested element not found in the temp file! Returning safe double-type null value...");
     return 0.0;
 }
 //
@@ -74,6 +92,7 @@ double array::read_temp_file(const unsigned int &i_given,
                              const unsigned int &n_given)
 {
     double temp_value = 0.0;
+    array_file_reader.std::ifstream::open(temp_filename.c_str(), std::ofstream::binary);
     for(unsigned int i = 0; i < sizeof_row; i++)
     {
         for(unsigned int j = 0; j < sizeof_column; j++)
@@ -90,11 +109,16 @@ double array::read_temp_file(const unsigned int &i_given,
                        and (m == m_given) 
                        and (n == n_given))
                     {
+                        array_file_reader.std::ifstream::close();
                         return temp_value;
                     }
                 }
             }
         }
     }
+    array_file_reader.std::ifstream::close();
+    global_log::file.write_debug_msg("array::get(): Array ID = ",
+                                     array_id,
+                                     ", requested element not found in the temp file! Returning safe double-type null value...");
     return 0.0;
 }

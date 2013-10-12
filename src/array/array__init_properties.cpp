@@ -85,7 +85,7 @@ inline void init_properties(const unsigned int local_row_size = 0,
         }
         #pragma omp section
         {
-            #pragma omp parallel sections num_threads(9)
+            #pragma omp parallel sections num_threads(10)
             {
                 #pragma omp section
                 {
@@ -133,7 +133,12 @@ inline void init_properties(const unsigned int local_row_size = 0,
                 {
                     array_name = DEFAULT_ARRAY_NAME;
                 }
+                #pragma omp section
+                {
+                    temp_filename = "";
+                }
             } // pragma omp parallel sections num_threads(9)
         } // pragma omp section 
     } // pragma omp parallel sections num_threads(6)
+    global_log::file.write_debug_msg("array::init_properties(): Array ID = ", array_id);
 };

@@ -13,13 +13,25 @@ inline double get(const unsigned int &i)
             }
             else
             {
+                global_log::file.write_debug_msg("array::get(): Array ID = ", 
+                                                 array_id, 
+                                                 ", requested element out of range! Returning safe double-type null value...");
                 return 0.0;
             }
         }
         else
         {
-            // lowend_mode AQUI!
-            return 0.0;
+            if((i > 0) and (i <= sizeof_row))
+            {
+                return read_temp_file(i - 1);
+            }
+            else
+            {
+                global_log::file.write_debug_msg("array::get(): Array ID = ", 
+                                                 array_id, 
+                                                 ", requested element out of range! Returning safe double-type null value...");
+                return 0.0;
+            }
         }
     }
     else
@@ -44,6 +56,9 @@ inline double get(const unsigned int &i, const unsigned int &j)
                 }
                 else
                 {
+                    global_log::file.write_debug_msg("array::get(): Array ID = ", 
+                                                     array_id, 
+                                                     ", requested element out of range! Returning safe double-type null value...");
                     return 0.0;
                 }
             }
@@ -55,14 +70,26 @@ inline double get(const unsigned int &i, const unsigned int &j)
                 }
                 else
                 {
+                    global_log::file.write_debug_msg("array::get(): Array ID = ", 
+                                                     array_id, 
+                                                     ", requested element out of range! Returning safe double-type null value...");
                     return 0.0;
                 }
             }
         }
         else
         {
-            std::cout << "READING FROM TEMP FILE" << std::endl;
-            return read_temp_file(i, j);
+            if((i > 0) and (j > 0) and (i <= sizeof_row) and (j <= sizeof_column))
+            { 
+                return read_temp_file(i - 1, j - 1);
+            }
+            else
+            {
+                global_log::file.write_debug_msg("array::get(): Array ID = ", 
+                                                 array_id, 
+                                                 ", requested element out of range! Returning safe double-type null value...");
+                return 0.0;
+            }
         }
     }
     else
@@ -82,21 +109,37 @@ inline double get(const unsigned int &i, const unsigned int &j, const unsigned i
             if((i > 0)
                and (j > 0)
                and (m > 0)
-               and (i <= sizeof_1st_layer)
-               and (j <= sizeof_row)
-               and (m <= sizeof_column))
+               and (i <= sizeof_row)
+               and (j <= sizeof_column)
+               and (m <= sizeof_1st_layer))
             {
                 return user_3d_array[i - 1][j - 1][m - 1];
             }
             else
-            {
+            { 
+                global_log::file.write_debug_msg("array::get(): Array ID = ", 
+                                                 array_id, 
+                                                 ", requested element out of range! Returning safe double-type null value...");
                 return 0.0;
             }
         }
         else
         {  
-            // lowend_mode AQUI!
-            return 0.0;
+            if((i > 0) 
+               and (j > 0) 
+               and (i <= sizeof_row) 
+               and (j <= sizeof_column)
+               and (m <= sizeof_1st_layer))
+            { 
+                return read_temp_file(i - 1, j - 1, m - 1);
+            }
+            else
+            {
+                global_log::file.write_debug_msg("array::get(): Array ID = ", 
+                                                 array_id, 
+                                                 ", requested element out of range! Returning safe double-type null value...");
+                return 0.0;
+            }
         }
     }
     else
@@ -120,22 +163,41 @@ inline double get(const unsigned int &i,
                and (j > 0)
                and (m > 0)
                and (n > 0)
-               and (i <= sizeof_1st_layer)
-               and (j <= sizeof_2nd_layer)
-               and (m <= sizeof_row)
-               and (n <= sizeof_column))
+               and (i <= sizeof_row)
+               and (j <= sizeof_column)
+               and (m <= sizeof_1st_layer)
+               and (n <= sizeof_2nd_layer))
             {
                 return user_4d_array[i - 1][j - 1][m - 1][n - 1];
             }
             else
             {
+                global_log::file.write_debug_msg("array::get(): Array ID = ", 
+                                                 array_id, 
+                                                 ", requested element out of range! Returning safe double-type null value...");
                 return 0.0;
             }
         }
         else
         {
-            // lowend_mode AQUI!
-            return 0.0;
+            if((i > 0) 
+               and (j > 0)
+               and (m > 0)
+               and (n > 0)
+               and (i <= sizeof_row)
+               and (j <= sizeof_column)
+               and (m <= sizeof_1st_layer)
+               and (n <= sizeof_2nd_layer))
+            {
+                return read_temp_file(i - 1, j - 1, m - 1, n - 1);
+            }
+            else
+            {
+                global_log::file.write_debug_msg("array::get(): Array ID = ", 
+                                                 array_id, 
+                                                 ", requested element out of range! Returning safe double-type null value...");
+                return 0.0;
+            }
         }
     }
     else
