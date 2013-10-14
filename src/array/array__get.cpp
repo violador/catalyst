@@ -9,7 +9,7 @@ inline double get(const unsigned int &i)
         {
             if((i > 0) and (i <= sizeof_row))
             {
-                return user_1d_array -> data[(i - 1)*user_1d_array -> stride];
+                return user_1d_array[i - 1];
             }
             else
             {
@@ -52,7 +52,7 @@ inline double get(const unsigned int &i, const unsigned int &j)
             {
                 if((i > 0) and (j > 0) and (i <= sizeof_row) and (j <= sizeof_column))
                 { 
-                    return user_2d_array -> data[(i - 1)*user_2d_array -> tda + (j - 1)]; 
+                    return user_2d_array[(i - 1)*sizeof_row + (j - 1)]; 
                 }
                 else
                 {
@@ -66,7 +66,7 @@ inline double get(const unsigned int &i, const unsigned int &j)
             {
                 if((i > 0) and (j > 0) and (i <= sizeof_row) and (j <= sizeof_column))
                 {
-                    return user_2d_array -> data[(j - 1)*user_2d_array -> tda + (i - 1)];
+                    return user_2d_array[(j - 1)*sizeof_row + (i - 1)];
                 }
                 else
                 {

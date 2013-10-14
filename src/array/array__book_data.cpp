@@ -15,12 +15,11 @@ void array::book_data()
 //
                 for(unsigned int i = 0; i < sizeof_row; i++)
                 {
-                    array_file_writer.std::ofstream::write((char*) &user_1d_array -> data[i*user_1d_array -> stride], 
-                                                           sizeof(double));
+                    array_file_writer.std::ofstream::write((char*) &user_1d_array[i], sizeof(double));
                 }
 //
                 array_file_writer.std::ofstream::close();
-                gsl_vector_free(user_1d_array);
+                delete_1d_array();
             }
         }
         #pragma omp section
@@ -33,13 +32,12 @@ void array::book_data()
                 {
                     for(unsigned int j = 0; j < sizeof_column; j++)
                     {
-                        array_file_writer.std::ofstream::write((char*) &user_2d_array -> data[i*user_2d_array -> tda + j], 
-                                                               sizeof(double));
+                        array_file_writer.std::ofstream::write((char*) &user_2d_array[i*sizeof_row + j], sizeof(double));
                     }
                 }
 //
                 array_file_writer.std::ofstream::close();
-                //gsl_matrix_free(user_2d_array);
+                delete_2d_array();
             }
         }
         #pragma omp section

@@ -7,6 +7,7 @@ void array::orthonormalize(array &given_array)
 {
     if(is_const_array)
     {
+/*
         gsl_matrix *user_array_transposed = gsl_matrix_calloc(sizeof_row, sizeof_column);
         gsl_matrix_transpose_memcpy(user_array_transposed, user_2d_array);
         gsl_matrix *temp_given_array = gsl_matrix_calloc(sizeof_row, sizeof_column);
@@ -84,5 +85,6 @@ void array::orthonormalize(array &given_array)
                        1.0,
                        given_array.user_2d_array);
         gsl_matrix_free(temp_given_array);
+*/
     }
 }

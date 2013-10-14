@@ -24,7 +24,7 @@ void array::operator=(const array &b)
         {
             #pragma omp section
             {
-                gsl_vector_memcpy(this -> user_1d_array, b.user_1d_array);
+                gsl_vector_memcpy(&this -> gsl_1d_view.vector, &b.gsl_1d_view.vector);
             }
             #pragma omp section
             {
@@ -56,7 +56,7 @@ void array::operator=(const array &b)
         {
             #pragma omp section
             {
-                gsl_matrix_memcpy(this -> user_2d_array, b.user_2d_array);
+                gsl_matrix_memcpy(&this -> gsl_2d_view.matrix, &b.gsl_2d_view.matrix);
             }
             #pragma omp section
             {
@@ -195,7 +195,7 @@ void array::operator +=(const array &b)
                and (not this -> deleted_array)
                and this -> created_array)
             {
-                gsl_vector_add(this -> user_1d_array, b.user_1d_array);
+                gsl_vector_add(&this -> gsl_1d_view.vector, &b.gsl_1d_view.vector);
             }
         }
         #pragma omp section
@@ -208,7 +208,7 @@ void array::operator +=(const array &b)
                and (not this -> deleted_array)
                and this -> created_array)
             {        
-                gsl_matrix_add(this -> user_2d_array, b.user_2d_array);
+                gsl_matrix_add(&this -> gsl_2d_view.matrix, &b.gsl_2d_view.matrix);
             }
         }
         #pragma omp section
@@ -290,7 +290,7 @@ void array::operator -=(const array &b)
                and (not this -> deleted_array)
                and this -> created_array)
             {
-                gsl_vector_sub(this -> user_1d_array, b.user_1d_array);
+                gsl_vector_sub(&this -> gsl_1d_view.vector, &b.gsl_1d_view.vector);
             }
         }
         #pragma omp section
@@ -303,7 +303,7 @@ void array::operator -=(const array &b)
                and (not this -> deleted_array)
                and this -> created_array)
             {      
-                gsl_matrix_sub(this -> user_2d_array, b.user_2d_array);
+                gsl_matrix_sub(&this -> gsl_2d_view.matrix, &b.gsl_2d_view.matrix);
             }
         }
         #pragma omp section
@@ -372,28 +372,36 @@ void array::operator -=(const array &b)
 //
 //
 //
-void array::operator*=(const array &b)
+void array::operator *=(const array &b)
 {
     if(this -> is_2d_array 
        and b.is_2d_array 
-       and (this -> sizeof_row == b.sizeof_row) 
-       and (this -> sizeof_column == b.sizeof_column)
+       and (this -> sizeof_column == b.sizeof_row) 
        and (not this -> is_const_array)
-       and (not this -> deleted_array)
-       and this -> created_array)
-    {        
-        gsl_matrix *temp_2d_array = gsl_matrix_calloc(this -> sizeof_row, this -> sizeof_column);
-        gsl_matrix_swap(this -> user_2d_array, temp_2d_array);
+       and (not this -> deleted_array))
+    {   
+        double *array_buffer = new double[(this -> sizeof_row)*(this -> sizeof_column)];
+        memcpy(array_buffer, this -> user_2d_array, (this -> sizeof_row)*(this -> sizeof_column)*sizeof this -> user_2d_array[0]);
+        user_2d_array = new double[(this -> sizeof_row)*(b.sizeof_column)];
+        gsl_2d_view = gsl_matrix_view_array(user_2d_array, this -> sizeof_row, b.sizeof_column);
+        gsl_matrix_set_zero(&this -> gsl_2d_view.matrix);
 //
-        gsl_blas_dgemm((this -> is_transposed? CblasTrans : CblasNoTrans),
-                       (b.is_transposed? CblasTrans : CblasNoTrans),
-                       1.0,
-                       temp_2d_array,
-                       b.user_2d_array,
-                       1.0,
-                       this -> user_2d_array);
+        cblas_dgemm(CblasRowMajor,
+                    (this -> is_transposed? CblasTrans : CblasNoTrans),
+                    (b.is_transposed? CblasTrans : CblasNoTrans),
+                    this -> sizeof_row,
+                    b.sizeof_column,
+                    this -> sizeof_column,
+                    1.0,
+                    array_buffer,
+                    this -> sizeof_column,
+                    b.user_2d_array,
+                    b.sizeof_column,
+                    1.0,
+                    this -> user_2d_array,
+                    this -> sizeof_column);
 //
-        gsl_matrix_free(temp_2d_array);
+        delete[] array_buffer;
     }
 }
 //
@@ -407,11 +415,11 @@ array array::operator+(const double &b)
 //
 //
 //
-        gsl_vector_memcpy(c.user_1d_array, this -> user_1d_array);
+        gsl_vector_memcpy(&c.gsl_1d_view.vector, &this -> gsl_1d_view.vector);
 //
 //
 //
-        gsl_vector_add_constant(c.user_1d_array, b);
+        gsl_vector_add_constant(&c.gsl_1d_view.vector, b);
         return c;
     }
     if(this -> is_2d_array)
@@ -420,11 +428,11 @@ array array::operator+(const double &b)
 //
 //
 //
-        gsl_matrix_memcpy(c.user_2d_array, this -> user_2d_array);
+        gsl_matrix_memcpy(&c.gsl_2d_view.matrix, &this -> gsl_2d_view.matrix);
 //
 //
 //
-        gsl_matrix_add_constant(c.user_2d_array, b);
+        gsl_matrix_add_constant(&c.gsl_2d_view.matrix, b);
         return c;
     }
     if(this -> is_3d_array)
@@ -494,11 +502,11 @@ array array::operator+(const array &b)
 //
 //      To build the temp c from a:
 //
-        gsl_vector_memcpy(c.user_1d_array, this -> user_1d_array);
+        gsl_vector_memcpy(&c.gsl_1d_view.vector, &this -> gsl_1d_view.vector);
 //
 //      To summ the temp c and b: 
 //
-        gsl_vector_add(c.user_1d_array, b.user_1d_array);
+        gsl_vector_add(&c.gsl_1d_view.vector, &b.gsl_1d_view.vector);
         return c;
     }
     else if(this -> is_2d_array 
@@ -510,11 +518,11 @@ array array::operator+(const array &b)
 //
 //      To build the temp c from a: 
 //
-        gsl_matrix_memcpy(c.user_2d_array, this -> user_2d_array);
+        gsl_matrix_memcpy(&c.gsl_2d_view.matrix, &this -> gsl_2d_view.matrix);
 //
 //      To summ the temp c and b: 
 //
-        gsl_matrix_add(c.user_2d_array, b.user_2d_array);
+        gsl_matrix_add(&c.gsl_2d_view.matrix, &b.gsl_2d_view.matrix);
         return c;
     }
     else if(this -> is_3d_array
@@ -594,11 +602,11 @@ array array::operator-(const double &b)
 //
 //      To build the temp c from a:
 //
-        gsl_vector_memcpy(c.user_1d_array, this -> user_1d_array);
+        gsl_vector_memcpy(&c.gsl_1d_view.vector, &this -> gsl_1d_view.vector);
 //
 //      To sub a from temp c:
 //
-        gsl_vector_add_constant(c.user_1d_array, -b);
+        gsl_vector_add_constant(&c.gsl_1d_view.vector, -b);
         return c;
     }
     if(this -> is_2d_array)
@@ -607,11 +615,11 @@ array array::operator-(const double &b)
 //
 //      To build the temp c from a:
 //
-        gsl_matrix_memcpy(c.user_2d_array, this -> user_2d_array);
+        gsl_matrix_memcpy(&c.gsl_2d_view.matrix, &this -> gsl_2d_view.matrix);
 //
 //      To sub a from temp c:
 //
-        gsl_matrix_add_constant(c.user_2d_array, -b);
+        gsl_matrix_add_constant(&c.gsl_2d_view.matrix, -b);
         return c;
     }
     if(this -> is_3d_array)
@@ -681,11 +689,11 @@ array array::operator-(const array &b)
 //
 //      To build the temp c from a:
 //
-        gsl_vector_memcpy(c.user_1d_array, this -> user_1d_array);
+        gsl_vector_memcpy(&c.gsl_1d_view.vector, &this -> gsl_1d_view.vector);
 //
 //      To sub b from temp c:
 //
-        gsl_vector_sub(c.user_1d_array, b.user_1d_array);
+        gsl_vector_sub(&c.gsl_1d_view.vector, &b.gsl_1d_view.vector);
         return c;
     }
     else if(this -> is_2d_array 
@@ -697,11 +705,11 @@ array array::operator-(const array &b)
 //
 //      To build the temp c from a:
 //
-        gsl_matrix_memcpy(c.user_2d_array, this -> user_2d_array);
+        gsl_matrix_memcpy(&c.gsl_2d_view.matrix, &this -> gsl_2d_view.matrix);
 //
 //      To sub b from temp c:
 //
-        gsl_matrix_sub(c.user_2d_array, b.user_2d_array);
+        gsl_matrix_sub(&c.gsl_2d_view.matrix, &b.gsl_2d_view.matrix);
         return c;
     }
     else if(this -> is_3d_array
@@ -778,11 +786,11 @@ array array::operator*(const double &b)
 //
 //
 //
-        gsl_vector_memcpy(c.user_1d_array, this -> user_1d_array);
+        gsl_vector_memcpy(&c.gsl_1d_view.vector, &this -> gsl_1d_view.vector);
 //
 //
 //
-        gsl_vector_scale(c.user_1d_array, b);
+        gsl_vector_scale(&c.gsl_1d_view.vector, b);
         return c;
     }
     if(this -> is_2d_array)
@@ -791,11 +799,11 @@ array array::operator*(const double &b)
 //
 //
 //
-        gsl_matrix_memcpy(c.user_2d_array, this -> user_2d_array);
+        gsl_matrix_memcpy(&c.gsl_2d_view.matrix, &this -> gsl_2d_view.matrix);
 //
 //
 //
-        gsl_matrix_scale(c.user_2d_array, b);
+        gsl_matrix_scale(&c.gsl_2d_view.matrix, b);
         return c;
     }
     if(this -> is_3d_array)
@@ -854,12 +862,14 @@ array array::operator*(const array &b)
     {
         array c(this -> sizeof_row);
 //
+/*
         gsl_blas_dgemv((this -> is_transposed? CblasTrans : CblasNoTrans),
                        1.0,
                        this -> user_2d_array,
                        b.user_1d_array,
                        1.0,
                        c.user_1d_array);
+*/
 //
         return c;
     }
@@ -870,6 +880,7 @@ array array::operator*(const array &b)
     {
         array c(this -> sizeof_row, this -> sizeof_column);
 //
+/*
         gsl_blas_dgemm((this -> is_transposed? CblasTrans : CblasNoTrans),
                        (b.is_transposed? CblasTrans : CblasNoTrans),
                        1.0,
@@ -877,6 +888,7 @@ array array::operator*(const array &b)
                        b.user_2d_array,
                        1.0,
                        c.user_2d_array);
+*/
 //
         return c;
     }

@@ -12,7 +12,7 @@ inline void set_all(const double &value)
                and (not is_const_array)
                and created_array)
             {
-                gsl_vector_set_all(user_1d_array, value);
+                gsl_vector_set_all(&gsl_1d_view.vector, value);
             }
         }
         #pragma omp section
@@ -22,7 +22,7 @@ inline void set_all(const double &value)
                and (not is_const_array)
                and created_array)
             {
-                gsl_matrix_set_all(user_2d_array, value);
+                gsl_matrix_set_all(&gsl_2d_view.matrix, value);
             }
         }
         #pragma omp section

@@ -27,7 +27,8 @@ array::array(const unsigned int &local_row_size)
         }
         #pragma omp section
         {
-            user_1d_array = gsl_vector_calloc(local_row_size);
+            init_1d_array(local_row_size);
+            //user_1d_array = gsl_vector_calloc(local_row_size);
         }
     }
 }
@@ -51,7 +52,8 @@ array::array(const unsigned int &local_row_size, const unsigned int &local_colum
         }
         #pragma omp section
         {
-            user_2d_array = gsl_matrix_calloc(local_row_size, local_column_size);
+            init_2d_array(local_row_size, local_column_size);
+            //user_2d_array = gsl_matrix_calloc(local_row_size, local_column_size);
         }
     }
 }
@@ -130,16 +132,16 @@ array::array(const array &given_array)
         {
             if(given_array.is_1d_array)
             {
-                user_1d_array = gsl_vector_calloc(given_array.sizeof_row);
-                gsl_vector_memcpy(this -> user_1d_array, given_array.user_1d_array); 
+                init_1d_array(given_array.sizeof_row);
+                gsl_vector_memcpy(&this -> gsl_1d_view.vector, &given_array.gsl_1d_view.vector); 
             }
         }
         #pragma omp section
         {
             if(given_array.is_2d_array)
             {
-                user_2d_array = gsl_matrix_calloc(given_array.sizeof_row, given_array.sizeof_column);
-                gsl_matrix_memcpy(this -> user_2d_array, given_array.user_2d_array);
+                init_2d_array(given_array.sizeof_row, given_array.sizeof_column);
+                gsl_matrix_memcpy(&this -> gsl_2d_view.matrix, &given_array.gsl_2d_view.matrix);
             }
         }
         #pragma omp section

@@ -10,7 +10,7 @@ void array::delete_array()
         {
             if(is_1d_array)
             {
-                gsl_vector_free(user_1d_array);
+                delete_1d_array();
                 deleted_array = true;
             }
         }
@@ -18,7 +18,7 @@ void array::delete_array()
         {
             if(is_2d_array)
             {
-                gsl_matrix_free(user_2d_array);
+                delete_2d_array();
                 deleted_array = true;
             }
         }

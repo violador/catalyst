@@ -17,7 +17,7 @@ void array::create_array(const unsigned int local_row_size,
             }
             #pragma omp section
             {
-                user_1d_array = gsl_vector_calloc(local_row_size);
+                init_1d_array(local_row_size);
             }
         }
     }
@@ -31,7 +31,7 @@ void array::create_array(const unsigned int local_row_size,
             }
             #pragma omp section
             {
-                user_2d_array = gsl_matrix_calloc(local_row_size, local_column_size);
+                init_2d_array(local_row_size, local_column_size);
             }
         }
     }
