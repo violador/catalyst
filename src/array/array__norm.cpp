@@ -5,6 +5,10 @@ inline double norm()
 {
     if(is_1d_array and (not deleted_array))
     {
-        return gsl_blas_dnrm2(&gsl_1d_view.vector);
+        return cblas_dnrm2(sizeof_row, user_1d_array, 1);
+    }
+    else
+    {
+        return 0.0;
     }
 };
