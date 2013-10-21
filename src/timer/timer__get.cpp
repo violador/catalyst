@@ -4,7 +4,7 @@
 //
 std::string timer::get(unsigned int option, unsigned int measurement_number)
 {
-    if((measurement_number not_eq 0) and (measurement_number <= counter))
+    if((measurement_number > 0) and (measurement_number <= counter))
     {
         switch(option)
         {

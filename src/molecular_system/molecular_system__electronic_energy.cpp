@@ -9,7 +9,7 @@ inline double electronic_energy()
     }
     else
     {
-        get_wavefunction(config -> wavefunction_type(task_number));
+        get_wavefunction();
         return wavefunction -> energy();
     }
 };

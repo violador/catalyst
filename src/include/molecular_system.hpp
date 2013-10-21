@@ -22,6 +22,7 @@
     #include "scf.hpp"
     #include "tools.hpp"
     #include "global_log.hpp"
+    #include "timer.hpp"
 //
 //
 //
@@ -56,10 +57,12 @@ class molecular_system
     bool total_atoms_ready;       // The total number of atoms calculation state. True if it is already done, false otherwise.
     bool nuclear_repulsion_ready; // The nuclear repulsion calculation state. True if it is already done, false otherwise.
     algorithm::scf *wavefunction; // A pointer-object to link with any object of algorithm::scf type.
+    file_system input;            // The input file manager;
+    timer constructor_time;       // The timer to measure the construction time.
 //
 //  get_total_atoms(): To count the number of lines in a given input file,
 //                     i.e. the number of atoms.
-    unsigned int get_total_atoms(std::string input_filename); 
+    unsigned int get_total_atoms(const std::string &input_filename); 
 //
 //  read_geometry(): To read the molecular system's geometry from a given ifstream file.
     void read_input_file(const std::string &input_filename); 
@@ -75,7 +78,7 @@ class molecular_system
 //
 //  get_wavefunction(): To start the calculation of all ab-initio datas. Caution: The usage of this member function
 //                      may be the most expensive part of the entire runtime. 
-    void get_wavefunction(unsigned int theory_level);
+    void get_wavefunction();
 //
     public:
 //
@@ -87,6 +90,9 @@ class molecular_system
 //
 //  Declaring the class constructor:
     molecular_system(const std::string &input_filename, settings &runtime_setup);
+//
+//  Declaring the class constructor:
+    molecular_system(const unsigned int &task, settings &runtime_setup);
 //
 //  interatomic_distance(): To return the distance between two given atoms.
     double interatomic_distance(const unsigned int &first_atom, const unsigned int &second_atom);

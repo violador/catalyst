@@ -3,8 +3,9 @@
 //
 inline void set_new_line()
 {
-    if(log_file_ready)
+    switch(log_file_ready)
     {
-        log_file << std::endl;
+        case false: break;
+        case  true: log_file << std::endl; break;
     }
 };

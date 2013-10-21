@@ -29,27 +29,27 @@ class settings
     private:
 //
 //  Declaring the data members:
-    bool output_mode_on;              // To store the output state (on/off).
-    bool vibration_mode_on;           // To store the molecular vibration state (on/off).
-    bool rotation_mode_on;            // To store the molecular rotation state (on/off).
-    bool translation_mode_on;         // To store the molecular translation state (on/off).
-    bool debug_mode_on;               // To store the debug mode state (on/off).
-    bool highend_mode_on;             // To store the high-end mode state (on/off).
-    bool standby_mode_on;             // To store the stand-by mode state (on/off).
-    unsigned int total_tasks;         // To store the total number of tasks.
-    unsigned short int precision;     // To store the number precision in the log file.
-    std::string log_filename;         // To store the log filename. 
-    std::string input_filename;       // To store the input filename.
-    std::string scratch_dir;          // To store the scratch directory path.   
-    std::string work_dir;             // To store the work directory path.
-    std::string in_energy_unit;       // To store the input energy unit.
-    std::string in_length_unit;       // To store the input length unit.
-    std::string in_time_unit;         // To store the input time unit.
-    std::string out_energy_unit;      // To store the output energy unit.
-    std::string out_length_unit;      // To store the output length unit.
-    std::string out_time_unit;        // To store the output time unit.
-    double scf_criteria;              // To store the energy convergence criteria for any SCF routine.
-    unsigned int *theory_level;
+    bool output_mode_on;          // To store the output state (on/off).
+    bool vibration_mode_on;       // To store the molecular vibration state (on/off).
+    bool rotation_mode_on;        // To store the molecular rotation state (on/off).
+    bool translation_mode_on;     // To store the molecular translation state (on/off).
+    bool debug_mode_on;           // To store the debug mode state (on/off).
+    bool highend_mode_on;         // To store the high-end mode state (on/off).
+    bool standby_mode_on;         // To store the stand-by mode state (on/off).
+    unsigned int total_tasks;     // To store the total number of tasks.
+    unsigned short int precision; // To store the number precision in the log file.
+    std::string log_filename;     // To store the log filename. 
+    std::string *input_filename;  // To store the respective input filename for each task.
+    std::string scratch_dir;      // To store the scratch directory path.   
+    std::string work_dir;         // To store the work directory path.
+    std::string in_energy_unit;   // To store the input energy unit.
+    std::string in_length_unit;   // To store the input length unit.
+    std::string in_time_unit;     // To store the input time unit.
+    std::string out_energy_unit;  // To store the output energy unit.
+    std::string out_length_unit;  // To store the output length unit.
+    std::string out_time_unit;    // To store the output time unit.
+    double scf_criteria;          // To store the energy convergence criteria for any SCF routine.
+    unsigned int *theory_level;   // To store the respective (unsgined int type) level of theory for each task.
 //
 //  read_preference(): To get the user's preference in a given option pattern like "option = preference". 
     std::string read_preference(const std::string option, const int option_length, const std::string default_preference);
@@ -83,10 +83,17 @@ class settings
     settings(boost::mpi::communicator process);
     #endif
 //
+//  Declaring the class destructor:
+    ~settings();
+//
+//
+    std::string theory_database(const unsigned int &option);
+    unsigned int theory_database(const std::string &option);
+//
 //  Including the inline/template/public member functions: 
     #include "settings__numeric_precision.cpp"
     #include "settings__scf_convergence_criteria.cpp"
-    #include "settings__wavefunction_type.cpp"
+    #include "settings__task_level.cpp"
     #include "settings__my_size.cpp"
     #include "settings__state_of.cpp"
     #include "settings__number_of.cpp"
@@ -104,8 +111,9 @@ class settings
     #define WORK    2
 //
 //  Defining some alias for the filename_of() member function options:
-    #define LOG_FILE   1
-    #define INPUT_FILE 2
+    #define LOG_FILE    1
+    #define INPUT_FILE  2
+    #define CONFIG_FILE 3
 //
 //  Defining some alias for the state_of() member function options:
     #define OUTPUT_MODE      1
@@ -118,6 +126,5 @@ class settings
 //
 //  Defining some alias for the number_of() member function options:
     #define TASKS 1
-    #define CPUS  2
 };
 #endif

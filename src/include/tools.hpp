@@ -100,5 +100,6 @@ struct tools
     #include "tools__module.cpp"
     #include "tools__to_string_from.cpp"
     #include "tools__to_number_from.cpp"
+    #include "tools__pattern_length.cpp"
 };
 #endif

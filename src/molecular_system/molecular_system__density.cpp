@@ -13,7 +13,7 @@ inline double density(const unsigned int &i, const unsigned int &j)
     }
     else
     {
-        get_wavefunction(config -> wavefunction_type(task_number));
+        get_wavefunction();
         return (wavefunction -> density_matrix(i, j));
     }
 };

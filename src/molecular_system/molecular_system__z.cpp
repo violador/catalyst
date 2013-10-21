@@ -24,7 +24,7 @@ inline double z(const unsigned int &option, const unsigned int &atom)
     {
         if(atom_positions_ready and (atom > 0) and (atom <= total_atoms))
         {
-            return position_z.array::get(atom);
+            return position_z(atom);
         }
         else
         {
@@ -36,7 +36,7 @@ inline double z(const unsigned int &option, const unsigned int &atom)
     { 
         if(atom_velocities_ready and (atom > 0) and (atom <= total_atoms))
         {
-            return velocity_z.array::get(atom);
+            return velocity_z(atom);
         }
         else
         {

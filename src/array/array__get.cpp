@@ -48,33 +48,16 @@ inline double get(const unsigned int &i, const unsigned int &j)
     {
         if(not lowend_mode_on)
         {
-            if(not is_transposed)
-            {
-                if((i > 0) and (j > 0) and (i <= sizeof_row) and (j <= sizeof_column))
-                { 
-                    return user_2d_array[(i - 1)*sizeof_row + (j - 1)]; 
-                }
-                else
-                {
-                    global_log::file.write_debug_msg("array::get(): Array ID = ", 
-                                                     array_id, 
-                                                     ", requested element out of range! Returning safe double-type null value...");
-                    return 0.0;
-                }
+            if((i > 0) and (j > 0) and (i <= sizeof_row) and (j <= sizeof_column))
+            { 
+                return user_2d_array[(i - 1)*sizeof_row + (j - 1)]; 
             }
             else
             {
-                if((i > 0) and (j > 0) and (i <= sizeof_row) and (j <= sizeof_column))
-                {
-                    return user_2d_array[(j - 1)*sizeof_row + (i - 1)];
-                }
-                else
-                {
-                    global_log::file.write_debug_msg("array::get(): Array ID = ", 
-                                                     array_id, 
-                                                     ", requested element out of range! Returning safe double-type null value...");
-                    return 0.0;
-                }
+                global_log::file.write_debug_msg("array::get(): Array ID = ", 
+                                                 array_id, 
+                                                 ", requested element out of range! Returning safe double-type null value...");
+                return 0.0;
             }
         }
         else

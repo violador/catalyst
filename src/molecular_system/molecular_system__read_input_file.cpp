@@ -4,10 +4,11 @@
 //
 void molecular_system::read_input_file(const std::string &input_filename)
 {
+    global_log::file.write_debug_msg("molecular_system::read_input_file(): Reading from ", input_filename);
     if(total_atoms_ready and (total_atoms > 0))
     {
-        std::ifstream geometry_file(input_filename.c_str(), std::ios::in);
-        if(geometry_file.is_open() and geometry_file.good() and (total_atoms > 0))
+        std::fstream geometry_file(input_filename.c_str(), std::fstream::in);
+        if(geometry_file.std::fstream::is_open() and geometry_file.std::fstream::good())
         {
             #pragma omp parallel sections num_threads(7)
             {
@@ -90,14 +91,20 @@ void molecular_system::read_input_file(const std::string &input_filename)
                 total_mass += get.periodic_table::mass(atom_type.array::get(i));   // (9)
             }
 //
-            geometry_file.close();
+            geometry_file.std::fstream::close();
             atom_types_ready = true;
             atom_positions_ready = true;
             atom_velocities_ready = true;
         }
-        else // if(not geometry_file.is_open() or (not geometry_file.good()) or (not total_atoms > 0))
+        else // if(not geometry_file.is_open() or (not geometry_file.good()))
         { 
-            std::cout << "\nfile not opened." << std::endl;
+            global_log::file.write("ERROR: The file system could not open the file ",
+                                   input_filename,
+                                   "! This is a critical point and the program could not keep running.",
+                                   " It will abort here and you may or may not see the properly output.");
+            atom_types_ready = false;
+            atom_positions_ready = false;
+            atom_velocities_ready = false;
         }
-    }
+    } // if(total_atoms_ready and (total_atoms > 0))
 }

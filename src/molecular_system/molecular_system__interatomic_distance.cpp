@@ -15,15 +15,15 @@ double molecular_system::interatomic_distance(const unsigned int &first_atom, co
         {
             #pragma omp section
             {
-                a = gsl_pow_2(position_x.array::get(second_atom) - position_x.array::get(first_atom));
+                a = gsl_pow_2(position_x(second_atom) - position_x(first_atom));
             }
             #pragma omp section
             {
-                b = gsl_pow_2(position_y.array::get(second_atom) - position_y.array::get(first_atom));
+                b = gsl_pow_2(position_y(second_atom) - position_y(first_atom));
             }
             #pragma omp section
             {
-                c = gsl_pow_2(position_z.array::get(second_atom) - position_z.array::get(first_atom));
+                c = gsl_pow_2(position_z(second_atom) - position_z(first_atom));
             }
         }
         return std::sqrt(a + b + c);

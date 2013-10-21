@@ -54,10 +54,12 @@ struct array
     bool deleted_array;              // True, if it was deleted already by delete_array(), false otherwise.
     bool lowend_mode_on;             // True, if the high-end mode is off, false otherwise.
     bool setup_ready;                // True, if the *config pointer is already liked. False otherwise.
-    gsl_vector *user_1d_array;       // The current user's 1D array.
-    gsl_matrix *user_2d_array;       // The current user's 2D array.
-    double   ***user_3d_array;       // The current user's 3D array.
-    double  ****user_4d_array;       // The current user's 4D array.
+    double    *user_1d_array;        // The current user's 1D array.
+    double    *user_2d_array;        // The current user's 2D array.
+    double  ***user_3d_array;        // The current user's 3D array.
+    double ****user_4d_array;        // The current user's 4D array.
+    gsl_vector_view gsl_1d_view;     //
+    gsl_matrix_view gsl_2d_view;     //
     std::string array_name;          // The array name, if any.
     std::string array_filename;      // The array filename to save() and open() member functions. 
     std::string temp_filename;       // The temp filename to store the current array when set_lowend_mode() is used.
@@ -86,10 +88,20 @@ struct array
                           const unsigned int &m_given,
                           const unsigned int &n_given);
 //
+//
+    void resize_array(const unsigned int local_row_size = 0,
+                      const unsigned int local_column_size = 0,
+                      const unsigned int local_1st_layer_size = 0,
+                      const unsigned int local_2nd_layer_size = 0);
+//
 //  Including the inline/template/private member functions: 
     #include "array__init_properties.cpp"
+    #include "array__init_1d_array.cpp"
+    #include "array__init_2d_array.cpp"
     #include "array__init_3d_array.cpp"
     #include "array__init_4d_array.cpp"
+    #include "array__delete_1d_array.cpp"
+    #include "array__delete_2d_array.cpp"
     #include "array__delete_3d_array.cpp"
     #include "array__delete_4d_array.cpp"
 //
@@ -162,23 +174,14 @@ struct array
 //
     unsigned int get_min_index()
     {
-        return gsl_vector_min_index(user_1d_array) + 1;
+        return 0;//gsl_vector_min_index(user_1d_array) + 1;
     };
 //
 //
     unsigned int get_max_index()
     { 
-        return gsl_vector_max_index(user_1d_array) + 1;
+        return 0;//gsl_vector_max_index(user_1d_array) + 1;
     };
-//
-//  save_transpose_to(): To save the transpose of the current array in the given one (2D
-//                       array only).
-    void save_transpose_to(array &given_array);
-//
-//  save_jacobi_svd_to(): To calculate (2D array only) the singular value decompositions (SVD) using the
-//                        Jacobi's method and to store the transformation matrix, U, and the eigenvalues in 
-//                        the given arrays. The current matrix will be replaced by its transformation.
-    void save_jacobi_svd_to(array &u_matrix, array &eigenvalues);
 //
 //  save_eigens_to(): To calculate the eigenvalues and eigenvectors of the current matrix and to
 //                    store in the given arrays. The current matrix keeps unchanged (2D array only).
@@ -200,6 +203,9 @@ struct array
 //  write(): To report the current array (2D only) in the global log file.
     void write();
 //
+//
+    void build_orthonormalizer_form();
+//
 //  Including the inline/template/public member functions: 
     #include "array__size_of.cpp"
     #include "array__set_constant.cpp"
@@ -214,12 +220,14 @@ struct array
     #include "array__unset_lowend_mode.cpp"
     #include "array__set_config.cpp"
     #include "array__set_transpose.cpp"
-    #include "array__unset_transpose.cpp"
     #include "array__norm.cpp"
     #include "array__my_size.cpp"
     #include "array__set_lowend_mode.cpp"
     #include "array__save.cpp"
     #include "array__open.cpp"
+    #include "array__save_transpose_to.cpp"
+    #include "array__save_jacobi_svd_to.cpp"
+    #include "array__function_call.cpp"
 //
 };
 #endif

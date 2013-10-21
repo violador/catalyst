@@ -97,7 +97,7 @@ array array::operator *(const array &b)
         array c(this -> sizeof_row, 1);
 //
         cblas_dgemv(CblasRowMajor,
-                    (this -> is_transposed? CblasTrans : CblasNoTrans),
+                    CblasNoTrans,
                     this -> sizeof_row,
                     this -> sizeof_column,
                     1.0,
@@ -118,8 +118,8 @@ array array::operator *(const array &b)
         array c(this -> sizeof_row, b.sizeof_column);
 //
         cblas_dgemm(CblasRowMajor,
-                    (this -> is_transposed? CblasTrans : CblasNoTrans),
-                    (b.is_transposed? CblasTrans : CblasNoTrans),
+                    CblasNoTrans,
+                    CblasNoTrans,
                     this -> sizeof_row,
                     b.sizeof_column,
                     this -> sizeof_column,

@@ -4,13 +4,18 @@
 //
 double file_system::size()
 {
-    if(exists())
+    switch(exists())
     {
-        boost::filesystem::path file(root_path + relative_path);
-        return boost::filesystem::file_size(file);
-    }
-    else
-    {
-        return 0.0;
+        case false:
+        {
+            return 0.0;
+        }
+        break;
+        case true:
+        {
+            boost::filesystem::path file(root_path + relative_path);
+            return boost::filesystem::file_size(file);
+        }
+        break;
     }
 }

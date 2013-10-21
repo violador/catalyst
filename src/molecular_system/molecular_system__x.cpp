@@ -3,14 +3,19 @@
 //
 inline double x()
 {
-    if(system_com_ready)
+    switch(system_com_ready)
     {
-        return system_com_x;
-    }
-    else
-    {
-        get_system_com();
-        return system_com_x;
+        case true: 
+        {
+            return system_com_x;
+        }
+        break;
+        case false:
+        {
+            get_system_com();
+            return system_com_x;
+        }
+        break;
     }
 };
 //
@@ -24,7 +29,7 @@ inline double x(const unsigned int &option, const unsigned int &atom)
     {
         if(atom_positions_ready and (atom > 0) and (atom <= total_atoms))
         {
-            return position_x.array::get(atom);
+            return position_x(atom);
         }
         else
         {
@@ -36,7 +41,7 @@ inline double x(const unsigned int &option, const unsigned int &atom)
     {
         if(atom_velocities_ready and (atom > 0) and (atom <= total_atoms))
         {
-            return velocity_x.array::get(atom);
+            return velocity_x(atom);
         }
         else
         {

@@ -24,7 +24,7 @@ inline double y(const unsigned int &option, const unsigned int &atom)
     {
         if(atom_positions_ready and (atom > 0) and (atom <= total_atoms))
         {
-            return position_y.array::get(atom);
+            return position_y(atom);
         }
         else
         {
@@ -36,7 +36,7 @@ inline double y(const unsigned int &option, const unsigned int &atom)
     { 
         if(atom_velocities_ready and (atom > 0) and (atom <= total_atoms))
         {
-            return velocity_y.array::get(atom);
+            return velocity_y(atom);
         }
         else
         {

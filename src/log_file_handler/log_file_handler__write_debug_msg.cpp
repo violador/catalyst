@@ -9,7 +9,7 @@ void write_debug_msg(const data_type1 &text1)
         if(file_manager -> exists())
         {
             LOGFILE_IS_READY:
-            log_file << timestamp() << "@"  << text1 << std::endl;
+            log_file << timestamp() << "@" << text1 << std::endl;
         }
         else
         {
@@ -21,10 +21,8 @@ void write_debug_msg(const data_type1 &text1)
 //
 //
 //
-template<typename data_type1, 
-         typename data_type2> 
-void write_debug_msg(const data_type1 text1, 
-                     const data_type2 text2)
+template<typename data_type1, typename data_type2> 
+void write_debug_msg(const data_type1 text1, const data_type2 text2)
 {
     if(config -> state_of(OUTPUT_MODE) and config -> state_of(DEBUG_MODE) and log_file_ready)
     {
@@ -44,12 +42,8 @@ void write_debug_msg(const data_type1 text1,
 //
 //
 //
-template<typename data_type1, 
-         typename data_type2, 
-         typename data_type3>
-void write_debug_msg(const data_type1 &text1, 
-                     const data_type2 &text2, 
-                     const data_type3 &text3)
+template<typename data_type1, typename data_type2, typename data_type3>
+void write_debug_msg(const data_type1 &text1, const data_type2 &text2, const data_type3 &text3)
 {
     if(config -> state_of(OUTPUT_MODE) and config -> state_of(DEBUG_MODE) and log_file_ready)
     {

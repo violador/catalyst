@@ -4,7 +4,7 @@
 //
 void molecular_system::get_system_com()
 {
-    if(atom_types_ready && atom_positions_ready)
+    if(atom_types_ready and atom_positions_ready)
     {
         system_com_x = system_com_y = system_com_z = 0.0;
         periodic_table get;
@@ -13,11 +13,11 @@ void molecular_system::get_system_com()
         for(i_atom = 1; i_atom <= total_atoms; i_atom++)
         {
             #pragma omp critical
-            system_com_x += get.periodic_table::mass(atom_type.get(i_atom))*position_x.get(i_atom);
+            system_com_x += get.periodic_table::mass(atom_type(i_atom))*position_x(i_atom);
             #pragma omp critical
-            system_com_y += get.periodic_table::mass(atom_type.get(i_atom))*position_y.get(i_atom);
+            system_com_y += get.periodic_table::mass(atom_type(i_atom))*position_y(i_atom);
             #pragma omp critical
-            system_com_z += get.periodic_table::mass(atom_type.get(i_atom))*position_z.get(i_atom);
+            system_com_z += get.periodic_table::mass(atom_type(i_atom))*position_z(i_atom);
         }
         #pragma omp parallel sections
         {

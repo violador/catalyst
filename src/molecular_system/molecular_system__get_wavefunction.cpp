@@ -2,10 +2,10 @@
 //
 //
 //
-void molecular_system::get_wavefunction(unsigned int theory_level)
+void molecular_system::get_wavefunction()
 {
-    global_log::file.write_debug_msg("molecular_system::get_wavefunction(): Theory level = ", theory_level);
-    switch(theory_level)
+    global_log::file.write_debug_msg("molecular_system::get_wavefunction(): Theory level = ", config -> task_level(task_number));
+    switch(config -> task_level(task_number))
     {
         case 1:
         {

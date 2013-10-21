@@ -30,7 +30,7 @@ void log_file_handler::init_log_file()
                  << config -> check_current_memory(2) 
                  << " bytes"
                  << "\n- Number of CPUs available            = "
-                 << config -> number_of(CPUS)
+                 << config -> check_current_cpus()
                  << "\n- Log file                            = "
                  << config -> control_key_of(config -> state_of(OUTPUT_MODE))
                  << "\n- Log filename                        = "

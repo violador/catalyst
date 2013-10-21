@@ -51,6 +51,10 @@ class timer
 //  Declaring the class constructor:
     timer(settings &runtime_setup, std::string given_name = "");
 //
+//  init(): To init a timer when constructed by the empty constructor.
+    void init(settings &runtime_setup, std::string given_name = "");
+//
+//  get(): To return the measured time. 
     std::string get(unsigned int option, unsigned int measurement_number = 0);
 //
 //  Defining some alias for the get() member function options:
@@ -64,5 +68,6 @@ class timer
     #include "timer__start.cpp"
     #include "timer__stop.cpp"
     #include "timer__set_name.cpp"
+    #include "timer__basic_assignment.cpp"
 };
 #endif

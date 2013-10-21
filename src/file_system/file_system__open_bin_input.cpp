@@ -2,13 +2,13 @@
 //
 //
 //
-void file_system::open_bin_output(std::fstream &file)
+void file_system::open_bin_input(std::fstream &file)
 {
     switch(no_file)
     {
         case false:
         std::string temp_filename = root_path + relative_path;
-        file.std::fstream::open(temp_filename.c_str(), std::fstream::out | std::ios::binary | std::ios::app);
+        file.std::fstream::open(temp_filename.c_str(), std::fstream::in | std::ios::binary | std::ios::app);
         if(file.std::fstream::is_open() and file.std::fstream::good())
         {
             fstream_created = true;
@@ -19,14 +19,14 @@ void file_system::open_bin_output(std::fstream &file)
 //
 //
 //
-void file_system::open_bin_output()
+void file_system::open_bin_input()
 {
     switch(no_file)
     {
         case false:
         std::string temp_filename = root_path + relative_path;
-        output.std::fstream::open(temp_filename.c_str(), std::fstream::out | std::ios::binary | std::ios::app);
-        if(output.std::fstream::is_open() and output.std::fstream::good())
+        input.std::fstream::open(temp_filename.c_str(), std::fstream::in | std::ios::binary | std::ios::app);
+        if(input.std::fstream::is_open() and input.std::fstream::good())
         {
             fstream_created = true;
         }

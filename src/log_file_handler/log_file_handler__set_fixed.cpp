@@ -3,9 +3,14 @@
 //
 inline void set_fixed()
 {
-    if(log_file_ready)
+    switch(log_file_ready)
     {
-        log_file.precision(config -> numeric_precision());
-        log_file << std::fixed;
+        case false: break;
+        case  true:
+        {
+            log_file.precision(config -> numeric_precision());
+            log_file << std::fixed;
+        }
+        break;
     }
 };

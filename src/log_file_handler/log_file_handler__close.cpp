@@ -3,9 +3,14 @@
 //
 inline void close()
 {
-    if(log_file_ready)
+    switch(log_file_ready)
     {
-        log_file.close();
-        log_file_ready = false;
+        case false: break;
+        case  true:
+        {
+            log_file.close();
+            log_file_ready = false;
+        }
+        break;
     }
 };

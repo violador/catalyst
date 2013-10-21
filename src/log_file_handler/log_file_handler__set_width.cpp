@@ -3,8 +3,9 @@
 //
 inline void set_width(unsigned int given_width)
 {
-    if(log_file_ready)
+    switch(log_file_ready)
     {
-        log_file.width(given_width);
+        case false: break;
+        case  true: log_file.width(given_width); break;
     }
 };

@@ -33,6 +33,7 @@ private:
     bool no_valid_path;                    // The path state, true if a no valid path is given. False otherwise.
     bool no_file;                          // The file state, true if there is no file. False otherwise.
     bool fstream_created;                  // The fstream creation state, true if a fstream file was created. False otherwise.
+//
 public:
 //
 //  Class identifier:
@@ -52,15 +53,36 @@ public:
 //                     open as plain text to write only.
     void open_txt_output(std::fstream &file);
 //
+//
+    void open_txt_output();
+//
 //  open_txt_output(): To open the current file (if any) and to store its
 //                     current fstream object in the given one. It will be
 //                     open as plain text to read only.
     void open_txt_input(std::fstream &file);
 //
+//  
+    void open_txt_input();
+//
 //  open_bin_output(): To open the current file (if any) and to store its
 //                     current fstream object in the given one. It will be
 //                     open as binary to write only.
     void open_bin_output(std::fstream &file);
+//
+//
+    void open_bin_output();
+//
+//
+    void open_bin_input(std::fstream &file);
+//
+//
+    void open_bin_input();
+//
+//
+    std::fstream input;
+//
+//
+    std::fstream output;
 //
 //  Including the inline/template/public member functions:
     #include "file_system__extension.cpp"
@@ -77,5 +99,6 @@ public:
     #include "file_system__close.cpp"
     #include "file_system__is_open.cpp"
     #include "file_system__my_size.cpp"
+//
 };
 #endif

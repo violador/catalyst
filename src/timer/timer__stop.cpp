@@ -45,5 +45,5 @@ inline void stop()
                                                                                   "%p")));
             }
         }
-    } // if()
+    } // if(not stopped)
 };

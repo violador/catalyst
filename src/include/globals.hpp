@@ -48,6 +48,7 @@
     #define DEFAULT_ARRAY_NAME   "Unknown array"    // The default array name while the user do not set they own.
     #define DEFAULT_NO_FILENAME  "no such filename" // The default content of std::string filenames for no valid files.
     #define DEFAULT_TIMER_LENGTH 10                 // The default length of time measurements for benchmarks.
+    #define DEFAULT_THEORY_LEVEL "STO-3G"           // The default level of theory for ab-initio calculations.
     #define WARNING_MSG_TITLE    "WARNING: "        // The warning mensage title.
     #define ON_KEY_CONTROL       "on"               // The true pattern used in the config file.
     #define OFF_KEY_CONTROL      "off"              // The false pattern used in the config file (not really needed).

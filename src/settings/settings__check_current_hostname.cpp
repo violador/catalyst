@@ -1,3 +1,17 @@
+// ../src/settings/settings__check_current_hostname.cpp --------------------------------- //
+//
+// File author: Humberto Jr. 
+//
+// Date: 07/2013
+//
+// Description: The settings's member to check the current PC name. This fun-
+//              ction may or may not be system-dependent. In such case the 
+//              implementation should come enclosed between the respective OS
+//              macro.
+//
+// References:
+//
+// ------------------------------------------------------------------------------------- //
 //
 //
 //

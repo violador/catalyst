@@ -3,9 +3,14 @@
 //
 inline void set_right()
 {
-    if(log_file_ready)
+    switch(log_file_ready)
     {
-        log_file.fill(' ');
-        log_file << std::right;
+        case false: break;
+        case  true:
+        {
+            log_file.fill(' ');
+            log_file << std::right;
+        }
+        break;
     }
 };

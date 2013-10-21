@@ -82,9 +82,23 @@ settings::settings()
 //
         #pragma omp section
         {
-            input_filename = read_preference("inputname=", 
-                                             pattern_length("inputname="), 
-                                             DEFAULT_NOT_DEFINED);
+            tools check, convert;
+            if(total_tasks >= 1)
+            {
+                input_filename = new std::string[total_tasks];
+                for(unsigned int task_counter = 1; task_counter <= total_tasks; task_counter++)
+                {
+                    std::string input_counter = "input" + convert.to_string_from(task_counter) + "=";
+                    input_filename[task_counter - 1] = read_preference(input_counter,
+                                                                       check.pattern_length(input_counter), 
+                                                                       DEFAULT_NO_FILENAME);
+                }
+            }
+            else
+            {
+                input_filename = new std::string[1];
+                input_filename[0] = DEFAULT_NO_FILENAME;
+            }
         }
 //
         #pragma omp section
@@ -103,13 +117,23 @@ settings::settings()
 //
         #pragma omp section
         {
-            if(total_tasks > 0)
+            if(total_tasks >= 1)
             {
+                tools check, convert;
                 theory_level = new unsigned int[total_tasks];
+                for(unsigned int task_counter = 0; task_counter < total_tasks; task_counter++)
+                {
+                    std::string level_counter = "level" + convert.to_string_from(task_counter + 1) + "=";
+                    theory_level[task_counter] = theory_database(read_preference(level_counter,
+                                                                                 check.pattern_length(level_counter),
+                                                                                 DEFAULT_THEORY_LEVEL));
+                }
+
             }
             else
             {
-                theory_level = 0;
+                theory_level = new unsigned int[1];
+                theory_level[0] = 1; 
             }
         }
 //
