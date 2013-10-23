@@ -90,22 +90,6 @@ class settings
     std::string theory_database(const unsigned int &option);
     unsigned int theory_database(const std::string &option);
 //
-//  Including the inline/template/public member functions: 
-    #include "settings__numeric_precision.cpp"
-    #include "settings__scf_convergence_criteria.cpp"
-    #include "settings__task_level.cpp"
-    #include "settings__my_size.cpp"
-    #include "settings__state_of.cpp"
-    #include "settings__number_of.cpp"
-    #include "settings__dir_path_of.cpp"
-    #include "settings__filename_of.cpp"
-    #include "settings__control_key_of.cpp"
-    #include "settings__check_current_username.cpp"
-    #include "settings__check_current_hostname.cpp"
-    #include "settings__check_current_time.cpp"
-    #include "settings__check_current_cpus.cpp"
-    #include "settings__check_current_memory.cpp"
-//
 //  Defining some alias for the dir_path_of() member function options:
     #define SCRATCH 1
     #define WORK    2
@@ -126,5 +110,22 @@ class settings
 //
 //  Defining some alias for the number_of() member function options:
     #define TASKS 1
+//
+//  Including the inline/template/public member functions: 
+    #include "settings__numeric_precision.cpp"
+    #include "settings__scf_convergence_criteria.cpp"
+    #include "settings__task_level.cpp"
+    #include "settings__my_size.cpp"
+    #include "settings__state_of.cpp"
+    #include "settings__number_of.cpp"
+    #include "settings__dir_path_of.cpp"
+    #include "settings__filename_of.cpp"
+    #include "settings__control_key_of.cpp"
+    #include "settings__check_current_username.cpp"
+    #include "settings__check_current_hostname.cpp"
+    #include "settings__check_current_time.cpp"
+    #include "settings__check_current_cpus.cpp"
+    #include "settings__check_current_memory.cpp"
+//
 };
 #endif

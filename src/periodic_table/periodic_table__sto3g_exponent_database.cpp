@@ -5,7 +5,7 @@
 // Date: 10/2013
 //
 // Description: The setter of default STO-3G exponent values for each 
-//              element shell, from elements H to I (1 - 35).
+//              element shell, from elements H to I (1 - 53).
 //
 // References: EMSL Basis Set Exchange Library.
 //
@@ -14,10 +14,14 @@
 //
 //
 //
-void periodic_table::sto3g_exponent_database(const unsigned int &element)
+void periodic_table::sto3g_exponent_database(const unsigned int &given_element)
 {
-    exponent = new double[sto3g_total_functions(element) + 1];
-    switch(element)
+    switch((given_element >= 1) and (given_element <= STO3G_RANGE))
+    {
+        case false: return; break;
+        case  true: exponent = new double[sto3g_set_size(given_element) + 1]; break;
+    }
+    switch(given_element)
     {
         case 1:
         {
@@ -148,12 +152,12 @@ void periodic_table::sto3g_exponent_database(const unsigned int &element)
             exponent[7] = 12.0401930;
             exponent[8] = 2.7978819;
             exponent[9] = 0.9099580;
-            exponent[10] = 1.4787406;
-            exponent[11] = 0.4125649;
-            exponent[12] = 0.1614751;
-            exponent[13] = 1.4787406;
-            exponent[14] = 0.4125649;
-            exponent[15] = 0.1614751;
+            exponent[10] = 1.47874069;
+            exponent[11] = 0.41256490;
+            exponent[12] = 0.16147510;
+            exponent[13] = 1.47874069;
+            exponent[14] = 0.41256490;
+            exponent[15] = 0.16147510;
         }
         break;
         case 12:
@@ -167,12 +171,12 @@ void periodic_table::sto3g_exponent_database(const unsigned int &element)
             exponent[7] = 15.1218200;
             exponent[8] = 3.5139870;
             exponent[9] = 1.1428570;
-            exponent[10] = 1.3954480;
-            exponent[11] = 0.3893260;
-            exponent[12] = 0.1523800;
-            exponent[13] = 1.3954480;
-            exponent[14] = 0.3893260;
-            exponent[15] = 0.1523800;
+            exponent[10] = 1.39544809;
+            exponent[11] = 0.38932600;
+            exponent[12] = 0.15238000;
+            exponent[13] = 1.39544809;
+            exponent[14] = 0.38932600;
+            exponent[15] = 0.15238000;
         }
         break;
         case 13:
@@ -186,12 +190,12 @@ void periodic_table::sto3g_exponent_database(const unsigned int &element)
             exponent[7] = 18.89939621;
             exponent[8] = 4.391813233;
             exponent[9] = 1.428353970;
-            exponent[10] = 1.3954482930;
-            exponent[11] = 0.3893265318;
-            exponent[12] = 0.1523797659;
-            exponent[13] = 1.3954482930;
-            exponent[14] = 0.3893265318;
-            exponent[15] = 0.1523797659;
+            exponent[10] = 1.39544829309;
+            exponent[11] = 0.38932653180;
+            exponent[12] = 0.15237976590;
+            exponent[13] = 1.39544829309;
+            exponent[14] = 0.38932653180;
+            exponent[15] = 0.15237976590;
         }
         break;
         case 14:
@@ -205,12 +209,12 @@ void periodic_table::sto3g_exponent_database(const unsigned int &element)
             exponent[7] = 23.19365606;
             exponent[8] = 5.389706871;
             exponent[9] = 1.752899952;
-            exponent[10] = 1.4787406220;
-            exponent[11] = 0.4125648801;
-            exponent[12] = 0.1614750979;
-            exponent[13] = 1.4787406220;
-            exponent[14] = 0.4125648801;
-            exponent[15] = 0.1614750979;
+            exponent[10] = 1.47874062209;
+            exponent[11] = 0.41256488010;
+            exponent[12] = 0.16147509790;
+            exponent[13] = 1.47874062209;
+            exponent[14] = 0.41256488010;
+            exponent[15] = 0.16147509790;
         }
         break;
         case 15:
@@ -224,12 +228,12 @@ void periodic_table::sto3g_exponent_database(const unsigned int &element)
             exponent[7] = 28.03263958;
             exponent[8] = 6.514182577;
             exponent[9] = 2.118614352;
-            exponent[10] = 1.7431032310;
-            exponent[11] = 0.4863213771;
-            exponent[12] = 0.1903428909;
-            exponent[13] = 1.7431032310;
-            exponent[14] = 0.4863213771;
-            exponent[15] = 0.1903428909;
+            exponent[10] = 1.74310323109;
+            exponent[11] = 0.48632137710;
+            exponent[12] = 0.19034289090;
+            exponent[13] = 1.74310323109;
+            exponent[14] = 0.48632137710;
+            exponent[15] = 0.19034289090;
         }
         break;
         case 16:
@@ -243,12 +247,12 @@ void periodic_table::sto3g_exponent_database(const unsigned int &element)
             exponent[7] = 33.32975173;
             exponent[8] = 7.745117521;
             exponent[9] = 2.518952599;
-            exponent[10] = 2.0291942740;
-            exponent[11] = 0.5661400518;
-            exponent[12] = 0.2215833792;
-            exponent[13] = 2.0291942740;
-            exponent[14] = 0.5661400518;
-            exponent[15] = 0.2215833792;
+            exponent[10] = 2.02919427409;
+            exponent[11] = 0.56614005180;
+            exponent[12] = 0.22158337920;
+            exponent[13] = 2.02919427409;
+            exponent[14] = 0.56614005180;
+            exponent[15] = 0.22158337920;
         }
         break;
         case 17:
@@ -262,12 +266,12 @@ void periodic_table::sto3g_exponent_database(const unsigned int &element)
             exponent[7] = 38.96041889;
             exponent[8] = 9.053563477;
             exponent[9] = 2.944499834;
-            exponent[10] = 2.1293864950;
-            exponent[11] = 0.5940934274;
-            exponent[12] = 0.2325241410;
-            exponent[13] = 2.1293864950;
-            exponent[14] = 0.5940934274;
-            exponent[15] = 0.2325241410;
+            exponent[10] = 2.12938649509;
+            exponent[11] = 0.59409342740;
+            exponent[12] = 0.23252414100;
+            exponent[13] = 2.12938649509;
+            exponent[14] = 0.59409342740;
+            exponent[15] = 0.23252414100;
         }
         break;
         case 18:
@@ -281,12 +285,12 @@ void periodic_table::sto3g_exponent_database(const unsigned int &element)
             exponent[7] = 45.16424392;
             exponent[8] = 10.49519900;
             exponent[9] = 3.413364448;
-            exponent[10] = 2.6213665180;
-            exponent[11] = 0.7313546050;
-            exponent[12] = 0.2862472356;
-            exponent[13] = 2.6213665180;
-            exponent[14] = 0.7313546050;
-            exponent[15] = 0.2862472356;
+            exponent[10] = 2.62136651809;
+            exponent[11] = 0.73135460500;
+            exponent[12] = 0.28624723560;
+            exponent[13] = 2.62136651809;
+            exponent[14] = 0.73135460500;
+            exponent[15] = 0.28624723560;
         }
         break;
         case 19:

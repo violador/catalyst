@@ -92,7 +92,7 @@ array array::operator *(const array &b)
 {
     if(this -> is_2d_array                          // To check the A array type.
        and b.is_1d_array                            // To check the B array type.
-       and (this -> sizeof_column == b.sizeof_row)) // To check if the
+       and (this -> sizeof_column == b.sizeof_row)) // To check if the A column size fits the B row size.
     {
         array c(this -> sizeof_row, 1);
 //

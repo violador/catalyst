@@ -1,30 +1,62 @@
 //
 //
 //
-inline unsigned int core_electrons(const unsigned int &element)
+inline unsigned int core_electrons(const unsigned int &given_element)
 {
-    if((element > 0) and (element <= total_elements))
+    switch((given_element >= 1) and (given_element <= total_elements))
     {
-        periodic_table::database(element);
-        return element_core_electrons;
+        case false:
+        {
+            return 0;
+        }
+        break;
+        case true:
+        {
+            periodic_table::database(given_element);
+            return element_core_electrons;
+        }
+        break;
     }
-    else
-    {
-        return 0;
-    }
-}
+};
 //
 //
 //
-inline unsigned int valence_electrons(const unsigned int &element)
+inline unsigned int valence_electrons(const unsigned int &given_element)
 {
-    if((element > 0) and (element <= total_elements))
-    {       
-        periodic_table::database(element);
-        return element_valence_electrons;
-    }
-    else
+    switch((given_element >= 1) and (given_element <= total_elements))
     {
-        return 0;
+        case false:
+        {
+            return 0;
+        }
+        break;
+        case true:
+        {
+            periodic_table::database(given_element);
+            return element_valence_electrons;
+        }
+        break;
     }
-}
+};
+//
+//
+//
+inline unsigned int core_electrons()
+{
+    switch(standard_database_ready)
+    {
+        case false: return 0; break;
+        case  true: return element_core_electrons; break;
+    }
+};
+//
+//
+//
+inline unsigned int valence_electrons()
+{
+    switch(standard_database_ready)
+    {
+        case false: return 0; break;
+        case  true: return element_valence_electrons; break;
+    }
+};

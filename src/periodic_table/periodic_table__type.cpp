@@ -3,12 +3,15 @@
 //
 inline unsigned int type(const std::string &given_symbol)
 {
-    for(unsigned int i = 1; i <= total_elements; i++)
+    unsigned int i = 0, type_found = 0;
+    #pragma omp parallel for private(i) ordered schedule(dynamic)
+    for(i = 1; i <= total_elements; i++)
     {
-        if(symbol(i) == given_symbol)
+        switch(given_symbol.compare(symbol(i)))
         {
-            return i;
+            case false: type_found = i; break;
+            case  true: break;
         }
     }
-    return 0;
+    return type_found;
 }

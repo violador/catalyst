@@ -3,8 +3,9 @@
 //
 inline void stop()
 {
-    if(not stopped)
+    switch(stopped)
     {
+        case false:
         chronometer.boost::timer::cpu_timer::stop();
         #pragma omp parallel sections num_threads(5)
         {
@@ -45,5 +46,6 @@ inline void stop()
                                                                                   "%p")));
             }
         }
-    } // if(not stopped)
+        break;
+    }
 };

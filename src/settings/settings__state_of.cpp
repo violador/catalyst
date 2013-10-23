@@ -5,13 +5,13 @@ inline bool state_of(const unsigned int option)
 {
     switch(option)
     {
-        case 1: return output_mode_on;      break;
-        case 2: return vibration_mode_on;   break;
-        case 3: return rotation_mode_on;    break;
-        case 4: return translation_mode_on; break;
-        case 5: return debug_mode_on;       break;
-        case 6: return highend_mode_on;     break;
-        case 7: return standby_mode_on;     break;
-       default: return false;
+        case      OUTPUT_MODE: return output_mode_on;      break;
+        case   VIBRATION_MODE: return vibration_mode_on;   break;
+        case  ROTATIONAL_MODE: return rotation_mode_on;    break;
+        case TRANSLATION_MODE: return translation_mode_on; break;
+        case       DEBUG_MODE: return debug_mode_on;       break;
+        case     HIGHEND_MODE: return highend_mode_on;     break;
+        case     STANDBY_MODE: return standby_mode_on;     break;
+                      default: return false;
     }
 };

@@ -3,10 +3,12 @@
 //
 inline void start()
 {
-    if(stopped)
+    switch(stopped)
     {
+        case true:
         stopped = false;
         counter++;
         chronometer.boost::timer::cpu_timer::start();
+        break;
     }
 };

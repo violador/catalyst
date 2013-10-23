@@ -3,13 +3,29 @@
 //
 inline double mass(const unsigned int &element)
 {
-    if((element > 0) and (element <= total_elements))
+    switch((element >= 1) and (element <= total_elements))
     {
-        periodic_table::database(element);
-        return element_mass;
+        case false:
+        {
+            return 0.0;
+        }
+        break;
+        case true:
+        {
+            periodic_table::database(element);
+            return element_mass;
+        }
+        break;
     }
-    else
+};
+//
+//
+//
+inline double mass()
+{
+    switch(standard_database_ready)
     {
-        return 0.0;
+        case false: return 0.0; break;
+        case  true: return element_mass; break;
     }
-}
+};

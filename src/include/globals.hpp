@@ -60,6 +60,7 @@
     #define BYTE_TO_KILOBYTE     0.0009765625       // The byte to kilobyte conversion factor, B*(1 kB/1024 B).
     #define BYTE_TO_MEGABYTE     0.000000954        // The byte to megabyte conversion factor, B*(1 MB/1048576 B).
     #define LINUX_MEMINFO_FILE   "/proc/meminfo"    // The system memory information file.
+    #define STO3G_RANGE          53
 //
     #ifndef EXIT_SUCCESS
         #define EXIT_SUCCESS     0                  // Tag for success operations.

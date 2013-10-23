@@ -2,9 +2,10 @@
 //
 //
 //
-void periodic_table::database(const unsigned int &element)
+void periodic_table::database(const unsigned int &given_element)
 {
-    switch(element)
+    standard_database_ready = true;
+    switch(given_element)
     {
     case 1:
     {

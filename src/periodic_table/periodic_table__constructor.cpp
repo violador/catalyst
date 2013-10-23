@@ -4,45 +4,58 @@
 //
 periodic_table::periodic_table()
 {
-    element_symbol = "";
-    element_name = "";
-    element_config = "";
-    element_core_electrons = 0;
-    element_valence_electrons = 0;
-    element_mass = 0.0;
-    covalent_radius = 0.0;
+    init_data();
 }
 //
 //
 //
-periodic_table::periodic_table(unsigned int &wavefunction_type, unsigned int &element)
+periodic_table::periodic_table(const unsigned int &given_element)
 {
-    #pragma omp parallel sections num_threads(3)
+    init_data();
+    database(given_element);
+}
+//
+//
+//
+periodic_table::periodic_table(const unsigned int &given_theory_level, const unsigned int &given_element)
+{
+    switch((given_element >= 1) and (given_element <= total_elements))
     {
-        #pragma omp section
+        case true:
+        init_data();
+        basis_database_ready = true;
+        #pragma omp parallel sections num_threads(4)
         {
-            switch(wavefunction_type)
+            #pragma omp section
             {
-                case 1: sto3g_exponent_database(element); break;
+                switch(given_theory_level)
+                {
+                    case 1: sto3g_exponent_database(given_element); break;
+                  //case 2: sto2g_exponent_database(given_element); break;
+                  //case 3: sto1g_exponent_database(given_element); break;
+                }
+            }
+            #pragma omp section
+            {
+                switch(given_theory_level)
+                {
+                    case 1: sto3g_coefficient_database(given_element); break;
+                  //case 2: sto2g_coefficient_database(given_element); break;
+                  //case 3: sto1g_coefficient_database(given_element); break;
+                }
+            }
+            #pragma omp section
+            {
+                switch(given_theory_level)
+                {
+                    case 1: total_functions = sto3g_set_size(given_element); break;
+                }
+            }
+            #pragma omp section
+            {
+                database(given_element);
             }
         }
-        #pragma omp section
-        {
-            switch(wavefunction_type)
-            {
-                case 1: /*sto3g_coefficient_database(element);*/ break;
-            }
-        }
-        #pragma omp section
-        {
-            switch(wavefunction_type)
-            {
-                case 1: total_functions = sto3g_total_functions(element); break;
-            }
-        }
-        #pragma omp section
-        {
-            database(element);
-        }
+        break;
     }
 }

@@ -1,15 +1,31 @@
 //
 //
 //
-inline std::string name(const unsigned int &element)
+inline std::string name(const unsigned int &given_element)
 {
-    if((element > 0) and (element <= total_elements))
+    switch((given_element >= 1) and (given_element <= total_elements))
     {
-        periodic_table::database(element);
-        return element_name;
+        case false:
+        {
+            return "";
+        }
+        break;
+        case true:
+        {
+            periodic_table::database(given_element);
+            return element_name;
+        }
+        break;
     }
-    else
+};
+//
+//
+//
+inline std::string name()
+{
+    switch(standard_database_ready)
     {
-        return 0;
+        case false: return ""; break;
+        case  true: return element_name; break;
     }
-}
+};
