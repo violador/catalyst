@@ -52,7 +52,6 @@ struct log_file_handler
     void init_log_file();
 //
 //  Including the inline/template/public member functions:
-    #include "log_file_handler__report.cpp"
     #include "log_file_handler__write.cpp"
     #include "log_file_handler__exists.cpp"    
     #include "log_file_handler__set_scientific_notation.cpp"

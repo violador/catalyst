@@ -59,11 +59,11 @@ void algorithm::scf::report_scf_iterations()
 //
                     log_file.width(SECOND_COLUMN_LENGTH + SPACE_LENGTH + 7); // +7 characters space to add "(a.u.)".
                     log_file.precision(config -> numeric_precision());
-                    log_file << std::right << scf_energy.get(i);
+                    log_file << std::right << scf_energy[i];
 //
                     log_file.width(THIRD_COLUMN_LENGTH + SPACE_LENGTH);
                     log_file.precision(config -> numeric_precision());
-                    log_file << std::right << get.module(scf_energy.get(i), scf_energy.get(i - 1)) << std::endl;
+                    log_file << std::right << get.module(scf_energy[i], scf_energy[i - 1]) << std::endl;
 //
 //                  log_file.width(SPACE_LENGTH);
 //                  log_file.precision();

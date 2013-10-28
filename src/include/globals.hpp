@@ -140,7 +140,9 @@
     #define GSL_RANGE_CHECK_OFF
 //
 //  Multi-task/core controls:
-    #ifndef USE_OMP
+    #ifdef USE_OMP
+        #define omp_set_nested()
+    #else
         #define omp_get_thread_num() 0
     #endif
 //

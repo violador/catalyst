@@ -1,15 +1,18 @@
-#include "scf.hpp"
 //
 //
 //
-double algorithm::scf::energy() 
+inline double energy() 
 {
-    return scf_energy.get(iteration);
-}
+    return scf_energy[iteration];
+};
 //
 //
 //
-double algorithm::scf::energy(const unsigned int &scf_iteration)
+inline double energy(const unsigned int &given_iteration)
 {
-    return scf_energy.get(scf_iteration);
-} 
+    switch((given_iteration >= 1) and (given_iteration <= iteration))
+    {
+        case false: return 0.0; break;
+        case  true: return scf_energy[given_iteration]; break;
+    }
+}; 

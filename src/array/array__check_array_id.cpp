@@ -3,5 +3,9 @@
 //
 inline unsigned int check_array_id()
 {
-    return (not deleted_array? array_id : 0);
+    switch(not deleted_array)
+    {
+        case false: return 0; break;
+        case  true: return array_id; break;
+    }
 };

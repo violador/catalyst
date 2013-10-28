@@ -8,34 +8,42 @@ void array::delete_array()
     {
         #pragma omp section
         {
-            if(is_1d_array)
+            switch(is_1d_array)
             {
+                case true:
                 delete_1d_array();
                 deleted_array = true;
+                break;
             }
         }
         #pragma omp section
         {
-            if(is_2d_array)
+            switch(is_2d_array)
             {
+                case true:
                 delete_2d_array();
                 deleted_array = true;
+                break;
             }
         }
         #pragma omp section
         {
-            if(is_3d_array)
+            switch(is_3d_array)
             {
+                case true:
                 delete_3d_array();
                 deleted_array = true;
+                break;
             }
         }
         #pragma omp section
         {
-            if(is_4d_array)
+            switch(is_4d_array)
             {
+                case true:
                 delete_4d_array();
                 deleted_array = true;
+                break;
             }
         }
     }

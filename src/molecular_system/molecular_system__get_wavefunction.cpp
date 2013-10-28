@@ -4,25 +4,17 @@
 //
 void molecular_system::get_wavefunction()
 {
-    global_log::file.write_debug_msg("molecular_system::get_wavefunction(): Theory level = ", config -> task_level(task_number));
-    switch(config -> task_level(task_number))
-    {
-        case 1:
-        {
-            if(atom_types_ready and atom_positions_ready)
-            {
-                global_log::file.write("- Task ", task_number, " > STO-3G level of theory");
-                lcao_wavefunction::sto3g psi(total_atoms, position_x, position_y, position_z, atom_type, *config);
-                //wavefunction = &psi.lcao_wavefunction::sto3g::ab_initio_calculation;
-                ab_initio_ready = true;
-            }
-        }
-        break;
-/*
-        case 2: // Use this template to add new levels.
-        {
-        }
-        break;
-*/
-    }
+//
+    global_log::file.write_debug_msg("molecular_system::get_wavefunction(): Level of theory = ", 
+                                     config -> task_level(task_number));
+//
+    global_log::file.write("- Task ", task_number, " > STO-3G level of theory");
+    lcao_wavefunction psi(atom_type, 
+                          position_x, 
+                          position_y, 
+                          position_z, 
+                          config -> task_level(task_number));
+    array* s_matrix = psi.lcao_wavefunction::get_overlap_matrix();
+    array* h_matrix = psi.lcao_wavefunction::get_core_hamiltonian_matrix();
+    array* v_matrix = psi.lcao_wavefunction::get_two_electron_repulsion_matrix();
 }

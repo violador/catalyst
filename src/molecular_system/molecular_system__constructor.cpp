@@ -4,21 +4,10 @@
 //
 molecular_system::molecular_system(const std::string &input_filename)
 {
-    global_log::file.write_debug_msg("molecular_system::molecular_system(): No settings type variable was given...",
-                                     "molecular_system::molecular_system():: Invoking settings::settings()");
-    settings runtime_setup;
-    molecular_system(input_filename, runtime_setup);
-}
-//
-//
-//
-molecular_system::molecular_system(const std::string &input_filename, settings &runtime_setup)
-{
-    config = &runtime_setup;
-    constructor_time.timer::init(runtime_setup);
 //
     constructor_time.timer::start();
 //
+    config = &global_settings::config;
     #pragma omp parallel sections num_threads(8)
     {
         #pragma omp section
@@ -80,26 +69,22 @@ molecular_system::molecular_system(const std::string &input_filename, settings &
 //
 //
 //
-molecular_system::molecular_system(const unsigned int &task, settings &runtime_setup)
+molecular_system::molecular_system(const unsigned int &given_task)
 {
-    #pragma omp parallel sections num_threads(4)
+    #pragma omp parallel sections num_threads(3)
     {
         #pragma omp section
         {
-            task_number = task;
+            task_number = given_task;
         }
         #pragma omp section
         {
-            config = &runtime_setup;
+            config = &global_settings::config;
         }
         #pragma omp section
         {
-            input.file_system::init(runtime_setup.settings::filename_of(INPUT_FILE, task_number), 
-                                    runtime_setup.settings::dir_path_of(WORK));
-        }
-        #pragma omp section
-        {
-            constructor_time.timer::init(runtime_setup);
+            input.file_system::init(global_settings::config.settings::filename_of(INPUT_FILE, task_number), 
+                                    global_settings::config.settings::dir_path_of(WORK));
         }
     }
 //

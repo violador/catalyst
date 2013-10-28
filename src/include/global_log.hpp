@@ -18,6 +18,7 @@
 #ifndef __GLOBAL_LOG_HPP
     #define __GLOBAL_LOG_HPP
     #include "settings.hpp"
+    #include "global_settings.hpp"
     #include "log_file_handler.hpp"
 //
 //

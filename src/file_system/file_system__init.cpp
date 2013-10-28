@@ -4,15 +4,20 @@
 //
 void file_system::init(std::string given_filename, std::string given_pathname)
 {
-    if(given_filename not_eq "")
+    switch(given_filename not_eq "")
     {
-        filename = given_filename;
-        no_file = false;
-    }
-    else
-    {
-        filename = "";
-        no_file = true;
+        case false:
+        {
+            filename = "";
+            no_file = true;
+        }
+        break;
+        case true:
+        {
+            filename = given_filename;
+            no_file = false;
+        }
+        break;
     }
 //
     boost::filesystem::path file(given_pathname + given_filename);

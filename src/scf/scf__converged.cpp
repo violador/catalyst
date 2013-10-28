@@ -1,8 +1,7 @@
-#include "scf.hpp"
 //
 //
 //
-bool algorithm::scf::converged() 
+inline bool converged() 
 {
     return scf_converged;
 }

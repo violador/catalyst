@@ -16,6 +16,7 @@ void periodic_table::database(const unsigned int &given_element)
         element_valence_electrons = 1;
         element_config            = "1s^1";
         covalent_radius           = 0.32;
+        slater_exponent           = 1.0;
     }
     break;
     case 2:
@@ -27,6 +28,7 @@ void periodic_table::database(const unsigned int &given_element)
         element_valence_electrons = 0;
         element_config            = "1s^2";
         covalent_radius           = 0.93;
+        slater_exponent           = 1.0/*2.0925*/;
     }
     break;
     case 3:

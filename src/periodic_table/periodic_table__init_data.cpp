@@ -10,6 +10,7 @@ inline void init_data()
     element_valence_electrons = 0;
     element_mass = 0.0;
     covalent_radius = 0.0;
+    slater_exponent = 0.0;
     total_functions = 0;
     standard_database_ready = false;
     basis_database_ready = false;

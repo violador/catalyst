@@ -26,6 +26,7 @@
     #define __ARRAY_HPP
     #include "globals.hpp"
     #include "settings.hpp"
+    #include "global_settings.hpp"
     #include "tools.hpp"
     #include "global_log.hpp"
 //
@@ -87,12 +88,6 @@ struct array
                           const unsigned int &j_given,
                           const unsigned int &m_given,
                           const unsigned int &n_given);
-//
-//
-    void resize_array(const unsigned int local_row_size = 0,
-                      const unsigned int local_column_size = 0,
-                      const unsigned int local_1st_layer_size = 0,
-                      const unsigned int local_2nd_layer_size = 0);
 //
 //  Including the inline/template/private member functions: 
     #include "array__init_properties.cpp"
@@ -157,6 +152,12 @@ struct array
 //
 //  check_if(): To check properties (option) in the current array.
     bool check_if(const unsigned int &option);
+//
+//
+    void resize_array(const unsigned int local_row_size = 0,
+                      const unsigned int local_column_size = 0,
+                      const unsigned int local_1st_layer_size = 0,
+                      const unsigned int local_2nd_layer_size = 0);
 //
 //  Defining some alias for the check_if() member function options:
     #define IS_POSITIVE   1

@@ -4,21 +4,29 @@
 template<typename data_type> 
 inline data_type module(const data_type &a, const data_type &b)
 {
-    return (data_type) (GSL_SIGN(a - b) == -1? -1.0*(a - b) : (a - b));
-}
+    switch(GSL_SIGN(a - b) == -1)
+    {
+        case false: return a - b; break;
+        case  true: return -1.0*(a - b); break;
+    }
+};
 //
 //
 //
 template<typename data_type> 
 inline data_type square_module(const data_type &a, const data_type &b)
 {
-    return (data_type) (GSL_SIGN(a - b) == -1? gsl_pow_2(-1.0*(a - b)) : gsl_pow_2(a - b));
-}
+    switch(GSL_SIGN(a - b) == -1)
+    {
+        case false: return gsl_pow_2(a - b); break;
+        case  true: return gsl_pow_2(-1.0*(a - b)); break;
+    }
+};
 //
 //
 //
 template<typename data_type> 
 inline data_type module(const data_type &a, const data_type &b, const data_type &c)
 {
-    return (data_type) sqrt(gsl_pow_2(a) + gsl_pow_2(b) + gsl_pow_2(c));
-}
+    return sqrt(gsl_pow_2(a) + gsl_pow_2(b) + gsl_pow_2(c));
+};

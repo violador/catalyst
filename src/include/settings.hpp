@@ -36,6 +36,7 @@ class settings
     bool debug_mode_on;           // To store the debug mode state (on/off).
     bool highend_mode_on;         // To store the high-end mode state (on/off).
     bool standby_mode_on;         // To store the stand-by mode state (on/off).
+    bool temp_files_on;           // To store the usage of temp files state (on/off).
     unsigned int total_tasks;     // To store the total number of tasks.
     unsigned short int precision; // To store the number precision in the log file.
     std::string log_filename;     // To store the log filename. 
@@ -90,6 +91,9 @@ class settings
     std::string theory_database(const unsigned int &option);
     unsigned int theory_database(const std::string &option);
 //
+//
+    void operator =(settings &given_config);
+//
 //  Defining some alias for the dir_path_of() member function options:
     #define SCRATCH 1
     #define WORK    2
@@ -107,6 +111,7 @@ class settings
     #define DEBUG_MODE       5
     #define HIGHEND_MODE     6
     #define STANDBY_MODE     7
+    #define TEMP_FILES_USAGE 8
 //
 //  Defining some alias for the number_of() member function options:
     #define TASKS 1

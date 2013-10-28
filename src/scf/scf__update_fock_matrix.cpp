@@ -2,7 +2,10 @@
 //
 //
 //
-void algorithm::scf::update_fock_matrix(array &f_matrix, array &h_matrix, array &p_matrix, array &two_electrons_interaction)
+void algorithm::scf::update_fock_matrix(array &f_matrix, 
+                                        array &h_matrix, 
+                                        array &p_matrix, 
+                                        array &v_matrix)
 {
     f_matrix.array::set_all(0.0);
     double energy = 0.0;
@@ -17,11 +20,10 @@ void algorithm::scf::update_fock_matrix(array &f_matrix, array &h_matrix, array 
                 for(n = 1; n <= h_matrix.array::size_of_column(); n++)
                 {
                     #pragma omp atomic
-                    energy += p_matrix.array::get(m, n)
-                            * (two_electrons_interaction.array::get(i, j, n, m) - 0.5*two_electrons_interaction.array::get(i, m, n, j));
+                    energy += p_matrix(m, n)*(v_matrix(i, j, n, m) - 0.5*v_matrix(i, m, n, j));
                 }
             }
-            f_matrix.array::set(i, j, h_matrix.array::get(i, j) + energy);
+            f_matrix(i, j, h_matrix(i, j) + energy);
             energy = 0.0;
         }
     }

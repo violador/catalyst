@@ -4,17 +4,19 @@
 //
 algorithm::scf::scf() 
 {
+    global_log::file.write_debug_msg("algorithm::scf::scf(): Any input data was given!");
+    config = &global_settings::config;
     scf_converged = false;
-    iteration = 0;
+    iteration = 1;
 }
 //
 //
 //
-algorithm::scf::scf(array &h_matrix, array &s_matrix, array &two_electrons_interaction, settings &runtime_setup)
+algorithm::scf::scf(array &h_matrix, array &s_matrix, array &v_matrix)
 {
-    global_log::file.write_debug_msg("algorithm::scf::scf()");
     global_log::file.write_debug_msg("algorithm::scf::scf(): Invoking init()");
+    config = &global_settings::config;
     scf_converged = false;
-    iteration = 0;
-    init(h_matrix, s_matrix, two_electrons_interaction, runtime_setup);
+    iteration = 1;
+    init(h_matrix, s_matrix, v_matrix);
 }

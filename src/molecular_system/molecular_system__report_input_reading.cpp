@@ -4,12 +4,13 @@
 //
 void molecular_system::report_input_reading() 
 {
-    if(config -> state_of(DEBUG_MODE))
+//
+    global_log::file.write_debug_msg("molecular_system::report_input_reading()");
+//
+    #pragma omp critical
+    switch(config -> state_of(OUTPUT_MODE))                                                                   
     {
-        global_log::file.write("@molecular_system::molecular_system(): Invoking report_input_reading()");
-    }
-    if(config -> state_of(OUTPUT_MODE))                                                                   
-    {
+        case true:
         #ifdef FIRST_COLUMN_LENGTH
             #undef FIRST_COLUMN_LENGTH
             #define FIRST_COLUMN_LENGTH 4
@@ -236,5 +237,6 @@ void molecular_system::report_input_reading()
         global_log::file.set_new_line();
         #undef FIRST_COLUMN_LENGTH
         #undef SECOND_COLUMN_LENGTH
-    } // if(not config -> state_of(OUTPUT_MODE)) 
+        break;
+    } 
 }

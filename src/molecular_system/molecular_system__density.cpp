@@ -3,6 +3,7 @@
 //
 inline double density(const unsigned int &i, const unsigned int &j)
 {
+/*
     if(ab_initio_ready 
        and (i > 0) 
        and (i <= number_of_atoms()) 
@@ -16,4 +17,6 @@ inline double density(const unsigned int &i, const unsigned int &j)
         get_wavefunction();
         return (wavefunction -> density_matrix(i, j));
     }
+*/
+    return 0.0;
 };

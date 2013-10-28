@@ -9,9 +9,11 @@ void file_system::open_bin_output(std::fstream &file)
         case false:
         std::string temp_filename = root_path + relative_path;
         file.std::fstream::open(temp_filename.c_str(), std::fstream::out | std::ios::binary | std::ios::app);
-        if(file.std::fstream::is_open() and file.std::fstream::good())
+        switch(file.std::fstream::is_open() and file.std::fstream::good())
         {
+            case true:
             fstream_created = true;
+            break;
         }
         break;
     }
@@ -26,9 +28,11 @@ void file_system::open_bin_output()
         case false:
         std::string temp_filename = root_path + relative_path;
         output.std::fstream::open(temp_filename.c_str(), std::fstream::out | std::ios::binary | std::ios::app);
-        if(output.std::fstream::is_open() and output.std::fstream::good())
+        switch(output.std::fstream::is_open() and output.std::fstream::good())
         {
+            case true:
             fstream_created = true;
+            break;
         }
         break;
     }

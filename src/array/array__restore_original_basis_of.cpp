@@ -4,8 +4,9 @@
 //
 void array::restore_original_basis_of(array &given_array)
 {
-    if(not given_array.is_const_array)
+    switch(not given_array.is_const_array)
     {
+        case true:
         double *array_buffer = new double[given_array.sizeof_row*given_array.sizeof_column];
         gsl_matrix_view gsl_buffer_view = gsl_matrix_view_array(array_buffer, given_array.sizeof_row, given_array.sizeof_column);
         gsl_matrix_set_zero(&gsl_buffer_view.matrix);
@@ -27,5 +28,6 @@ void array::restore_original_basis_of(array &given_array)
                     given_array.sizeof_column);
 //
         delete[] array_buffer;
+        break;
     }
 }

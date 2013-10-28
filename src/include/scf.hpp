@@ -14,6 +14,7 @@
 #ifndef __SCF_HPP
     #define __SCF_HPP
     #include "settings.hpp"
+    #include "global_settings.hpp"
     #include "tools.hpp"
     #include "array.hpp"
     #include "global_log.hpp"
@@ -27,14 +28,14 @@ namespace algorithm
         private:
 //
 //      Declaring the data members:
-        settings *config;       // An empty object to the settings class.
-        bool scf_converged;     // To store the convergence state (converged/true or not converged/false).  
-        unsigned int iteration; // To store the number of iterations.
-        array scf_energy;       // To store the SCF energy for each iteration.
-        array p_matrix;         // To store the density matrix.
-        array f_matrix;         // To store the Fock matrix.
-        array f_eigenvalues;    // To store the Fock eigenvalues.
-        array f_eigenvectors;   // To store the Fock eigenvectors.
+        settings *config;                          // An empty object to the settings class.
+        bool scf_converged;                        // To store the convergence state (converged/true or not converged/false).  
+        unsigned int iteration;                    // To store the number of iterations.
+        std::map<unsigned int, double> scf_energy; // To store the SCF energy for each iteration.
+        array p_matrix;                            // To store the density matrix.
+        array f_matrix;                            // To store the Fock matrix.
+        array f_eigenvalues;                       // To store the Fock eigenvalues.
+        array f_eigenvectors;                      // To store the Fock eigenvectors.
 //
 //      roothaan_equation_solver(): Given a Core-Hamiltonian matrix, an overlap matrix and a
 //                                  multidimensional array with all two electron interaction
@@ -67,43 +68,17 @@ namespace algorithm
 //
         public:
 //
+//      Class identifier:
         static const int id = 13836;
 //
 //      Declaring the overloaded class constructor:
         scf();
 //
 //      Declaring the overloaded class constructor:
-        scf(settings &runtime_setup);
-//
-//      Declaring the overloaded class constructor:
-        scf(array &core_hamiltonian, array &overlap, array &two_electrons_interaction, settings &runtime_setup);
-//
-//      init_scf(): To start the iterative procedure if the class was invoked by the empty constructor.
-        void init(array &core_hamiltonian, array &overlap, array &two_electrons_interaction, settings &runtime_setup);
-//
-//      number_of_iterations(): To get the number of iterations used.
-        unsigned int number_of_iterations();
-//
-//      converged(): To get the convergence state.
-        bool converged();
-//
-//      energy(): To get the converged energy.
-        double energy();
-//
-//      energy(): To get the energy of a given iterative step.
-        double energy(const unsigned int &scf_iteration);
-//
-//      density_matrix(): To get the ith and jth element of the converged density matrix.
-        double density_matrix(const unsigned int &i, const unsigned int &j);   
-//
-//      fock_matrix(): To get the ith and jth element of the converged Fock matrix.
-        double fock_matrix(const unsigned int &i, const unsigned int &j);
+        scf(array &h_matrix, array &s_matrix, array &v_matrix);
 //
 //      orbital_energy(): To get the energy of a given orbital.
         double mo_energy(const unsigned int &mo_number);
-//
-//      save_density_to(): To write the density matrix in a given file.
-        void save_density_to(const std::string &filename);
 //
 //      check_mo_type(): To check if all the signs coefficients of a given molecular orbital are positive
 //                       (bonding type), negative (bonding type) or positive/negative (antibonding type).
@@ -121,6 +96,15 @@ namespace algorithm
 //
 //
         unsigned int highest_mo();
+//
+//      Including the inline/template/public member functions:
+        #include "scf__init.cpp"
+        #include "scf__get_density_matrix.cpp"
+        #include "scf__number_of_iterations.cpp"
+        #include "scf__get_fock_matrix.cpp"
+        #include "scf__energy.cpp"
+        #include "scf__converged.cpp"
+//
     };
 }
 #endif

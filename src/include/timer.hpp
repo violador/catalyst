@@ -19,6 +19,7 @@
 #ifndef __TIMER_HPP
     #define __TIMER_HPP
     #include "settings.hpp"
+    #include "global_settings.hpp"
 //
 //
 //
@@ -46,13 +47,10 @@ class timer
     static const int id = 25939;
 //
 //  Declaring the class constructor:
-    timer();
-//
-//  Declaring the class constructor:
-    timer(settings &runtime_setup, std::string given_name = "");
+    timer(std::string given_name = "");
 //
 //  init(): To init a timer when constructed by the empty constructor.
-    void init(settings &runtime_setup, std::string given_name = "");
+    void init(std::string given_name = "");
 //
 //  get(): To return the measured time. 
     std::string get(unsigned int option, unsigned int measurement_number = 0);

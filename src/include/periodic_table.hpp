@@ -16,6 +16,7 @@
 #ifndef __PERIODIC_TABLE_HPP
     #define __PERIODIC_TABLE_HPP
     #include "globals.hpp"
+    #include "global_log.hpp"
 //
 //
 //
@@ -30,8 +31,10 @@ class periodic_table
     unsigned int element_core_electrons;            // The number of core electrons for the given element.
     unsigned int element_valence_electrons;         // The number of valence electrons for the given element.
     unsigned int total_functions;                   // The basis's number of primitive functions for the current element.
+    unsigned int current_level;                     // The current level of theory used to init the basis database.
     double *exponent;                               // The basis's exponent set.
     double *coefficient;                            // The basis's coefficient set.
+    double slater_exponent;
     static const unsigned int total_elements = 103; // The total number of elements used until now.
     double element_mass;                            // The atomic mass for the given element.
     double covalent_radius;                         // The atomic radii (covalent) for the given element.
@@ -87,5 +90,7 @@ class periodic_table
     #include "periodic_table__basis_size.cpp"
     #include "periodic_table__function_call.cpp"
     #include "periodic_table__init_data.cpp"
+    #include "periodic_table__norm.cpp"
+//
 };
 #endif

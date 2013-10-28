@@ -2,9 +2,9 @@
 //
 //
 //
-void timer::init(settings &runtime_setup, std::string given_name)
+void timer::init(std::string given_name)
 {
-    config = &runtime_setup;
+    config = &global_settings::config;
     #pragma omp parallel sections num_threads(7)
     {
         #pragma omp section

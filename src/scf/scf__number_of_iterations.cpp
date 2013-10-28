@@ -1,8 +1,7 @@
-#include "scf.hpp"
 //
 //
 //
-unsigned int algorithm::scf::number_of_iterations() 
+inline unsigned int number_of_iterations() 
 {
     return iteration;
-}
+};

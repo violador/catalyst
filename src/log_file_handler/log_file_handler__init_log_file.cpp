@@ -4,8 +4,10 @@
 // 
 void log_file_handler::init_log_file()
 {
-    if((not file_manager -> exists()) and config -> state_of(OUTPUT_MODE) and log_file_ready)
+    #pragma omp critical
+    switch((not file_manager -> exists()) and config -> state_of(OUTPUT_MODE) and log_file_ready)
     {
+        case true:
 //
         log_file << "\nCatalyst ver. "
                  << CATALYST_VERSION
@@ -62,5 +64,6 @@ void log_file_handler::init_log_file()
                  << config -> my_size()
                  << " kB"
                  << "\n" << std::endl;
-    } // if(file_manager -> exists() and (not config -> state_of(OUTPUT_MODE)) or (not log_file_ready)) 
+        break;
+    } 
 }

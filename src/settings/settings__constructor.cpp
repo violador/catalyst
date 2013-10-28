@@ -5,6 +5,7 @@
 #ifndef USE_MPI
 settings::settings()
 {
+    temp_files_on = true;
     total_tasks = read_number_of("tasksnumber=", 
                                   pattern_length("tasksnumber="), 
                                   0);

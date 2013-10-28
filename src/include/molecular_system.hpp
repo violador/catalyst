@@ -17,8 +17,9 @@
     #define __MOLECULAR_SYSTEM_HPP
     #include "globals.hpp"
     #include "settings.hpp"
+    #include "global_settings.hpp"
     #include "periodic_table.hpp"
-    #include "sto3g.hpp"
+    #include "lcao_wavefunction.hpp"
     #include "scf.hpp"
     #include "tools.hpp"
     #include "global_log.hpp"
@@ -89,10 +90,7 @@ class molecular_system
     molecular_system(const std::string &input_filename);
 //
 //  Declaring the class constructor:
-    molecular_system(const std::string &input_filename, settings &runtime_setup);
-//
-//  Declaring the class constructor:
-    molecular_system(const unsigned int &task, settings &runtime_setup);
+    molecular_system(const unsigned int &given_task);
 //
 //  interatomic_distance(): To return the distance between two given atoms.
     double interatomic_distance(const unsigned int &first_atom, const unsigned int &second_atom);

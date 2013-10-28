@@ -10,8 +10,9 @@ inline void init_properties(const unsigned int local_row_size = 0,
     {
         #pragma omp section
         {
-            if(local_row_size == 0)
+            switch(local_row_size == 0)
             {
+                case true:
                 sizeof_row = 0;
                 sizeof_column = 0;
                 sizeof_1st_layer = 0;
@@ -21,12 +22,14 @@ inline void init_properties(const unsigned int local_row_size = 0,
                 is_2d_array = false;
                 is_3d_array = false;
                 is_4d_array = false;
+                break;
             }
         }
         #pragma omp section
         {
-            if((local_row_size > 0) and (local_column_size == 0))
+            switch((local_row_size > 0) and (local_column_size == 0))
             {
+                case true:
                 sizeof_row = local_row_size;
                 sizeof_column = 0;
                 sizeof_1st_layer = 0;
@@ -36,12 +39,14 @@ inline void init_properties(const unsigned int local_row_size = 0,
                 is_2d_array = false;
                 is_3d_array = false;
                 is_4d_array = false;
+                break;
             }
         }
         #pragma omp section
         {
-            if((local_row_size > 0) and (local_column_size > 0) and (local_1st_layer_size == 0))
+            switch((local_row_size > 0) and (local_column_size > 0) and (local_1st_layer_size == 0))
             {
+                case true:
                 sizeof_row = local_row_size;
                 sizeof_column = local_column_size;
                 sizeof_1st_layer = 0;
@@ -51,12 +56,14 @@ inline void init_properties(const unsigned int local_row_size = 0,
                 is_2d_array = true;
                 is_3d_array = false;
                 is_4d_array = false;
+                break;
             }
         }
         #pragma omp section
         {
-            if((local_row_size > 0) and (local_column_size > 0) and (local_1st_layer_size > 0) and (local_2nd_layer_size == 0))
+            switch((local_row_size > 0) and (local_column_size > 0) and (local_1st_layer_size > 0) and (local_2nd_layer_size == 0))
             {
+                case true:
                 sizeof_row = local_row_size;
                 sizeof_column = local_column_size;
                 sizeof_1st_layer = local_1st_layer_size;
@@ -66,12 +73,14 @@ inline void init_properties(const unsigned int local_row_size = 0,
                 is_2d_array = false;
                 is_3d_array = true;
                 is_4d_array = false;
+                break;
             }
         }
         #pragma omp section
         {
-            if((local_row_size > 0) and (local_column_size > 0) and (local_1st_layer_size > 0) and (local_2nd_layer_size > 0))
+            switch((local_row_size > 0) and (local_column_size > 0) and (local_1st_layer_size > 0) and (local_2nd_layer_size > 0))
             {
+                case true:
                 sizeof_row = local_row_size;
                 sizeof_column = local_column_size;
                 sizeof_1st_layer = local_1st_layer_size;
@@ -81,24 +90,30 @@ inline void init_properties(const unsigned int local_row_size = 0,
                 is_2d_array = false;
                 is_3d_array = false;
                 is_4d_array = true;
+                break;
             }
         }
         #pragma omp section
         {
-            #pragma omp parallel sections num_threads(10)
+            #pragma omp parallel sections num_threads(11)
             {
                 #pragma omp section
                 {
-                    if(local_row_size > 0)
+                    switch(local_row_size > 0)
                     {
-                        tools id, convert;
-                        array_id = (short unsigned int) id.generate_integral_type((long unsigned int) &array_name);
-                        array_filename = "array." + convert.to_string_from(array_id);
-                    }
-                    else
-                    {
-                        array_id = 0;
-                        array_filename = "";
+                        case false:
+                        {
+                            array_id = 0;
+                            array_filename = "";
+                        }
+                        break;
+                        case true:
+                        {
+                            tools id, convert;
+                            array_id = (short unsigned int) id.generate_integral_type((long unsigned int) &array_name);
+                            array_filename = "array." + convert.to_string_from(array_id);
+                        }
+                        break;
                     }
                 }
                 #pragma omp section
@@ -127,7 +142,7 @@ inline void init_properties(const unsigned int local_row_size = 0,
                 }
                 #pragma omp section
                 {
-                    setup_ready = false;
+                    setup_ready = true;
                 }
                 #pragma omp section
                 {
@@ -136,6 +151,10 @@ inline void init_properties(const unsigned int local_row_size = 0,
                 #pragma omp section
                 {
                     temp_filename = "";
+                }
+                #pragma omp section
+                {
+                    config = &global_settings::config;
                 }
             } // pragma omp parallel sections num_threads(9)
         } // pragma omp section 

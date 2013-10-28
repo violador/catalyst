@@ -3,8 +3,9 @@
 //
 inline void unset_constant()
 {
-    if(not deleted_array)
+    switch(not deleted_array)
     {
-        is_const_array = false;
+        case false: break;
+        case  true: is_const_array = false; break;
     }
 };

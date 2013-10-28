@@ -2,16 +2,7 @@
 //
 //
 //
-timer::timer()
+timer::timer(std::string given_name)
 {
-    stopped = true;
-    counter = 0;
-    name = "";
-};
-//
-//
-//
-timer::timer(settings &runtime_setup, std::string given_name)
-{
-    init(runtime_setup, given_name);
+    init(given_name);
 }
