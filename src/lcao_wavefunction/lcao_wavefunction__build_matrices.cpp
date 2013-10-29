@@ -2,11 +2,11 @@
 //
 //
 //
-void lcao_wavefunction::build_matrices(array  &type,
-                                       array  &x,
-                                       array  &y,
-                                       array  &z,
-                                       const unsigned int &given_theory_level)
+void lcao_wavefunction::build_matrices(array &type,
+                                       array &x,
+                                       array &y,
+                                       array &z,
+                                       const unsigned int given_theory_level)
 {
     global_log::file.write_debug_msg("lcao_wavefunction::build_matrices()");
     init_matrices(type.array::size_of_row());

@@ -20,7 +20,6 @@
     #include "global_settings.hpp"
     #include "periodic_table.hpp"
     #include "lcao_wavefunction.hpp"
-    #include "scf.hpp"
     #include "tools.hpp"
     #include "global_log.hpp"
     #include "timer.hpp"
@@ -57,7 +56,7 @@ class molecular_system
     bool atom_velocities_ready;   // The atom velocities reading state. True if it is already done, false otherwise.
     bool total_atoms_ready;       // The total number of atoms calculation state. True if it is already done, false otherwise.
     bool nuclear_repulsion_ready; // The nuclear repulsion calculation state. True if it is already done, false otherwise.
-    algorithm::scf *wavefunction; // A pointer-object to link with any object of algorithm::scf type.
+    lcao_wavefunction lcao_psi;   // The LCAO wavefunction.
     file_system input;            // The input file manager;
     timer constructor_time;       // The timer to measure the construction time.
 //

@@ -2,25 +2,23 @@
 //
 //
 //
-std::string algorithm::scf::check_mo_type(const unsigned int &mo_num) 
+std::string algorithm::scf::check_mo_type(const unsigned int &mo_number) 
 {
-    if((mo_num > 0) && (mo_num <= f_eigenvectors.size_of_row()))
+    switch((mo_number >= 1) and (mo_number <= f_eigenvectors.array::size_of_row()))
     {
-        if(f_eigenvectors.check_if_column_is(IS_POSITIVE, mo_num))
+        case false:
         {
-            return "bonding";
+            return "";
         }
-        else if(f_eigenvectors.check_if_column_is(IS_NEGATIVE, mo_num))
+        case true:
         {
-            return "bonding";
+            switch(f_eigenvectors.array::check_if_column_is(IS_POSITIVE, mo_number)
+                   or f_eigenvectors.array::check_if_column_is(IS_NEGATIVE, mo_number))
+            {
+               case false: return "antibonding"; break;
+               case  true: return "bonding";     break;
+            }
         }
-        else 
-        {
-            return "antibonding";
-        }
-    }
-    else
-    {
-        return "";
+        break;
     }
 }

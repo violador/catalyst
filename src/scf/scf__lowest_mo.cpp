@@ -1,14 +1,11 @@
-#include "scf.hpp"
 //
 //
 //
-unsigned int algorithm::scf::lowest_mo() 
+inline unsigned int lowest_mo() 
 {
-    if(scf_converged)
+    switch(scf_iterations_ready)
     {
-        return f_eigenvalues.get_min_index();
+        case false: return 0; break;                             
+        case  true: return f_eigenvalues.array::get_min_index(); break;
     }
-    {
-        return 0;
-    }
-}
+};

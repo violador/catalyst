@@ -1,4 +1,4 @@
-// ../src/include/lcao_wavefunction.hpp ------------------------------------------------- //
+// ../src/include/lcao_wavefunction.hpp ------------------------------------------------ //
 //
 // File author: Humberto Jr. 
 //
@@ -15,6 +15,7 @@
     #include "settings.hpp"
     #include "global_settings.hpp"
     #include "array.hpp"
+    #include "scf.hpp"
     #include "global_log.hpp"
     #include "periodic_table.hpp"
 //
@@ -24,22 +25,35 @@ class lcao_wavefunction
 {
     private:
 //
-    settings *config;
-    array s_matrix;
-    array t_matrix;
-    array v_matrix1;
-    array v_matrix2;
-    array h_matrix;
-    unsigned int current_level;
-    bool overlap_matrix_ready;
-    bool kinetic_matrix_ready;
-    bool hamiltonian_matrix_ready;
-    bool repulsion_matrix1_ready;
-    bool repulsion_matrix2_ready;
+//  Declaring the data members:
+    settings *config;                 //
+    array s_matrix;                   //
+    array t_matrix;                   //
+    array v_matrix1;                  //
+    array v_matrix2;                  //
+    array h_matrix;                   //
+    array *f_matrix;                  //
+    array *p_matrix;                  //
+    array *wavefunction;              //
+    unsigned int current_level;       //
+    bool overlap_matrix_ready;        //
+    bool kinetic_matrix_ready;        //
+    bool repulsion_matrix1_ready;     //
+    bool repulsion_matrix2_ready;     //
+    bool hamiltonian_matrix_ready;    //
+    algorithm::scf iterative_routine; //
 //
 //  check_matrix_size(): To check the sizes of the given matrices used to store
 //                       the data and to resize it when needed.
     void check_matrix_size(array &given_matrix, const unsigned int &dimension_size);
+//
+//  build_overlap_matrix(): To calculate the overlaping integral, S, and to build the overlap
+//                          matrix.
+    void build_matrices(array &type,
+                        array &x,
+                        array &y,
+                        array &z,
+                        const unsigned int given_theory_level = 1);
 //
 //  Including the inline/template/private member functions:
     #include "lcao_wavefunction__gf_product_const.cpp"
@@ -58,18 +72,20 @@ class lcao_wavefunction
     lcao_wavefunction();
 //
 //  Declaring the class constructor:
-    lcao_wavefunction(array  &type,
-                      array  &x, 
-                      array  &y, 
-                      array  &z, 
+    lcao_wavefunction(array &type,
+                      array &x, 
+                      array &y, 
+                      array &z, 
                       const unsigned int given_theory_level = DEFAULT_TASK_NUMBER);
 //
-//  build_matrices(): To calculate all the matrices.
-    void build_matrices(array &type,
-                        array &x,
-                        array &y,
-                        array &z,
-                        const unsigned int &given_theory_level);
+//  build_hamiltonian_matrix(): To calculate the Core-Hamiltonian, H, matrix.
+    void build_hamiltonian_matrix(array &h_matrix,
+                                  array &type,
+                                  array &x,
+                                  array &y,
+                                  array &z,
+                                  const unsigned int given_theory_level = 1);
+
 //
 //  build_overlap_matrix(): To calculate the overlaping integral, S, and to build the overlap
 //                          matrix.
@@ -113,6 +129,12 @@ class lcao_wavefunction
     #include "lcao_wavefunction__get_core_hamiltonian_matrix.cpp"
     #include "lcao_wavefunction__get_one_electron_repulsion_matrix.cpp"
     #include "lcao_wavefunction__get_two_electron_repulsion_matrix.cpp"
+    #include "lcao_wavefunction__get_density_matrix.cpp"
+    #include "lcao_wavefunction__get_fock_matrix.cpp"
+    #include "lcao_wavefunction__get_wavefunction.cpp"
+    #include "lcao_wavefunction__start_scf_iterations.cpp"
+    #include "lcao_wavefunction__scf_ready.cpp"
+    #include "lcao_wavefunction__energy.cpp"
 //
 };
 #endif

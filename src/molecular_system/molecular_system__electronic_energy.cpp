@@ -3,13 +3,18 @@
 //
 inline double electronic_energy()
 {
-    if(ab_initio_ready)
+    switch(lcao_psi.lcao_wavefunction::scf_ready())
     {
-        return wavefunction -> energy();
-    }
-    else
-    {
-        get_wavefunction();
-        return wavefunction -> energy();
+        case false:
+        {
+            get_wavefunction();
+            return lcao_psi.lcao_wavefunction::energy();
+        }
+        break;
+        case true:
+        {
+            return lcao_psi.lcao_wavefunction::energy();
+        }
+        break;
     }
 };

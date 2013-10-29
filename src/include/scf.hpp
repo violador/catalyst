@@ -13,11 +13,13 @@
 // ------------------------------------------------------------------------------------- //
 #ifndef __SCF_HPP
     #define __SCF_HPP
+    #include "globals.hpp"
     #include "settings.hpp"
     #include "global_settings.hpp"
-    #include "tools.hpp"
     #include "array.hpp"
+    #include "tools.hpp"
     #include "global_log.hpp"
+    #include "timer.hpp"
 //
 //
 //
@@ -30,12 +32,14 @@ namespace algorithm
 //      Declaring the data members:
         settings *config;                          // An empty object to the settings class.
         bool scf_converged;                        // To store the convergence state (converged/true or not converged/false).  
+        bool scf_iterations_ready;                 // To store the current iterations state (running/true or not running/false).
         unsigned int iteration;                    // To store the number of iterations.
         std::map<unsigned int, double> scf_energy; // To store the SCF energy for each iteration.
         array p_matrix;                            // To store the density matrix.
         array f_matrix;                            // To store the Fock matrix.
         array f_eigenvalues;                       // To store the Fock eigenvalues.
         array f_eigenvectors;                      // To store the Fock eigenvectors.
+        timer iterations_time;
 //
 //      roothaan_equation_solver(): Given a Core-Hamiltonian matrix, an overlap matrix and a
 //                                  multidimensional array with all two electron interaction
@@ -84,26 +88,18 @@ namespace algorithm
 //                       (bonding type), negative (bonding type) or positive/negative (antibonding type).
         std::string check_mo_type(const unsigned int &mo_number); 
 //
-//      set_config(): To initialize the settings inside the class if it was not did by
-//                    the class constructors.
-        void set_config(settings &runtime_setup)
-        {
-            config = &runtime_setup;
-        };
-//
-//
-        unsigned int lowest_mo();
-//
-//
-        unsigned int highest_mo();
-//
 //      Including the inline/template/public member functions:
-        #include "scf__init.cpp"
+        #include "scf__start_iterations.cpp"
         #include "scf__get_density_matrix.cpp"
         #include "scf__number_of_iterations.cpp"
         #include "scf__get_fock_matrix.cpp"
         #include "scf__energy.cpp"
         #include "scf__converged.cpp"
+        #include "scf__get_wavefunction.cpp"
+        #include "scf__highest_mo.cpp"
+        #include "scf__lowest_mo.cpp"
+        #include "scf__set_config.cpp"
+        #include "scf__iterations_ready.cpp"
 //
     };
 }
