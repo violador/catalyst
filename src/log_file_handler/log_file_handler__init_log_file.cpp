@@ -4,6 +4,7 @@
 // 
 void log_file_handler::init_log_file()
 {
+/*
     #pragma omp critical
     switch((not file_manager -> exists()) and config -> state_of(OUTPUT_MODE) and log_file_ready)
     {
@@ -65,5 +66,6 @@ void log_file_handler::init_log_file()
                  << " kB"
                  << "\n" << std::endl;
         break;
-    } 
+    }
+*/ 
 }

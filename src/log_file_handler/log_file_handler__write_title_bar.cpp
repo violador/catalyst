@@ -3,8 +3,9 @@
 //
 inline void write_title_bar(std::string given_title, unsigned int given_size)
 {
-    if(log_file_ready)
+    switch(log_file_ready)
     {
+        case true:
         std::string stamp = timestamp();
         if(given_size > stamp.length() + given_title.length() + 1) 
         {
@@ -23,5 +24,6 @@ inline void write_title_bar(std::string given_title, unsigned int given_size)
             log_file << "\n";
             log_file << std::endl;
         }
+        break;
     }
 };

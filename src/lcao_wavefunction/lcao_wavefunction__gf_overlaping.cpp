@@ -1,9 +1,9 @@
 //
 //
 //
-inline double gf_overlaping(const double &i_exp,
-                            const double &j_exp,
-                            const double &ij_distance)
+inline double gf_overlaping(const double &a, // The m gf exponent.
+                            const double &b, // The n gf exponent.
+                            const double &c) // The i-j atomic distance.
 {
-    return gsl_sf_exp(-i_exp*j_exp*gsl_pow_2(ij_distance)/(i_exp + j_exp))*std::pow(M_PI/(i_exp + j_exp), 1.5);
+    return gsl_sf_exp(-a*b*gsl_pow_2(c)/(a + b))*std::pow(M_PI/(a + b), 1.5);
 };

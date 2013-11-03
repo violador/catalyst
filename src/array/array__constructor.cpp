@@ -4,9 +4,6 @@
 //
 array::array()
 {
-//
-    global_log::file.write_debug_msg("array::array(): No dimensions given. Invoking array::init_properties()");
-//
     init_properties();
 }
 //
@@ -14,11 +11,6 @@ array::array()
 //
 array::array(const unsigned int &local_row_size)
 {
-//
-    global_log::file.write_debug_msg("array::array(): Dimensions requested = 1 by ",
-                                     local_row_size,
-                                     ". Invoking array::init_properties()");
-//
     #pragma omp parallel sections num_threads(2)
     {
         #pragma omp section
@@ -36,13 +28,6 @@ array::array(const unsigned int &local_row_size)
 //
 array::array(const unsigned int &local_row_size, const unsigned int &local_column_size)
 {
-//
-    global_log::file.write_debug_msg("array::array(): Dimensions requested = ",
-                                     local_row_size,
-                                     " by ",
-                                     local_column_size,
-                                     ". Invoking array::init_properties()");
-//
     #pragma omp parallel sections num_threads(2)
     {
         #pragma omp section
@@ -60,15 +45,6 @@ array::array(const unsigned int &local_row_size, const unsigned int &local_colum
 //
 array::array(const unsigned int &local_row_size, const unsigned int &local_column_size, const unsigned int &local_layer_size) 
 {
-//
-    global_log::file.write_debug_msg("array::array(): Dimensions requested = ",
-                                     local_row_size,
-                                     " by ",
-                                     local_column_size,
-                                     " by ",
-                                     local_layer_size,
-                                     ". Invoking array::init_properties()");
-//
     #pragma omp parallel sections num_threads(2)
     {
         #pragma omp section
@@ -89,17 +65,6 @@ array::array(const unsigned int &local_row_size,
              const unsigned int &local_1st_layer_size,
              const unsigned int &local_2nd_layer_size)
 { 
-//
-    global_log::file.write_debug_msg("array::array(): Dimensions requested = ",
-                                     local_row_size,
-                                     " by ",
-                                     local_column_size,
-                                     " by ",
-                                     local_1st_layer_size,
-                                     " by ",
-                                     local_2nd_layer_size,
-                                     ". Invoking array::init_properties()");
-//
     #pragma omp parallel sections num_threads(2)
     {
         #pragma omp section

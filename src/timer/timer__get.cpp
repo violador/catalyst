@@ -8,12 +8,12 @@ std::string timer::get(unsigned int option, unsigned int measurement_number)
     {
         switch(option)
         {
-            case 1: return wall_time[measurement_number];   break;
-            case 2: return system_time[measurement_number]; break;
-            case 3: return user_time[measurement_number];   break;
-            case 4: return cpu_usage[measurement_number];   break;
-            case 5: return name; break;
-           default: return "";
+            case   WALL_TIME: return wall_time[measurement_number];   break;
+            case SYSTEM_TIME: return system_time[measurement_number]; break;
+            case   USER_TIME: return user_time[measurement_number];   break;
+            case   CPU_USAGE: return cpu_usage[measurement_number];   break;
+            case  TIMER_NAME: return name; break;
+                     default: return "";
         }
     }
     else
@@ -21,12 +21,12 @@ std::string timer::get(unsigned int option, unsigned int measurement_number)
         measurement_number = counter;
         switch(option)
         {
-            case 1: return wall_time[measurement_number];   break;
-            case 2: return system_time[measurement_number]; break;
-            case 3: return user_time[measurement_number];   break;
-            case 4: return cpu_usage[measurement_number];   break;
-            case 5: return name; break;
-           default: return "";
+            case   WALL_TIME: return wall_time[measurement_number];   break;
+            case SYSTEM_TIME: return system_time[measurement_number]; break;
+            case   USER_TIME: return user_time[measurement_number];   break;
+            case   CPU_USAGE: return cpu_usage[measurement_number];   break;
+            case  TIMER_NAME: return name; break;
+                     default: return "";
         }
     }
 }

@@ -79,6 +79,9 @@ void algorithm::scf::roothaan_equation_solver(array &h_matrix, array &s_matrix, 
     {
         ++iteration;
         scf_energy.insert(std::pair<unsigned int, double>(iteration, get_energy(p_matrix, h_matrix, f_matrix)));
+//
+        std::cout << "iter = " << iteration << ", energy = " << scf_energy[iteration] << std::endl;
+//
         s_matrix.array::orthonormalize(f_matrix);
         f_matrix.array::save_eigens_to(f_eigenvalues, f_eigenvectors);
         s_matrix.array::restore_original_basis_of(f_eigenvectors);

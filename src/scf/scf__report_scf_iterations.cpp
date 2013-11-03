@@ -4,138 +4,166 @@
 //
 void algorithm::scf::report_scf_iterations() 
 {
-    if(config -> state_of(OUTPUT_MODE))                                                                   
+    switch(config -> state_of(OUTPUT_MODE))                                                                   
     {
-        if(/*config -> logfile_initialized()*/true)
+        case true:
+        #ifdef FIRST_COLUMN_LENGTH
+            #undef FIRST_COLUMN_LENGTH
+            #define FIRST_COLUMN_LENGTH 5
+        #else
+            #define FIRST_COLUMN_LENGTH 5
+        #endif
+        #ifdef SECOND_COLUMN_LENGTH
+            #undef SECOND_COLUMN_LENGTH
+            #define SECOND_COLUMN_LENGTH 10
+        #else
+            #define SECOND_COLUMN_LENGTH 10
+        #endif
+        #ifdef THIRD_COLUMN_LENGTH
+            #undef THIRD_COLUMN_LENGTH
+            #define THIRD_COLUMN_LENGTH 10
+        #else
+            #define THIRD_COLUMN_LENGTH 10
+        #endif
+        global_log::file.write_title_bar("SCF algorithm iterations",
+                                         FIRST_COLUMN_LENGTH 
+                                         + SECOND_COLUMN_LENGTH
+                                         + THIRD_COLUMN_LENGTH
+                                         + SPACE_LENGTH
+                                         + 7);
+//
+//      To print "Iter.":
+//
+        global_log::file.set_width(FIRST_COLUMN_LENGTH);
+        global_log::file.set_right();
+        global_log::file << "Iter.";
+//
+//      To print "Energy (a.u.)":
+//
+        global_log::file.set_width(SECOND_COLUMN_LENGTH + SPACE_LENGTH + 7);
+        global_log::file.set_right();
+        global_log::file << "Energy (a.u.)";
+//
+//      To print "Correction":
+//
+        global_log::file.set_width(THIRD_COLUMN_LENGTH + SPACE_LENGTH);
+        global_log::file.set_right();
+        global_log::file << "Correction";
+//
+        global_log::file.set_new_line();
+        global_log::file.fill_line_with(FIRST_COLUMN_LENGTH 
+                                        + SECOND_COLUMN_LENGTH 
+                                        + THIRD_COLUMN_LENGTH 
+                                        + 2*SPACE_LENGTH 
+                                        + 7, 
+                                        "-");
+        global_log::file.set_new_line();
+        tools get;
+        for(unsigned int i = 1; i <= iteration; i++)
         {
-            LOGFILE_IS_READY:
-            std::string log_filename = config -> filename_of(LOG_FILE);
-            std::ofstream log_file(log_filename.c_str(), std::ios::out | std::ios::app); 
-            if(log_file.is_open() && log_file.good())                                    
-            {
-                #define FIRST_COLUMN_LENGTH  5
-                #define SECOND_COLUMN_LENGTH 10
-                #define THIRD_COLUMN_LENGTH  10
-                #define FIRST_TITLE_LENGTH         28
-                unsigned int title_bar_length = FIRST_COLUMN_LENGTH 
-                                              + SECOND_COLUMN_LENGTH
-                                              + THIRD_COLUMN_LENGTH
-                                              + SPACE_LENGTH
-                                              + 7 // +7 characters space to add "(a.u.)".
-                                              - FIRST_TITLE_LENGTH;
 //
-                log_file << "\n== SCF algorithm iterations "; 
-                log_file.width(title_bar_length);
-                log_file.fill('=');
-                log_file << "\n" << std::endl;
+//          To print the iteration number in the iteration column:
 //
-                log_file.width(FIRST_COLUMN_LENGTH);
-                log_file.fill(' ');
-                log_file << "Iter.";
+            global_log::file.set_width(FIRST_COLUMN_LENGTH);
+            global_log::file.set_right();
+            global_log::file << i;
 //
-                log_file.width(SECOND_COLUMN_LENGTH + SPACE_LENGTH + 7); // +7 characters space to add "(a.u.)".
-                log_file.fill(' ');
-                log_file << "Energy (a.u.)";
+//          To print the iteration energy in the energy column:
 //
-                log_file.width(THIRD_COLUMN_LENGTH + SPACE_LENGTH);
-                log_file.fill(' ');
-                log_file << "Correction" << std::endl;
+            global_log::file.set_scientific_notation(SECOND_COLUMN_LENGTH + SPACE_LENGTH + 7);
+            global_log::file << scf_energy[i];
 //
-//              log_file.width(SPACE_LENGTH);
-//              log_file.fill(' ');           // Use this template to add any new column, and make sure to
-//              log_file << "" std::endl;     // remove the the std::endl in the last block.
+//          To print the iteration correction in the correction column:
 //
-                log_file.width(FIRST_COLUMN_LENGTH + SECOND_COLUMN_LENGTH + THIRD_COLUMN_LENGTH + 2*SPACE_LENGTH + 7);
-                log_file.fill('-');
-                log_file << "\n";
+            global_log::file.set_scientific_notation();
+            global_log::file << get.module(scf_energy[i], scf_energy[i - 1]);
 //
-                tools get;
-                for(unsigned int i = 1; i <= iteration; i++)
-                {
-//
-                    log_file.width(FIRST_COLUMN_LENGTH);
-                    log_file.fill(' ');
-                    log_file << std::right << i;
-//
-                    log_file.width(SECOND_COLUMN_LENGTH + SPACE_LENGTH + 7); // +7 characters space to add "(a.u.)".
-                    log_file.precision(config -> numeric_precision());
-                    log_file << std::right << scf_energy[i];
-//
-                    log_file.width(THIRD_COLUMN_LENGTH + SPACE_LENGTH);
-                    log_file.precision(config -> numeric_precision());
-                    log_file << std::right << get.module(scf_energy[i], scf_energy[i - 1]) << std::endl;
-//
-//                  log_file.width(SPACE_LENGTH);
-//                  log_file.precision();
-//                  log_file << std::right << "" << std::endl;  // Use this template to add any new column, and make sure to
-//                                                              // remove the std::endl in the last block.
-                } // for(i)
-//
-                log_file << "\n- Iterations convergence           = " << (scf_converged? "reached" : "not reached")
-                         << (scf_converged? "\n- Final converged SCF energy       = " : "\n- Final unconverged SCF energy     = ") 
-                         << energy() << " a.u."
-                         << "\n- Lowest molecular orbital number  = " << lowest_mo()
-                         << "\n- Highest molecular orbital number = " << highest_mo() << std::endl; 
-//
-                #define FOURTH_COLUMN_LENGTH  6
-                #define FIFTH_COLUMN_LENGTH  10
-                #define SIXTH_COLUMN_LENGTH  10
-                #define SECOND_TITLE_LENGTH  22
-                title_bar_length = FOURTH_COLUMN_LENGTH
-                                 + FIFTH_COLUMN_LENGTH
-                                 + SIXTH_COLUMN_LENGTH
-                                 + SPACE_LENGTH
-                                 + 7 // +7 characters space to add "(a.u.)".
-                                 - SECOND_TITLE_LENGTH;
-//
-                log_file << "\n== Molecular orbitals ";
-                log_file.width(title_bar_length);
-                log_file.fill('=');
-                log_file << "\n" << std::endl;
-//
-                log_file.width(FOURTH_COLUMN_LENGTH);
-                log_file.fill(' ');
-                log_file << std::right << "Num.";
-//
-                log_file.width(FIFTH_COLUMN_LENGTH + SPACE_LENGTH + 7); // +7 characters space to add "(a.u.)".
-                log_file.fill(' ');
-                log_file << "Energy (a.u.)";
-//
-                log_file.width(SIXTH_COLUMN_LENGTH + SPACE_LENGTH);
-                log_file.fill(' ');
-                log_file << "Type" << std::endl;
-//
-                log_file.width(FOURTH_COLUMN_LENGTH + FIFTH_COLUMN_LENGTH + SIXTH_COLUMN_LENGTH + 2*SPACE_LENGTH + 7);
-                log_file.fill('-');
-                log_file << "\n";
-//
-                for(unsigned int i = 1; i <= f_eigenvalues.size_of_row(); i++)
-                {
-//
-                    log_file.width(FOURTH_COLUMN_LENGTH);
-                    log_file.fill(' ');
-                    log_file << std::right << i;
-//
-                    log_file.width(FIFTH_COLUMN_LENGTH + SPACE_LENGTH + 7); // +7 characters space to add "(a.u.)".
-                    log_file.precision(config -> numeric_precision());
-                    log_file << std::right << f_eigenvalues.get(i);
-//
-                    log_file.width(SIXTH_COLUMN_LENGTH + SPACE_LENGTH);
-                    log_file.precision(config -> numeric_precision());
-                    log_file << std::right << check_mo_type(i) << std::endl;
-//
-                }
-//
-                log_file.close();
-            }
-            else // if(!log_file.is_open() || !log_file.good())
-            {
-            }
+            global_log::file.set_new_line();
         }
-        else // if(!config -> logfile_initialized())
+        global_log::file << "\n- Iterations convergence           = ";
+        global_log::file << (scf_converged? "reached" : "not reached");
+        global_log::file << (scf_converged? "\n- Final converged SCF energy       = " : "\n- Final unconverged SCF energy     = ");
+        global_log::file << energy();
+        global_log::file << " a.u.";
+        global_log::file << "\n- Lowest molecular orbital number  = ";
+        global_log::file << lowest_mo();
+        global_log::file << "\n- Highest molecular orbital number = ";
+        global_log::file << highest_mo();
+        global_log::file << "\n- Iteration wall time              = "; 
+        global_log::file << iterations_time.timer::get(WALL_TIME, 1);
+        global_log::file.set_new_line();
+        #ifdef FOURTH_COLUMN_LENGTH
+            #undef FOURTH_COLUMN_LENGTH
+            #define FOURTH_COLUMN_LENGTH 6
+        #else
+            #define FOURTH_COLUMN_LENGTH 6
+        #endif
+        #ifdef FIFTH_COLUMN_LENGTH
+            #undef FIFTH_COLUMN_LENGTH
+            #define FIFTH_COLUMN_LENGTH 10
+        #else
+            #define FIFTH_COLUMN_LENGTH 10
+        #endif
+        #ifdef SIXTH_COLUMN_LENGTH
+            #undef SIXTH_COLUMN_LENGTH
+            #define SIXTH_COLUMN_LENGTH 10
+        #else
+           #define SIXTH_COLUMN_LENGTH 10
+        #endif
+        global_log::file.write_title_bar("Molecular orbitals",
+                                         FOURTH_COLUMN_LENGTH
+                                         + FIFTH_COLUMN_LENGTH
+                                         + SIXTH_COLUMN_LENGTH
+                                         + SPACE_LENGTH
+                                         + 7);
+//
+//      To print "Num.":      
+//
+        global_log::file.set_width(FOURTH_COLUMN_LENGTH);
+        global_log::file.set_right();
+        global_log::file << "Num.";
+//
+//      To print "Energy (a.u.)":
+//
+        global_log::file.set_width(FIFTH_COLUMN_LENGTH + SPACE_LENGTH + 7);
+        global_log::file.set_right();
+        global_log::file << "Energy (a.u.)";
+//
+//      To print "Type":
+//
+        global_log::file.set_width(SIXTH_COLUMN_LENGTH + SPACE_LENGTH);
+        global_log::file.set_right();
+        global_log::file << "Type";
+//
+        global_log::file.set_new_line();
+        global_log::file.fill_line_with(FOURTH_COLUMN_LENGTH 
+                                        + FIFTH_COLUMN_LENGTH 
+                                        + SIXTH_COLUMN_LENGTH 
+                                        + 2*SPACE_LENGTH 
+                                        + 7,
+                                        "-");
+        global_log::file.set_new_line();
+        for(unsigned int i = 1; i <= f_eigenvalues.array::size_of_row(); i++)
         {
-            //config -> init_log();
-            goto LOGFILE_IS_READY;
+//
+//          To print the orbital number in the number column:
+//
+            global_log::file.set_width(FOURTH_COLUMN_LENGTH);
+            global_log::file.set_right();
+            global_log::file << i;
+//
+//          To print the orbital energy in the energy column:
+//
+            global_log::file.set_scientific_notation(FIFTH_COLUMN_LENGTH + SPACE_LENGTH + 7);
+            global_log::file << f_eigenvalues(i);
+//
+//          To print the orbital type in the type column:
+//
+            global_log::file.set_width(SIXTH_COLUMN_LENGTH + SPACE_LENGTH);
+            global_log::file << check_mo_type(i);
+//
+            global_log::file.set_new_line();
         }
-    } // !output_mode_on
+        break;
+    }
 }

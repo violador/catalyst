@@ -55,6 +55,30 @@ class lcao_wavefunction
                         array &z,
                         const unsigned int given_theory_level = 1);
 //
+//  get_overlap_integral():
+    double get_overlap_integral(const unsigned int &i_atom,
+                                const unsigned int &j_atom,
+                                array &type,
+                                array &x,
+                                array &y,
+                                array &z,
+                                const unsigned int &theory_level);
+//
+//  get_kinetic_integral():
+    double get_kinetic_integral(const unsigned int &i_atom,
+                                const unsigned int &j_atom,
+                                array &type,
+                                array &x,
+                                array &y,
+                                array &z,
+                                const unsigned int &theory_level);
+//
+//
+    double gf_norm(const double &alpha,
+                   const unsigned int &x,
+                   const unsigned int &y,
+                   const unsigned int &z);
+//
 //  Including the inline/template/private member functions:
     #include "lcao_wavefunction__gf_product_const.cpp"
     #include "lcao_wavefunction__error_function.cpp"
@@ -62,6 +86,7 @@ class lcao_wavefunction
     #include "lcao_wavefunction__gf_midpoint.cpp"
     #include "lcao_wavefunction__gf_overlaping.cpp"
     #include "lcao_wavefunction__init_matrices.cpp"
+    #include "lcao_wavefunction__gf_product.cpp"
 //
     public:
 //
@@ -94,7 +119,7 @@ class lcao_wavefunction
                               array &x,
                               array &y,
                               array &z,
-                              unsigned int theory_level = 1);
+                              const unsigned int given_theory_level = 1);
 //
 //  build_kinetic_matrix(): To calculate the kinetic integral, T, and to build the kinetic
 //                          matrix.
@@ -136,5 +161,13 @@ class lcao_wavefunction
     #include "lcao_wavefunction__scf_ready.cpp"
     #include "lcao_wavefunction__energy.cpp"
 //
+double get_overlap_integral(const unsigned int &i_atom,  // The i-th atom.
+                                               const unsigned int &j_atom,  // The j-th atom.
+                                               const unsigned int &i_shell, // The i-th atomic shell.
+                                               const unsigned int &j_shell, // The j-th atomic shell.
+                                               const double &i_exponent,    // The i-th gf exponent.
+                                               const double &j_exponent,    // The j-th gf exponent.
+                                               array &position);             // The atomic positions onto one axis.
+
 };
 #endif

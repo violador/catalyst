@@ -7,14 +7,16 @@ void lcao_wavefunction::build_repulsion_matrix_1(array &v_matrix,           // T
                                                  array &x,                  // The atom x-axis positions.
                                                  array &y,                  // The atom y-axis positions.
                                                  array &z,                  // The atom z-axis positions.
-                                                 unsigned int theory_level) // The requested level of theory, i.e. the basis set type.
+                                                 unsigned int theory_level) // The basis set type.
 
 {
 //
     switch(v_matrix.array::check_if(IS_CONSTANT))
     {
-        case false: check_matrix_size(v_matrix, type.array::size_of_row()); break;
-        case  true: return; break;
+        case false: 
+        check_matrix_size(v_matrix, type.array::size_of_row()); 
+        v_matrix.array::set_name("One electron repulsion matrix");
+        break;
     }
     global_log::file.write_debug_msg("lcao_wavefunction::build_repulsion_matrix_1()");
     double ii_integral = 0.0;
@@ -185,4 +187,9 @@ void lcao_wavefunction::build_repulsion_matrix_1(array &v_matrix,           // T
         } // for(j_atom)
     } // for(i_atom)
     repulsion_matrix1_ready = true;
+    switch(config -> state_of(DEBUG_MODE))
+    {
+         case false: break;
+         case  true: v_matrix.array::write(); break;
+    }
 }

@@ -12,8 +12,10 @@ void lcao_wavefunction::build_repulsion_matrix_2(array &v_matrix,           // T
 //
     switch(v_matrix.array::check_if(IS_CONSTANT))
     {
-        case false: check_matrix_size(v_matrix, type.array::size_of_row()); break;
-        case  true: return; break;
+        case false: 
+        check_matrix_size(v_matrix, type.array::size_of_row()); 
+        v_matrix.array::set_name("Two electron repulsion matrix");
+        break;
     }
     global_log::file.write_debug_msg("lcao_wavefunction::build_repulsion_matrix_2()");
     double v_integral  = 0.0; 
@@ -189,4 +191,9 @@ void lcao_wavefunction::build_repulsion_matrix_2(array &v_matrix,           // T
         } // for(j_atom)
     } // for(i_atom)
     repulsion_matrix2_ready = true;
+    switch(config -> state_of(DEBUG_MODE))
+    {
+         case false: break;
+         case  true: v_matrix.array::write(); break;
+    }
 }

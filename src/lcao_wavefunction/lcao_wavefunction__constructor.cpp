@@ -27,9 +27,11 @@ lcao_wavefunction::lcao_wavefunction(array &type,
     repulsion_matrix1_ready = false;
     repulsion_matrix2_ready = false;
     current_level = given_theory_level;
+/*
     build_matrices(type,
                    x,
                    y,
                    z,
                    given_theory_level);
+*/
 }

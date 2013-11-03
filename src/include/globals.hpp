@@ -107,7 +107,7 @@
     #include <gsl/gsl_const_num.h>
     #include <gsl/gsl_const_mksa.h>
     #include <gsl/gsl_rng.h>
-    #include <gsl/gsl_ntuple.h>
+    #include <gsl/gsl_sf_gamma.h>
 //
 //  Including Boost C++ headers:
     #include <boost/filesystem.hpp> // "-lboost_filesystem" to linkage.

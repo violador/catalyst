@@ -39,7 +39,7 @@ namespace algorithm
         array f_matrix;                            // To store the Fock matrix.
         array f_eigenvalues;                       // To store the Fock eigenvalues.
         array f_eigenvectors;                      // To store the Fock eigenvectors.
-        timer iterations_time;
+        timer iterations_time;                     // 
 //
 //      roothaan_equation_solver(): Given a Core-Hamiltonian matrix, an overlap matrix and a
 //                                  multidimensional array with all two electron interaction
@@ -58,7 +58,10 @@ namespace algorithm
 //      update_fock_matrix(): Given a Core-Hamiltonian matrix, a density matrix, a multidime-
 //                            nsional array with all two electrons interaction terms; this f-
 //                            unction update the Fock matrix.
-        void update_fock_matrix(array &f_matrix, array &h_matrix, array &p_matrix, array &two_electrons_interaction);
+        void update_fock_matrix(array &f_matrix, 
+                                array &h_matrix, 
+                                array &p_matrix, 
+                                array &v_matrix2);
 //
 //      get_energy(): To calculate the energy using the density matrix, the Core-Hamiltonian
 //                    matrix and the Fock matrix.
@@ -81,13 +84,6 @@ namespace algorithm
 //      Declaring the overloaded class constructor:
         scf(array &h_matrix, array &s_matrix, array &v_matrix);
 //
-//      orbital_energy(): To get the energy of a given orbital.
-        double mo_energy(const unsigned int &mo_number);
-//
-//      check_mo_type(): To check if all the signs coefficients of a given molecular orbital are positive
-//                       (bonding type), negative (bonding type) or positive/negative (antibonding type).
-        std::string check_mo_type(const unsigned int &mo_number); 
-//
 //      Including the inline/template/public member functions:
         #include "scf__start_iterations.cpp"
         #include "scf__get_density_matrix.cpp"
@@ -100,6 +96,7 @@ namespace algorithm
         #include "scf__lowest_mo.cpp"
         #include "scf__set_config.cpp"
         #include "scf__iterations_ready.cpp"
+        #include "scf__check_mo_type.cpp"
 //
     };
 }

@@ -5,8 +5,9 @@
 void molecular_system::read_input_file(const std::string &input_filename)
 {
     global_log::file.write_debug_msg("molecular_system::read_input_file(): Reading from ", input_filename);
-    if(total_atoms_ready and (total_atoms > 0))
+    switch(total_atoms_ready and (total_atoms > 0))
     {
+        case true:
         std::fstream geometry_file(input_filename.c_str(), std::fstream::in);
         if(geometry_file.std::fstream::is_open() and geometry_file.std::fstream::good())
         {
@@ -16,43 +17,36 @@ void molecular_system::read_input_file(const std::string &input_filename)
                 {
                     atom_type.array::create_array(total_atoms);
                     atom_type.array::set_name("Atom types");
-                    atom_type.array::set_config(*config);
                 }
                 #pragma omp section
                 {
                     position_x.array::create_array(total_atoms);
                     position_x.array::set_name("x-axis");
-                    position_x.array::set_config(*config);
                 }
                 #pragma omp section
                 {
                     position_y.array::create_array(total_atoms);
                     position_y.array::set_name("y-axis");
-                    position_y.array::set_config(*config);
                 }
                 #pragma omp section
                 {
                     position_z.array::create_array(total_atoms);
                     position_z.array::set_name("z-axis");
-                    position_z.array::set_config(*config);
                 }
                 #pragma omp section
                 {
                     velocity_x.array::create_array(total_atoms);
                     velocity_x.array::set_name("x-axis");
-                    velocity_x.array::set_config(*config);
                 }
                 #pragma omp section
                 {
                     velocity_y.array::create_array(total_atoms);
                     velocity_y.array::set_name("y-axis");
-                    velocity_y.array::set_config(*config);
                 }
                 #pragma omp section
                 {
                     velocity_z.array::create_array(total_atoms);
                     velocity_z.array::set_name("z-axis");
-                    velocity_z.array::set_config(*config);
                 }
             }
             total_mass = 0.0;
@@ -106,5 +100,6 @@ void molecular_system::read_input_file(const std::string &input_filename)
             atom_positions_ready = false;
             atom_velocities_ready = false;
         }
-    } // if(total_atoms_ready and (total_atoms > 0))
+        break;
+    }
 }

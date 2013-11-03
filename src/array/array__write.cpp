@@ -4,9 +4,10 @@
 //
 void array::write()
 {
+    #pragma omp critical
     if(setup_ready and config -> state_of(OUTPUT_MODE) and is_2d_array)
     {
-        if(global_log::file.exists())
+        if(/*global_log::file.exists()*/true)
         {
             LOGFILE_IS_READY:
             global_log::file << "\n- ";

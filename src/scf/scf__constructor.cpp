@@ -4,7 +4,6 @@
 //
 algorithm::scf::scf() 
 {
-    global_log::file.write_debug_msg("algorithm::scf::scf(): Any input data was given!");
     config = &global_settings::config;
     scf_converged = false;
     scf_iterations_ready = false;

@@ -7,7 +7,6 @@ void molecular_system::report_input_reading()
 //
     global_log::file.write_debug_msg("molecular_system::report_input_reading()");
 //
-    #pragma omp critical
     switch(config -> state_of(OUTPUT_MODE))                                                                   
     {
         case true:
