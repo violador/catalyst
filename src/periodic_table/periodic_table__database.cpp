@@ -4,7 +4,7 @@
 //
 void periodic_table::database(const unsigned int &given_element)
 {
-    standard_database_ready = true;
+    std_database_ready = true;
     switch(given_element)
     {
     case 1:
@@ -16,6 +16,7 @@ void periodic_table::database(const unsigned int &given_element)
         element_valence_electrons = 1;
         element_config            = "1s^1";
         covalent_radius           = 0.32;
+        total_orbitals            = 1;
     }
     break;
     case 2:
@@ -92,6 +93,7 @@ void periodic_table::database(const unsigned int &given_element)
         element_valence_electrons = 0;
         element_config            = "[He] 2s^2 2p^4";
         covalent_radius           = 0.73;
+        total_orbitals            = 5;
     }
     break;
     case 9:

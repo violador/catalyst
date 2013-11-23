@@ -23,7 +23,7 @@ inline std::string symbol(const unsigned int &given_element)
 //
 inline std::string symbol()
 {
-    switch(standard_database_ready)
+    switch(std_database_ready)
     {
         case false: return ""; break;
         case  true: return element_symbol; break;

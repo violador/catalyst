@@ -23,7 +23,7 @@ inline double mass(const unsigned int &element)
 //
 inline double mass()
 {
-    switch(standard_database_ready)
+    switch(std_database_ready)
     {
         case false: return 0.0; break;
         case  true: return element_mass; break;

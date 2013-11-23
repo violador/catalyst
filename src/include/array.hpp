@@ -115,7 +115,9 @@ struct array
     array(const unsigned int &local_row_size, const unsigned int &local_column_size);
 //
 //  Declaring the class constructor:
-    array(const unsigned int &local_layer_size, const unsigned int &local_row_size, const unsigned int &local_column_size);
+    array(const unsigned int &local_layer_size, 
+          const unsigned int &local_row_size, 
+          const unsigned int &local_column_size);
 //
 //  Declaring the class constructor:
     array(const unsigned int &local_1st_layer_size, 
@@ -152,12 +154,6 @@ struct array
 //
 //  check_if(): To check properties (option) in the current array.
     bool check_if(const unsigned int &option);
-//
-//
-    void resize_array(const unsigned int local_row_size = 0,
-                      const unsigned int local_column_size = 0,
-                      const unsigned int local_1st_layer_size = 0,
-                      const unsigned int local_2nd_layer_size = 0);
 //
 //  Defining some alias for the check_if() member function options:
     #define IS_POSITIVE   1
@@ -229,6 +225,8 @@ struct array
     #include "array__save_transpose_to.cpp"
     #include "array__save_jacobi_svd_to.cpp"
     #include "array__function_call.cpp"
+    #include "array__set_diagonal.cpp"
+    #include "array__resize_array.cpp"
 //
 };
 #endif

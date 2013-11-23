@@ -23,7 +23,7 @@ inline std::string name(const unsigned int &given_element)
 //
 inline std::string name()
 {
-    switch(standard_database_ready)
+    switch(std_database_ready)
     {
         case false: return ""; break;
         case  true: return element_name; break;

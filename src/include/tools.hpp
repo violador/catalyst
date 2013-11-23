@@ -86,6 +86,10 @@ struct tools
 //                          random number generator algorithm.
     double generate_double_type(const unsigned long int seed = time(NULL), const unsigned int option = 1);
 //
+//
+    unsigned int first_gf(const unsigned int &given_level,
+                          const unsigned int &given_orbital);
+//
 //  Defining some alias for the generate_integral_type() and generate_double_type() member function options
 //  (random number generators):
     #define TAUS2     1
@@ -101,5 +105,9 @@ struct tools
     #include "tools__to_string_from.cpp"
     #include "tools__to_number_from.cpp"
     #include "tools__pattern_length.cpp"
+    #include "tools__factorial_of.cpp"
+    #include "tools__double_factorial_of.cpp"
+    #include "tools__binomial_coeff.cpp"
+    #include "tools__point_distance.cpp"
 };
 #endif

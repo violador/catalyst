@@ -71,26 +71,28 @@ double lcao_wavefunction::kinetic_integral(array &position,                     
 //  Evaluation of Gaussian Molecular Integrals II - Kinetic Integrals;
 //  equation (15):
     return 0.5*(a - b - c + d);
+//
 }
 //
 //
 //
-double lcao_wavefunction::get_kinetic_integral(const unsigned int &i_atom,             // The ith-atom.
-                                               const unsigned int &j_atom,             // The jth-atom.
-                                               array &type,                            // The atom types array.
-                                               array &x,                               // The atom x-axis positions.
-                                               array &y,                               // The atom y-axis positions.
-                                               array &z,                               // The atom z-axis positions.
-                                               const unsigned int &given_theory_level) // The basis set type.
+double lcao_wavefunction::kinetic_integral(array &type,                            // The atom types array.
+                                           array &x,                               // The atom x-axis positions.
+                                           array &y,                               // The atom y-axis positions.
+                                           array &z,                               // The atom z-axis positions.
+                                           const unsigned int &i_atom,             // The i-th atom.
+                                           const unsigned int &j_atom,             // The j-th atom.
+                                           const unsigned int &given_theory_level) // The basis set type.
 {
+    tools get;
     periodic_table i_basis_set(given_theory_level, type(i_atom));
     periodic_table j_basis_set(given_theory_level, type(j_atom));
-    double t_integral = 0.0, ij_distance = interatomic_distance(x(i_atom),
-                                                                y(i_atom),
-                                                                z(i_atom),
-                                                                x(j_atom),
-                                                                y(j_atom),
-                                                                z(j_atom));
+    double t_integral = 0.0, ij_distance = get.point_distance(x(i_atom),
+                                                              y(i_atom),
+                                                              z(i_atom),
+                                                              x(j_atom),
+                                                              y(j_atom),
+                                                              z(j_atom));
     unsigned int m_primitive = 0;
     #pragma omp parallel for private(m_primitive) reduction(+:t_integral) ordered schedule(dynamic)
     for(m_primitive = 1; m_primitive <= i_basis_set.periodic_table::basis_size(); ++m_primitive)

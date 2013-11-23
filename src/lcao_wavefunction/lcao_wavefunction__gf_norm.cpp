@@ -7,6 +7,7 @@ double lcao_wavefunction::gf_norm(const double &alpha,   // The gf primitive exp
                                   const unsigned int &y, // The y-axis angular value.
                                   const unsigned int &z) // The z-axis angular value.
 {
+    tools get;
     double a = 0.0, b = 0.0, c = 0.0, d = 0.0, e = 0.0;
     #pragma omp parallel sections num_threads(5)
     {
@@ -20,15 +21,15 @@ double lcao_wavefunction::gf_norm(const double &alpha,   // The gf primitive exp
         }
         #pragma omp section
         {
-            c = gsl_sf_doublefact(2*x - 1);
+            c = get.double_factorial_of(2*x - 1);
         }
         #pragma omp section
         {
-            d = gsl_sf_doublefact(2*y - 1);
+            d = get.double_factorial_of(2*y - 1);
         }
         #pragma omp section
         {
-            e = gsl_sf_doublefact(2*z - 1);
+            e = get.double_factorial_of(2*z - 1);
         }
     }
     return a*b/std::sqrt(c*d*e);

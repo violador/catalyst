@@ -4,10 +4,11 @@
 template<typename data_type> 
 inline data_type module(const data_type &a, const data_type &b)
 {
-    switch(GSL_SIGN(a - b) == -1)
+    switch(GSL_SIGN(a - b))
     {
-        case false: return a - b; break;
-        case  true: return -1.0*(a - b); break;
+        case  1: return a - b; break;
+        case -1: return -1.0*(a - b); break;
+        default: return (data_type) 0.0;
     }
 };
 //
@@ -16,10 +17,11 @@ inline data_type module(const data_type &a, const data_type &b)
 template<typename data_type> 
 inline data_type square_module(const data_type &a, const data_type &b)
 {
-    switch(GSL_SIGN(a - b) == -1)
+    switch(GSL_SIGN(a - b))
     {
-        case false: return gsl_pow_2(a - b); break;
-        case  true: return gsl_pow_2(-1.0*(a - b)); break;
+        case  1: return gsl_pow_2(a - b); break;
+        case -1: return gsl_pow_2(-1.0*(a - b)); break;
+        default: return (data_type) 0.0;
     }
 };
 //

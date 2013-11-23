@@ -27,7 +27,8 @@ inline void init_properties(const unsigned int local_row_size = 0,
         }
         #pragma omp section
         {
-            switch((local_row_size > 0) and (local_column_size == 0))
+            switch((local_row_size > 0) 
+                   and (local_column_size == 0))
             {
                 case true:
                 sizeof_row = local_row_size;
@@ -44,7 +45,9 @@ inline void init_properties(const unsigned int local_row_size = 0,
         }
         #pragma omp section
         {
-            switch((local_row_size > 0) and (local_column_size > 0) and (local_1st_layer_size == 0))
+            switch((local_row_size > 0) 
+                   and (local_column_size > 0) 
+                   and (local_1st_layer_size == 0))
             {
                 case true:
                 sizeof_row = local_row_size;
@@ -61,7 +64,10 @@ inline void init_properties(const unsigned int local_row_size = 0,
         }
         #pragma omp section
         {
-            switch((local_row_size > 0) and (local_column_size > 0) and (local_1st_layer_size > 0) and (local_2nd_layer_size == 0))
+            switch((local_row_size > 0) 
+                   and (local_column_size > 0) 
+                   and (local_1st_layer_size > 0) 
+                   and (local_2nd_layer_size == 0))
             {
                 case true:
                 sizeof_row = local_row_size;
@@ -78,7 +84,10 @@ inline void init_properties(const unsigned int local_row_size = 0,
         }
         #pragma omp section
         {
-            switch((local_row_size > 0) and (local_column_size > 0) and (local_1st_layer_size > 0) and (local_2nd_layer_size > 0))
+            switch((local_row_size > 0) 
+                   and (local_column_size > 0) 
+                   and (local_1st_layer_size > 0) 
+                   and (local_2nd_layer_size > 0))
             {
                 case true:
                 sizeof_row = local_row_size;

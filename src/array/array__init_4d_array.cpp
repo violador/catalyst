@@ -23,18 +23,17 @@ inline void init_4d_array(const unsigned int &local_row_size,
             }
         }
     }
-    i = j = m = n = 0;
     #pragma omp parallel for private(i) ordered schedule(dynamic)
-    for(i = 0; i < local_row_size; i++)
+    for(i = 0; i < local_row_size; ++i)
     {
         #pragma omp parallel for private(j) ordered schedule(dynamic)
-        for(j = 0; j < local_column_size; j++)
+        for(j = 0; j < local_column_size; ++j)
         {
             #pragma omp parallel for private(m) ordered schedule(dynamic)
-            for(m = 0; m < local_1st_layer_size; m++)
+            for(m = 0; m < local_1st_layer_size; ++m)
             {
                 #pragma omp parallel for private(n) ordered schedule(dynamic)
-                for(n = 0; n < local_2nd_layer_size; n++)
+                for(n = 0; n < local_2nd_layer_size; ++n)
                 {
                     user_4d_array[i][j][m][n] = 0.0;
                 }

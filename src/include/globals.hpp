@@ -74,6 +74,15 @@
         #define DEFAULT_CURRENT_DIR "./"            // The default directory for Unix-like OS.
     #endif
 //
+    #define STO3G 1
+    #define STO2G 2
+    #define STO1G 3
+    #define SUB_SHELL_1s  1
+    #define SUB_SHELL_2s  2
+    #define SUB_SHELL_2px 3
+    #define SUB_SHELL_2py 4
+    #define SUB_SHELL_2pz 5
+//
 //  Including C standard headers:
     #include <stdlib.h>
     #ifdef USE_OMP

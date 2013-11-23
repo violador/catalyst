@@ -14,40 +14,53 @@ log_file_handler::log_file_handler(settings &runtime_setup)
     config = &runtime_setup;
     file_system init_file(config -> filename_of(LOG_FILE), config -> dir_path_of(SCRATCH));
     file_manager = &init_file;
-    if(config -> state_of(OUTPUT_MODE))
+    switch(config -> state_of(OUTPUT_MODE))
     {
-        if(file_manager -> exists())
+        case false:
         {
-            file_manager -> open_txt_output(log_file);
-            file_manager -> open_txt_output(output);
-            file_manager -> is_open()? log_file_ready = true : log_file_ready = false;
+            log_file_ready = false;
         }
-        else // if(not file_manager -> exists())
+        break;
+        case true:
         {
-            file_manager -> open_txt_output(log_file);
-            if(file_manager -> is_open())
+            switch(file_manager -> exists())
             {
-                log_file_ready = true;
-                init_log_file();
-                file_manager -> open_txt_output(output);
-            }
-            else
-            {
-//
-                std::cout << "\n@Catalyst: fails to create "
-                          << config -> filename_of(LOG_FILE)
-                          << " in the folder "
-                          << file_manager -> parent_dir()
-                          << ". The program will keep running without write the file. You may or may not see the output properly."
-                          << std::endl;
-//
-                log_file_ready = false;
+                case true:
+                {
+                    file_manager -> open_txt_output(log_file);
+                    file_manager -> open_txt_output(output);
+                    file_manager -> is_open()? log_file_ready = true : log_file_ready = false;
+                }
+                break;
+                case false:
+                {
+                    file_manager -> open_txt_output(log_file);
+                    switch(file_manager -> is_open())
+                    {
+                        case true:
+                        {
+                            log_file_ready = true;
+                            init_log_file();
+                            file_manager -> open_txt_output(output);
+                        }
+                        break;
+                        case false:
+                        {
+                            std::cout << "\n@Catalyst: fails to create "
+                                      << config -> filename_of(LOG_FILE)
+                                      << " in the folder "
+                                      << file_manager -> parent_dir()
+                                      << ". The program will keep running without write the file. You may or may not see the output properly."
+                                      << std::endl;
+                            log_file_ready = false;
+                        }
+                        break;
+                    }
+                }
+                break;
             }
         }
-    }
-    else
-    {
-        log_file_ready = false;
+        break;
     }
 }
 //

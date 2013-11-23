@@ -4,9 +4,10 @@
 // 
 void log_file_handler::init_log_file()
 {
-/*
     #pragma omp critical
-    switch((not file_manager -> exists()) and config -> state_of(OUTPUT_MODE) and log_file_ready)
+    switch(not file_manager -> exists()
+           and config -> state_of(OUTPUT_MODE) 
+           and log_file_ready)
     {
         case true:
 //
@@ -67,5 +68,4 @@ void log_file_handler::init_log_file()
                  << "\n" << std::endl;
         break;
     }
-*/ 
 }

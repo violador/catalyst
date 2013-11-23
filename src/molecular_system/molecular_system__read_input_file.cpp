@@ -64,7 +64,7 @@ void molecular_system::read_input_file(const std::string &input_filename)
 //          (7) To read the velocity z-axis value.
 //          (8) To store the element type, as an unsigned int type.
 //          (9) To update the total mass.
-            for(i = 1; i <= total_atoms; i++)
+            for(i = 1; i <= total_atoms; ++i)
             {
                 geometry_file >> element_symbol;                                   // (1)
                 geometry_file >> x;                                                // (2)

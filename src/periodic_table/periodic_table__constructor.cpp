@@ -17,13 +17,15 @@ periodic_table::periodic_table(const unsigned int &given_element)
 //
 //
 //
-periodic_table::periodic_table(const unsigned int &given_theory_level, const unsigned int &given_element)
+periodic_table::periodic_table(const unsigned int &given_level, const unsigned int &given_element)
 {
 //
+/*
     global_log::file.write_debug_msg("periodic_table::periodic_table(): Level of theory = ",
-                                     given_theory_level,
+                                     given_level,
                                      ", requested element = ",
                                      given_element);
+*/
 //
     switch((given_element >= 1) and (given_element <= total_elements))
     {
@@ -33,27 +35,23 @@ periodic_table::periodic_table(const unsigned int &given_theory_level, const uns
         {
             #pragma omp section
             {
-                switch(given_theory_level)
+                switch(given_level)
                 {
-                    case 1: sto3g_exponent_database(given_element); break;
-                  //case 2: sto2g_exponent_database(given_element); break;
-                  //case 3: sto1g_exponent_database(given_element); break;
+                    case STO3G: sto3g_exponent_database(given_element); break;
                 }
             }
             #pragma omp section
             {
-                switch(given_theory_level)
+                switch(given_level)
                 {
-                    case 1: sto3g_coefficient_database(given_element); break;
-                  //case 2: sto2g_coefficient_database(given_element); break;
-                  //case 3: sto1g_coefficient_database(given_element); break;
+                    case STO3G: sto3g_coefficient_database(given_element); break;
                 }
             }
             #pragma omp section
             {
-                switch(given_theory_level)
+                switch(given_level)
                 {
-                    case 1: total_functions = sto3g_set_size(given_element); break;
+                    case STO3G: total_functions = sto3g_set_size(given_element); break;
                 }
             }
             #pragma omp section
@@ -63,7 +61,7 @@ periodic_table::periodic_table(const unsigned int &given_theory_level, const uns
             #pragma omp section
             {
                 basis_database_ready = true;
-                current_level = given_theory_level;
+                current_level = given_level;
             }
         }
         break;

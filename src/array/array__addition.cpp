@@ -31,13 +31,13 @@ array array::operator +(const double &b)
 //
         unsigned int i = 0, j = 0, m = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
-        for(i = 0; i < sizeof_row; i++)
+        for(i = 0; i < sizeof_row; ++i)
         {
             #pragma omp parallel for private(j) ordered schedule(dynamic)
-            for(j = 0; j < sizeof_column; j++)
+            for(j = 0; j < sizeof_column; ++j)
             {
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
-                for(m = 0; m < sizeof_1st_layer; m++)
+                for(m = 0; m < sizeof_1st_layer; ++m)
                 {
                     c.user_3d_array[i][j][m] = this -> user_3d_array[i][j][m] + b;
                 }
@@ -52,16 +52,16 @@ array array::operator +(const double &b)
 //
         unsigned int i = 0, j = 0, m = 0, n = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
-        for(i = 0; i < sizeof_row; i++)
+        for(i = 0; i < sizeof_row; ++i)
         {
             #pragma omp parallel for private(j) ordered schedule(dynamic)
-            for(j = 0; j < sizeof_column; j++)
+            for(j = 0; j < sizeof_column; ++j)
             {
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
-                for(m = 0; m < sizeof_1st_layer; m++)
+                for(m = 0; m < sizeof_1st_layer; ++m)
                 {
                     #pragma omp parallel for private(n) ordered schedule(dynamic)
-                    for(n = 0; n < sizeof_2nd_layer; n++)
+                    for(n = 0; n < sizeof_2nd_layer; ++n)
                     {
                         c.user_4d_array[i][j][m][n] = this -> user_4d_array[i][j][m][n] + b;
                     }
@@ -127,15 +127,16 @@ array array::operator +(const array &b)
 //
         unsigned int i = 0, j = 0, m = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
-        for(i = 0; i < sizeof_row; i++)
+        for(i = 0; i < sizeof_row; ++i)
         {
             #pragma omp parallel for private(j) ordered schedule(dynamic)
-            for(j = 0; j < sizeof_column; j++)
+            for(j = 0; j < sizeof_column; ++j)
             {
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
-                for(m = 0; m < sizeof_1st_layer; m++)
+                for(m = 0; m < sizeof_1st_layer; ++m)
                 {
-                    c.user_3d_array[i][j][m] = this -> user_3d_array[i][j][m] + b.user_3d_array[i][j][m];
+                    c.user_3d_array[i][j][m] = this -> user_3d_array[i][j][m] 
+                                             + b.user_3d_array[i][j][m];
                 }
             }
         }
@@ -156,16 +157,16 @@ array array::operator +(const array &b)
 //
         unsigned int i = 0, j = 0, m = 0, n = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
-        for(i = 0; i < this -> sizeof_row; i++)
+        for(i = 0; i < this -> sizeof_row; ++i)
         {
             #pragma omp parallel for private(j) ordered schedule(dynamic)
-            for(j = 0; j < this -> sizeof_column; j++)
+            for(j = 0; j < this -> sizeof_column; ++j)
             {
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
-                for(m = 0; m < this -> sizeof_1st_layer; m++)
+                for(m = 0; m < this -> sizeof_1st_layer; ++m)
                 {
                     #pragma omp parallel for private(n) ordered schedule(dynamic)
-                    for(n = 0; n < this -> sizeof_2nd_layer; n++)
+                    for(n = 0; n < this -> sizeof_2nd_layer; ++n)
                     {
                         c.user_4d_array[i][j][m][n] = this -> user_4d_array[i][j][m][n] 
                                                     + b.user_4d_array[i][j][m][n];

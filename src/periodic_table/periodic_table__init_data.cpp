@@ -8,11 +8,11 @@ inline void init_data()
     element_config = "";
     element_core_electrons = 0;
     element_valence_electrons = 0;
+    total_orbitals = 0;
     element_mass = 0.0;
     covalent_radius = 0.0;
-    slater_exponent = 0.0;
     total_functions = 0;
-    standard_database_ready = false;
+    std_database_ready = false;
     basis_database_ready = false;
 //
     exponent = new double[1];

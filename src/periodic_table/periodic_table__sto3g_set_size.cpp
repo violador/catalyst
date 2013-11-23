@@ -1,11 +1,11 @@
-// ../src/periodic_table/periodic_table__sto3g_total_functions.cpp --------------------- //
+// ../src/periodic_table/periodic_table__sto3g_set_size.cpp ----------------------------- //
 //
 // File author: Humberto Jr. 
 //
 // Date: 10/2013
 //
-// Description: The setter of default STO-3G number of primitive functions for a 
-//              given element, from elements H to I. 
+// Description: The setter of default STO-3G number of primitive functions per set 
+//              for a given element. From elements H to I. 
 //
 // References: EMSL Basis Set Exchange Library.
 //

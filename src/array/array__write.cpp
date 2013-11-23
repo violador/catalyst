@@ -38,7 +38,7 @@ void array::write()
                 global_log::file << (size_of_column() >= 5? "5" : "");
 //
                 global_log::file.set_new_line();
-                for(unsigned int i = 1; i <= size_of_row(); i++)
+                for(unsigned int i = 1; i <= size_of_row(); ++i)
                 {
                     if(size_of_column() == 1)
                     {

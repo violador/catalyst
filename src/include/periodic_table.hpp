@@ -31,14 +31,14 @@ class periodic_table
     unsigned int element_core_electrons;            // The number of core electrons for the given element.
     unsigned int element_valence_electrons;         // The number of valence electrons for the given element.
     unsigned int total_functions;                   // The basis's number of primitive functions for the current element.
+    unsigned int total_orbitals;                    // The total number of functions per element to describe the orbitals.
     unsigned int current_level;                     // The current level of theory used to init the basis database.
     double *exponent;                               // The basis's exponent set.
     double *coefficient;                            // The basis's coefficient set.
-    double slater_exponent;
     static const unsigned int total_elements = 103; // The total number of elements used until now.
     double element_mass;                            // The atomic mass for the given element.
     double covalent_radius;                         // The atomic radii (covalent) for the given element.
-    bool standard_database_ready;                   // The usage state of the current database.
+    bool std_database_ready;                        // The usage state of the current database.
     bool basis_database_ready;                      // The usage state of the current database.
 //
 //  database(): Overloaded member function to set the data member values for a given element,
@@ -91,6 +91,7 @@ class periodic_table
     #include "periodic_table__function_call.cpp"
     #include "periodic_table__init_data.cpp"
     #include "periodic_table__norm.cpp"
+    #include "periodic_table__orbitals_number.cpp"
 //
 };
 #endif

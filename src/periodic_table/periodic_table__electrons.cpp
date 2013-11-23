@@ -43,7 +43,7 @@ inline unsigned int valence_electrons(const unsigned int &given_element)
 //
 inline unsigned int core_electrons()
 {
-    switch(standard_database_ready)
+    switch(std_database_ready)
     {
         case false: return 0; break;
         case  true: return element_core_electrons; break;
@@ -54,7 +54,7 @@ inline unsigned int core_electrons()
 //
 inline unsigned int valence_electrons()
 {
-    switch(standard_database_ready)
+    switch(std_database_ready)
     {
         case false: return 0; break;
         case  true: return element_valence_electrons; break;

@@ -17,15 +17,14 @@ inline void init_3d_array(const unsigned int &local_row_size,
             user_3d_array[i][j] = new double [local_layer_size];
         }
     }
-    i = j = m = 0;
     #pragma omp parallel for private(i) ordered schedule(dynamic)
-    for(i = 0; i < local_row_size; i++)
+    for(i = 0; i < local_row_size; ++i)
     {
         #pragma omp parallel for private(j) ordered schedule(dynamic)
-        for(j = 0; j < local_column_size; j++)
+        for(j = 0; j < local_column_size; ++j)
         {
             #pragma omp parallel for private(m) ordered schedule(dynamic)
-            for(m = 0; m < local_layer_size; m++)
+            for(m = 0; m < local_layer_size; ++m)
             {
                 user_3d_array[i][j][m] = 0.0;
             }
