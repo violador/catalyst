@@ -26,7 +26,8 @@ array::array(const unsigned int &local_row_size)
 //
 //
 //
-array::array(const unsigned int &local_row_size, const unsigned int &local_column_size)
+array::array(const unsigned int &local_row_size, 
+             const unsigned int &local_column_size)
 {
     #pragma omp parallel sections num_threads(2)
     {
@@ -43,7 +44,9 @@ array::array(const unsigned int &local_row_size, const unsigned int &local_colum
 //
 //
 //
-array::array(const unsigned int &local_row_size, const unsigned int &local_column_size, const unsigned int &local_layer_size) 
+array::array(const unsigned int &local_row_size, 
+             const unsigned int &local_column_size, 
+             const unsigned int &local_layer_size) 
 {
     #pragma omp parallel sections num_threads(2)
     {

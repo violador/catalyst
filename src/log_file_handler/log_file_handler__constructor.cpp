@@ -2,19 +2,13 @@
 //
 //
 //
-log_file_handler::log_file_handler()
-{
-    log_file_ready = false;
-}
-//
-//
-//
 log_file_handler::log_file_handler(settings &runtime_setup)
 {
     config = &runtime_setup;
-    file_system init_file(config -> filename_of(LOG_FILE), config -> dir_path_of(SCRATCH));
-    file_manager = &init_file;
-    switch(config -> state_of(OUTPUT_MODE))
+    file_system init(config -> filename_of(option::log_file), 
+                     config -> dir_path_of(option::scratch));
+    file_manager = &init;
+    switch(config -> state_of(option::output_mode))
     {
         case false:
         {
@@ -25,39 +19,35 @@ log_file_handler::log_file_handler(settings &runtime_setup)
         {
             switch(file_manager -> exists())
             {
-                case true:
-                {
-                    file_manager -> open_txt_output(log_file);
-                    file_manager -> open_txt_output(output);
-                    file_manager -> is_open()? log_file_ready = true : log_file_ready = false;
-                }
-                break;
-                case false:
-                {
-                    file_manager -> open_txt_output(log_file);
-                    switch(file_manager -> is_open())
-                    {
-                        case true:
-                        {
-                            log_file_ready = true;
-                            init_log_file();
-                            file_manager -> open_txt_output(output);
-                        }
-                        break;
-                        case false:
-                        {
-                            std::cout << "\n@Catalyst: fails to create "
-                                      << config -> filename_of(LOG_FILE)
-                                      << " in the folder "
-                                      << file_manager -> parent_dir()
-                                      << ". The program will keep running without write the file. You may or may not see the output properly."
-                                      << std::endl;
-                            log_file_ready = false;
-                        }
-                        break;
-                    }
-                }
-                break;
+                case false: open_and_init(); break;
+                case  true: open(); break;
+            }
+        }
+        break;
+    }
+}
+//
+//
+//
+log_file_handler::log_file_handler()
+{
+    config = &global_settings::config;
+    file_system init(config -> filename_of(option::log_file), 
+                     config -> dir_path_of(option::scratch));
+    file_manager = &init;
+    switch(config -> state_of(option::output_mode))
+    {
+        case false:
+        {
+            log_file_ready = false;
+        }
+        break;
+        case true:
+        {
+            switch(file_manager -> exists())
+            {
+                case false: open_and_init(); break;
+                case  true: open(); break;
             }
         }
         break;
@@ -81,10 +71,11 @@ log_file_handler::log_file_handler(log_file_handler &given_log_file)
         #pragma omp section
         {
             this -> file_manager = given_log_file.file_manager;
-            if(given_log_file.log_file_ready)
+            switch(given_log_file.log_file_ready)
             {
+                case true:
                 this -> file_manager -> open_txt_output(this -> log_file);
-                this -> file_manager -> open_txt_output(this -> output);
+                break;
             }
         } 
     }

@@ -4,13 +4,14 @@
 //
 // Date: 06/2013
 //
-// Description: This data struct aims to keep together general non-class
-//              data and functions.
+// Description: The tools namespace keeps together all the general data and 
+//              functions used by several classes and structs.
 //
 // References: http://www.codata.org/
+//             
 //             R. T. Sanderson. Inorganic Chemistry, Reinhold, 1967.
+//             
 //             CRC Handbook of Chemistry and Physics, 1989.
-//             http://www.gnu.org/software/gsl/manual/html_node/Physical-Constants.html#Physical-Constants
 //
 // ------------------------------------------------------------------------------------- //
 #ifndef __TOOLS_HPP
@@ -19,11 +20,8 @@
 //
 //
 //
-struct tools
+namespace tools
 {
-//
-//  Struct identifier:
-    static const int id = 8108;
 //
 //  The speed of light in vacuum, c: 
     static const double c = GSL_CONST_MKSA_SPEED_OF_LIGHT;
@@ -78,36 +76,29 @@ struct tools
     static const double s_to_au = 1.0/2.418884326505e-17; // From second to atomic unit.
     static const double au_to_s = 2.418884326505e-17;     // From atomic unit to second.
 //
-//  generate_integral_type(): To generate a long integral random number for a given (not mandatory) seed number and
-//                            random number generator algorithm.
-    unsigned long int generate_integral_type(const unsigned long int seed = time(NULL), const unsigned int option = 1);
-//
-//  generate_double_type(): To generate a double random number for a given (not mandatory) seed number and
-//                          random number generator algorithm.
-    double generate_double_type(const unsigned long int seed = time(NULL), const unsigned int option = 1);
-//
 //
     unsigned int first_gf(const unsigned int &given_level,
                           const unsigned int &given_orbital);
 //
-//  Defining some alias for the generate_integral_type() and generate_double_type() member function options
-//  (random number generators):
-    #define TAUS2     1
-    #define MT19937   2
-    #define RANLXS0   3
-    #define RANLXS2   4
-    #define RANLXD2   5
-    #define RANLUX389 6
-    #define GFSR4     7
+//
+    const char* convert_enum(const unsigned int option);
+    unsigned int convert_enum(const char* option);
 //
 //  Including the inline/template/public member functions:
     #include "tools__module.cpp"
-    #include "tools__to_string_from.cpp"
-    #include "tools__to_number_from.cpp"
+    #include "tools__square_module.cpp"
     #include "tools__pattern_length.cpp"
-    #include "tools__factorial_of.cpp"
-    #include "tools__double_factorial_of.cpp"
+    #include "tools__factorial.cpp"
+    #include "tools__double_factorial.cpp"
     #include "tools__binomial_coeff.cpp"
     #include "tools__point_distance.cpp"
+    #include "tools__gamma_function.cpp"
+    #include "tools__incomplete_gamma_function.cpp"
+    #include "tools__error_function.cpp"
+    #include "tools__random_number.cpp"
+    #include "tools__kronecker_delta.cpp"
+    #include "tools__convert.cpp"
+    #include "tools__lower_case.cpp"
+    #include "tools__remove_blank_spaces.cpp"
 };
 #endif

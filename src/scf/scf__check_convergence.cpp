@@ -4,8 +4,7 @@
 //
 bool algorithm::scf::check_convergence()
 { 
-    tools get;
-    switch(get.module(scf_energy[iteration], scf_energy[iteration - 1]) < config -> scf_convergence_criteria())
+    switch(tools::module(scf_energy[iteration], scf_energy[iteration - 1]) < config -> scf_convergence_criteria())
     {
         case false:
         {

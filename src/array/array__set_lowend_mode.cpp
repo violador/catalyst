@@ -3,6 +3,7 @@
 //
 inline void set_lowend_mode(std::string scratch_dir = DEFAULT_CURRENT_DIR)
 {
+/*
     if(scratch_dir == "" and setup_ready)
     {
         temp_filename = config -> dir_path_of(SCRATCH) + array_filename;
@@ -20,4 +21,5 @@ inline void set_lowend_mode(std::string scratch_dir = DEFAULT_CURRENT_DIR)
 //
     book_data();
     lowend_mode_on = true;
+*/
 };

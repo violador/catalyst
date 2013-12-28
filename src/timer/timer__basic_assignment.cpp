@@ -27,13 +27,6 @@ inline void operator =(const timer &given_timer)
         }
         #pragma omp section
         {
-            this -> i = given_timer.i;
-            this -> j = given_timer.j;
-            this -> m = given_timer.m;
-            this -> n = given_timer.n;
-        }
-        #pragma omp section
-        {
             this -> name = given_timer.name;
         }
     }

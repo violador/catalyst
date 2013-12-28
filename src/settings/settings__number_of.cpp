@@ -1,12 +1,11 @@
 //
 //
 //
-inline unsigned int number_of(unsigned int option)
+inline unsigned int number_of(const unsigned int option)
 {
     switch(option)
     {
-        case TASKS: return total_tasks;          break;
-        case 2: return check_current_cpus(); break;
-       default: return 0;
+        case option::tasks: return total_tasks; break;
+                   default: return 0; break;
     }
 };

@@ -118,9 +118,10 @@ inline void init_properties(const unsigned int local_row_size = 0,
                         break;
                         case true:
                         {
-                            tools id, convert;
-                            array_id = (short unsigned int) id.generate_integral_type((long unsigned int) &array_name);
-                            array_filename = "array." + convert.to_string_from(array_id);
+                            array_id = tools::random_number<unsigned long int>();
+                            array_filename = "array" 
+                                           + tools::convert<std::string>(array_id) 
+                                           + BIN_FILE_EXTENSION;
                         }
                         break;
                     }

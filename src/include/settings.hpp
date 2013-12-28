@@ -37,8 +37,10 @@ class settings
     bool highend_mode_on;         // To store the high-end mode state (on/off).
     bool standby_mode_on;         // To store the stand-by mode state (on/off).
     bool temp_files_on;           // To store the usage of temp files state (on/off).
+    bool logging_matrices;        // To store the state (on/off) of printing matrices at the log file.
     unsigned int total_tasks;     // To store the total number of tasks.
     unsigned short int precision; // To store the number precision in the log file.
+    std::string config_file;      // To store the given configuration file.
     std::string log_filename;     // To store the log filename. 
     std::string *input_filename;  // To store the respective input filename for each task.
     std::string scratch_dir;      // To store the scratch directory path.   
@@ -53,23 +55,28 @@ class settings
     unsigned int *theory_level;   // To store the respective (unsgined int type) level of theory for each task.
 //
 //  read_preference(): To get the user's preference in a given option pattern like "option = preference". 
-    std::string read_preference(const std::string option, const int option_length, const std::string default_preference);
+    std::string read_preference(const std::string option, 
+                                const int option_length, 
+                                const std::string default_preference);
 //
 //  read_state(): To check if the given control key is on/true or off/false. 
-    bool read_state(const std::string option,
-                    const std::string state,
-                    const int option_length,
-                    const int state_length,
-                    bool default_state);
+    bool read_state(const std::string &option,
+                    const std::string &state,
+                    const int &option_length,
+                    const int &state_length,
+                    const bool &default_state);
 //
-//  read_number_of(): To get a non negative integral number of something in a given option from the user's config file.
-    unsigned int read_number_of(const std::string option, const int option_length, const unsigned int default_number);
 //
-//  read_value_of(): To get a double number in a given option from the user's config file.
-    double read_value_of(const std::string option, const int option_length, const unsigned int default_value);    
+    void read_inputs();
 //
-//  Including the inline/template/private member functions:
-    #include "settings__pattern_length.cpp"
+//
+    void read_levels();
+//
+//
+    void init();
+//
+//  Including the inline/template/private member functions: 
+    #include "settings__read_value.cpp"
 //
     public:
 //
@@ -80,8 +87,14 @@ class settings
     settings();
 //
 //  Declaring the class constructor:
+    settings(const std::string &filename);
+//
+//  Declaring the class constructor:
+    settings(const char* filename);
+//
+//  Declaring the class constructor:
     #ifdef USE_MPI
-    settings(boost::mpi::communicator process);
+    //settings(boost::mpi::communicator process);
     #endif
 //
 //  Declaring the class destructor:
@@ -89,32 +102,12 @@ class settings
 //
 //
     std::string theory_database(const unsigned int &option);
+//
+//
     unsigned int theory_database(const std::string &option);
 //
 //
     void operator =(settings &given_config);
-//
-//  Defining some alias for the dir_path_of() member function options:
-    #define SCRATCH 1
-    #define WORK    2
-//
-//  Defining some alias for the filename_of() member function options:
-    #define LOG_FILE    1
-    #define INPUT_FILE  2
-    #define CONFIG_FILE 3
-//
-//  Defining some alias for the state_of() member function options:
-    #define OUTPUT_MODE      1
-    #define VIBRATION_MODE   2
-    #define ROTATIONAL_MODE  3
-    #define TRANSLATION_MODE 4
-    #define DEBUG_MODE       5
-    #define HIGHEND_MODE     6
-    #define STANDBY_MODE     7
-    #define TEMP_FILES_USAGE 8
-//
-//  Defining some alias for the number_of() member function options:
-    #define TASKS 1
 //
 //  Including the inline/template/public member functions: 
     #include "settings__numeric_precision.cpp"

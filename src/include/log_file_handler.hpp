@@ -19,12 +19,13 @@
     #define __LOG_FILE_HANDLER_HPP
     #include "globals.hpp"
     #include "settings.hpp"
+    #include "global_settings.hpp"
     #include "file_system.hpp"
     #include "tools.hpp"
 //
 //
 //
-struct log_file_handler
+class log_file_handler
 {
     private:
 //
@@ -32,7 +33,19 @@ struct log_file_handler
     settings *config;          // A pointer-object to link with any object of settings type.
     file_system *file_manager; // A pointer-object to link with any object of file_system type.
     std::fstream log_file;     // The internal fstream object to write the log file.
-    bool log_file_ready;       // The fstream object creation state. True if created, false otherwise.
+    bool log_file_ready;       // The fstream object creation state. True if created, false otherwise.  
+//
+//  init_log_file(): To start the log file if it not exists yet.
+    void init_log_file();
+//
+//
+    void report_input_list();
+//
+//  Including the inline/template/private member functions:
+    #include "log_file_handler__open.cpp"
+    #include "log_file_handler__close.cpp"
+    #include "log_file_handler__open_and_init.cpp"
+    #include "log_file_handler__report_bad_init.cpp"
 //
     public:
 //
@@ -48,9 +61,6 @@ struct log_file_handler
 //  Declaring the class copy constructor:
     log_file_handler(log_file_handler &given_log_file);
 //
-//  init_log_file(): To start the log file if it not exists yet.
-    void init_log_file();
-//
 //  Including the inline/template/public member functions:
     #include "log_file_handler__write.cpp"
     #include "log_file_handler__exists.cpp"    
@@ -60,18 +70,13 @@ struct log_file_handler
     #include "log_file_handler__set_right.cpp"
     #include "log_file_handler__set_left.cpp"
     #include "log_file_handler__set_new_line.cpp"
-    #include "log_file_handler__close.cpp"
     #include "log_file_handler__fill_line_with.cpp"
     #include "log_file_handler__write_title_bar.cpp"
     #include "log_file_handler__timestamp.cpp"
-    #include "log_file_handler__operator.cpp"
+    #include "log_file_handler__bitwise_left_shift.cpp"
     #include "log_file_handler__write_debug_msg.cpp"
+    #include "log_file_handler__set_config.cpp"
+    #include "log_file_handler__destructor.cpp"
 //
-    std::fstream output; // ADVICE: This public data member is already deprecated, do not use it.
-//                                  Instead of its usage, try the overloaded operator << in an
-//                                  object of type log_file_handler. This fstream will be deleted 
-//                                  soon.
-//
-//                                                                         Humberto Jr. (10/2013)
 };
 #endif

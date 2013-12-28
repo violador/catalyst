@@ -7,7 +7,7 @@ void molecular_system::report_input_reading()
 //
     global_log::file.write_debug_msg("molecular_system::report_input_reading()");
 //
-    switch(config -> state_of(OUTPUT_MODE))                                                                   
+    switch(config -> state_of(option::output_mode))                                                                   
     {
         case true:
         #ifdef FIRST_COLUMN_LENGTH
@@ -164,7 +164,7 @@ void molecular_system::report_input_reading()
 //
         global_log::file.set_new_line();
         periodic_table get;
-        for(unsigned int i_atom = 1; i_atom <= total_atoms; i_atom++)
+        for(unsigned int i_atom = 1; i_atom <= total_atoms; ++i_atom)
         {
 //
 //          To print the number of an atom in the number column:
@@ -227,11 +227,11 @@ void molecular_system::report_input_reading()
         global_log::file << nuclear_repulsion_energy();
         global_log::file << " a.u.";
         global_log::file << "\n- Vibration mode           = ";
-        global_log::file << config -> control_key_of(config -> state_of(VIBRATION_MODE));
+        global_log::file << config -> control_key_of(config -> state_of(option::vibration_mode));
         global_log::file << "\n- Rotation mode            = ";
-        global_log::file << config -> control_key_of(config -> state_of(ROTATIONAL_MODE));
+        global_log::file << config -> control_key_of(config -> state_of(option::rotational_mode));
         global_log::file << "\n- Translation mode         = ";
-        global_log::file << config -> control_key_of(config -> state_of(TRANSLATION_MODE));
+        global_log::file << config -> control_key_of(config -> state_of(option::translation_mode));
         global_log::file << "\n";
         global_log::file.set_new_line();
         #undef FIRST_COLUMN_LENGTH

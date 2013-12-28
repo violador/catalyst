@@ -2,7 +2,8 @@
 //
 //
 //
-double molecular_system::interatomic_distance(const unsigned int &first_atom, const unsigned int &second_atom)
+double molecular_system::interatomic_distance(const unsigned int &first_atom, 
+                                              const unsigned int &second_atom)
 {
     if(atom_positions_ready 
        and (first_atom > 0) 

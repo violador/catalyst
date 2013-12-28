@@ -89,6 +89,15 @@ struct array
                           const unsigned int &m_given,
                           const unsigned int &n_given);
 //
+//
+    bool is_positive();
+//
+//
+    bool is_negative();
+//
+//
+    bool is_null();
+//
 //  Including the inline/template/private member functions: 
     #include "array__init_properties.cpp"
     #include "array__init_1d_array.cpp"
@@ -151,9 +160,6 @@ struct array
 //
 //  delete_array(): Frees the allocated memory of the current array.
     void delete_array();
-//
-//  check_if(): To check properties (option) in the current array.
-    bool check_if(const unsigned int &option);
 //
 //  Defining some alias for the check_if() member function options:
     #define IS_POSITIVE   1
@@ -227,6 +233,7 @@ struct array
     #include "array__function_call.cpp"
     #include "array__set_diagonal.cpp"
     #include "array__resize_array.cpp"
+    #include "array__check_if.cpp"
 //
 };
 #endif

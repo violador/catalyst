@@ -2,7 +2,8 @@
 //
 //
 //
-void file_system::init(std::string given_filename, std::string given_pathname)
+void file_system::init(std::string given_filename, 
+                       std::string given_pathname)
 {
     switch(given_filename not_eq "")
     {

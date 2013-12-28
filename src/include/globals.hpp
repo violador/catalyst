@@ -49,6 +49,7 @@
     #define DEFAULT_NO_FILENAME  "no such filename" // The default content of std::string filenames for no valid files.
     #define DEFAULT_TIMER_LENGTH 10                 // The default length of time measurements for benchmarks.
     #define DEFAULT_THEORY_LEVEL "STO-3G"           // The default level of theory for ab-initio calculations.
+    #define DEFAULT_BASIS_SET    2                  // 
     #define WARNING_MSG_TITLE    "WARNING: "        // The warning mensage title.
     #define ON_KEY_CONTROL       "on"               // The true pattern used in the config file.
     #define OFF_KEY_CONTROL      "off"              // The false pattern used in the config file (not really needed).
@@ -74,14 +75,27 @@
         #define DEFAULT_CURRENT_DIR "./"            // The default directory for Unix-like OS.
     #endif
 //
+//  Levels enum list:
     #define STO3G 1
     #define STO2G 2
     #define STO1G 3
+//
+//  Orbitals enum list:
+    #define SUB_SHELL_s   0
+    #define SUB_SHELL_p   1
+    #define SUB_SHELL_d   2
+    #define SUB_SHELL_f   3
     #define SUB_SHELL_1s  1
     #define SUB_SHELL_2s  2
     #define SUB_SHELL_2px 3
     #define SUB_SHELL_2py 4
     #define SUB_SHELL_2pz 5
+//
+//  ERI enum list:
+    #define INTEGRAL_ssss 1
+    #define INTEGRAL_psss 2
+    #define INTEGRAL_psps 3
+    #define INTEGRAL_ppss 4
 //
 //  Including C standard headers:
     #include <stdlib.h>
@@ -122,10 +136,10 @@
     #include <boost/filesystem.hpp> // "-lboost_filesystem" to linkage.
     #include <boost/timer/timer.hpp>
     #ifdef USE_MPI
-        #include <boost/mpi.hpp> // "-lboost_mpi" to linkage.
-        #include <boost/mpi/environment.hpp>
-        #include <boost/mpi/communicator.hpp>
-        #include <boost/mpi/nonblocking.hpp>
+        //#include <boost/mpi.hpp> // "-lboost_mpi" to linkage.
+        //#include <boost/mpi/environment.hpp>
+        //#include <boost/mpi/communicator.hpp>
+        //#include <boost/mpi/nonblocking.hpp>
     #endif
 //
 //  Including Linux only headers:
@@ -159,4 +173,87 @@
         #define MASTER_PROCESS 0
     #endif
 //
+//  Defining enumeration lists:
+    namespace orbital
+    {
+        enum{s, p, d, f};
+        enum{_1s, _2s, _2px, _2py, _2pz};
+    }
+    namespace eri
+    {
+        enum
+        {
+            ssss, 
+            psss, 
+            psps, 
+            ppss, 
+            ppps, 
+            pppp
+        };
+    }
+    namespace option
+    {
+        enum
+        {
+//
+//          settings::dir_path_of():
+            scratch,
+            work,
+//
+//          settings::filename_of():
+            log_file,
+            input_file,
+            config_file,
+//
+//          settings::state_of():
+            output_mode,
+            vibration_mode,
+            rotational_mode,
+            translation_mode,
+            debug_mode,
+            highend_mode,
+            standby_mode,
+            temp_files_usage,
+            logging_matrices,
+//
+//          settings::number_of():
+            tasks,
+//
+//          array::check_if():
+            is_positive,
+            is_negative,
+            is_null,
+            is_constant,
+            is_square,
+            is_created,
+            is_deleted,
+            is_transposed,
+//
+//          timer::get():
+            wall_time,
+            system_time,
+            user_time,
+            cpu_usage,
+            timer_name,
+//
+//          tools::random_number():
+            taus2, 
+            mt19937, 
+            ranlxs0, 
+            ranlxs2, 
+            ranlxd2, 
+            ranlux389, 
+            gfsr4
+        };
+    }
+    namespace basis
+    {
+        enum
+        {
+            STO_1G,
+            STO_2G,
+            STO_3G,
+            STO_6G
+        };
+    }
 #endif

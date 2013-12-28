@@ -1,16 +1,28 @@
 //
 //
 //
-inline void fill_line_with(unsigned int given_width, std::string given_text = " ")
+inline void fill_line_with(const unsigned int width, 
+                           const std::string text)
 {
     switch(log_file_ready)
     {
-        case  true:
-        std::istringstream converter(given_text);
-        char converted_text;
-        converter >> converted_text;
-        log_file.width(given_width);
-        log_file.fill(converted_text);
+        case true:
+        log_file.std::fstream::width(width);
+        log_file.std::fstream::fill(tools::convert<char>(text));
+        log_file << "";
+        break;
+    }
+};
+//
+//
+//
+inline void fill_line_with(const unsigned int width)
+{
+    switch(log_file_ready)
+    {
+        case true:
+        log_file.std::fstream::width(width);
+        log_file.std::fstream::fill(' ');
         log_file << "";
         break;
     }

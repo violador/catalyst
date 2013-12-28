@@ -8,36 +8,42 @@ inline double &operator ()(const unsigned int &i)
 //
 //
 //
-inline void operator ()(const unsigned int &i, const double &value) 
+inline void operator ()(const unsigned int &i, 
+                        const double &value) 
 {
     switch(is_const_array)
     {
         case false: user_1d_array[i - 1] = value; break;
-        case  true: break;
+        case  true: return; break;
     }
 };
 //
 //
 //
-inline double &operator ()(const unsigned int &i, const unsigned int &j) 
+inline double &operator ()(const unsigned int &i, 
+                           const unsigned int &j) 
 {
     return user_2d_array[(i - 1)*sizeof_row + (j - 1)];
 };
 //
 //
 //
-inline void operator ()(const unsigned int &i, const unsigned int &j, const double &value) 
+inline void operator ()(const unsigned int &i, 
+                        const unsigned int &j, 
+                        const double &value) 
 {
     switch(is_const_array)
     {
         case false: user_2d_array[(i - 1)*sizeof_row + (j - 1)] = value; break;
-        case  true: break;
+        case  true: return; break;
     }
 };
 //
 //
 //
-inline double &operator ()(const unsigned int &i, const unsigned int &j, const unsigned int &m) 
+inline double &operator ()(const unsigned int &i, 
+                           const unsigned int &j, 
+                           const unsigned int &m) 
 {
     return user_3d_array[i - 1][j - 1][m - 1];
 };
@@ -52,7 +58,7 @@ inline void operator ()(const unsigned int &i,
     switch(is_const_array)
     {
         case false: user_3d_array[i - 1][j - 1][m - 1] = value; break;
-        case  true: break;
+        case  true: return; break;
     }
 };
 //
@@ -77,6 +83,6 @@ inline void operator ()(const unsigned int &i,
     switch(is_const_array)
     {
         case false: user_4d_array[i - 1][j - 1][m - 1][n - 1] = value; break;
-        case  true: break;
+        case  true: return; break;
     }
 };

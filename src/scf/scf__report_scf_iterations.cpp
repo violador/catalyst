@@ -4,7 +4,7 @@
 //
 void algorithm::scf::report_scf_iterations() 
 {
-    switch(config -> state_of(OUTPUT_MODE))                                                                   
+    switch(config -> state_of(option::output_mode))                                                                   
     {
         case true:
         #ifdef FIRST_COLUMN_LENGTH
@@ -58,8 +58,7 @@ void algorithm::scf::report_scf_iterations()
                                         + 7, 
                                         "-");
         global_log::file.set_new_line();
-        tools get;
-        for(unsigned int i = 1; i <= iteration; i++)
+        for(unsigned int i = 1; i <= iteration; ++i)
         {
 //
 //          To print the iteration number in the iteration column:
@@ -76,7 +75,7 @@ void algorithm::scf::report_scf_iterations()
 //          To print the iteration correction in the correction column:
 //
             global_log::file.set_scientific_notation();
-            global_log::file << get.module(scf_energy[i], scf_energy[i - 1]);
+            global_log::file << tools::module(scf_energy[i], scf_energy[i - 1]);
 //
             global_log::file.set_new_line();
         }
@@ -143,7 +142,7 @@ void algorithm::scf::report_scf_iterations()
                                         + 7,
                                         "-");
         global_log::file.set_new_line();
-        for(unsigned int i = 1; i <= f_eigenvalues.array::size_of_row(); i++)
+        for(unsigned int i = 1; i <= f_eigenvalues.array::size_of_row(); ++i)
         {
 //
 //          To print the orbital number in the number column:

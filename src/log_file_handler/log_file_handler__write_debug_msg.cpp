@@ -4,8 +4,8 @@
 template<typename data_type1> 
 void write_debug_msg(const data_type1 &text1)
 {
-    switch(config -> state_of(OUTPUT_MODE) 
-           and config -> state_of(DEBUG_MODE) 
+    switch(config -> state_of(option::output_mode) 
+           and config -> state_of(option::debug_mode) 
            and log_file_ready)
     {
         case true:
@@ -22,8 +22,8 @@ template<typename data_type1,
 inline void write_debug_msg(const data_type1 text1, 
                             const data_type2 text2)
 {
-    switch(config -> state_of(OUTPUT_MODE) 
-           and config -> state_of(DEBUG_MODE) 
+    switch(config -> state_of(option::output_mode) 
+           and config -> state_of(option::debug_mode) 
            and log_file_ready)
     {
         case true:
@@ -43,8 +43,8 @@ inline void write_debug_msg(const data_type1 &text1,
                             const data_type2 &text2, 
                             const data_type3 &text3)
 {
-    switch(config -> state_of(OUTPUT_MODE) 
-           and config -> state_of(DEBUG_MODE) 
+    switch(config -> state_of(option::output_mode) 
+           and config -> state_of(option::debug_mode) 
            and log_file_ready)
     {
         case true:
@@ -67,8 +67,8 @@ inline void write_debug_msg(const data_type1 &text1,
                             const data_type3 &text3, 
                             const data_type4 &text4)
 {
-    switch(config -> state_of(OUTPUT_MODE) 
-           and config -> state_of(DEBUG_MODE) 
+    switch(config -> state_of(option::output_mode) 
+           and config -> state_of(option::debug_mode) 
            and log_file_ready)
     {
         case true:
@@ -94,8 +94,8 @@ inline void write_debug_msg(const data_type1 &text1,
                             const data_type4 &text4,
                             const data_type5 &text5)
 {
-    switch(config -> state_of(OUTPUT_MODE) 
-           and config -> state_of(DEBUG_MODE) 
+    switch(config -> state_of(option::output_mode) 
+           and config -> state_of(option::debug_mode) 
            and log_file_ready)
     {
         case true:
@@ -124,8 +124,8 @@ inline void write_debug_msg(const data_type1 &text1,
                             const data_type5 &text5,
                             const data_type6 &text6)
 {
-    switch(config -> state_of(OUTPUT_MODE) 
-           and config -> state_of(DEBUG_MODE) 
+    switch(config -> state_of(option::output_mode) 
+           and config -> state_of(option::debug_mode) 
            and log_file_ready)
     {
         case true:
@@ -157,8 +157,8 @@ inline void write_debug_msg(const data_type1 &text1,
                             const data_type6 &text6,
                             const data_type7 &text7)
 {
-    switch(config -> state_of(OUTPUT_MODE) 
-           and config -> state_of(DEBUG_MODE) 
+    switch(config -> state_of(option::output_mode) 
+           and config -> state_of(option::debug_mode) 
            and log_file_ready)
     {
         case true:
@@ -193,8 +193,8 @@ inline void write_debug_msg(const data_type1 &text1,
                             const data_type7 &text7,
                             const data_type8 &text8)
 {
-    switch(config -> state_of(OUTPUT_MODE) 
-           and config -> state_of(DEBUG_MODE) 
+    switch(config -> state_of(option::output_mode) 
+           and config -> state_of(option::debug_mode) 
            and log_file_ready)
     {
         case true:
@@ -232,8 +232,8 @@ inline void write_debug_msg(const data_type1 &text1,
                             const data_type8 &text8,
                             const data_type9 &text9)
 {
-    switch(config -> state_of(OUTPUT_MODE) 
-           and config -> state_of(DEBUG_MODE) 
+    switch(config -> state_of(option::output_mode) 
+           and config -> state_of(option::debug_mode) 
            and log_file_ready)
     {
         case true:
@@ -274,8 +274,8 @@ inline void write_debug_msg(const data_type1 &text1,
                             const data_type9 &text9,
                             const data_type10 &text10)
 {
-    switch(config -> state_of(OUTPUT_MODE) 
-           and config -> state_of(DEBUG_MODE) 
+    switch(config -> state_of(option::output_mode) 
+           and config -> state_of(option::debug_mode) 
            and log_file_ready)
     {
         case true:
@@ -327,8 +327,8 @@ inline void write_debug_msg(const data_type1 &text1,
                             const data_type14 &text14,
                             const data_type15 &text15)
 {
-    switch(config -> state_of(OUTPUT_MODE) 
-           and config -> state_of(DEBUG_MODE) 
+    switch(config -> state_of(option::output_mode) 
+           and config -> state_of(option::debug_mode) 
            and log_file_ready)
     {
         case true:
@@ -391,8 +391,8 @@ inline void write_debug_msg(const data_type1 &text1,
                             const data_type17 &text17,
                             const data_type18 &text18)
 {
-    switch(config -> state_of(OUTPUT_MODE) 
-           and config -> state_of(DEBUG_MODE) 
+    switch(config -> state_of(option::output_mode) 
+           and config -> state_of(option::debug_mode) 
            and log_file_ready)
     {
         case true:

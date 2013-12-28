@@ -1,0 +1,8215 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass book
+\begin_preamble
+\newcommand{ \classEx}{\texttt{\textcolor{blue}{my\_class}}}
+\newcommand{ \funcEx}{\texttt{\textcolor{blue}{my\_function()}}}
+\newcommand{ \classfuncEx}{\texttt{\textcolor{blue}{my\_class::my\_function()}}}
+\newcommand{ \classHeaderEx}{\texttt{\textcolor{blue}{my\_class.hpp}}}
+\newcommand{ \classFolderEx}{\texttt{\textcolor{blue}{../src/my\_class/}}}
+\newcommand{ \funcImpEx}{\texttt{\textcolor{blue}{my\_class\_\_my\_function.cpp}}}
+
+\newcommand{\print}[1]{\texttt{\textcolor{blue}{#1}}}
+
+\newcommand{ \cDouble}{\texttt{\textcolor{blue}{double}}}
+\newcommand{ \cFloat}{\texttt{\textcolor{blue}{float}}}
+\newcommand{ \cInt}{\texttt{\textcolor{blue}{int}}}
+\newcommand{ \cChar}{\texttt{\textcolor{blue}{char}}}
+\newcommand{ \cCharPtr}{\texttt{\textcolor{blue}{char*}}}
+\newcommand{ \cBool}{\texttt{\textcolor{blue}{bool}}}
+\newcommand{ \cString}{\texttt{\textcolor{blue}{std::string}}}
+\newcommand{ \cTrue}{\texttt{\textcolor{blue}{true}}}
+\newcommand{ \cFalse}{\texttt{\textcolor{blue}{false}}}
+\newcommand{ \cUnsignedInt}{\texttt{\textcolor{blue}{unsigned int}}}
+\newcommand{ \cUnsignedShortInt}{\texttt{\textcolor{blue}{unsigned short int}}}
+\newcommand{ \cUnsignedLongInt}{\texttt{\textcolor{blue}{unsigned long int}}}
+\newcommand{ \cVoid}{\texttt{\textcolor{blue}{void}}}
+\newcommand{ \cStd}{\texttt{\textcolor{blue}{std}}}
+
+\newcommand{ \uArray}{\texttt{\textcolor{blue}{array}}}
+\newcommand{ \uSettings}{\texttt{\textcolor{blue}{settings}}}
+
+\newcommand{ \cIf}{\texttt{\textcolor{blue}{if()}}}
+\newcommand{ \cSwitch}{\texttt{\textcolor{blue}{switch()}}}
+\newcommand{ \cGoto}{\texttt{\textcolor{blue}{goto}}}
+\newcommand{ \cConst}{\texttt{\textcolor{blue}{const}}}
+\newcommand{ \cReturn}{\texttt{\textcolor{blue}{return}}}
+\newcommand{ \cExtern}{\texttt{\textcolor{blue}{extern}}}
+\newcommand{ \cInline}{\texttt{\textcolor{blue}{inline}}}
+\newcommand{ \cTemplate}{\texttt{\textcolor{blue}{template}}}
+\newcommand{ \cInclude}{\texttt{\textcolor{blue}{\#include}}}
+
+\newcommand{ \cpp}{\texttt{\textcolor{blue}{*.cpp}}}
+\newcommand{ \hpp}{\texttt{\textcolor{blue}{*.hpp}}}
+
+\newcommand{ \srdFolder}{\texttt{\textcolor{blue}{../src/}}}
+\newcommand{ \includeFolder}{\texttt{\textcolor{blue}{../src/include/}}}
+\newcommand{ \srcFolder}{\texttt{\textcolor{blue}{../src/}}}
+
+\newcommand{ \omp}{\textrm{\textcolor{black}{OpenMP}}}
+\newcommand{ \mpi}{\textrm{\textcolor{black}{MPI}}}
+\newcommand{ \blas}{\textrm{\textcolor{black}{BLAS library}}}
+
+\newcommand{ \fullGlobalsHeader}{\texttt{\textcolor{blue}{../src/include/globals.hpp}}}
+\newcommand{ \globalsHeader}{\texttt{\textcolor{blue}{globals.hpp}}}
+\newcommand{ \fullSettingsHeader}{\texttt{\textcolor{blue}{../src/include/settings.hpp}}}
+\newcommand{ \settingsHeader}{\texttt{\textcolor{blue}{settings.hpp}}}
+\newcommand{ \fullGlobalSettingsHeader}{\texttt{\textcolor{blue}{../src/include/global\_settings.hpp}}}
+\newcommand{ \globalSettingsHeader}{\texttt{\textcolor{blue}{global\_settings.hpp}}}
+\newcommand{ \fullArrayHeader}{\texttt{\textcolor{blue}{../src/include/array.hpp}}}
+\newcommand{ \arrayHeader}{\texttt{\textcolor{blue}{array.hpp}}}
+\newcommand{ \fullToolsHeader}{\texttt{\textcolor{blue}{../src/include/tools.hpp}}}
+\newcommand{ \toolsHeader}{\texttt{\textcolor{blue}{tools.hpp}}}
+
+\newcommand{ \scfHeader}{\texttt{\textcolor{blue}{algorithm/scf.hpp}}}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams
+eqs-within-sections
+figs-within-sections
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.5cm
+\topmargin 1cm
+\rightmargin 1.5cm
+\bottommargin 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Part
+User guide
+\end_layout
+
+\begin_layout Part
+Developer guide
+\end_layout
+
+\begin_layout Chapter
+Introduction
+\end_layout
+
+\begin_layout Section
+The dependencies
+\end_layout
+
+\begin_layout Section
+Code structure
+\end_layout
+
+\begin_layout Section
+Good practices and convention
+\end_layout
+
+\begin_layout Standard
+The code follows some - good, from a couple of point of views - practices
+ and convention.
+ These are not mandatory features but it is interesting to have all the
+ people, working on it, using almost the same style, in order to make the
+ code easy to debug and to maintain.
+ Due to the code increasing through its timeline, some new practices may
+ show up and being added.
+ In the other hand some may also being abandoned.
+\end_layout
+
+\begin_layout Subsection
+Code style
+\end_layout
+
+\begin_layout Standard
+The two most popular C++ styles are (1) to start something using lower case
+ and to separate the words by an upper case, like 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{myFunction()}
+\end_layout
+
+\end_inset
+
+, with its scope usually written as
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+void myFunction() {
+\end_layout
+
+\begin_layout Plain Layout
+
+    // do things here
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And (2) all the words lower case separated by underlines, like 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+funcEx
+\end_layout
+
+\end_inset
+
+, with its scope written
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+void my_function() 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    // do things here
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+We are using the second style and it is highly recomended to keep it.
+ A highlight at the indentation of five spaces used at the begin of any
+ new block, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{
+\backslash
+{
+\backslash
+}}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In order to make the code more human friendly, it is also important to keep
+ the practice of name things by a full name instead of shortcut names.
+ For example, given a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ type variable to store a kinetic energy, it should be named as simply as
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{kinetic
+\backslash
+_energy}
+\end_layout
+
+\end_inset
+
+.
+ It is not a good practice, at least here, the usage of names like 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{kinE}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{kin}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{k
+\backslash
+_energy}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{k}
+\end_layout
+
+\end_inset
+
+, etc.
+ For such variables that there is no a specific meaning, and thus there
+ is no name, the developer is free to name it as want.
+ In such case, anyway, is recomended to be as minimalistc as possible.
+\end_layout
+
+\begin_layout Standard
+All the macros should be written at upper case with words separated by underline
+s.
+ Anything else should use the style described above.
+\end_layout
+
+\begin_layout Standard
+Every header file should be protected against recompilation by means of
+ macros.
+ Given a class called 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+classEx
+\end_layout
+
+\end_inset
+
+, the first line of its header file, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+classHeaderEx
+\end_layout
+
+\end_inset
+
+, should check if its was previously defined what means that the class was
+ included before.
+ The way to do that is to define a macro for every interface at the following
+ scheme: Two underlines followed by its interface name.
+ In the current example, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{
+\backslash
+_
+\backslash
+_MY
+\backslash
+_CLASS}
+\end_layout
+
+\end_inset
+
+.
+ And a template of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+classHeaderEx
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ may looks like:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+// at the begin
+\end_layout
+
+\begin_layout Plain Layout
+
+#ifndef __MY_CLASS
+\end_layout
+
+\begin_layout Plain Layout
+
+    #define __MY_CLASS
+\end_layout
+
+\begin_layout Plain Layout
+
+    // do things here
+\end_layout
+
+\begin_layout Plain Layout
+
+#endif
+\end_layout
+
+\begin_layout Plain Layout
+
+// at the end
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Naming the src files
+\end_layout
+
+\begin_layout Standard
+To make the routines easy to be found, the source code files have the following
+ structure: All the implementation files are of extension 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cpp
+\end_layout
+
+\end_inset
+
+, and the header files of extension 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hpp
+\end_layout
+
+\end_inset
+
+.
+ All the header files are placed in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includeFolder
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ folder.
+ Each class name or struct name should name also its header file and a folder
+ to place all of its implementations, if any.
+ In such way, given a class called 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+classEx
+\end_layout
+
+\end_inset
+
+, its header file is called 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+classHeaderEx
+\end_layout
+
+\end_inset
+
+.
+ Given a member of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+classEx
+\end_layout
+
+\end_inset
+
+, called 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+funcEx
+\end_layout
+
+\end_inset
+
+, its implementation file should be named as 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+funcImpEx
+\end_layout
+
+\end_inset
+
+, and placed at 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+classFolderEx
+\end_layout
+
+\end_inset
+
+.
+ The same rule may be used for huge namespaces, is say namespaces grouping
+ several other data members or member functions.
+ From the scheme described above, it is obvious that every implementation
+ should live alone in the file named with its name.
+ In the case that there is other versions of the same implementation, they
+ could stay all together in the same file.
+ 
+\end_layout
+
+\begin_layout Standard
+If there is any implementation concerning to change the behavior of - i.e.
+ to overload - any operator with respect to any class, this is also somehow
+ an implementation of this class.
+ In such way, the file should be named using the same rules but adding the
+ operator name instead of the member function.
+ For example, given an overloaded basic assignment operator, =, to work
+ on objects of type 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+classEx
+\end_layout
+
+\end_inset
+
+, its implementation file should be named as 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{my
+\backslash
+_class
+\backslash
+_
+\backslash
+_basic
+\backslash
+_assignment.cpp}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and placed at 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+classFolderEx
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ as usual.
+\end_layout
+
+\begin_layout Standard
+And following the same rules given before, the constructors and destructors
+ implementation files, if any, should be named in the same way: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{my
+\backslash
+_class
+\backslash
+_
+\backslash
+_constructor.cpp}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{my
+\backslash
+_class
+\backslash
+_
+\backslash
+_destructor.cpp}
+\end_layout
+
+\end_inset
+
+, placed also at 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+classFolderEx
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+To respect the scope names
+\end_layout
+
+\begin_layout Standard
+In a highly typed language as C++, and at the oriented object scheme, things
+ usually belongs to other things.
+ And the name at each scope exists to avoid to clash them.
+ Also to turns out the code easy to read and to understand.
+ It is a really good practice to use the full name of the objects.
+ In such way one knows exactly to what context a given object belongs to
+ and comes from.
+ In other words, it is highly recommended the widely usage of the scope
+ operator, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{::}
+\end_layout
+
+\end_inset
+
+.
+ It is clear that when we do not provide the full names, the code turns
+ out unreadable in some cases.
+ For example, given two objects, 
+\family typewriter
+\color blue
+object1
+\family default
+\color inherit
+ and 
+\family typewriter
+\color blue
+object2
+\family default
+\color inherit
+, from the types 
+\family typewriter
+\color blue
+vector1
+\family default
+\color inherit
+ and 
+\family typewriter
+\color blue
+vector2
+\family default
+\color inherit
+, calling one member functions, each one, with the same name, 
+\family typewriter
+\color blue
+x()
+\family default
+\color inherit
+; its call looks like 
+\family typewriter
+\color blue
+object1.vector1::x()
+\family default
+\color inherit
+ and 
+\family typewriter
+\color blue
+object2.vector2::x()
+\family default
+\color inherit
+.
+ Omitting the scope we have just 
+\family typewriter
+\color blue
+object1.x()
+\family default
+\color inherit
+ and 
+\family typewriter
+\color blue
+object2.x()
+\family default
+\color inherit
+.
+ It is not clear enough for someone else studying the code to what belongs
+ each 
+\family typewriter
+\color blue
+x()
+\family default
+\color inherit
+ method.
+ Are they the same? or two different methods? This is also true for all
+ the standard C++ classes and namespaces, such as 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cStd
+\end_layout
+
+\end_inset
+
+, and third libraries.
+\end_layout
+
+\begin_layout Subsection
+Performance and code optmization
+\end_layout
+
+\begin_layout Standard
+It is highly recomended to wirte the code optmized from scratch.
+ And all the optmization should be done in order to improve performance.
+ So far, some of the optmizations used on-the-fly are as follows:
+\end_layout
+
+\begin_layout Itemize
+Inlined small functions.
+\end_layout
+
+\begin_layout Itemize
+To use 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cSwitch
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ statements instead of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cIf
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ statements.
+\end_layout
+
+\begin_layout Itemize
+To pass the functions arguments by reference.
+\end_layout
+
+\begin_layout Itemize
+To decide branches at the compilation time and not at the runtime.
+\end_layout
+
+\begin_layout Itemize
+To return a pointer of a huge object instead of the object itself.
+\end_layout
+
+\begin_layout Itemize
+To return a huge object by the input arguments.
+\end_layout
+
+\begin_layout Itemize
+To declare variables when and where they are needed.
+\end_layout
+
+\begin_layout Itemize
+To write and debug an 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+omp
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ version before a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+mpi
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ one.
+\end_layout
+
+\begin_layout Standard
+The inlined functions are not actually invoked as common functions.
+ They are implemented at the compilation time, at each place that they were
+ requested.
+ In such way there is no either copy of the input arguments or returning
+ values.
+ In the other hand only really small functions should be inlined.
+ Otherwise, a huge function could be bigger than the cache memory available,
+ and to force the CPU to read the remaing from the RAM memory, i.e.
+ to force a penalty performance.
+ As small functions we means implementations around of five lines, and in
+ the worst case, ten lines.
+ The huge implementations actually improve performance when not inlined.
+ 
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cSwitch
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ statements, in the worst case, has the same performance of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cIf
+\end_layout
+
+\end_inset
+
+.
+ But when using the compiler optimization, they can be faster.
+ The compiler can use a table of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+cGoto
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ or a binary search.
+ In such way all the branches are already implemented.
+ The difference is that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cSwitch
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ branches needed to being known at the compilation time, and must be associated
+ to integral types only.
+ But there are several applications.
+ The most powerfull one could be the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cTrue
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cFalse
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ decision.
+ They also turns out the code more human friendly.
+ Branch decisions using other types of computations, for instance of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+, should be done by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cIf
+\end_layout
+
+\end_inset
+
+, at least when they do not result in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cTrue
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cFalse
+\end_layout
+
+\end_inset
+
+.
+ Anyway, any branch decision is computationally expensive and should be
+ avoided whenever possible.
+\end_layout
+
+\begin_layout Standard
+When we invoke a function all the input arguments are actually copied from
+ the caster to the memory space of the invoked function.
+ This could be time demanding when there are lots of arguments or they are
+ big.
+ To avoid this problem, one may pass they memory address instead, i.e.
+ to pass arguments by reference.
+ In such way the invoked function do not have its own copy but can read
+ and/or write the given value directly into its original place in the memory.
+ When there is no need to write, just to read, it is a really good practice
+ to give the address as a constant, using the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ statement.
+ This prevents the invoked function to change something outsided there,
+ what should not be changed.
+ Thus preventing bugs.
+\end_layout
+
+\begin_layout Standard
+The C++ has a powerfull feature that allows to decide some branches at the
+ compilation time: To overload the function calls and the template functions.
+ The overload functions calls means to have several functions using the
+ same name.
+ The compiler are going to decide the one invoked by the number and/or the
+ type of its input arguments.
+ Of course several functions with the same name and the same number and/or
+ type of input arguments are not allowed.
+ Following the same way, in the template functions the types of its input
+ arguments and returns are decided at the compilation time depending of
+ how the caller invoked it.
+ The compiler are going to build a specialization of each templated function
+ in each place that it was requested.
+ Usually template and overloads are used together.
+ The fact is that the same function can be called to handle different tasks,
+ and there is no need to decide that at the runtime, using a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cIf
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ or a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cSwitch
+\end_layout
+
+\end_inset
+
+.
+ Just changing the set of input arguments, the compiler can build the right
+ one in the right place by default.
+\end_layout
+
+\begin_layout Section
+Starting a new src file
+\end_layout
+
+\begin_layout Standard
+There are several ways to start a new file inside the project.
+ Most part of them are a function of the sort of src file, indeed.
+\end_layout
+
+\begin_layout Standard
+To start a new interface - either class, struct or namespace - the steps
+ are as follows:
+\end_layout
+
+\begin_layout Enumerate
+To build a folder at 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+srcFolder
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ in order to store all of its implementation files, if any.
+ 
+\end_layout
+
+\begin_layout Enumerate
+After that, to properly place its header file, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hpp
+\end_layout
+
+\end_inset
+
+, in the current 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+includeFolder
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+In the other hand, to start a new implementation file the common steps are:
+\end_layout
+
+\begin_layout Enumerate
+If it is a member function, to place its implementation file, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cpp
+\end_layout
+
+\end_inset
+
+, at the properly folder, named with its interface.
+\end_layout
+
+\begin_layout Enumerate
+If the member function has either the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cInline
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cTemplate
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ keywords, its implementation file shoud be included at the interface header
+ file, using 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cInclude
+\end_layout
+
+\end_inset
+
+, in order to be properly compiled.
+ Note that the implementation filename cannot be part of the compiler command
+ line.
+ It is already part of the entire project.
+\end_layout
+
+\begin_layout Enumerate
+In the other hand, if it is not an inlined nor templated member function,
+ its signature-only should be declared in the body of its interface header
+ file.
+ After that, the implementation filename should be included in the compiler
+ command line.
+\end_layout
+
+\begin_layout Chapter
+Classes, structures and namespaces
+\end_layout
+
+\begin_layout Section
+globals.hpp
+\end_layout
+
+\begin_layout Standard
+The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+globalsHeader
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ is actually just an interface with no implementations, i.e just the header
+ file defined at 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fullGlobalsHeader
+\end_layout
+
+\end_inset
+
+.
+ Each new interface, either class, struct or namespace, should include it
+ properly.
+ The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+globalsHeader
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ must carry out only (1) definitions of macros used for replacements through
+ the code; (2) to include the standard C/C++ and third libraries needed;
+ and (3) to set some configurations at the compilation time.
+ 
+\end_layout
+
+\begin_layout Standard
+All the macros definitions exists to replace something somewhere else in
+ the code, in order to handle the maintenance.
+ In such way it is quite straight to modify all at once.
+ The usage of macros to handle computations or to control branches should
+ not be encouraged, since macros can be easily modified and do not respects
+ the scopes.
+ Obviously, even those macros used for replacements should not be redefined
+ or undefined outside this header.
+ Anyway if any sort of local macro is needed somewhere else, it must be
+ defined there using an unique name that do not clash those defined at 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+globalsHeader
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and undefined immediately after its uses.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="38" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+The name of the macro
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Value
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LINUX
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+GNU/Linux
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WIN32
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Microsoft Windows
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+OS_X
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Apple OS X
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CATALYST_VERSION
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+COMPILATION_NUMBER
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+USER_CONFIG_FILENAME
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+COMMENT_TAG
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+#
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+AU_UNIT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+a.u.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+EV_UNIT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+eV
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ANG_UNIT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+A
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+S_UNIT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+s
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FS_UNIT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+fs
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+K_UNIT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+K
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PROB_UNIT
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MAX_PRECISION
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DEFAULT_NOT_DEFINED
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+not defined
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DEFAULT_SCF_CRITERIA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.00001
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DEFAULT_PRECISION
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DEFAULT_TASK_NUMBER
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DEFAULT_ARRAY_NAME
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unknown array
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DEFAULT_TIME_LENGTH
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DEFAULT_THEORY_LEVEL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+STO-3G
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DEFAULT_CURRENT_DIR
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+./
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DEFAULT_BASIS_SET
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WARNING_MSG_TITLE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+WARNING:
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ON_KEY_CONTROL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+OFF_KEY_CONTROL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+off
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BIN_FILE_EXTENSION
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.bin
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TXT_FILE_EXTENSION
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.txt
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SPACE_LENGTH
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ARRAY_INDEX_LENGTH
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TITLE_BAR_SYMBOL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+=
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BYTE_TO_KILOBYTE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0009765625
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BYTE_TO_MEGABYTE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.000000954
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+LINUX_MEMINFO_FILE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+/proc/meminfo
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+STO3G_RANGE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+53
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MASTER_PROCESS
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+settings.hpp
+\end_layout
+
+\begin_layout Standard
+The settings class defined in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fullSettingsHeader
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ header file was designed to handle the runtime configuration.
+ Its main function is to define objects that are able to read the user's
+ preferences from a standard configuration file and to control any other
+ routines.
+ It is also possible to declare objects based onto different configuration
+ files and therefore with different contents.
+ Such approach can be used to create several sets of configuration for several
+ tasks if needed.
+ 
+\end_layout
+
+\begin_layout Standard
+The client do not need to mind about how to read any kind of streaming file.
+ The settings constructor is going to read the given file by default, to
+ collect all the data needed and to keep it at the memory.
+ Thus, the routines can use the settings member functions to retrieve any
+ information.
+ An important task of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+settingsHeader
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ is to prevent of careless changes in the configuration set.
+\end_layout
+
+\begin_layout Standard
+A good practice that should be encouraged, for a single set of configuration,
+ is to declare just one settings type object.
+ Since its constructor actually reads the configuration file several times
+ and then fills the settings data members.
+ This procedure could be quite expensive if there are lots of information
+ to get.
+ After just one settings type object created, it can be given as an input
+ argument anywhere else.
+ Also it is interesting to remark the good practice to pass it by reference
+ or by pointers.
+ 
+\end_layout
+
+\begin_layout Standard
+Noadays there are a few ways to create objects of settings type:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status collapsed
+
+\begin_layout Plain Layout
+
+#include "settings.hpp"
+\end_layout
+
+\begin_layout Plain Layout
+
+//
+\end_layout
+
+\begin_layout Plain Layout
+
+std::string filename = "file.txt";
+\end_layout
+
+\begin_layout Plain Layout
+
+settings A;
+\end_layout
+
+\begin_layout Plain Layout
+
+settings B(filename);
+\end_layout
+
+\begin_layout Plain Layout
+
+settings C("file.txt");
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ was created using the default configuration file defined by the macro 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{USER
+\backslash
+_CONFIG
+\backslash
+_FILENAME}
+\end_layout
+
+\end_inset
+
+; 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{B}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ was created using a given filename as 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+; and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{C}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ was created using a given filename as 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cCharPtr
+\end_layout
+
+\end_inset
+
+.
+ Note that 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{B = C}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The current layout of the configuration file is as follows:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+# this is a comment line
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+option1 = key
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+option2 = key
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+option3 = key
+\end_layout
+
+\begin_layout Standard
+The symbol used to tag the comment lines is, by default 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{
+\backslash
+#}
+\end_layout
+
+\end_inset
+
+, defined in the macro 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{COMMENT
+\backslash
+_TAG}
+\end_layout
+
+\end_inset
+
+.
+ The options are of three general types: (1) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cBool
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ states, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cTrue
+\end_layout
+
+\end_inset
+
+/
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{on}
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cFalse
+\end_layout
+
+\end_inset
+
+/
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{off}
+\end_layout
+
+\end_inset
+
+; (2) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ preferences such as pathnames, filenames etc; and (3) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ values/quantities.
+\end_layout
+
+\begin_layout Standard
+The current options, keys and default keys are as follows:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="16" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Option pattern
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Expected key
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Default key
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+task number =
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+output mode =
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+vibration mode =
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rotational mode = 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+translation mode = 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+debug mode =
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+off
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+highend mode =
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+standby mode =
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+off
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+temp files =
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+print matrices =
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+on
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+off
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+log filename =
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+catalyst.log
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+scratch directory =
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{DEFAULT
+\backslash
+_NOT
+\backslash
+_DEFINED}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+work directory = 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{DEFAULT
+\backslash
+_NOT
+\backslash
+_DEFINED}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+numeric precision =
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedShortInt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{DEFAULT
+\backslash
+_PRECISION}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+scf convergence criteria =
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{DEFAULT
+\backslash
+_SCF
+\backslash
+_CRITERIA}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+settings::check_current_memory()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ option
+\end_layout
+
+\begin_layout Itemize
+Description: This member function returns the current RAM memory, either
+ the total value or the available one.
+\end_layout
+
+\begin_layout Subsection
+settings::check_current_cpus()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: This member function returns the current number of CPUs available.
+\end_layout
+
+\begin_layout Subsection
+settings::check_current_time()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: This member function returns the current time in the following
+ format: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{Fri Nov 29 20:49:17 2013}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+settings::check_current_hostname()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cInt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: This member function returns the current hostname ID.
+\end_layout
+
+\begin_layout Subsection
+settings::check_current_username()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: This member function returns the current username.
+\end_layout
+
+\begin_layout Subsection
+settings::control_key_of()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cBool
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ key
+\end_layout
+
+\begin_layout Itemize
+Description: Given the state (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cTrue
+\end_layout
+
+\end_inset
+
+/
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cFalse
+\end_layout
+
+\end_inset
+
+) of any configuration key, this function returns the content of the macros
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{ON
+\backslash
+_KEY
+\backslash
+_CONTROL}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{OFF
+\backslash
+_KEY
+\backslash
+_CONTROL}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+.
+ The default content is 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{on}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{off}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+settings::filename_of()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ option
+\end_layout
+
+\begin_layout Itemize
+Description: This function returns the filename of the given option.
+\end_layout
+
+\begin_layout Subsection
+settings::dir_path_of()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ option
+\end_layout
+
+\begin_layout Itemize
+Description: This function returns the path of the given option.
+\end_layout
+
+\begin_layout Subsection
+settings::number_of()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ option
+\end_layout
+
+\begin_layout Itemize
+Description: This function returns the total of a given option.
+\end_layout
+
+\begin_layout Subsection
+settings::state_of()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cBool
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ option
+\end_layout
+
+\begin_layout Itemize
+Description: This function returns the current state, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cTrue
+\end_layout
+
+\end_inset
+
+/
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{on}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cFalse
+\end_layout
+
+\end_inset
+
+/
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{off}
+\end_layout
+
+\end_inset
+
+, of the given option.
+\end_layout
+
+\begin_layout Subsection
+settings::my_size()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: This function returns the size in kB of the current object.
+\end_layout
+
+\begin_layout Subsection
+settings::
+\size large
+scf_convergence_criteria
+\size default
+()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: This function returns the current criteria of the energy convergenc
+e for a SCF routine.
+ Mainly used in the class 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+scfHeader
+\end_layout
+
+\end_inset
+
+, described later.
+\end_layout
+
+\begin_layout Subsection
+settings::
+\size large
+numeric_precision
+\size default
+()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: This function returns the current numeric precision used to
+ write the output.
+\end_layout
+
+\begin_layout Section
+global_settings.hpp
+\end_layout
+
+\begin_layout Standard
+The global settings namespace defined in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fullGlobalSettingsHeader
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ header file just have one object, called 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{global
+\backslash
+_settings::config}
+\end_layout
+
+\end_inset
+
+, of settings type, declared globally by the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cExtern
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ keyword.
+ Thus, it is recomended to each other interface, being class or struct,
+ to have its configuration by means of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{global
+\backslash
+_settings::config}
+\end_layout
+
+\end_inset
+
+, and to provide a way to the client setup its own settings type object,
+ if want.
+ The only requirement to use the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{global
+\backslash
+_settings::config}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ is to include properly the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+globalSettingsHeader
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ header file where it is needed.
+\end_layout
+
+\begin_layout Section
+array.hpp
+\end_layout
+
+\begin_layout Standard
+The array class defined in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fullArrayHeader
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ header file is designed to handle operations with 1D (a.k.a.
+ vectors), 2D (a.k.a.
+ matrices), 3D and 4D arrays of double type numbers.
+ Mainly for mathematical operations, but in principle, it should be used
+ also for general tasks.
+ 
+\end_layout
+
+\begin_layout Standard
+Some of the motivations behind this class are: The intensive usage of arrays
+ for linear algebra tasks; built-in functions that take advantage of the
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+blas
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ without the client really need to mind about the details; the default C
+ arrays are quite annoying to use in tasks like to be given as function
+ input or returned by the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+cReturn
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ statement; the default C++ STL containers are powerfull but could not provide
+ the desired perfomance; the dynamically allocation of memory for C/C++
+ arrays are not that simple to be invoked several times; etc.
+ The array class makes theses uses and lots more quite straightforwardly.
+ 
+\end_layout
+
+\begin_layout Standard
+Instead of the standard C array objects, such as 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{my
+\backslash
+_1D
+\backslash
+_array[i]}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{my
+\backslash
+_2D
+\backslash
+_array[i][j]}
+\end_layout
+
+\end_inset
+
+, the array type interface looks like 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{my
+\backslash
+_1D
+\backslash
+_array(i)}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{my
+\backslash
+_2D
+\backslash
+_array(i, j)}
+\end_layout
+
+\end_inset
+
+.
+ Using the operator 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{()}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ to acess its elements.
+ Also the common C/C++ boundaries in a given n-th interval of [0, n - 1],
+ in the array type interface is just [1, n].
+ Any value outside this interval is just an usual out-of-range error of
+ C/C++ languages.
+ This method is inlined and do not check the bounds of the interval.
+ Thus, this is the fastest way but not the safest one.
+ There is also two member functions, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{get()}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{set()}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ - detailed soon -, to do the same tasks but checking the bounds.
+ Any try to go out of its interval returns a safe zero and the compiler
+ will not complain about.
+\end_layout
+
+\begin_layout Standard
+There are several ways to construct objects of array type:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+#include "array.hpp"
+\end_layout
+
+\begin_layout Plain Layout
+
+//
+\end_layout
+
+\begin_layout Plain Layout
+
+unsigned int i = 5;
+\end_layout
+
+\begin_layout Plain Layout
+
+unsigned int j = 5;
+\end_layout
+
+\begin_layout Plain Layout
+
+unsigned int p = 5;
+\end_layout
+
+\begin_layout Plain Layout
+
+unsigned int q = 5;
+\end_layout
+
+\begin_layout Plain Layout
+
+//
+\end_layout
+
+\begin_layout Plain Layout
+
+array A;
+\end_layout
+
+\begin_layout Plain Layout
+
+array B(i);
+\end_layout
+
+\begin_layout Plain Layout
+
+array C(i, j);
+\end_layout
+
+\begin_layout Plain Layout
+
+array D(i, j, p);
+\end_layout
+
+\begin_layout Plain Layout
+
+array E(i, j, p, q);
+\end_layout
+
+\begin_layout Plain Layout
+
+array F = B;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\end_layout
+
+\end_inset
+
+ is a dimensionless array and its size can be setted later but before being
+ used; 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{B}
+\end_layout
+
+\end_inset
+
+ is a common vector of size 5; 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{C}
+\end_layout
+
+\end_inset
+
+ is a common matrix of size 5
+\begin_inset Formula $\times$
+\end_inset
+
+5; 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{D}
+\end_layout
+
+\end_inset
+
+ is a 3D array of size 5
+\begin_inset Formula $\times$
+\end_inset
+
+5
+\begin_inset Formula $\times$
+\end_inset
+
+5; 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{E}
+\end_layout
+
+\end_inset
+
+ is a 4D array of size 5
+\begin_inset Formula $\times$
+\end_inset
+
+5
+\begin_inset Formula $\times$
+\end_inset
+
+5
+\begin_inset Formula $\times$
+\end_inset
+
+5 and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{F}
+\end_layout
+
+\end_inset
+
+ is declared and initialized by a previuosly declared one, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{B}
+\end_layout
+
+\end_inset
+
+.
+ All the elements of a non-dimensionless array are memory allocated and
+ setted to zero by default.
+\end_layout
+
+\begin_layout Standard
+All the array type objects have a set of internal variables - i.e.
+ properties - which changes the object behavior itself.
+ Some of them can be freely changed and others are setted automatically.
+ They are 
+\end_layout
+
+\begin_layout Enumerate
+1D or 2D or 3D or 4D array type (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cBool
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+constant array (read-only, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cBool
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+square array (meaningful only for 2D arrays, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cBool
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+transposed array (meaningful only for 2D arrays, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cBool
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+created array (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cBool
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+deleted array (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cBool
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+an unique ID (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedLongInt
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+a name (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+The constant property do not allow the member functions, which changes its
+ content in anyway, to work on.
+ The square property is valid for 2D type-only and setted by default when
+ the dimensions sizes are the same, 
+\begin_inset Formula $C_{m\times n}$
+\end_inset
+
+ with 
+\begin_inset Formula $m=n$
+\end_inset
+
+.
+ The transposed property is also for 2D type-only and setted when all the
+ elements are interchanged, 
+\begin_inset Formula $C_{i,j}^{T}=C_{j,i}$
+\end_inset
+
+.
+ The created property is setted just once, when an array type object is
+ declared without sizes and have its size defined by the first time.
+ The deleted property setted when its content is destroyed and the memory
+ deallocated.
+ After deleted, most part of the member functions do not works on.
+ The ID is a random number that identifies each object, setted by default
+ when the object is constructed.
+ The name is an optional information that can be setted at any time.
+\end_layout
+
+\begin_layout Subsection
+Operators
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{operator =()}
+\end_layout
+
+\end_inset
+
+: Given two arrays type objects, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{B}
+\end_layout
+
+\end_inset
+
+, the basic assignment operator, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A = B}
+\end_layout
+
+\end_inset
+
+, copies the content from the array at the right hand side to the left hand
+ one, 
+\begin_inset Formula $A\longleftarrow B$
+\end_inset
+
+.
+ Only the content is actually copied and all the properties of each array
+ remains the same.
+ The operation is valid to a non constant 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\end_layout
+
+\end_inset
+
+, 1D, 2D, 3D and 4D arrays.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{operator +=()}
+\end_layout
+
+\end_inset
+
+: Given two arrays type objects, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{B}
+\end_layout
+
+\end_inset
+
+, the addition assignment operator, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A += B}
+\end_layout
+
+\end_inset
+
+, takes advantage of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+blas
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ to sum the contents of the two arrays and assigns it to the array at the
+ left hand side, 
+\begin_inset Formula $A\longleftarrow A+B$
+\end_inset
+
+.
+ Only the sum of the contents is actually copied and all the properties
+ of each array remains the same.
+ The operation is valid to a non constant 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\end_layout
+
+\end_inset
+
+, 1D, 2D, 3D and 4D arrays.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{operator +()}
+\end_layout
+
+\end_inset
+
+: Given the arrays type objects, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{B}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{C}
+\end_layout
+
+\end_inset
+
+, the addition operator, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{C = A + B}
+\end_layout
+
+\end_inset
+
+, takes advantage of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+blas
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ to sum the contents of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{B}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and to assign it to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{C}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula $C\longleftarrow A+B$
+\end_inset
+
+.
+ Only the sum of the contents is actually copied and all the properties
+ of each array remains the same.
+ The operation is valid to a non constant 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{C}
+\end_layout
+
+\end_inset
+
+, 1D, 2D, 3D and 4D arrays.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{operator -=()}
+\end_layout
+
+\end_inset
+
+: Given two arrays type objects, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{B}
+\end_layout
+
+\end_inset
+
+, the subtraction assignment operator, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A -= B}
+\end_layout
+
+\end_inset
+
+, takes advantage of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+blas
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ to subtract the contents of the two arrays and assigns it to the array
+ at the left hand side, 
+\begin_inset Formula $A\longleftarrow A-B$
+\end_inset
+
+.
+ Only the subtraction of the contents is actually copied and all the properties
+ of each array remains the same.
+ The operation is valid to a non constant 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\end_layout
+
+\end_inset
+
+, 1D, 2D, 3D and 4D arrays.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{operator -()}
+\end_layout
+
+\end_inset
+
+: Given the arrays type objects, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{B}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{C}
+\end_layout
+
+\end_inset
+
+, the subtraction operator, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{C = A - B}
+\end_layout
+
+\end_inset
+
+, takes advantage of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+blas
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ to subtract the contents of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{B}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and to assign it to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{C}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula $C\longleftarrow A-B$
+\end_inset
+
+.
+ Only the subtraction of the contents is actually copied and all the properties
+ of each array remains the same.
+ The operation is valid to a non constant 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{C}
+\end_layout
+
+\end_inset
+
+, 1D, 2D, 3D and 4D arrays.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{operator *=()}
+\end_layout
+
+\end_inset
+
+: Given two arrays type objects, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{B}
+\end_layout
+
+\end_inset
+
+, the multiplication assignment operator, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A *= B}
+\end_layout
+
+\end_inset
+
+, takes advantage of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+blas
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ to multiply the contents of the two arrays and assigns it to the array
+ at the left hand side, 
+\begin_inset Formula $A\longleftarrow A*B$
+\end_inset
+
+.
+ Only the multiplication of the contents is actually copied and all the
+ properties of each array remains the same.
+ The operation is valid to a non constant 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\end_layout
+
+\end_inset
+
+, 1D, 2D, 3D and 4D arrays.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{operator *()}
+\end_layout
+
+\end_inset
+
+: Given the arrays type objects, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{B}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{C}
+\end_layout
+
+\end_inset
+
+, the multiplication operator, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{C = A*B}
+\end_layout
+
+\end_inset
+
+, takes advantage of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+blas
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ to multiply the contents of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{A}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{B}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and to assign it to 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{C}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Formula $C\longleftarrow A*B$
+\end_inset
+
+.
+ Only the subtraction of the contents is actually copied and all the properties
+ of each array remains the same.
+ The operation is valid to a non constant 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{C}
+\end_layout
+
+\end_inset
+
+, 1D, 2D, 3D and 4D arrays.
+\end_layout
+
+\begin_layout Subsection
+array::create_array()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cVoid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ i, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ j, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ p, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ q
+\end_layout
+
+\begin_layout Itemize
+Description: This member function is designed to setup the dimensions of
+ a dimensionless array type object.
+ It just works on objects that has its created property 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cFalse
+\end_layout
+
+\end_inset
+
+.
+ It is going to initialize all the default properties, allocate the memory
+ and to set all the elements to zero.
+ As input arguments should be given as dimensions as desired.
+ Valid to not created, 1D, 2D, 3D and 4D types.
+\end_layout
+
+\begin_layout Subsection
+array::delete_array()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cVoid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: To undo the operation of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{array::create
+\backslash
+_array()}
+\end_layout
+
+\end_inset
+
+, deallocates the used memory and turns 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cTrue
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ the deleted property.
+ The call of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{array::delete
+\backslash
+_array()}
+\end_layout
+
+\end_inset
+
+ do not destroy the object itself, what should be done just by the class
+ destructor - called by default at the right moment.
+ The aim of this function is only to free the allocated memory used to store
+ the array, which is the most expensive part.
+ Valid to 1D, 2D, 3D and 4D types.
+\end_layout
+
+\begin_layout Subsection
+array::set()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type:
+\family typewriter
+\color blue
+ 
+\family default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cVoid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: To set the given value in the given position of the array.
+ It just works in a not deleted and not constant object.
+ It also checks the bounds and the operation is done only if the given element
+ lies on the dimension size interval.
+\end_layout
+
+\begin_layout Subsection
+array::set_all()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type:
+\family typewriter
+\color blue
+ 
+\family default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cVoid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ value
+\end_layout
+
+\begin_layout Itemize
+Description: To set the given value in all the array elements.
+ Valid to not deleted, not constant, 1D, 2D, 3D and 4D array types.
+\end_layout
+
+\begin_layout Subsection
+array::get()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+cDouble
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ i, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ j
+\end_layout
+
+\begin_layout Itemize
+Description: To retrieve the value of a given element.
+\end_layout
+
+\begin_layout Subsection
+array::size_of_row()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type:
+\family typewriter
+\color blue
+ 
+\family default
+\color inherit
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: Returns the size of the first dimension (row).
+ Valid to not deleted, 1D, 2D, 3D and 4D array types.
+\end_layout
+
+\begin_layout Subsection
+array::size_of_column()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: Returns the size of the second dimension (column).
+ Valid to not deleted, 2D, 3D and 4D array types.
+\end_layout
+
+\begin_layout Subsection
+array::size_of_1st_layer()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: Returns the size of the third dimension (first layer).
+ Valid to not deleted, 3D and 4D array types.
+\end_layout
+
+\begin_layout Subsection
+array::size_of_2nd_layer()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: Returns the size of the fourth dimension (second layer).
+ Valid to not deleted and 4D array types.
+\end_layout
+
+\begin_layout Subsection
+array::check_array_id()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: Returns the current array ID.
+ Valid to not deleted, 1D, 2D, 3D and 4D array types.
+\end_layout
+
+\begin_layout Subsection
+array::check_if()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cBool
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ flag
+\end_layout
+
+\begin_layout Itemize
+Description: The input flags for this function are: (1) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{option::is
+\backslash
+_positive}
+\end_layout
+
+\end_inset
+
+, (2) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{option::is
+\backslash
+_negative}
+\end_layout
+
+\end_inset
+
+, (3) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{option::is
+\backslash
+_null}
+\end_layout
+
+\end_inset
+
+, (4) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{option::is
+\backslash
+_constant}
+\end_layout
+
+\end_inset
+
+, (4) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{option::is
+\backslash
+_square}
+\end_layout
+
+\end_inset
+
+, (5) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{option::is
+\backslash
+_created}
+\end_layout
+
+\end_inset
+
+, (6) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{option::is
+\backslash
+_deleted}
+\end_layout
+
+\end_inset
+
+, (7) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{option::is
+\backslash
+_transposed}
+\end_layout
+
+\end_inset
+
+.
+ And the function is going to return 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cTrue
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cFalse
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ for the current state of the property chosen.
+ Valid to not deleted, 1D, 2D, 3D and 4D array types.
+\end_layout
+
+\begin_layout Subsection
+array::set_constant()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cVoid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: To set the constant property 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cTrue
+\backslash
+:
+\end_layout
+
+\end_inset
+
+.
+ The usage of this member function do not allow the operation of member
+ functions which changes the array content in some way.
+ Only the read-only member functions are allowed to work on.
+ Valid to not deleted, 1D, 2D, 3D and 4D array types.
+\end_layout
+
+\begin_layout Subsection
+array::unset_constant()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cVoid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: To undo the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{array::set
+\backslash
+_constant()}
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ operation.
+ Valid to constant, not deleted, 1D, 2D, 3D and 4D array types.
+\end_layout
+
+\begin_layout Subsection
+array::set_transpose()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cVoid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: To transpose the current array, 
+\begin_inset Formula $C_{i,j}^{T}=C_{j,i}$
+\end_inset
+
+.
+ To undo the operation, just invoke this function again.
+ Valid to not deleted, not constant, square and 2D array types.
+\end_layout
+
+\begin_layout Subsection
+array::set_name()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cVoid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ name
+\end_layout
+
+\begin_layout Itemize
+Description: To set a name to the current array type object.
+ Valid to not deleted, 1D, 2D, 3D and 4D array types.
+\end_layout
+
+\begin_layout Subsection
+array::get_name()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: To retrieve the current array name.
+ Valid to not deleted, 1D, 2D, 3D and 4D array types.
+\end_layout
+
+\begin_layout Subsection
+array::set_config()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cVoid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+uSettings
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ config
+\end_layout
+
+\begin_layout Itemize
+Description: To set a custom configuration object of settings type.
+ If not given the class uses the default global settings.
+ Valid to not deleted, 1D, 2D, 3D and 4D array types.
+\end_layout
+
+\begin_layout Subsection
+array::build_identity_form()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cVoid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: This member function replaces all the current elements by its
+ identity form where all the diagonal values 
+\begin_inset Formula $C_{i=j}=1$
+\end_inset
+
+ and non-diagonal values 
+\begin_inset Formula $C_{i\neq j}=0$
+\end_inset
+
+.
+ Valid to not deleted, not constant and 2D array types.
+\end_layout
+
+\begin_layout Subsection
+array::set_diagonal()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cVoid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ value
+\end_layout
+
+\begin_layout Itemize
+Description: To set the given value for all the diagonal elements 
+\begin_inset Formula $C_{i=j}$
+\end_inset
+
+ .
+ Valid to not deleted, not constant and 2D array types.
+\end_layout
+
+\begin_layout Subsection
+array::norm()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: none
+\end_layout
+
+\begin_layout Itemize
+Description: To retrieve the norm of the current 1D array type.
+ Valid to not deleted and 1D array types.
+\end_layout
+
+\begin_layout Subsection
+array::build_orthonormalizer_form()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cVoid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: None
+\end_layout
+
+\begin_layout Itemize
+Description: Given a current 2D array type the overlap matrix, 
+\begin_inset Formula $\mathbf{S}$
+\end_inset
+
+, with the overlaps between all the basis vectors of an unorthonormalized
+ vector space, this member function uses it to compute its canonical orthonormal
+izer matrix form, 
+\begin_inset Formula $\mathbf{X=Us^{-\nicefrac{1}{2}}}$
+\end_inset
+
+.
+ Where 
+\begin_inset Formula $\mathbf{U}$
+\end_inset
+
+ are the 
+\begin_inset Formula $\mathbf{S}$
+\end_inset
+
+ eigenvectors and 
+\begin_inset Formula $\mathbf{s}$
+\end_inset
+
+ the 
+\begin_inset Formula $\mathbf{S}$
+\end_inset
+
+ eigenvalues.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+X_{i,j}=\frac{\mathbf{\mathrm{U}}_{i,j}}{\mathbf{\mathrm{s}}_{i}^{\nicefrac{1}{2}}}
+\end{equation}
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+This transformation matrix can be used to orthonormalize any other matrix
+ generated on that vector space.
+ The current array, 
+\begin_inset Formula $\mathbf{S}$
+\end_inset
+
+, is destroyed and replaced by its canonical orthonormalizer form, 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
+ The constant property is turned 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cTrue
+\end_layout
+
+\end_inset
+
+.
+ Valid to not deleted, not constant and 2D array types.
+\end_layout
+
+\begin_layout Subsection
+array::resize_array()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cVoid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ i, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ j, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ p, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ q
+\end_layout
+
+\begin_layout Itemize
+Description: This member function resizes the dimensions of the current
+ array type object, if not a constant one.
+ As inputs must be given how much arguments as dimensions desired.
+ The current content is destroyed, all the default properties are resetted
+ and all the new elements defined as zero.
+ Valid to not deleted, not constant, 1D, 2D, 3D and 4D array types.
+\end_layout
+
+\begin_layout Subsection
+array::save_eigens_to()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cVoid
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+uArray
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ eigenvalues, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+uArray
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ eigenvectors
+\end_layout
+
+\begin_layout Itemize
+Description: This function calculates the eigenvectors and eigenvalues of
+ the current array and stores it in the given ones.
+ If the size of the arguments do not match the sizes needed, the routine
+ itself is going to resize them.
+ None of the arguments should be constant, in this case the function just
+ does nothing and returns.
+ Valid to not deleted and 2D array types.
+\end_layout
+
+\begin_layout Section
+tools
+\end_layout
+
+\begin_layout Standard
+The tools defined in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fullToolsHeader
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ header file is not a class or a struct, but a namespace.
+ The aiming is to group under the scope of 
+\begin_inset Quotes eld
+\end_inset
+
+tools
+\begin_inset Quotes erd
+\end_inset
+
+, all the data members and data functions for general tasks and that does
+ not belong to any class or struct.
+ All the members are of public access by any client.
+ The only requirement is that its header file should be included where it
+ is needed.
+\end_layout
+
+\begin_layout Subsection
+tools::module()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: any type
+\end_layout
+
+\begin_layout Itemize
+Input arguments: any type a, any tipe b
+\end_layout
+
+\begin_layout Itemize
+Description: Given two numbers of any (and the same) type, 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+, this function returns the module of its difference, 
+\begin_inset Formula $\left|a-b\right|$
+\end_inset
+
+, as the type of both 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ This function is a template and really accepts any type, even meaningless
+ one like 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cChar
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+.
+ Make sure to only use it for mathematical purposes.
+ The uses of not-a-number makes its behavior unkown.
+\end_layout
+
+\begin_layout Subsection
+tools::square_module()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: any type
+\end_layout
+
+\begin_layout Itemize
+Input arguments: any type a, any tipe b
+\end_layout
+
+\begin_layout Itemize
+Description: Given two numbers of any (and the same) type, 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+, this function returns the square module of its difference, 
+\begin_inset Formula $\left|a-b\right|^{2}$
+\end_inset
+
+, as the type of both 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ This function is a template and really accepts any type, even meaningless
+ one like 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cChar
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+.
+ Make sure to only use it for mathematical purposes.
+ The uses of not-a-number makes its behavior unkown.
+\end_layout
+
+\begin_layout Subsection
+tools::kronecker_delta()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: any type
+\end_layout
+
+\begin_layout Itemize
+Input arguments: any type a, any tipe b
+\end_layout
+
+\begin_layout Itemize
+Description: Given two numbers of any (and the same) type, 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+, this function returns the Kronecker delta,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta_{ab}=\begin{cases}
+1, & a=b\\
+0, & a\neq b
+\end{cases}\label{eq:kronecker_delta}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+as the type of both 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+.
+ This function is a template and really accepts any type, even meaningless
+ one like 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cChar
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+.
+ Make sure to only use it for mathematical purposes.
+ The uses of not-a-number makes its behavior unkown.
+\end_layout
+
+\begin_layout Subsection
+tools::pattern_length()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cUnsignedInt
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ pattern
+\end_layout
+
+\begin_layout Itemize
+Description: Given a pattern as 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cCharPtr
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+, this function returns its number of characters.
+\end_layout
+
+\begin_layout Subsection
+tools::gamma_function()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ a
+\end_layout
+
+\begin_layout Itemize
+Description: Given the number 
+\begin_inset Formula $a$
+\end_inset
+
+, this function returns the gamma function, 
+\begin_inset Formula $\Gamma\left(a\right)\equiv\left(a-1\right)!$
+\end_inset
+
+, where 
+\begin_inset Formula $0<a\leq171.0$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $a$
+\end_inset
+
+ is out of the valid range, the function returns a safe zero.
+\end_layout
+
+\begin_layout Subsection
+tools::incomplete_gamma_function()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ a, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ b 
+\end_layout
+
+\begin_layout Itemize
+Description: Given the numbers 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+, this function returns the upper and unormalized incomplete gamma function,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Gamma\left(a,b\right)\equiv\int_{b}^{\text{∞}}t^{a-1}e^{-t}dt\label{eq:inc_gamma_function}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $b\geq0$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $a$
+\end_inset
+
+ is negative, the function returns a safe zero.
+\end_layout
+
+\begin_layout Subsection
+tools::factorial()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ a 
+\end_layout
+
+\begin_layout Itemize
+Description: Given 
+\begin_inset Formula $a$
+\end_inset
+
+, this function returns its factorial, 
+\begin_inset Formula $a!$
+\end_inset
+
+.
+ Where 
+\begin_inset Formula $0\leq a<170$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $a$
+\end_inset
+
+ is out of the valid range, the function returns 
+\begin_inset Formula $1.0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+tools::double_factorial()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cInt
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ a 
+\end_layout
+
+\begin_layout Itemize
+Description: Given 
+\begin_inset Formula $a$
+\end_inset
+
+, this function returns its double factorial, 
+\begin_inset Formula $a!!$
+\end_inset
+
+.
+ Where 
+\begin_inset Formula $0\leq a<297$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $a$
+\end_inset
+
+ is out of the valid range, the function returns 
+\begin_inset Formula $1.0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+tools::binomial_coeff()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Input arguments: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ a, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cConst
+\backslash
+:
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ b
+\end_layout
+
+\begin_layout Itemize
+Description: Given 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+, this function returns the binomial coefficient,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left(_{a}^{b}\right)=\frac{b!}{a!\left(b-a\right)!}\label{eq:binomial_coeff}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This function take advantage of the previously defined 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{tools::factorial()
+\backslash
+:}
+\end_layout
+
+\end_inset
+
+ function.
+ In such way 
+\begin_inset Formula $a$
+\end_inset
+
+ and 
+\begin_inset Formula $b$
+\end_inset
+
+ are limited by its valid range.
+\end_layout
+
+\begin_layout Subsection
+tools::convert()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: Any type
+\end_layout
+
+\begin_layout Itemize
+Input arguments: Any type input
+\end_layout
+
+\begin_layout Itemize
+Description: Given an input of any type such as 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cChar
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cFloat
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cInt
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cBool
+\end_layout
+
+\end_inset
+
+, etc; this function returns it as an other given type.
+ When invoked, the caster should specify the return type.
+ For example, to convert a given 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cDouble
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ type input into a 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cString
+\backslash
+:
+\end_layout
+
+\end_inset
+
+ output, the call should be 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+print{tools::convert<std::string>(input)}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+tools::random_number()
+\end_layout
+
+\begin_layout Itemize
+Permission: public
+\end_layout
+
+\begin_layout Itemize
+Return type: any type
+\end_layout
+
+\begin_layout Itemize
+Input arguments:
+\end_layout
+
+\begin_layout Itemize
+Description:
+\end_layout
+
+\end_body
+\end_document

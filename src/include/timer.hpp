@@ -35,10 +35,6 @@ class timer
     std::map<unsigned int, std::string> system_time; // The container to store the system time for a given counter value.
     std::map<unsigned int, std::string> user_time;   // The container to store the user time for a given counter value.
     std::map<unsigned int, std::string> cpu_usage;   // The container to store the CPU usage (%) for a given counter value.
-    std::map<unsigned int, std::string>::iterator i; // The wall time iterator.
-    std::map<unsigned int, std::string>::iterator j; // The system time iterator.
-    std::map<unsigned int, std::string>::iterator m; // The user time iterator.
-    std::map<unsigned int, std::string>::iterator n; // The CPU usage iterator.
     std::string name;
 //    
     public:
@@ -55,6 +51,9 @@ class timer
 //  get(): To return the measured time. 
     std::string get(unsigned int option, unsigned int measurement_number = 0);
 //
+//
+    void stop();
+//
 //  Defining some alias for the get() member function options:
     #define WALL_TIME   1
     #define SYSTEM_TIME 2
@@ -64,7 +63,6 @@ class timer
 //
 //  Including the inline/template/public member functions:
     #include "timer__start.cpp"
-    #include "timer__stop.cpp"
     #include "timer__set_name.cpp"
     #include "timer__basic_assignment.cpp"
 };

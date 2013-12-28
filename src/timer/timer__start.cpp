@@ -7,7 +7,7 @@ inline void start()
     {
         case true:
         stopped = false;
-        counter++;
+        ++counter;
         chronometer.boost::timer::cpu_timer::start();
         break;
     }
