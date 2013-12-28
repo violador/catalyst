@@ -1,7 +1,8 @@
 //
 //
 //
-inline unsigned int first_gf(const unsigned int &given_level, const unsigned int &given_orbital)
+inline unsigned int first_gf(const unsigned int &given_level, 
+                             const unsigned int &given_orbital)
 {
     switch(given_level)
     {

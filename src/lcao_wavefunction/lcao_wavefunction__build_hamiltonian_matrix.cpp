@@ -55,7 +55,7 @@ void lcao_wavefunction::build_hamiltonian_matrix(array &h_matrix,
     {
         #pragma omp section
         {
-            switch(config -> state_of(DEBUG_MODE))
+            switch(config -> state_of(option::output_mode))
             {
                  case false: break;
                  case  true: h_matrix.array::write(); break;

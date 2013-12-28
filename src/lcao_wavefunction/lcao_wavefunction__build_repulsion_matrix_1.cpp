@@ -187,9 +187,11 @@ void lcao_wavefunction::build_repulsion_matrix_1(array &v_matrix,           // T
         } // for(j_atom)
     } // for(i_atom)
     repulsion_matrix1_ready = true;
+/*
     switch(config -> state_of(DEBUG_MODE))
     {
          case false: break;
          case  true: v_matrix.array::write(); break;
     }
+*/
 }
