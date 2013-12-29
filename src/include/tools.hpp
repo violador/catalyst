@@ -100,5 +100,6 @@ namespace tools
     #include "tools__convert.cpp"
     #include "tools__lower_case.cpp"
     #include "tools__remove_blank_spaces.cpp"
+    #include "tools__remove_char.cpp"
 };
 #endif

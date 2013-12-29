@@ -11,6 +11,7 @@ void log_file_handler::init_log_file()
     {
         case true:
 //
+        set_fixed();
         log_file << "\nCatalyst ver. "
                  << CATALYST_VERSION
                  << "\n- Compilation number = "
@@ -29,10 +30,10 @@ void log_file_handler::init_log_file()
                  << "- Number of tasks requested           = "
                  << config -> number_of(option::tasks)
                  << "\n- Memory available at the starting up = "
-                 << config -> check_current_memory(1) 
+                 << config -> check_current_memory(option::free)*KILOBYTE_TO_GIGABYTE 
                  << " of " 
-                 << config -> check_current_memory(2) 
-                 << " bytes"
+                 << config -> check_current_memory(option::total)*KILOBYTE_TO_GIGABYTE
+                 << " GB"
                  << "\n- Number of CPUs available            = "
                  << config -> check_current_cpus()
                  << "\n- Log file                            = "
@@ -51,7 +52,8 @@ void log_file_handler::init_log_file()
                  << config -> scf_convergence_criteria()
                  << "\n- Numeric precision                   = " 
                  << config -> numeric_precision()
-                 << "/6" 
+                 << "/"
+                 << MAX_PRECISION 
                  #ifdef USE_OMP
                  << "\n- Open multi-processing               = on"
                  #else
@@ -66,6 +68,7 @@ void log_file_handler::init_log_file()
                  << config -> my_size()
                  << " kB"
                  << "\n" << std::endl;
+//
         break;
     }
 }

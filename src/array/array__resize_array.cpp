@@ -18,7 +18,8 @@ inline void resize_array(const unsigned int &local_row_size,
         #pragma omp section
         {
             delete_2d_array();
-            init_2d_array(local_row_size, local_column_size);
+            init_2d_array(local_row_size, 
+                          local_column_size);
         }
         #pragma omp section
         {
@@ -40,7 +41,9 @@ inline void resize_array(const unsigned int &local_row_size,
         #pragma omp section
         {
             delete_3d_array();
-            init_3d_array(local_row_size, local_column_size, local_1st_layer_size);
+            init_3d_array(local_row_size, 
+                          local_column_size, 
+                          local_1st_layer_size);
         }
         #pragma omp section
         {

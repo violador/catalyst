@@ -75,6 +75,12 @@ class settings
 //
     void init();
 //
+//
+    double check_total_memory();
+//
+//
+    double check_free_memory();
+//
 //  Including the inline/template/private member functions: 
     #include "settings__read_value.cpp"
 //
