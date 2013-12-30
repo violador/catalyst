@@ -27,7 +27,6 @@ class timer
 {
     private:
 //
-    settings *config;                                // A pointer-object to link with any object of settings type.
     boost::timer::cpu_timer chronometer;             // The boost::timer::cpu_timer type variable to get the elapsed time.
     bool stopped;                                    // The chronometer state. True if it is stopped, false otherwise.
     unsigned int counter;                            // The measurements counter.
@@ -36,6 +35,7 @@ class timer
     std::map<unsigned int, std::string> user_time;   // The container to store the user time for a given counter value.
     std::map<unsigned int, std::string> cpu_usage;   // The container to store the CPU usage (%) for a given counter value.
     std::string name;
+    settings *config;                                // A pointer-object to link with any object of settings type.
 //    
     public:
 //
@@ -43,10 +43,10 @@ class timer
     static const int id = 25939;
 //
 //  Declaring the class constructor:
-    timer(std::string given_name = "");
+    timer();
 //
-//  init(): To init a timer when constructed by the empty constructor.
-    void init(std::string given_name = "");
+//  Declaring the class constructor:
+    timer(std::string &given_name);
 //
 //  get(): To return the measured time. 
     std::string get(unsigned int option, unsigned int measurement_number = 0);

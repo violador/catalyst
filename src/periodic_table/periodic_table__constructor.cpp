@@ -2,16 +2,42 @@
 //
 //
 //
-periodic_table::periodic_table()
+periodic_table::periodic_table(): element_symbol(""),
+                                  element_name(""),
+                                  element_config(""),
+                                  element_core_electrons(0),
+                                  element_valence_electrons(0),
+                                  total_functions(0),
+                                  total_orbitals(0),
+                                  current_level(0),
+                                  exponent(NULL),
+                                  coefficient(NULL),
+                                  element_mass(0.0),
+                                  covalent_radius(0.0),
+                                  std_database_ready(false),
+                                  basis_database_ready(false)
 {
-    init_data();
+//  Empty constructor.
 }
 //
 //
 //
-periodic_table::periodic_table(const unsigned int &element)
+periodic_table::periodic_table(const unsigned int &element): element_symbol(""),
+                                                             element_name(""),
+                                                             element_config(""),
+                                                             element_core_electrons(0),
+                                                             element_valence_electrons(0),
+                                                             total_functions(0),
+                                                             total_orbitals(0),
+                                                             current_level(0),
+                                                             exponent(NULL),
+                                                             coefficient(NULL),
+                                                             element_mass(0.0),
+                                                             covalent_radius(0.0),
+                                                             std_database_ready(false),
+                                                             basis_database_ready(false)
+
 {
-    init_data();
     database(element);
 }
 //

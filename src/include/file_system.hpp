@@ -24,6 +24,7 @@ class file_system
 private:
 //
 //  Declaring the data members:
+    boost::filesystem::path *path;         //
     std::string filename;                  // The filename, if any.
     std::string root_path;                 // The root directory path of the current full path.
     std::string parent_path;               // The parent directory path of the current full path.
@@ -31,8 +32,8 @@ private:
     std::string file_extension;            // The file extension, if any.
     boost::filesystem::file_status status; // The status of the current path and file, if any.
     bool no_valid_path;                    // The path state, true if a no valid path is given. False otherwise.
-    bool no_file;                          // The file state, true if there is no file. False otherwise.
     bool fstream_created;                  // The fstream creation state, true if a fstream file was created. False otherwise.
+    bool no_file;                          // The file state, true if there is no file. False otherwise.
 //
 public:
 //
@@ -40,7 +41,10 @@ public:
     static const int id = 18543;
 //
 //  Declaring the class constructor:
-    file_system(std::string given_filename = "", std::string given_pathname = DEFAULT_CURRENT_DIR);
+    file_system();
+//
+//  Declaring the class constructor:
+    file_system(std::string given_filename, std::string given_pathname);
 //
 //  init(): To initialize the class if needed (a constructor copy).
     void init(std::string given_filename = "", std::string given_pathname = DEFAULT_CURRENT_DIR);
@@ -71,6 +75,9 @@ public:
 //
 //
     void open_bin_output();
+//
+//
+    void open_bin_output(FILE *file);
 //
 //
     void open_bin_input(std::fstream &file);

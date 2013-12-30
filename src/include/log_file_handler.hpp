@@ -30,10 +30,10 @@ class log_file_handler
     private:
 //
 //  Declaring the data members:
-    settings *config;          // A pointer-object to link with any object of settings type.
     file_system *file_manager; // A pointer-object to link with any object of file_system type.
     std::fstream log_file;     // The internal fstream object to write the log file.
     bool log_file_ready;       // The fstream object creation state. True if created, false otherwise.  
+    settings *config;          // A pointer-object to link with any object of settings type.
 //
 //  init_log_file(): To start the log file if it not exists yet.
     void init_log_file();
