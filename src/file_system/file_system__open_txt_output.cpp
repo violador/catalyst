@@ -4,16 +4,17 @@
 //
 void file_system::open_txt_output(std::fstream &file)
 {
-    switch(no_file)
+    switch(exists() and is_file())
     {
-        case false:
-        std::string temp_filename = root_path + relative_path;
-        file.std::fstream::open(temp_filename.c_str(), std::fstream::out | std::ios::app);
+        case true:
+        std::string temp_filename = root_dir() + relative_dir();
+//
+        file.std::fstream::open(temp_filename.std::string::c_str(), 
+                                std::fstream::out | std::ios::app);
+//
         switch(file.std::fstream::is_open() and file.std::fstream::good())
         {
-            case true:
-            fstream_created = true;
-            break;
+            case true: stream_ready = true; break;
         }
         break;
     }
@@ -23,16 +24,17 @@ void file_system::open_txt_output(std::fstream &file)
 //
 void file_system::open_txt_output()
 {
-    switch(no_file)
+    switch(exists() and is_file())
     {
-        case false:
-        std::string temp_filename = root_path + relative_path;
-        output.std::fstream::open(temp_filename.c_str(), std::fstream::out | std::ios::app);
-        switch(output.std::fstream::is_open() and output.std::fstream::good())
+        case true:
+        std::string temp_filename = root_dir() + relative_dir();
+//
+        output_file.std::fstream::open(temp_filename.std::string::c_str(), 
+                                       std::fstream::out | std::ios::app);
+//
+        switch(output_file.std::fstream::is_open() and output_file.std::fstream::good())
         {
-            case true:
-            fstream_created = true;
-            break;
+            case true: stream_ready = true; break;
         }
         break;
     }

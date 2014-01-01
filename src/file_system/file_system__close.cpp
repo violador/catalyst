@@ -10,12 +10,25 @@ inline void close(std::fstream &file)
 //
 inline void close()
 {
-    switch(input.std::fstream::is_open())
+    #pragma omp parallel sections num_threads(2)
     {
-        case true: input.std::fstream::close(); break;
-    }
-    switch(output.std::fstream::is_open())
-    {
-        case true: output.std::fstream::close(); break;
+        #pragma omp section
+        {
+            switch(input_file.std::fstream::is_open())
+            {
+                case true: 
+                input_file.std::fstream::close(); 
+                break;
+            }
+        }
+        #pragma omp section
+        {
+            switch(output_file.std::fstream::is_open())
+            {
+                case true: 
+                output_file.std::fstream::close(); 
+                break;
+            }
+        }
     }
 };

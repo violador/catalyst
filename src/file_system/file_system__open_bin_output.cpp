@@ -4,17 +4,17 @@
 //
 void file_system::open_bin_output(std::fstream &file)
 {
-    switch(no_file)
+    switch(exists() and is_file())
     {
-        case false:
-        std::string temp_filename = root_path + relative_path;
+        case true:
+        std::string temp_filename = root_dir() + relative_dir();
 //
-        file.std::fstream::open(temp_filename.c_str(), 
+        file.std::fstream::open(temp_filename.std::string::c_str(), 
                                 std::fstream::out | std::ios::binary | std::ios::app);
 //
         switch(file.std::fstream::is_open() and file.std::fstream::good())
         {
-            case true: fstream_created = true; break;
+            case true: stream_ready = true; break;
         }
         break;
     }
@@ -24,16 +24,16 @@ void file_system::open_bin_output(std::fstream &file)
 //
 void file_system::open_bin_output(FILE *file)
 {
-    switch(no_file)
+    switch(exists() and is_file())
     {
-        case false:
-        std::string temp_filename = root_path + relative_path;
+        case true:
+        std::string temp_filename = root_dir() + relative_dir();
 //
         file = fopen(temp_filename.std::string::c_str(), "w");
 //
         switch(file not_eq NULL)
         {
-            case true: fstream_created = true; break;
+            case true: stream_ready = true; break;
         }
         break;
     }
@@ -43,17 +43,17 @@ void file_system::open_bin_output(FILE *file)
 //
 void file_system::open_bin_output()
 {
-    switch(no_file)
+    switch(exists() and is_file())
     {
-        case false:
-        std::string temp_filename = root_path + relative_path;
+        case true:
+        std::string temp_filename = root_dir() + relative_dir();
 //
-        output.std::fstream::open(temp_filename.c_str(), 
-                                  std::fstream::out | std::ios::binary | std::ios::app);
+        output_file.std::fstream::open(temp_filename.std::string::c_str(), 
+                                       std::fstream::out | std::ios::binary | std::ios::app);
 //
-        switch(output.std::fstream::is_open() and output.std::fstream::good())
+        switch(output_file.std::fstream::is_open() and output_file.std::fstream::good())
         {
-            case true: fstream_created = true; break;
+            case true: stream_ready = true; break;
         }
         break;
     }

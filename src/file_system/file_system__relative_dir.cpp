@@ -3,5 +3,5 @@
 //
 inline std::string relative_dir()
 {
-    return relative_path;
+    return relative_path.boost::filesystem::path::string();
 };

@@ -3,5 +3,5 @@
 //
 inline std::string name()
 {
-    return filename;
+    return filename.boost::filesystem::path::string();
 };
