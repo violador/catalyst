@@ -6,8 +6,8 @@ log_file_handler::log_file_handler(): file_manager(NULL),
                                       log_file_ready(false),
                                       config(&global_settings::config)
 {
-    file_system init(config -> filename_of(option::log_file), 
-                     config -> dir_path_of(option::scratch));
+    file_system init(config -> dir_path_of(option::scratch),
+                     config -> filename_of(option::log_file));
     file_manager = &init;
     switch(config -> state_of(option::output_mode))
     {
@@ -28,8 +28,8 @@ log_file_handler::log_file_handler(): file_manager(NULL),
 log_file_handler::log_file_handler(settings &runtime_setup)
 {
     config = &runtime_setup;
-    file_system init(config -> filename_of(option::log_file), 
-                     config -> dir_path_of(option::scratch));
+    file_system init(config -> dir_path_of(option::scratch),
+                     config -> filename_of(option::log_file));
     file_manager = &init;
     switch(config -> state_of(option::output_mode))
     {

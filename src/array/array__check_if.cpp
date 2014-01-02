@@ -10,7 +10,6 @@ inline bool check_if(const unsigned int &option)
         case       option::is_null: return is_null();       break;
         case   option::is_constant: return is_const_array;  break;
         case     option::is_square: return is_square_array; break;
-        case    option::is_created: return created_array;   break;
         case    option::is_deleted: return deleted_array;   break;
         case option::is_transposed: return is_transposed;   break;
                            default: return false;           break;

@@ -4,7 +4,7 @@
 //
 void array::delete_array()
 {
-    #pragma omp parallel sections num_threads(4)
+    #pragma omp parallel sections num_threads(5)
     {
         #pragma omp section
         {
@@ -45,6 +45,10 @@ void array::delete_array()
                 deleted_array = true;
                 break;
             }
+        }
+        #pragma omp section
+        {
+            reset_properties();
         }
     }
 }

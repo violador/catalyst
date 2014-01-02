@@ -16,80 +16,61 @@
 #ifndef __FILE_SYSTEM_HPP
     #define __FILE_SYSTEM_HPP
     #include "globals.hpp"
+    #include "tools.hpp"
 //
 //
 //
 class file_system
 {
-private:
+    private:
 //
-//  Declaring the data members:
-    boost::filesystem::path *path;         //
-    std::string filename;                  // The filename, if any.
-    std::string root_path;                 // The root directory path of the current full path.
-    std::string parent_path;               // The parent directory path of the current full path.
-    std::string relative_path;             // The relative directory path of the current full path.
-    std::string file_extension;            // The file extension, if any.
-    boost::filesystem::file_status status; // The status of the current path and file, if any.
-    bool no_valid_path;                    // The path state, true if a no valid path is given. False otherwise.
-    bool fstream_created;                  // The fstream creation state, true if a fstream file was created. False otherwise.
-    bool no_file;                          // The file state, true if there is no file. False otherwise.
+//  Declaring the private data members:
+    boost::filesystem::path file;
+    boost::filesystem::path path;
+    boost::filesystem::path *input;
+    boost::filesystem::path *disk_info;
+    boost::filesystem::path filename;
+    boost::filesystem::path root_path;
+    boost::filesystem::path parent_path;
+    boost::filesystem::path relative_path;
+    boost::filesystem::path file_extension;
+    boost::filesystem::file_status file_status;
+    boost::filesystem::file_status path_status;
+    boost::filesystem::space_info disk_space;
+    bool stream_ready;
 //
-public:
+//  Including the inline/template/private member functions:
+    #include "file_system__check_filename.cpp"
+    #include "file_system__init_file.cpp"
+    #include "file_system__init_path.cpp"
+    #include "file_system__build_slash.cpp"
+    #include "file_system__restart_file.cpp"
+    #include "file_system__restart_path.cpp"
+//
+    public:
 //
 //  Class identifier:
     static const int id = 18543;
 //
 //  Declaring the class constructor:
     file_system();
+    file_system(const std::string &given_filename, 
+                const std::string &given_pathname);
 //
-//  Declaring the class constructor:
-    file_system(std::string given_filename, std::string given_pathname);
+//  Declaring the public data members:
+    std::fstream input_file;
+    std::fstream output_file;
 //
-//  init(): To initialize the class if needed (a constructor copy).
-    void init(std::string given_filename = "", std::string given_pathname = DEFAULT_CURRENT_DIR);
-//
-//  size(): To return the current file (if any) size in bytes.
-    double size();
-//
-//  open_txt_output(): To open the current file (if any) and to store its
-//                     current fstream object in the given one. It will be
-//                     open as plain text to write only.
+//  Declaring the public member functions:
     void open_txt_output(std::fstream &file);
-//
-//
     void open_txt_output();
-//
-//  open_txt_output(): To open the current file (if any) and to store its
-//                     current fstream object in the given one. It will be
-//                     open as plain text to read only.
     void open_txt_input(std::fstream &file);
-//
-//  
     void open_txt_input();
-//
-//  open_bin_output(): To open the current file (if any) and to store its
-//                     current fstream object in the given one. It will be
-//                     open as binary to write only.
     void open_bin_output(std::fstream &file);
-//
-//
     void open_bin_output();
-//
-//
     void open_bin_output(FILE *file);
-//
-//
     void open_bin_input(std::fstream &file);
-//
-//
     void open_bin_input();
-//
-//
-    std::fstream input;
-//
-//
-    std::fstream output;
 //
 //  Including the inline/template/public member functions:
     #include "file_system__extension.cpp"
@@ -101,11 +82,18 @@ public:
     #include "file_system__root_dir.cpp"
     #include "file_system__parent_dir.cpp"
     #include "file_system__relative_dir.cpp"
-    #include "file_system__no_such_file.cpp"
-    #include "file_system__no_such_path.cpp"
     #include "file_system__close.cpp"
     #include "file_system__is_open.cpp"
     #include "file_system__my_size.cpp"
+    #include "file_system__size.cpp"
+    #include "file_system__valid_dir.cpp"
+    #include "file_system__check_disk_space.cpp"
+    #include "file_system__check_disk_capacity.cpp"
+    #include "file_system__rename_file.cpp"
+    #include "file_system__rename_dir.cpp"
+    #include "file_system__remove_file.cpp"
+    #include "file_system__is_link.cpp"
+    #include "file_system__init.cpp"
 //
 };
 #endif

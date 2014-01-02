@@ -1,66 +1,77 @@
-#include "array.hpp"
 //
 //
 //
-void array::create_array(const unsigned int local_row_size,
-                         const unsigned int local_column_size,
-                         const unsigned int local_1st_layer_size,
-                         const unsigned int local_2nd_layer_size)
+inline void create_array(const unsigned int &row_size)
 {
-    if((local_row_size > 0) and (local_column_size == 0))
+    switch(deleted_array)
     {
-        #pragma omp parallel sections num_threads(2)
+        case true: 
         {
-            #pragma omp section
-            {
-                init_properties(local_row_size);
-            }
-            #pragma omp section
-            {
-                init_1d_array(local_row_size);
-            }
-        }
+            deleted_array = false;
+            sizeof_row = row_size;
+            init_1d_array(row_size);
+        } 
+        break;
     }
-    else if((local_row_size > 0) and (local_column_size > 0) and (local_1st_layer_size == 0))
+};
+//
+//
+//
+inline void create_array(const unsigned int &row_size,
+                         const unsigned int &column_size)
+{
+    switch(deleted_array)
     {
-        #pragma omp parallel sections num_threads(2)
+        case true: 
         {
-            #pragma omp section
-            {
-                init_properties(local_row_size, local_column_size);
-            }
-            #pragma omp section
-            {
-                init_2d_array(local_row_size, local_column_size);
-            }
+            deleted_array = false;
+            sizeof_row = row_size;
+            sizeof_column = column_size;
+            init_2d_array(row_size, column_size);
+            row_size == column_size? is_square_array = true : is_square_array = false;
         }
+        break;
     }
-    else if((local_row_size > 0) and (local_column_size > 0) and (local_1st_layer_size > 0) and (local_2nd_layer_size == 0))
+};
+//
+//
+//
+inline void create_array(const unsigned int &row_size,
+                         const unsigned int &column_size,
+                         const unsigned int &layer1_size)
+{
+    switch(deleted_array)
     {
-        #pragma omp parallel sections num_threads(2)
+        case true: 
         {
-            #pragma omp section
-            {
-                init_properties(local_row_size, local_column_size, local_1st_layer_size);
-            }
-            #pragma omp section
-            {
-                init_3d_array(local_row_size, local_column_size, local_1st_layer_size);
-            }
+            deleted_array = false;
+            sizeof_row = row_size;
+            sizeof_column = column_size;
+            sizeof_1st_layer = layer1_size;
+            init_3d_array(row_size, column_size, layer1_size);
         }
+        break;
     }
-    else
+};
+//
+//
+//
+inline void create_array(const unsigned int &row_size,
+                         const unsigned int &column_size,
+                         const unsigned int &layer1_size,
+                         const unsigned int &layer2_size)
+{
+    switch(deleted_array)
     {
-        #pragma omp parallel sections num_threads(2)
+        case true: 
         {
-            #pragma omp section
-            {
-                init_properties(local_row_size, local_column_size, local_1st_layer_size, local_2nd_layer_size);
-            }
-            #pragma omp section
-            {
-                init_4d_array(local_row_size, local_column_size, local_1st_layer_size, local_2nd_layer_size);
-            }
-        }
-    }    
-}
+            deleted_array = false;
+            sizeof_row = row_size;
+            sizeof_column = column_size;
+            sizeof_1st_layer = layer1_size;
+            sizeof_2nd_layer = layer2_size;
+            init_4d_array(row_size, column_size, layer1_size, layer2_size);
+        } 
+        break;
+    }
+};
