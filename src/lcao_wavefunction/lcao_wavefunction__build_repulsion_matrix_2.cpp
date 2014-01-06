@@ -10,6 +10,7 @@ void lcao_wavefunction::build_repulsion_matrix_2(array &v_matrix,           // T
                                                  unsigned int theory_level) // The requested level of theory, i.e. the basis set type. 
 {
 //
+/*
     switch(v_matrix.array::check_if(IS_CONSTANT))
     {
         case false: 
@@ -191,6 +192,7 @@ void lcao_wavefunction::build_repulsion_matrix_2(array &v_matrix,           // T
         } // for(j_atom)
     } // for(i_atom)
     repulsion_matrix2_ready = true;
+*/
 /*
     switch(config -> state_of(DEBUG_MODE))
     {

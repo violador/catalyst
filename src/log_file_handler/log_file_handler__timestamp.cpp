@@ -10,8 +10,9 @@ inline std::string timestamp()
     time_info = localtime(&current_time);
     char timestamp[12];
     strftime(timestamp, 12, ", %T]", time_info);
+    std::string output(timestamp);
     return "[thread " + tools::convert<std::string>(omp_get_thread_num()) 
-                      + tools::convert<std::string>(timestamp) 
+                      + output 
                       + " ";
 //
     #elif USE_MPI
@@ -25,7 +26,8 @@ inline std::string timestamp()
     time_info = localtime(&current_time);
     char timestamp[11];
     strftime(timestamp, 11, "[%T]", time_info);
-    return tools::convert<std::string>(timestamp) + " ";
+    std::string output(timestamp);
+    return output + " ";
 //
     #endif
 };

@@ -1,7 +1,7 @@
 //
 //
 //
-inline double error_function(const double &value)
+inline double error_function(const double &a)
 {
-    return gsl_sf_erf(value);
+    return gsl_sf_erf(a);
 };

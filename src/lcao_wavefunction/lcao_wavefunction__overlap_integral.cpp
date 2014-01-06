@@ -184,8 +184,8 @@ double lcao_wavefunction::overlap_integral(array &type,                // The at
                                            const unsigned int &atom_b, // The atom B.
                                            const unsigned int &level)  // The basis set type. 
 {
-    periodic_table a_set(level, type(atom_a)), 
-                   b_set(level, type(atom_b));
+    basis_set a_psi(type(atom_a), level); 
+    basis_set b_psi(type(atom_b), level);
     double ab_distance = tools::point_distance(x(atom_a),
                                                y(atom_a),
                                                z(atom_a),
@@ -195,29 +195,25 @@ double lcao_wavefunction::overlap_integral(array &type,                // The at
     double s_integral = 0.0;
     unsigned int m_primitive = 0;
     #pragma omp parallel for private(m_primitive) reduction(+:s_integral) ordered schedule(dynamic)
-    for(m_primitive = 1; 
-        m_primitive <= a_set.periodic_table::basis_size(); 
-        ++m_primitive)
+    for(m_primitive = 1; m_primitive <= a_psi.basis_set::size(); ++m_primitive)
     {
         unsigned int n_primitive = 0;
         #pragma omp parallel for private(n_primitive) reduction(+:s_integral) ordered schedule(dynamic)
-        for(n_primitive = 1; 
-            n_primitive <= b_set.periodic_table::basis_size(); 
-            ++n_primitive)
+        for(n_primitive = 1; n_primitive <= b_psi.basis_set::size(); ++n_primitive)
         {
             double a = 0.0, b = 0.0;
             #pragma omp parallel sections num_threads(2)
             {
                 #pragma omp section
                 {
-                    a = a_set(BASIS_COEFFICIENT, m_primitive)
-                      * b_set(BASIS_COEFFICIENT, n_primitive);
+                    a = a_psi.basis_set::function_coeff(m_primitive)
+                      * b_psi.basis_set::function_coeff(n_primitive);
                 }
                 #pragma omp section
                 {
-                    b = gf_overlap_integral(a_set(BASIS_EXPONENT, m_primitive),
-                                            b_set(BASIS_EXPONENT, n_primitive),
-                                            ab_distance);
+                    b = gf_overlap_integral(a_psi.basis_set::function_expon(m_primitive),
+                                            b_psi.basis_set::function_expon(n_primitive),
+                                                                            ab_distance);
                 }
             }
 //

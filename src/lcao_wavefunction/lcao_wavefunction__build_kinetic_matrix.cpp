@@ -38,13 +38,14 @@ void lcao_wavefunction::build_kinetic_matrix(array &t_matrix,    // The kinetic 
             atom_b <= type.array::size_of_row();
             ++atom_b)
         {
-            periodic_table get;
+            periodic_table a_data(type(atom_a));
+            periodic_table b_data(type(atom_b));
             for(unsigned int a_orbital = 1;
-                a_orbital <= get.periodic_table::orbitals_number(type(atom_a));
+                a_orbital <= a_data.periodic_table::orbitals_number();
                 ++a_orbital)
             {
                 for(unsigned int b_orbital = (atom_a == atom_b? a_orbital : 1);
-                    b_orbital <= get.periodic_table::orbitals_number(type(atom_b));
+                    b_orbital <= b_data.periodic_table::orbitals_number();
                     ++b_orbital)
                 {
                     t_matrix(i,
@@ -61,6 +62,7 @@ void lcao_wavefunction::build_kinetic_matrix(array &t_matrix,    // The kinetic 
                     t_matrix(j,
                              i,
                              t_matrix(i, j));
+/*
                     global_log::file.write_debug_msg("lcao_wavefunction::build_overlap_matrix(): T(atom ",
                                                      atom_a,
                                                      ", orbital ",
@@ -79,6 +81,7 @@ void lcao_wavefunction::build_kinetic_matrix(array &t_matrix,    // The kinetic 
                                                      j,
                                                      ") = ",
                                                      t_matrix(i, j));
+*/
                     ++j;
                 }
                 switch(j > total_orbitals)

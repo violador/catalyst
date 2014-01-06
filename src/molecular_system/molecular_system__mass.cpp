@@ -5,8 +5,8 @@ inline double mass(const unsigned int &atom)
 {
     if(atom_positions_ready and (atom > 0) and (atom <= total_atoms))
     {
-        periodic_table get;
-        return get.periodic_table::mass(atom_type(atom));
+        periodic_table get(atom_type(atom));
+        return get.periodic_table::mass();
     }
     else
     {

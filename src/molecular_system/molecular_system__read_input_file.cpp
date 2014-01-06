@@ -53,7 +53,6 @@ void molecular_system::read_input_file(const std::string &input_filename)
             std::string element_symbol = "";
             unsigned int i = 0;
             double x = 0.0, y = 0.0, z = 0.0;
-            periodic_table get;
 //
 //          (1) To read the element type, as a string type.
 //          (2) To read the position x-axis value.
@@ -66,23 +65,25 @@ void molecular_system::read_input_file(const std::string &input_filename)
 //          (9) To update the total mass.
             for(i = 1; i <= total_atoms; ++i)
             {
-                geometry_file >> element_symbol;                                   // (1)
-                geometry_file >> x;                                                // (2)
-                geometry_file >> y;                                                // (3)
-                geometry_file >> z;                                                // (4)
+                geometry_file >> element_symbol;                      // (1)
+                geometry_file >> x;                                   // (2)
+                geometry_file >> y;                                   // (3)
+                geometry_file >> z;                                   // (4)
                 position_x.array::set(i, x);
                 position_y.array::set(i, y);
                 position_z.array::set(i, z);
                 x = y = z = 0.0;
-                geometry_file >> x;                                                // (5)
-                geometry_file >> y;                                                // (6)
-                geometry_file >> z;                                                // (7) 
+                geometry_file >> x;                                   // (5)
+                geometry_file >> y;                                   // (6)
+                geometry_file >> z;                                   // (7) 
                 velocity_x.array::set(i, x);
                 velocity_y.array::set(i, y);
                 velocity_z.array::set(i, z);
                 x = y = z = 0.0;
-                atom_type.array::set(i, get.periodic_table::type(element_symbol)); // (8)
-                total_mass += get.periodic_table::mass(atom_type.array::get(i));   // (9)
+//
+                periodic_table data(element_symbol);
+                atom_type.array::set(i, data.periodic_table::type()); // (8)
+                total_mass += data.periodic_table::mass();            // (9)
             }
 //
             geometry_file.std::fstream::close();

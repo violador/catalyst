@@ -37,7 +37,7 @@ molecular_system::molecular_system(const std::string &input_filename)
         }
         #pragma omp section
         {
-            input.file_system::init(input_filename, config -> dir_path_of(option::work));
+            input.file_system::init(config -> dir_path_of(option::work), input_filename);
             switch(input.file_system::exists())
             {
                 case false:
@@ -83,8 +83,8 @@ molecular_system::molecular_system(const unsigned int &given_task)
         }
         #pragma omp section
         {
-            input.file_system::init(global_settings::config.settings::filename_of(option::input_file, task_number), 
-                                    global_settings::config.settings::dir_path_of(option::work));
+            input.file_system::init(global_settings::config.dir_path_of(option::work),
+                                    global_settings::config.filename_of(option::input_file, task_number));
         }
     }
 //

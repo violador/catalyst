@@ -166,6 +166,7 @@ void molecular_system::report_input_reading()
         periodic_table get;
         for(unsigned int i_atom = 1; i_atom <= total_atoms; ++i_atom)
         {
+            get.periodic_table::init(type(i_atom));
 //
 //          To print the number of an atom in the number column:
 //
@@ -177,7 +178,7 @@ void molecular_system::report_input_reading()
 //
             global_log::file.set_width(SECOND_COLUMN_LENGTH + SPACE_LENGTH);
             global_log::file.set_right();
-            global_log::file << get.periodic_table::symbol(type(i_atom));
+            global_log::file << get.periodic_table::symbol();
 //
 //          To print the x-axis value of an atom in the x-axis positions column:
 //

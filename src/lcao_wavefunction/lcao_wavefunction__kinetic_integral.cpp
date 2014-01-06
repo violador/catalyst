@@ -83,42 +83,41 @@ double lcao_wavefunction::kinetic_integral(array &type,                // The at
                                            const unsigned int &atom_b, // The atom B.
                                            const unsigned int &level)  // The basis set type.
 {
-    periodic_table a_set(level, type(atom_a)),
-                   b_set(level, type(atom_b));
-    double t_integral = 0.0, 
-           ab_distance = tools::point_distance(x(atom_a),
-                                               y(atom_a),
-                                               z(atom_a),
-                                               x(atom_b),
-                                               y(atom_b),
-                                               z(atom_b));
+    basis_set a_psi(type(atom_a), level), b_psi(type(atom_b), level);
+    double t_integral = 0.0, ab_distance = tools::point_distance(x(atom_a),
+                                                                 y(atom_a),
+                                                                 z(atom_a),
+                                                                 x(atom_b),
+                                                                 y(atom_b),
+                                                                 z(atom_b));
     unsigned int m_primitive = 0;
     #pragma omp parallel for private(m_primitive) reduction(+:t_integral) ordered schedule(dynamic)
-    for(m_primitive = 1; m_primitive <= a_set.periodic_table::basis_size(); ++m_primitive)
+    for(m_primitive = 1; m_primitive <= a_psi.basis_set::size(); ++m_primitive)
     {
         unsigned int n_primitive = 0;
         #pragma omp parallel for private(n_primitive) reduction(+:t_integral) ordered schedule(dynamic)
-        for(n_primitive = 1; n_primitive <= b_set.periodic_table::basis_size(); ++n_primitive)
+        for(n_primitive = 1; n_primitive <= b_psi.basis_set::size(); ++n_primitive)
         {
-            double a = 0.0, b = 0.0, c = 0.0, d = 0.0, e = 0.0, f = 0.0;
-            a = a_set(BASIS_EXPONENT, m_primitive) 
-              + b_set(BASIS_EXPONENT, n_primitive);
+            double a = 0.0, b = 0.0, c = 0.0, 
+                   d = 0.0, e = 0.0, f = 0.0;
+            a = a_psi.basis_set::function_expon(m_primitive) 
+              + b_psi.basis_set::function_expon(n_primitive);
             #pragma omp parallel sections num_threads(5)
             {
                 #pragma omp section
                 {
-                    b = a_set(BASIS_COEFFICIENT, m_primitive)
-                      * b_set(BASIS_COEFFICIENT, n_primitive);
+                    b = a_psi.basis_set::function_coeff(m_primitive)
+                      * b_psi.basis_set::function_coeff(n_primitive);
                 }
                 #pragma omp section
                 {
-                    c = a_set(BASIS_EXPONENT, m_primitive)
-                      * b_set(BASIS_EXPONENT, n_primitive)/a;
+                    c = a_psi.basis_set::function_expon(m_primitive)
+                      * b_psi.basis_set::function_expon(n_primitive)/a;
                 }
                 #pragma omp section
                 {
-                    d = 3.0 - 2.0*a_set(BASIS_EXPONENT, m_primitive)
-                                 *b_set(BASIS_EXPONENT, n_primitive)
+                    d = 3.0 - 2.0*a_psi.basis_set::function_expon(m_primitive)
+                                 *b_psi.basis_set::function_expon(n_primitive)
                                  *gsl_pow_2(ab_distance)/a;
                 }
                 #pragma omp section
@@ -127,8 +126,8 @@ double lcao_wavefunction::kinetic_integral(array &type,                // The at
                 }
                 #pragma omp section
                 {
-                    f = gf_overlap_factor(a_set(BASIS_EXPONENT, m_primitive),
-                                          b_set(BASIS_EXPONENT, n_primitive),
+                    f = gf_overlap_factor(a_psi.basis_set::function_expon(m_primitive),
+                                          b_psi.basis_set::function_expon(n_primitive),
                                           ab_distance);
                 }
             }
