@@ -1,12 +1,11 @@
 //
 //
 //
-inline unsigned int &task_level(unsigned int &task_number)
+inline unsigned int &task_level(unsigned int &task)
 {
-    switch((task_number >= 1) and (task_number <= total_tasks))
+    switch(task <= total_tasks)
     {
-        case false: task_number  = 0; break;
-        case  true: task_number -= 1; break;
+        case false: return level_list[0]; break;
+        case  true: return level_list[task - 1]; break;
     }
-    return theory_level[task_number];
 };

@@ -14,7 +14,7 @@ inline boost::filesystem::path* init_path(const std::string &given_pathname)
         break;
         case true:
         {
-            boost::filesystem::path init(DEFAULT_CURRENT_DIR);
+            boost::filesystem::path init(tools::default_current_dir());
             path = init;
             return &path;
         }
@@ -27,7 +27,7 @@ inline boost::filesystem::path* init_path(const std::string &given_pathname)
 //
 inline boost::filesystem::path* init_path()
 {
-    boost::filesystem::path init(DEFAULT_CURRENT_DIR);
+    boost::filesystem::path init(tools::default_current_dir());
     path = init;
     return &path;
 };

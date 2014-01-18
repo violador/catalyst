@@ -10,9 +10,10 @@ void lcao_wavefunction::build_kinetic_matrix(array &t_matrix,    // The kinetic 
                                              unsigned int level) // The basis set type.
 {
 //
-    unsigned int i = 1, 
-                 j = i, 
-                 total_orbitals = count_orbitals(type);
+    unsigned int i = 1; 
+    unsigned int j = i; 
+    unsigned int total_orbitals = count_orbitals(type);
+    periodic_table a_data, b_data;
     switch(t_matrix.array::check_if(IS_CONSTANT))
     {
         case false:
@@ -38,14 +39,14 @@ void lcao_wavefunction::build_kinetic_matrix(array &t_matrix,    // The kinetic 
             atom_b <= type.array::size_of_row();
             ++atom_b)
         {
-            periodic_table a_data(type(atom_a));
-            periodic_table b_data(type(atom_b));
+            a_data.periodic_table::init(type(atom_a));
+            b_data.periodic_table::init(type(atom_b));
             for(unsigned int a_orbital = 1;
-                a_orbital <= a_data.periodic_table::orbitals_number();
+                a_orbital <= a_data.periodic_table::sub_shells();
                 ++a_orbital)
             {
                 for(unsigned int b_orbital = (atom_a == atom_b? a_orbital : 1);
-                    b_orbital <= b_data.periodic_table::orbitals_number();
+                    b_orbital <= b_data.periodic_table::sub_shells();
                     ++b_orbital)
                 {
                     t_matrix(i,

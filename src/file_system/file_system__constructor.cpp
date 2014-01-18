@@ -34,3 +34,21 @@ file_system::file_system(const std::string &given_pathname,
 {
 //  Empty constructor.
 }
+//
+//
+//
+file_system::file_system(const file_system &given): input(given.input),
+                                                    disk_info(given.disk_info),
+                                                    filename(given.filename),
+                                                    root_path(given.root_path),
+                                                    parent_path(given.parent_path),
+                                                    relative_path(given.relative_path),
+                                                    file_extension(given.file_extension),
+                                                    file_status(given.file_status),
+                                                    path_status(given.path_status),
+                                                    disk_space(given.disk_space),
+                                                    stream_ready(false)
+
+{
+//  Empty constructor.
+}

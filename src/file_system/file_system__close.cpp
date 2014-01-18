@@ -4,6 +4,7 @@
 inline void close(std::fstream &file)
 {
     file.std::fstream::close();
+    stream_ready = false;
 };
 //
 //
@@ -16,8 +17,9 @@ inline void close()
         {
             switch(input_file.std::fstream::is_open())
             {
-                case true: 
-                input_file.std::fstream::close(); 
+                case true:
+                input_file.std::fstream::close();
+                stream_ready = false;
                 break;
             }
         }
@@ -25,8 +27,9 @@ inline void close()
         {
             switch(output_file.std::fstream::is_open())
             {
-                case true: 
-                output_file.std::fstream::close(); 
+                case true:
+                output_file.std::fstream::close();
+                stream_ready = false;
                 break;
             }
         }

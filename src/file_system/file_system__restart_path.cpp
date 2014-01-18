@@ -3,28 +3,28 @@
 //
 void inline restart_path(const std::string &given_pathname) 
 {
-    init_path(given_pathname);
+    input = init_path(given_pathname);
     #pragma omp parallel sections num_threads(8)
     {
         #pragma omp section
         {
-            filename = file.boost::filesystem::path::filename();
+            filename = path.boost::filesystem::path::filename();
         }
         #pragma omp section
         {
-            root_path = file.boost::filesystem::path::root_path();
+            root_path = path.boost::filesystem::path::root_path();
         }
         #pragma omp section
         {
-            parent_path = file.boost::filesystem::path::parent_path();
+            parent_path = path.boost::filesystem::path::parent_path();
         }
         #pragma omp section
         {
-            relative_path = file.boost::filesystem::path::relative_path();
+            relative_path = path.boost::filesystem::path::relative_path();
         }
         #pragma omp section
         {
-            file_extension = file.boost::filesystem::path::extension();
+            file_extension = path.boost::filesystem::path::extension();
         }
         #pragma omp section
         {

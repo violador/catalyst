@@ -1,18 +1,30 @@
-// ../src/settings/settings__check_current_time.cpp ------------------------------------- //
+// ../src/settings/settings__check_current_time.cpp ----------------------------------------- //
 //
-// File author: Humberto Jr. 
+//  This file is part of Catalyst lib.
 //
-// Date: 10/2013
+//  Catalyst lib is free software: you can redistribute it and/or modify it under the terms 
+//  of the GNU General Public License as published by the Free Software Foundation, either 
+//  version 3 of the License, or (at your option) any later version.
 //
-// Description: The settings's member to check the current time in the following 
-//              format: Sat Oct 12 00:24:17 2013. 
+//  Catalyst lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+//  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+//  See the GNU General Public License for more details.
 //
-// References:
+//  You should have received a copy of the GNU General Public License along with Catalyst lib. 
+//  If not, see <http://www.gnu.org/licenses/>.
 //
-// ------------------------------------------------------------------------------------- //
-
+// ------------------------------------------------------------------------------------------ //
 //
 //
+//
+/// @author Humberto Jr. 
+//
+/// @date 10/2013
+//
+/// @return The current time in the following format: 
+///         @c "Sat Oct 12 00:24:17 2013".
+//
+/// @cite
 //
 inline std::string check_current_time()
 {

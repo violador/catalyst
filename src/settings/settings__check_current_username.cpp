@@ -1,33 +1,45 @@
-// ../src/settings/settings__check_current_username.cpp --------------------------------- //
+// ../src/settings/settings__check_current_username.cpp ------------------------------------- //
 //
-// File author: Humberto Jr. 
+//  This file is part of Catalyst lib.
 //
-// Date: 08/2013
+//  Catalyst lib is free software: you can redistribute it and/or modify it under the terms 
+//  of the GNU General Public License as published by the Free Software Foundation, either 
+//  version 3 of the License, or (at your option) any later version.
 //
-// Description: The settings's member to check the current user name. This 
-//              function may or may not be system-dependent. In such case the 
-//              implementation should come enclosed between the respective OS
-//              macro.
+//  Catalyst lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+//  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+//  See the GNU General Public License for more details.
 //
-// References:
+//  You should have received a copy of the GNU General Public License along with Catalyst lib. 
+//  If not, see <http://www.gnu.org/licenses/>.
 //
-// ------------------------------------------------------------------------------------- //
+// ------------------------------------------------------------------------------------------ //
 //
 //
+//
+/// @author Humberto Jr. 
+//
+/// @date 08/2013
+//
+/// @return The current number of CPUs available. 
+//
+/// @cite
 //
 inline std::string check_current_username()
 {
 //
-    #ifdef LINUX
+//  The Linux version:
+    #if defined(LINUX)
     return tools::convert<std::string>(getenv("LOGNAME"));
     #endif
 //
-    #ifdef WIN32
+//  The Microsoft Windows version:
+    #if defined(WIN32)
     return "";
     #endif
 //
-    #ifdef OS_X
+//  The Apple OS-X version:
+    #if defined(OS_X)
     return "";
     #endif
-//
 };

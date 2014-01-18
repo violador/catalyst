@@ -5,8 +5,7 @@
 void log_file_handler::report_input_list()
 {
     #pragma omp critical
-    switch(config -> state_of(option::output_mode) 
-           and (config -> number_of(option::tasks) >= 1))
+    switch(config -> output_mode() and config -> tasks() > 1)
     {
         case true:
         #ifdef FIRST_COLUMN_LENGTH
@@ -78,10 +77,10 @@ void log_file_handler::report_input_list()
                        "-");
         set_new_line();
         file_system input;
-        for(unsigned int i = 1; i <= config -> number_of(option::tasks); ++i)
+        for(unsigned int i = 1; i <= config -> tasks(); ++i)
         {
-            input.file_system::init(config -> filename_of(option::input_file, i),
-                                    config -> dir_path_of(option::work));
+            input.file_system::init(config -> work_dir(),
+                                    config -> input_filename(i));
 //
 //          To print the task number in the task column:
 //
@@ -93,13 +92,13 @@ void log_file_handler::report_input_list()
 //
             set_width(SECOND_COLUMN_LENGTH + SPACE_LENGTH);
             set_right();
-            log_file << config -> filename_of(option::input_file, i);
+            log_file << config -> input_filename(i);
 //
 //          To print the file size in the size column:
 //
             set_width(THIRD_COLUMN_LENGTH + SPACE_LENGTH);
             set_right();
-            log_file << input.file_system::size()*BYTE_TO_KILOBYTE;
+            log_file << tools::byte_to_kilobyte(input.file_system::size());
 //
 //          To print the status in the status column:
 //

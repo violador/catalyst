@@ -3,10 +3,10 @@
 //
 inline void report_bad_init()
 {
-    std::cout << "\n@Catalyst: fails to create "
-              << config -> filename_of(option::log_file)
+    std::cerr << "\n@Catalyst: fails to create "
+              << manager.file_system::name()
               << " in the folder "
-              << file_manager -> parent_dir()
+              << manager.file_system::parent_dir()
               << ". The program will keep running without write the file."
               << " You may or may not see the output properly." << std::endl;
 };

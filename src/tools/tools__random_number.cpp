@@ -1,5 +1,30 @@
+// ../src/tools/tools__point_distance.cpp --------------------------------------------------- //
+//
+//  This file is part of Catalyst lib.
+//
+//  Catalyst lib is free software: you can redistribute it and/or modify it under the terms 
+//  of the GNU General Public License as published by the Free Software Foundation, either 
+//  version 3 of the License, or (at your option) any later version.
+//
+//  Catalyst lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+//  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+//  See the GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License along with Catalyst lib. 
+//  If not, see <http://www.gnu.org/licenses/>.
+//
+// ------------------------------------------------------------------------------------------ //
 //
 //
+//
+/// @author Humberto Jr. 
+//
+/// @date 07/2013
+//
+/// @return A random number by means of the given @c seed 
+///         number and the @c GSL random number generator.
+//
+/// @cite
 //
 template<typename data_type>
 data_type random_number(const unsigned long int seed, 
@@ -30,6 +55,14 @@ data_type random_number(const unsigned long int seed,
 };
 //
 //
+/// @author Humberto Jr. 
+//
+/// @date 07/2013
+//
+/// @return A random number by means of a given @c seed number.
+///         The default @c GSL generator used is the @c taus2.
+//
+/// @cite
 //
 template<typename data_type>
 inline data_type random_number(const unsigned long int seed)
@@ -45,13 +78,22 @@ inline data_type random_number(const unsigned long int seed)
 //
 //
 //
+/// @author Humberto Jr. 
+//
+/// @date 07/2013
+//
+/// @return A random number. The default @c ctime member, @c time(), 
+///         is used as seed; and the @c GSL @c taus2 is used as the 
+///         generator.
+//
+/// @cite
+//
 template<typename data_type>
 inline data_type random_number()
 {
 //
-//  (7) If not given either the generator or the seed, 
-//      to use by default the GSL taus2 and the ctime 
-//      function time().
+//  (7) If not given either the generator or the seed, to use by 
+//      default the GSL taus2 and the ctime function time().
     gsl_rng *generator = gsl_rng_alloc(gsl_rng_taus2);
     gsl_rng_set(generator, (unsigned long int) time(NULL)); // (7)
     data_type random_number = gsl_rng_uniform(generator);

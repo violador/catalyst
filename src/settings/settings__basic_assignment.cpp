@@ -4,6 +4,7 @@
 //
 void settings::operator =(settings &given_config)
 {
+/*
     switch(given_config.total_tasks >= 1)
     {
         case false:
@@ -77,4 +78,5 @@ void settings::operator =(settings &given_config)
         }
         break;
     }
+*/
 }

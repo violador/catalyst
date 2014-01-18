@@ -5,8 +5,8 @@
 void array::write()
 {
     #pragma omp critical
-    switch(config -> state_of(option::output_mode) 
-           and config -> state_of(option::logging_matrices) 
+    switch(config -> output_mode() 
+           and true /*config -> state_of(option::logging_matrices)*/ 
            and is_2d_array)
     {
         case true:

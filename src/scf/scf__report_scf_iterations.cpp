@@ -4,7 +4,7 @@
 //
 void algorithm::scf::report_scf_iterations() 
 {
-    switch(config -> state_of(option::output_mode))                                                                   
+    switch(config -> output_mode())                                                                   
     {
         case true:
         #ifdef FIRST_COLUMN_LENGTH

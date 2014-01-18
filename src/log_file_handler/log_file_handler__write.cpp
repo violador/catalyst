@@ -4,8 +4,7 @@
 template<typename data_type1> 
 inline void write(const data_type1 &text1)
 {
-    switch(config -> state_of(option::output_mode) 
-           and log_file_ready)
+    switch(config -> output_mode() and log_file_ready)
     {
         case true:
         #pragma omp critical
@@ -21,8 +20,7 @@ template<typename data_type1,
 inline void write(const data_type1 text1, 
                   const data_type2 text2)
 {
-    switch(config -> state_of(option::output_mode) 
-           and log_file_ready)
+    switch(config -> output_mode() and log_file_ready)
     {
         case true:
         #pragma omp critical
@@ -41,8 +39,7 @@ inline void write(const data_type1 &text1,
                   const data_type2 &text2, 
                   const data_type3 &text3)
 {
-    switch(config -> state_of(option::output_mode) 
-           and log_file_ready)
+    switch(config -> output_mode() and log_file_ready)
     {
         case true:
         #pragma omp critical
@@ -64,8 +61,7 @@ inline void write(const data_type1 &text1,
                   const data_type3 &text3, 
                   const data_type4 &text4)
 {
-    switch(config -> state_of(option::output_mode) 
-           and log_file_ready)
+    switch(config -> output_mode() and log_file_ready)
     {
         case true:
         #pragma omp critical
@@ -90,8 +86,7 @@ inline void write(const data_type1 &text1,
                   const data_type4 &text4,
                   const data_type5 &text5)
 {
-    switch(config -> state_of(option::output_mode) 
-           and log_file_ready)
+    switch(config -> output_mode() and log_file_ready)
     {
         case true:
         #pragma omp critical
@@ -119,8 +114,7 @@ inline void write(const data_type1 &text1,
                   const data_type5 &text5,
                   const data_type6 &text6)
 {
-    switch(config -> state_of(option::output_mode) 
-           and log_file_ready)
+    switch(config -> output_mode() and log_file_ready)
     {
         case true:
         #pragma omp critical
@@ -151,8 +145,7 @@ inline void write(const data_type1 &text1,
                   const data_type6 &text6,
                   const data_type7 &text7)
 {
-    switch(config -> state_of(option::output_mode) 
-           and log_file_ready)
+    switch(config -> output_mode() and log_file_ready)
     {
         case true:
         #pragma omp critical
@@ -186,8 +179,7 @@ inline void write(const data_type1 &text1,
                   const data_type7 &text7,
                   const data_type8 &text8)
 {
-    switch(config -> state_of(option::output_mode) 
-           and log_file_ready)
+    switch(config -> output_mode() and log_file_ready)
     {
         case true:
         #pragma omp critical
@@ -224,8 +216,7 @@ inline void write(const data_type1 &text1,
                   const data_type8 &text8,
                   const data_type9 &text9)
 {
-    switch(config -> state_of(option::output_mode) 
-           and log_file_ready)
+    switch(config -> output_mode() and log_file_ready)
     {
         case true:
         #pragma omp critical
@@ -265,8 +256,7 @@ inline void write(const data_type1 &text1,
                   const data_type9 &text9,
                   const data_type10 &text10)
 {
-    switch(config -> state_of(option::output_mode) 
-           and log_file_ready)
+    switch(config -> output_mode() and log_file_ready)
     {
         case true:
         #pragma omp critical

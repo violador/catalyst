@@ -76,7 +76,7 @@ void lcao_wavefunction::build_matrices(array &type,
     h_matrix += v_matrix1; // (6)
     hamiltonian_matrix_ready = true;
 //
-    switch(config -> state_of(option::temp_files_usage))
+    switch(true/*config -> state_of(option::temp_files_usage)*/)
     {
         case true:
         #pragma omp parallel sections num_threads(4)
@@ -100,7 +100,7 @@ void lcao_wavefunction::build_matrices(array &type,
         }
         break;
     }
-    switch(config -> state_of(option::debug_mode))
+    switch(config -> debug_mode())
     {
         case true:
         s_matrix.array::write();

@@ -9,9 +9,10 @@ void lcao_wavefunction::build_overlap_matrix(array &s_matrix,          // The ov
                                              array &z,                 // The atom z-axis positions.
                                              const unsigned int level) // The basis set type. 
 {
-    unsigned int i = 1, 
-                 j = i, 
-                 total_orbitals = count_orbitals(type);
+    unsigned int i = 1; 
+    unsigned int j = i; 
+    unsigned int total_orbitals = count_orbitals(type);
+    periodic_table a_data, b_data;
     switch(s_matrix.array::check_if(IS_CONSTANT))
     {
         case false:
@@ -37,15 +38,15 @@ void lcao_wavefunction::build_overlap_matrix(array &s_matrix,          // The ov
             atom_b <= type.array::size_of_row(); 
             ++atom_b)
         {
-            periodic_table a_data(type(atom_a));
-            periodic_table b_data(type(atom_b));
+            a_data.periodic_table::init(type(atom_a));
+            b_data.periodic_table::init(type(atom_b));
             for(unsigned int a_orbital = 1; 
-                a_orbital <= a_data.periodic_table::orbitals_number();
-                ++a_orbital)  
+                a_orbital <= a_data.periodic_table::sub_shells();
+                ++a_orbital)
             {
                 for(unsigned int b_orbital = (atom_a == atom_b? a_orbital + 1 : 1); 
-                    b_orbital <= b_data.periodic_table::orbitals_number();
-                    ++b_orbital)  
+                    b_orbital <= b_data.periodic_table::sub_shells();
+                    ++b_orbital)
                 {
                     ++j;
                     s_matrix(i, 

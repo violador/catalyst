@@ -3,5 +3,5 @@
 //
 inline bool exists()
 {
-    return file_manager -> exists();
+    return manager.file_system::exists();
 };

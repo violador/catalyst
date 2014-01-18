@@ -22,7 +22,7 @@ void algorithm::scf::roothaan_equation_solver(array &h_matrix, array &s_matrix, 
 //          First guess of a Fock matrix:
             f_matrix = h_matrix;
 //
-            switch(config -> state_of(option::debug_mode))
+            switch(config -> debug_mode())
             {
                  case false: break;
                  case  true: f_matrix.array::write(); break;
@@ -130,7 +130,7 @@ void algorithm::scf::roothaan_equation_solver(array &h_matrix, array &s_matrix, 
         }
         #pragma omp section
         {
-            switch(config -> state_of(option::debug_mode))
+            switch(config -> debug_mode())
             {
                 case false: break;
                 case  true: f_matrix.array::write(); break;

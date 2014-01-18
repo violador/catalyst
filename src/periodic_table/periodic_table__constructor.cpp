@@ -62,4 +62,5 @@ periodic_table::periodic_table(const periodic_table &given): current_element(giv
                                                              current_mass(given.current_mass),
                                                              current_covalent_radius(given.current_covalent_radius)
 {
+//  Empty constructor.
 }
