@@ -16,6 +16,7 @@
     #include "global_settings.hpp"
     #include "array.hpp"
     #include "scf.hpp"
+    #include "basis_set.hpp"
     #include "global_log.hpp"
     #include "periodic_table.hpp"
     #include "timer.hpp"

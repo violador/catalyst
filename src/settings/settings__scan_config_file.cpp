@@ -156,7 +156,7 @@ std::string settings::scan_config_file(const std::string &option,
 ///      as @c int). Due to that, the function called will be the @c int type one. To avoid 
 ///      this problem, when the second input argument is given by means of quote symbols, it 
 ///      is highly recomended to specify its type. The layout call should looks like @c
-///      scan_config_file(option, @c (std::string) @c "my default input key");.
+///      "scan_config_file(option, (std::string) my_default_input_key)";.
 //
     std::ifstream file(config_file.std::string::c_str(), std::ios::in);
     switch(file.std::ifstream::is_open() and file.std::ifstream::good())

@@ -46,6 +46,7 @@ class file_system
     #include "file_system__build_slash.cpp"
     #include "file_system__restart_file.cpp"
     #include "file_system__restart_path.cpp"
+    #include "file_system__update.cpp"
 //
     public:
 //
@@ -56,6 +57,10 @@ class file_system
     file_system();
     file_system(const std::string &given_filename, 
                 const std::string &given_pathname);
+    file_system(const file_system &given);
+//
+//  Declaring the public operators:
+    void operator =(const file_system &given);
 //
 //  Declaring the public data members:
     std::fstream input_file;

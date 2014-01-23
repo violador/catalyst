@@ -101,18 +101,17 @@
 //
 //  Including C standard headers:
     #include <stdlib.h>
-    #ifdef USE_OMP
-        #include <omp.h>
-    #endif
+    #include <omp.h>
 //
 //  Including C++ standard headers:
     #include <iostream>
+    #include <cstddef>
     #include <iomanip>
     #include <fstream>
     #include <sstream>
     #include <string>
+    #include <typeinfo>
     #include <algorithm>
-    #include <cctype>
     #include <ios>
     #include <ctime>
     #include <new>
@@ -137,6 +136,7 @@
 //  Including Boost C++ headers:
     #include <boost/filesystem.hpp> // "-lboost_filesystem" to linkage.
     #include <boost/timer/timer.hpp>
+    #include <boost/lexical_cast.hpp>
     #ifdef USE_MPI
         //#include <boost/mpi.hpp> // "-lboost_mpi" to linkage.
         //#include <boost/mpi/environment.hpp>

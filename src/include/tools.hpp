@@ -1,11 +1,36 @@
-// ../src/include/tools.hpp ------------------------------------------------------------- //
+// ../src/include/tools.hpp ----------------------------------------------------------------- //
 //
-// File author: Humberto Jr. 
+//  This file is part of Catalyst lib.
 //
-// Date: 06/2013
+//  Catalyst lib is free software: you can redistribute it and/or modify it under the terms 
+//  of the GNU General Public License as published by the Free Software Foundation, either 
+//  version 3 of the License, or (at your option) any later version.
 //
-// Description: The tools namespace keeps together all the general data and 
-//              functions used by several classes and structs.
+//  Catalyst lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
+//  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+//  See the GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License along with Catalyst lib. 
+//  If not, see <http://www.gnu.org/licenses/>.
+//
+// ------------------------------------------------------------------------------------------ //
+#ifndef __TOOLS_HPP
+    #define __TOOLS_HPP
+    #include "globals.hpp"
+//
+//
+//
+/// @author Humberto Jr. 
+//
+/// @date 06/2013
+//
+/// @brief Generic data and functions for general tasks.
+//
+/// @details: The aiming is to group under the scope of 'tools', all the 
+///           data members or data functions for general tasks and that 
+///           does not belong to any class or struct. All the members are 
+///           of public access by any client. The only requirement is that 
+///           its header file should be included where it is needed. 
 //
 // References: http://www.codata.org/
 //             
@@ -13,60 +38,8 @@
 //             
 //             CRC Handbook of Chemistry and Physics, 1989.
 //
-// ------------------------------------------------------------------------------------- //
-#ifndef __TOOLS_HPP
-    #define __TOOLS_HPP
-    #include "globals.hpp"
-//
-//
-//
 namespace tools
 {
-//
-//  The speed of light in vacuum, c: 
-    static const double c = GSL_CONST_MKSA_SPEED_OF_LIGHT;
-//
-//  Planck's constant, h: 
-    static const double h = GSL_CONST_MKSA_PLANCKS_CONSTANT_H;
-//
-//  Planck's constant divided by 2\pi, h_bar:
-    static const double h_bar = GSL_CONST_MKSA_PLANCKS_CONSTANT_HBAR; 
-//
-//  Avogadro's number, mol: 
-    static const double mol = GSL_CONST_NUM_AVOGADRO;
-//
-//  The Boltzmann constant, k:
-    static const double k = GSL_CONST_MKSA_BOLTZMANN;
-//
-//  The charge of the electron, e: 
-    static const double e = GSL_CONST_MKSA_ELECTRON_CHARGE;
-//
-//  The energy of 1 electron volt, ev: 
-    static const double ev = GSL_CONST_MKSA_ELECTRON_VOLT;
-//
-//  The unified atomic mass, amu:
-    static const double amu = GSL_CONST_MKSA_UNIFIED_ATOMIC_MASS;
-//
-//  The mass of the electron, electron_mass:
-    static const double electron_mass = GSL_CONST_MKSA_MASS_ELECTRON;
-//
-//  The mass of the proton, proton_mass:
-    static const double proton_mass = GSL_CONST_MKSA_MASS_PROTON;
-//
-//  The mass of the neutron, neutron_mass:
-    static const double neutron_mass = GSL_CONST_MKSA_MASS_NEUTRON;
-//
-//  The electromagnetic fine structure constant, alpha: 
-    static const double alpha = GSL_CONST_NUM_FINE_STRUCTURE;
-//
-//  The Bohr radius, bohr_radius: 
-    static const double bohr_radius = GSL_CONST_MKSA_BOHR_RADIUS;
-//
-//  The length of 1 angstrom:
-    static const double ang = GSL_CONST_MKSA_ANGSTROM;
-//
-//  The pi number, pi:
-    static const double pi = M_PI;
 //
 //  Declaring data members to unit conversion:
     static const double ang_to_au = 1.0/0.529177208;      // From angstron to atomic unit.
@@ -101,5 +74,33 @@ namespace tools
     #include "tools__lower_case.cpp"
     #include "tools__remove_blank_spaces.cpp"
     #include "tools__remove_char.cpp"
+    #include "tools__remove.cpp"
+    #include "tools__comment_line.cpp"
+    #include "tools__is_equal.cpp"
+    #include "tools__default_precision.cpp"
+    #include "tools__default_scf_criteria.cpp"
+    #include "tools__default_log_file.cpp"
+    #include "tools__default_config_file.cpp"
+    #include "tools__default_no_file.cpp"
+    #include "tools__on_ctrl_key.cpp"
+    #include "tools__off_ctrl_key.cpp"
+    #include "tools__max_precision.cpp"
+    #include "tools__byte_to_gigabyte.cpp"
+    #include "tools__byte_to_megabyte.cpp"
+    #include "tools__byte_to_kilobyte.cpp"
+    #include "tools__kilobyte_to_gigabyte.cpp"
+    #include "tools__default_current_dir.cpp"
+    #include "tools__bohr_radius.cpp"
+    #include "tools__electron_mass.cpp"
+    #include "tools__atomic_mass.cpp"
+    #include "tools__speed_of_light.cpp"
+    #include "tools__mol.cpp"
+    #include "tools__electron_charge.cpp"
+    #include "tools__angstrom_length.cpp"
+    #include "tools__electron_volt.cpp"
+    #include "tools__boltzmann_const.cpp"
+    #include "tools__planck_const.cpp"
+    #include "tools__proton_mass.cpp"
+    #include "tools__neutron_mass.cpp"
 };
 #endif

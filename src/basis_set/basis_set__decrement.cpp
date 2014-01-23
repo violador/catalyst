@@ -1,4 +1,4 @@
-// ../src/settings/settings__translation_mode.cpp ------------------------------------------- //
+// ../src/basis_set/basis_set__decrement.cpp ------------------------------------------------ //
 //
 //  This file is part of Catalyst lib.
 //
@@ -19,15 +19,34 @@
 //
 /// @author Humberto Jr. 
 //
-/// @date 05/2013
+/// @date 01/2014
 //
-/// @return The current state (on/off) 
-///         of the molecular translation 
-///         mode.
+/// @return None. Decrements the internal iterator. 
 //
 /// @cite
 //
-inline bool &translation_mode()
+inline void operator --()
 {
-    return translation_mode_on;
+    switch(iter > 1)
+    {
+        case true: --iter; break;
+    }
+};
+//
+//
+//
+/// @author Humberto Jr. 
+//
+/// @date 01/2014
+//
+/// @return None. Decrements the internal iterator. 
+//
+/// @cite
+//
+inline void operator --(int)
+{
+    switch(iter > 1)
+    {
+        case true: --iter; break;
+    }
 };

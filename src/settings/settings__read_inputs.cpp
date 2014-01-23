@@ -48,8 +48,10 @@ void settings::read_inputs()
         break;
         case true:
         {
+            unsigned int i = 0;
             input_list = new std::string[total_tasks];
-            for(unsigned int i = 1; i <= total_tasks; ++i)
+            #pragma omp parallel for private(i) ordered schedule(dynamic)
+            for(i = 1; i <= total_tasks; ++i)
             {
                 std::string option = "input"
                                    + tools::convert<std::string>(i)

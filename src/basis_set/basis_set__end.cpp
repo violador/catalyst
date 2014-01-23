@@ -1,4 +1,4 @@
-// ../src/settings/settings__translation_mode.cpp ------------------------------------------- //
+// ../src/basis_set/basis_set__end.cpp ------------------------------------------------------ //
 //
 //  This file is part of Catalyst lib.
 //
@@ -19,15 +19,14 @@
 //
 /// @author Humberto Jr. 
 //
-/// @date 05/2013
+/// @date 01/2014
 //
-/// @return The current state (on/off) 
-///         of the molecular translation 
-///         mode.
+/// @return None. Moves the internal iterator to the last 
+///         primitive function of the current basis set. 
 //
 /// @cite
 //
-inline bool &translation_mode()
+inline void end()
 {
-    return translation_mode_on;
+    iter = current_set_size;
 };

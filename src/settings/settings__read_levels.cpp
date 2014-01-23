@@ -48,8 +48,10 @@ void settings::read_levels()
         break;
         case true:
         {
+            unsigned int i = 0;
             level_list = new unsigned int[total_tasks];
-            for(unsigned int i = 1; i <= total_tasks; ++i)
+            #pragma omp parallel for private(i) ordered schedule(dynamic)
+            for(i = 1; i <= total_tasks; ++i)
             {
                 std::string option = "level"
                                    + tools::convert<std::string>(i)

@@ -24,6 +24,7 @@ class basis_set
     unsigned int current_element;
     unsigned int current_level;
     unsigned int current_set_size;
+    unsigned int iter;
     static const unsigned int sto3g_limit = 53;
     double *coeff;
     double *expon;
@@ -49,6 +50,14 @@ class basis_set
     #include "basis_set__function_expon.cpp"
     #include "basis_set__function_coeff.cpp"
     #include "basis_set__size.cpp"
+    #include "basis_set__destructor.cpp"
+    #include "basis_set__ready.cpp"
+    #include "basis_set__increment.cpp"
+    #include "basis_set__decrement.cpp"
+    #include "basis_set__begin.cpp"
+    #include "basis_set__end.cpp"
+    #include "basis_set__iterator.cpp"
+    #include "basis_set__set_iterator.cpp"
 //
 };
 #endif

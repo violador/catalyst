@@ -16,7 +16,7 @@
 #ifndef __PERIODIC_TABLE_HPP
     #define __PERIODIC_TABLE_HPP
     #include "globals.hpp"
-    #include "global_log.hpp"
+    #include "tools.hpp"
 //
 //
 //
@@ -25,38 +25,19 @@ class periodic_table
     private:
 //
 //  Declaring the data members:
-    std::string element_symbol;                     // The element symbol.
-    std::string element_name;                       // The element name.
-    std::string element_config;                     // The electron configuration for the given element.
-    unsigned int element_core_electrons;            // The number of core electrons for the given element.
-    unsigned int element_valence_electrons;         // The number of valence electrons for the given element.
-    unsigned int total_functions;                   // The basis's number of primitive functions for the current element.
-    unsigned int total_orbitals;                    // The total number of functions per element to describe the orbitals.
-    unsigned int current_level;                     // The current level of theory used to init the basis database.
-    double *exponent;                               // The basis's exponent set.
-    double *coefficient;                            // The basis's coefficient set.
-    static const unsigned int total_elements = 103; // The total number of elements used until now.
-    double element_mass;                            // The atomic mass for the given element.
-    double covalent_radius;                         // The atomic radii (covalent) for the given element.
-    bool std_database_ready;                        // The usage state of the current database.
-    bool basis_database_ready;                      // The usage state of the current database.
+    unsigned int current_element;
+    unsigned int current_core_electrons;
+    unsigned int current_valence_electrons;
+    unsigned int current_orbitals;
+    std::string current_symbol;
+    std::string current_name;
+    std::string current_electronic_config;
+    double current_mass;
+    double current_covalent_radius;
+    static const unsigned int table_length = 103;
 //
-//  database(): Overloaded member function to set the data member values for a given element,
-//              as unsigned int.
-    void database(const unsigned int &element);
-//
-//  database(): Overloaded member function to set the data member values for a given element,
-//              as std::string.
-    void database(const std::string &symbol);
-//
-//  sto3g_exponent_database(): To set all the primitive exponents for a given element.
-    void sto3g_exponent_database(const unsigned int &element);
-//
-//  sto3g_coefficient_database(): To set all the primitive coefficients for a given element.
-    void sto3g_coefficient_database(const unsigned int &element);
-//
-//  sto3g_total_functions(): To return the total number of primitives for a given element.
-    unsigned int sto3g_set_size(const unsigned int &element);
+//  Declaring the private member functions:
+    void update_data();
 //
     public:
 //
@@ -65,19 +46,9 @@ class periodic_table
 //
 //  Declaring the class constructor:
     periodic_table();
-//
-//  Declaring the class constructor:
+    periodic_table(const std::string &element);
+    periodic_table(const periodic_table &given);
     periodic_table(const unsigned int &given_element);
-//
-//  Declaring the class constructor:
-    periodic_table(const unsigned int &given_theory_level, const unsigned int &given_element);
-//
-//  Declaring the class destructor:
-    ~periodic_table();
-//
-//
-    #define BASIS_EXPONENT    1
-    #define BASIS_COEFFICIENT 2
 //
 //  Including the inline/template/public member functions:
     #include "periodic_table__electrons.cpp"
@@ -85,13 +56,14 @@ class periodic_table
     #include "periodic_table__name.cpp"
     #include "periodic_table__symbol.cpp"
     #include "periodic_table__type.cpp"
-    #include "periodic_table__basis_exponent.cpp"
-    #include "periodic_table__basis_coefficient.cpp"
-    #include "periodic_table__basis_size.cpp"
-    #include "periodic_table__function_call.cpp"
-    #include "periodic_table__init_data.cpp"
-    #include "periodic_table__norm.cpp"
-    #include "periodic_table__orbitals_number.cpp"
+    #include "periodic_table__delete_current_data.cpp"
+    #include "periodic_table__init.cpp"
+    #include "periodic_table__sub_shells.cpp"
+    #include "periodic_table__electronic_config.cpp"
+    #include "periodic_table__increment.cpp"
+    #include "periodic_table__decrement.cpp"
+    #include "periodic_table__atomic_number.cpp"
+    #include "periodic_table__destructor.cpp"
 //
 };
 #endif

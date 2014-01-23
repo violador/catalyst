@@ -19,7 +19,7 @@
 //              or arrays types (1D and 2D only). In the array types operations so-
 //              me common properties like dimension sizes will be checked first.
 //
-// References: M. Galassi et al, GNU Scientific Library Reference Manual (3rd Ed.), ISBN 0954612078.
+/// @cite gsl 
 //
 // ------------------------------------------------------------------------------------- //
 #ifndef __ARRAY_HPP
