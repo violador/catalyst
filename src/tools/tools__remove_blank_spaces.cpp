@@ -1,39 +1,37 @@
-// ../src/tools/tools__point_distance.cpp --------------------------------------------------- //
+// ../src/tools/tools__remove_blank_spaces.cpp ============================================== //
 //
-//  This file is part of Catalyst lib.
+// Catalyst Lib is free software:  you can redistribute it and/or modifyit under the terms of
+// the GNU General Public License as published bythe Free Software Foundation, either version
+// 3 of the License, or(at your option) any later version.
 //
-//  Catalyst lib is free software: you can redistribute it and/or modify it under the terms 
-//  of the GNU General Public License as published by the Free Software Foundation, either 
-//  version 3 of the License, or (at your option) any later version.
+// Catalyst Lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details.
 //
-//  Catalyst lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-//  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
-//  See the GNU General Public License for more details.
+// You should have received a copy of the GNU General Public License along with Catalyst Lib.
+// If not, see <http://www.gnu.org/licenses/>.
 //
-//  You should have received a copy of the GNU General Public License along with Catalyst lib. 
-//  If not, see <http://www.gnu.org/licenses/>.
-//
-// ------------------------------------------------------------------------------------------ //
+// ========================================================================================== //
 //
 //
 //
-/// @author Humberto Jr. 
+/// @param [in, out] pattern A string pattern
 //
-/// @date 12/2013
+/// @brief Changes the given @c pattern, removing the blank spaces, if any.
 //
-/// @return None. Changes the given @c pattern, removing 
-///         the blank spaces, if any.
-//
-/// @cite
+/// @return None.
 //
 inline void remove_blank_spaces(std::string &pattern)
 {
 //
-/// @warning The content of the given @c pattern 
-///          may or may not be modified.
-    pattern.std::string::erase(remove(pattern.std::string::begin(),
-                                        pattern.std::string::end(),
-                                                              ' '),
-                                        pattern.std::string::end());
-
+/// @note Notice that the real meaning of this function is just to avoid the
+///       quite large @c std::string namespace.
+//
+//
+/// @warning The content of the given @c pattern may or may not be modified.
+//
+	pattern.std::string::erase(remove(pattern.std::string::begin(),
+									  pattern.std::string::end(),
+									  ' '),
+									  pattern.std::string::end());
 };

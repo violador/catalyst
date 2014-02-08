@@ -1,6 +1,6 @@
 // ../src/include/periodic_table.hpp ---------------------------------------------------- //
 //
-// File author: Humberto Jr. 
+// File author: Humberto Jr.
 //
 // Date: 06/2013
 //
@@ -56,7 +56,6 @@ class periodic_table
     #include "periodic_table__name.cpp"
     #include "periodic_table__symbol.cpp"
     #include "periodic_table__type.cpp"
-    #include "periodic_table__delete_current_data.cpp"
     #include "periodic_table__init.cpp"
     #include "periodic_table__sub_shells.cpp"
     #include "periodic_table__electronic_config.cpp"
@@ -64,6 +63,9 @@ class periodic_table
     #include "periodic_table__decrement.cpp"
     #include "periodic_table__atomic_number.cpp"
     #include "periodic_table__destructor.cpp"
+	#include "periodic_table__first.cpp"
+	#include "periodic_table__last.cpp"
+	#include "periodic_table__function_call.cpp"
 //
 };
 #endif

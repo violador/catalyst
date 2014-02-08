@@ -1,48 +1,43 @@
-// ../src/tools/tools__byte_to_megabyte.cpp ------------------------------------------------- //
+// ../src/tools/tools__byte_to_megabyte.cpp ================================================= //
 //
-//  This file is part of Catalyst lib.
+// Catalyst Lib is free software:  you can redistribute it and/or modifyit under the terms of
+// the GNU General Public License as published bythe Free Software Foundation, either version
+// 3 of the License, or(at your option) any later version.
 //
-//  Catalyst lib is free software: you can redistribute it and/or modify it under the terms 
-//  of the GNU General Public License as published by the Free Software Foundation, either 
-//  version 3 of the License, or (at your option) any later version.
+// Catalyst Lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details.
 //
-//  Catalyst lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-//  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
-//  See the GNU General Public License for more details.
+// You should have received a copy of the GNU General Public License along with Catalyst Lib.
+// If not, see <http://www.gnu.org/licenses/>.
 //
-//  You should have received a copy of the GNU General Public License along with Catalyst lib. 
-//  If not, see <http://www.gnu.org/licenses/>.
-//
-// ------------------------------------------------------------------------------------------ //
+// ========================================================================================== //
 //
 //
 //
-/// @author Humberto Jr. 
+/// @brief Returns the conversion factor from bytes to megabytes.
 //
-/// @date 01/2014
-//
-/// @return The factor for conversions from bytes to megabytes. 
+/// @return @f$ 0.000000954 @f$
 //
 /// @cite
 //
 inline const double byte_to_megabyte()
 {
-    return 0.000000954;
+	return 0.000000954;
 };
 //
 //
 //
-/// @author Humberto Jr. 
+/// @param [in] a A templated type number in byte units.
 //
-/// @date 01/2014
+/// @brief Converts the given @c a to megabyte units.
 //
-/// @return The @c input (in bytes) multiplied by the factor 
-///         for conversions from bytes to megabytes.
+/// @return @f$ a \times 0.000000954 @f$
 //
 /// @cite
 //
 template<typename data_type>
-inline double byte_to_megabyte(const data_type &input)
+inline double byte_to_megabyte(const data_type &a)
 {
-    return input*0.000000954;
+	return a*0.000000954;
 };

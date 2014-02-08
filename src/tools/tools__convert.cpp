@@ -1,56 +1,63 @@
-// ../src/tools/tools__convert.cpp ---------------------------------------------------------- //
+// ../src/tools/tools__convert.cpp ========================================================== //
 //
-//  This file is part of Catalyst lib.
+// Catalyst Lib is free software:  you can redistribute it and/or modifyit under the terms of
+// the GNU General Public License as published bythe Free Software Foundation, either version
+// 3 of the License, or(at your option) any later version.
 //
-//  Catalyst lib is free software: you can redistribute it and/or modify it under the terms 
-//  of the GNU General Public License as published by the Free Software Foundation, either 
-//  version 3 of the License, or (at your option) any later version.
+// Catalyst Lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details.
 //
-//  Catalyst lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-//  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
-//  See the GNU General Public License for more details.
+// You should have received a copy of the GNU General Public License along with Catalyst Lib.
+// If not, see <http://www.gnu.org/licenses/>.
 //
-//  You should have received a copy of the GNU General Public License along with Catalyst lib. 
-//  If not, see <http://www.gnu.org/licenses/>.
-//
-// ------------------------------------------------------------------------------------------ //
+// ========================================================================================== //
 //
 //
 //
-/// @author Humberto Jr. 
+/// @param [in] input A templated data (either @c char type or number).
 //
-/// @date 09/2013
+/// @brief Converts and returns the given @c input in the requested
+///        type.
 //
-/// @return The @c input as the given return type.
+/// @return The @c input converted, if it was possible.
 //
-/// @cite
+/// @cite boost_lexical_cast
 //
-template <typename data_type0, typename data_type1> 
+template <typename data_type0, typename data_type1>
 inline data_type0 convert(const data_type1 &input)
 {
 //
-/// @note Notice the desired return type should be 
-///       specified in the function call by the 
-///       @c class::function<output>(input) layout.
-    return boost::lexical_cast<data_type0>(input);
+/// @note Notice the desired return type should be specified in the
+///       function call by the @c "class::function<output>(input)"
+///       layout. Also that some conversions such as string to
+///       number are meaningless and it may force a compiler error.
+//
+/// @warning When handling @c char type, this function accepts a
+///          pure @c char data and not a string (or array) of @c char,
+///          i.e. @c char*.
+//
+	return boost::lexical_cast<data_type0>(input);
 };
 //
 //
 //
-/// @author Humberto Jr. 
+/// @param [in] input A @c std::string data.
 //
-/// @date 09/2013
+/// @brief Converts and returns the given @c input in the requested
+///        type.
 //
-/// @return The @c input as the given return type. 
+/// @return The @c input converted, if it was possible.
 //
-/// @cite
+/// @cite boost_lexical_cast
 //
 template <typename data_type0>
 inline data_type0 convert(const std::string &input)
 {
 //
-/// @note Notice the desired return type should be 
-///       specified in the function call by the 
-///       @c class::function<output>(input) layout.
-    return boost::lexical_cast<data_type0>(input);
+/// @note Notice the desired return type should be specified in the
+///       function call by the @c "class::function<output>(input)"
+///       layout.
+//
+	return boost::lexical_cast<data_type0>(input);
 };

@@ -1,0 +1,100 @@
+== Overview =======================================================================================================
+
+This benchmark aims to evaluate how expensive can be the calls of the write_debug_msg() function,  member  of
+the struct log_file_handler. The function is designed to write runtime infos in the log file when the  config
+option debug_mode = on. There is the need to know if the unused calls, when debug_mode = off, can affect  the
+performance. The write_debug_msg() implementation created on-the-fly by the compiler was:
+
+template<typename data_type1, typename data_type2>
+void write_debug_msg(const data_type1 text1, const data_type2 text2)
+{
+    switch(config -> state_of(OUTPUT_MODE) and config -> state_of(DEBUG_MODE) and log_file_ready)
+    {
+        case true:
+        if(file_manager -> exists())
+        {
+            LOGFILE_IS_READY:
+            #pragma omp critical
+            log_file << timestamp() << "@" << text1
+                                           << text2 << std::endl;
+        }
+        else
+        {
+            init_log_file();
+            goto LOGFILE_IS_READY;
+        }
+        break;
+    }
+};
+
+Future versions of this function will replace the if() statements by switch() ones. In order to increase per-
+formance.
+
+The function will be called with the same global scope and thread safe object global_log::file widely used on
+the real code.
+
+Test conditions:
+
+Compiler: g++
+Timer: Boost Timer Library
+Hardware: Intel quad i7 + 4Gb ram
+OS: Ubuntu Linux
+
+== Test 1 =========================================================================================================
+
+for(long i = 0; i < 1000000; ++i)
+{
+    std::cout << "loop i = "
+              << i
+              << "; sqrt(123.456L) = "
+              << std::sqrt(123.456L)
+              << std::endl;
+}
+
+== Test 2 =========================================================================================================
+
+for(long i = 0; i < 1000000; ++i)
+{
+    std::cout << "loop i = "
+              << i
+              << "; sqrt(123.456L) = "
+              << std::sqrt(123.456L)
+              << std::endl;
+    global_log::file.write_debug_msg("loop i = ", i); // Debug_mode = on; config -> state_of(DEBUG_MODE) == true
+}
+
+== Test 3 =========================================================================================================
+
+for(long i = 0; i < 1000000; ++i)
+{
+    std::cout << "loop i = "
+              << i
+              << "; sqrt(123.456L) = "
+              << std::sqrt(123.456L)
+              << std::endl;
+    global_log::file.write_debug_msg("loop i = ", i); // Debug_mode = off; config -> state_of(DEBUG_MODE) == false
+}
+
+== Results =======================================================================================================
+
+Three wall time values, given in seconds, for each condition:
+
+1.1) 79.547726s wall, 3.510000s user + 5.630000s system = 9.140000s CPU (11.5%)
+1.2) 68.062579s wall, 2.750000s user + 3.870000s system = 6.620000s CPU (9.7%)
+1.3) 80.392445s wall, 2.980000s user + 4.540000s system = 7.520000s CPU (9.4%)
+
+2.1) 80.439859s wall, 15.860000s user + 13.730000s system = 29.590000s CPU (36.8%)
+2.2) 80.905905s wall, 14.250000s user + 11.560000s system = 25.810000s CPU (31.9%)
+2.3) 80.733763s wall, 13.700000s user + 11.450000s system = 25.150000s CPU (31.2%)
+
+3.1) 69.100568s wall, 2.600000s user + 4.150000s system = 6.750000s CPU (9.8%)
+3.2) 78.411568s wall, 2.840000s user + 4.400000s system = 7.240000s CPU (9.2%)
+3.3) 80.614721s wall, 2.820000s user + 4.290000s system = 7.110000s CPU (8.8%)
+
+Average 1) 76.000916667s
+
+Average 2) 80.693175667s
+
+Average 3) 76.042285667s
+
+Diff(1 - 3) = 0.041369s

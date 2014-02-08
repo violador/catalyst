@@ -1,48 +1,39 @@
-// ../src/tools/tools__kilobyte_to_gigabyte.cpp --------------------------------------------- //
+// ../src/tools/tools__kilobyte_to_gigabyte.cpp ============================================= //
 //
-//  This file is part of Catalyst lib.
+// Catalyst Lib is free software:  you can redistribute it and/or modifyit under the terms of
+// the GNU General Public License as published bythe Free Software Foundation, either version
+// 3 of the License, or(at your option) any later version.
 //
-//  Catalyst lib is free software: you can redistribute it and/or modify it under the terms 
-//  of the GNU General Public License as published by the Free Software Foundation, either 
-//  version 3 of the License, or (at your option) any later version.
+// Catalyst Lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details.
 //
-//  Catalyst lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-//  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
-//  See the GNU General Public License for more details.
+// You should have received a copy of the GNU General Public License along with Catalyst Lib.
+// If not, see <http://www.gnu.org/licenses/>.
 //
-//  You should have received a copy of the GNU General Public License along with Catalyst lib. 
-//  If not, see <http://www.gnu.org/licenses/>.
-//
-// ------------------------------------------------------------------------------------------ //
+// ========================================================================================== //
 //
 //
 //
-/// @author Humberto Jr. 
+/// @brief Returns the conversion factor from kilobytes to gigabytes.
 //
-/// @date 01/2014
-//
-/// @return The conversion factor from kilobytes to gigabytes.
-//
-/// @cite
+/// @return 0.000000953674316
 //
 inline const double kilobyte_to_gigabyte()
 {
-    return 0.000000953674316;
+	return 0.000000953674316;
 };
 //
 //
 //
-/// @author Humberto Jr. 
+/// @param [in] a A templated type number in kilobyte units.
 //
-/// @date 01/2014
+/// @brief Converts the given @c a to gigabyte units.
 //
-/// @return The @c input (in kilobytes) multiplied by the factor 
-///         for conversions from kilobytes to gigabytes.
-//
-/// @cite
+/// @return @f$ a \times 0.000000953674316 @f$
 //
 template<typename data_type>
-inline double kilobyte_to_gigabyte(const data_type &input)
+inline double kilobyte_to_gigabyte(const data_type &a)
 {
-    return input*0.000000953674316;
+	return a*0.000000953674316;
 };

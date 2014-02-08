@@ -1,25 +1,25 @@
 // ../src/include/array.hpp ------------------------------------------------------------- //
 //
-// File author: Humberto Jr. 
+// File author: Humberto Jr.
 //
 // Date: 07/2013
 //
 // Description: The array class defines the type of variables used to easily handle
 //              1D, 2D, 3D and 4D arrays. The 1D and 2D types has most of its oper-
-//              ations handled by the GSL library. This operations includes linear 
-//              algebra tasks by an user given CBLAS interface. If not given, the 
+//              ations handled by the GSL library. This operations includes linear
+//              algebra tasks by an user given CBLAS interface. If not given, the
 //              installed GSL lib provides its own CBLAS. Some of the member funct-
 //              ions are designed to some sort of arrays only. Its usage also may
 //              or may not change internal properties of an array and it will chan-
-//              ge the behavior of the following members. These properties can be 
+//              ge the behavior of the following members. These properties can be
 //              turned on or off by the respective setter. For instance the members
 //              array::set_constant() and array::unset_constant() allows or not the
-//              given array to be rewritten. The arithmetic operators "+", "-", "*" 
-//              and "/" are overloaded to recognize operations between number types 
+//              given array to be rewritten. The arithmetic operators "+", "-", "*"
+//              and "/" are overloaded to recognize operations between number types
 //              or arrays types (1D and 2D only). In the array types operations so-
 //              me common properties like dimension sizes will be checked first.
 //
-/// @cite gsl 
+/// @cite gsl
 //
 // ------------------------------------------------------------------------------------- //
 #ifndef __ARRAY_HPP
@@ -37,8 +37,8 @@ struct array
 {
     protected:
 //
-//  Declaring the data members: 
-    unsigned int sizeof_row;       // The size of row. 
+//  Declaring the data members:
+    unsigned int sizeof_row;       // The size of row.
     unsigned int sizeof_column;    // The size of column.
     unsigned int sizeof_1st_layer; // The size of first layer.
     unsigned int sizeof_2nd_layer; // The size of second layer.
@@ -61,7 +61,7 @@ struct array
     file_system input;
     settings *config;              // A pointer-object to link with any object of settings type.
 //
-//  book_data(): To start the temp file (as binary) and to store the current array if set_lowend_mode() 
+//  book_data(): To start the temp file (as binary) and to store the current array if set_lowend_mode()
 //               was invoked.
     void book_data();
 //
@@ -95,7 +95,7 @@ struct array
                           const unsigned int &layer1_size,
                           const unsigned int &layer2_size);
 //
-//  Including the inline/template/private member functions: 
+//  Including the inline/template/private member functions:
     #include "array__init_1d_array.cpp"
     #include "array__init_2d_array.cpp"
     #include "array__init_3d_array.cpp"
@@ -105,6 +105,10 @@ struct array
     #include "array__delete_3d_array.cpp"
     #include "array__delete_4d_array.cpp"
     #include "array__build_filename.cpp"
+    #include "array__add_1d_array.cpp"
+    #include "array__add_2d_array.cpp"
+    #include "array__add_3d_array.cpp"
+    #include "array__add_4d_array.cpp"
 //
     public:
 //
@@ -121,14 +125,14 @@ struct array
     array(const unsigned int &local_row_size, const unsigned int &local_column_size);
 //
 //  Declaring the class constructor:
-    array(const unsigned int &local_layer_size, 
-          const unsigned int &local_row_size, 
+    array(const unsigned int &local_layer_size,
+          const unsigned int &local_row_size,
           const unsigned int &local_column_size);
 //
 //  Declaring the class constructor:
-    array(const unsigned int &local_1st_layer_size, 
-          const unsigned int &local_2nd_layer_size, 
-          const unsigned int &local_row_size, 
+    array(const unsigned int &local_1st_layer_size,
+          const unsigned int &local_2nd_layer_size,
+          const unsigned int &local_row_size,
           const unsigned int &local_column_size);
 //
 //  Declaring the class destructor:
@@ -173,7 +177,7 @@ struct array
 //
 //
     unsigned int get_max_index()
-    { 
+    {
         return 0;//gsl_vector_max_index(user_1d_array) + 1;
     };
 //
@@ -181,14 +185,14 @@ struct array
 //                    store in the given arrays. The current matrix keeps unchanged (2D array only).
     void save_eigens_to(array &eigenvalues, array &eigenvectors);
 //
-//  orthonormalize(): To use the current array to build a transformation array and to orthonormalize 
+//  orthonormalize(): To use the current array to build a transformation array and to orthonormalize
 //                    the given one using the canonical orthonormalization. The current array will
-//                    be replaced by its canonical orthonormalization form and its internal state 
+//                    be replaced by its canonical orthonormalization form and its internal state
 //                    is_const_array is set as true. In the already canonical form the same array can
 //                    be reused to orthonormalize other given arrays.
     void orthonormalize(array &given_array);
 //
-//  restore_original_basis_of(): If the current array is a transformation and the given array is a 
+//  restore_original_basis_of(): If the current array is a transformation and the given array is a
 //                               transformed one, this routine transforms back the given array into
 //                               its original basis and keeps the transformation unchanged. The
 //                               current internal state is_const_array must be true.
@@ -200,7 +204,7 @@ struct array
 //
     void build_orthonormalizer_form();
 //
-//  Including the inline/template/public member functions: 
+//  Including the inline/template/public member functions:
     #include "array__create_array.cpp"
     #include "array__size_of.cpp"
     #include "array__set_constant.cpp"

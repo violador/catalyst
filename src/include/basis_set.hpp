@@ -1,6 +1,6 @@
 // ../src/include/basis_set.hpp -------------------------------------------------------- //
 //
-// File author: Humberto Jr. 
+// File author: Humberto Jr.
 //
 // Date: 10/2013
 //
@@ -54,10 +54,11 @@ class basis_set
     #include "basis_set__ready.cpp"
     #include "basis_set__increment.cpp"
     #include "basis_set__decrement.cpp"
-    #include "basis_set__begin.cpp"
-    #include "basis_set__end.cpp"
+    #include "basis_set__first.cpp"
+    #include "basis_set__last.cpp"
     #include "basis_set__iterator.cpp"
     #include "basis_set__set_iterator.cpp"
+	#include "basis_set__function_call.cpp"
 //
 };
 #endif

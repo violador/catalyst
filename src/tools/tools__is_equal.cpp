@@ -1,37 +1,42 @@
-// ../src/tools/tools__is_equal.cpp --------------------------------------------------------- //
+// ../src/tools/tools__is_equal.cpp ========================================================= //
 //
-//  This file is part of Catalyst lib.
+// Catalyst Lib is free software:  you can redistribute it and/or modifyit under the terms of
+// the GNU General Public License as published bythe Free Software Foundation, either version
+// 3 of the License, or(at your option) any later version.
 //
-//  Catalyst lib is free software: you can redistribute it and/or modify it under the terms 
-//  of the GNU General Public License as published by the Free Software Foundation, either 
-//  version 3 of the License, or (at your option) any later version.
+// Catalyst Lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details.
 //
-//  Catalyst lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-//  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
-//  See the GNU General Public License for more details.
+// You should have received a copy of the GNU General Public License along with Catalyst Lib.
+// If not, see <http://www.gnu.org/licenses/>.
 //
-//  You should have received a copy of the GNU General Public License along with Catalyst lib. 
-//  If not, see <http://www.gnu.org/licenses/>.
-//
-// ------------------------------------------------------------------------------------------ //
+// ========================================================================================== //
 //
 //
 //
-/// @author Humberto Jr. 
+/// @param [in] a A string pattern
 //
-/// @date 01/2014
+/// @param [in] b A string pattern
 //
-/// @return @c true if the given @c a is found at the begin of the 
-///         given @c b, and @c false otherwise. 
+/// @brief Checks if the beginning of the @c b's content fits the contents
+///        of @c a.
 //
-/// @cite
-//          
+/// @return @c true if @a fits @c b, and @c false otherwise.
+//
 inline bool is_equal(const std::string &a,
                      const std::string &b)
 {
-    switch((bool) b.std::string::compare(0, pattern_length(a), a))
-    {
-        case false: return  true; break;
-        case  true: return false; break;
-    }
+//
+/// @note Notice that this function is useful not just to avoid the large @c
+///       std::string namespaces, but also because the @c std::string:compare()
+///       member function returns the POSIX convention of 0 if the strings fits
+///       and 1 otherwise. What is quite annoying inside the C++ bool convention
+///       of 0 meaning @c false, and any number different of 0 meaning @c true.
+//
+	switch((bool) b.std::string::compare(0, pattern_length(a), a))
+	{
+		case false: return  true; break;
+		case  true: return false; break;
+	}
 };

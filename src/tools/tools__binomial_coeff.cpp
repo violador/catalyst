@@ -1,32 +1,32 @@
-// ../src/tools/tools__binomial_coeff.cpp --------------------------------------------------- //
+// ../src/tools/tools__binomial_coeff.cpp =================================================== //
 //
-//  This file is part of Catalyst lib.
+// Catalyst Lib is free software:  you can redistribute it and/or modifyit under the terms of
+// the GNU General Public License as published bythe Free Software Foundation, either version
+// 3 of the License, or(at your option) any later version.
 //
-//  Catalyst lib is free software: you can redistribute it and/or modify it under the terms 
-//  of the GNU General Public License as published by the Free Software Foundation, either 
-//  version 3 of the License, or (at your option) any later version.
+// Catalyst Lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details.
 //
-//  Catalyst lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-//  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
-//  See the GNU General Public License for more details.
+// You should have received a copy of the GNU General Public License along with Catalyst Lib.
+// If not, see <http://www.gnu.org/licenses/>.
 //
-//  You should have received a copy of the GNU General Public License along with Catalyst lib. 
-//  If not, see <http://www.gnu.org/licenses/>.
-//
-// ------------------------------------------------------------------------------------------ //
+// ========================================================================================== //
 //
 //
 //
-/// @author Humberto Jr. 
+/// @param [in] a An integer number.
 //
-/// @date 10/2013
+/// @param [in] b An integer number.
 //
-/// @return The binomial coefficient, @f$ \frac{b!}{a!(b - a)!} @f$. 
+/// @brief Calculates the binomial coefficient, @f$ \frac{b!}{a!(b - a)!} @f$.
+//
+/// @return @f$ \frac{b!}{a!(b - a)!} @f$.
 //
 /// @cite
 //
-inline double binomial_coeff(const int &a, 
-                             const int &b)
+inline double binomial_coeff(const int &a,
+							 const int &b)
 {
-    return factorial(b)/(factorial(a)*factorial(b - a));
+	return factorial(b)/(factorial(a)*factorial(b - a));
 };
