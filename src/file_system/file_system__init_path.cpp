@@ -1,17 +1,3 @@
-// ../src/file_system/file_system__init_path.cpp ============================================ //
-//
-// Catalyst Lib is free software:  you can redistribute it and/or modifyit under the terms of
-// the GNU General Public License as published bythe Free Software Foundation, either version
-// 3 of the License, or(at your option) any later version.
-//
-// Catalyst Lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-// See the GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License along with Catalyst Lib.
-// If not, see <http://www.gnu.org/licenses/>.
-//
-// ========================================================================================== //
 //
 //
 //
@@ -21,14 +7,8 @@
 //
 /// @return A @c boost::filesystem::path pointer.
 //
-/// @cite boost_filesystem
-//
 inline boost::filesystem::path* init_path(const std::string &given_pathname)
 {
-//
-/// @note Notice that if the @c given_pathname is an empty string, the function
-///       uses the default directory defined in the tools::default_current_dir().
-//
 	switch(given_pathname.std::string::empty())
 	{
 		case false:
@@ -40,6 +20,10 @@ inline boost::filesystem::path* init_path(const std::string &given_pathname)
 		break;
 		case true:
 		{
+//
+/// 			@note Notice that if the @c given_pathname is an empty string, the function
+///                           uses the default directory defined in the tools::default_current_dir().
+//
 			boost::filesystem::path init(tools::default_current_dir());
 			path = init;
 			return &path;
@@ -55,8 +39,6 @@ inline boost::filesystem::path* init_path(const std::string &given_pathname)
 ///        in the tools::default_current_dir(), as the current path.
 //
 /// @return A @c boost::filesystem::path pointer.
-//
-/// @cite boost_filesystem
 //
 inline boost::filesystem::path* init_path()
 {

@@ -1,6 +1,6 @@
 // ../src/include/globals.hpp ----------------------------------------------------------- //
 //
-// File author: Humberto Jr. 
+// File author: Humberto Jr.
 //
 // Date: 08/2013
 //
@@ -10,7 +10,7 @@
 //              The only way should be by any outside script in the Catalyst insta-
 //              ll process, just before the compilation. Any new library have to be
 //              included here in the proper location and the conditional compilati-
-//              on must be previously checked by a given macro, if needed. Do not 
+//              on must be previously checked by a given macro, if needed. Do not
 //              edit this file if there is any doubt or it may cause an entire bad
 //              behavior.
 //
@@ -49,7 +49,7 @@
     #define DEFAULT_NO_FILENAME  "no such filename" // The default content of std::string filenames for no valid files.
     #define DEFAULT_TIMER_LENGTH 10                 // The default length of time measurements for benchmarks.
     #define DEFAULT_THEORY_LEVEL "STO-3G"           // The default level of theory for ab-initio calculations.
-    #define DEFAULT_BASIS_SET    2                  // 
+    #define DEFAULT_BASIS_SET    2                  //
     #define WARNING_MSG_TITLE    "WARNING: "        // The warning mensage title.
     #define ON_KEY_CONTROL       "on"               // The true pattern used in the config file.
     #define OFF_KEY_CONTROL      "off"              // The false pattern used in the config file (not really needed).
@@ -132,6 +132,8 @@
     #include <gsl/gsl_const_mksa.h>
     #include <gsl/gsl_rng.h>
     #include <gsl/gsl_sf_gamma.h>
+	#include <gsl/gsl_complex.h>
+	#include <gsl/gsl_complex_math.h>
 //
 //  Including Boost C++ headers:
     #include <boost/filesystem.hpp> // "-lboost_filesystem" to linkage.
@@ -185,11 +187,11 @@
     {
         enum
         {
-            ssss, 
-            psss, 
-            psps, 
-            ppss, 
-            ppps, 
+            ssss,
+            psss,
+            psps,
+            ppss,
+            ppps,
             pppp
         };
     }
@@ -243,12 +245,12 @@
             timer_name,
 //
 //          tools::random_number():
-            taus2, 
-            mt19937, 
-            ranlxs0, 
-            ranlxs2, 
-            ranlxd2, 
-            ranlux389, 
+            taus2,
+            mt19937,
+            ranlxs0,
+            ranlxs2,
+            ranlxd2,
+            ranlux389,
             gfsr4
         };
     }

@@ -1,33 +1,26 @@
-// ../src/array/array__save_transpose_to.cpp ================================================ //
-//
-// Catalyst Lib is free software:  you can redistribute it and/or modifyit under the terms of
-// the GNU General Public License as published bythe Free Software Foundation, either version
-// 3 of the License, or(at your option) any later version.
-//
-// Catalyst Lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-// See the GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License along with Catalyst Lib.
-// If not, see <http://www.gnu.org/licenses/>.
-//
-// ========================================================================================== //
 //
 //
 //
-inline void save_transpose_to(array &given_array)
+/// @param [out] output A 2D and not constant array object.
+//
+/// @brief Copies the transposed elements of the current
+///        object to the @c output one. If the size of the
+///        @c output do not fits, it will be redimensioned.
+//
+/// @return None.
+//
+inline void save_transpose_to(array &output)
 {
-    switch(this -> is_2d_array 
-           and given_array.is_2d_array 
-           and (not given_array.is_const_array))
-    {
-        case true:
-        switch((this -> sizeof_row not_eq given_array.sizeof_row) or (this -> sizeof_column not_eq given_array.sizeof_column))
-        {
-            case false: break;
-            case  true: given_array.resize_array(this -> sizeof_row, this -> sizeof_column); break;
-        }
-        gsl_matrix_transpose_memcpy(&given_array.gsl_2d_view.matrix, &this -> gsl_2d_view.matrix);
-        break;
-    }
+	switch(this -> is_2d_array
+			and output.is_2d_array
+			and (not output.is_const_array))
+	{
+		case true:
+		output.resize_array(this -> sizeof_row, this -> sizeof_column);
+//
+/// 	@notice Notice that the content of @c output is going to be modified.
+		gsl_matrix_transpose_memcpy(&output.gsl_2d_view.matrix,
+									&this -> gsl_2d_view.matrix);
+		break;
+	}
 };

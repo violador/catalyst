@@ -109,6 +109,14 @@ struct array
     #include "array__add_2d_array.cpp"
     #include "array__add_3d_array.cpp"
     #include "array__add_4d_array.cpp"
+    #include "array__copy_1d_arrays.cpp"
+    #include "array__copy_2d_arrays.cpp"
+    #include "array__copy_3d_arrays.cpp"
+    #include "array__copy_4d_arrays.cpp"
+	#include "array__set_all_1d_elements.cpp"
+	#include "array__set_all_2d_elements.cpp"
+	#include "array__set_all_3d_elements.cpp"
+	#include "array__set_all_4d_elements.cpp"
 //
     public:
 //
@@ -228,6 +236,13 @@ struct array
     #include "array__set_diagonal.cpp"
     #include "array__resize_array.cpp"
     #include "array__check_if.cpp"
+	#include "array__is_1d.cpp"
+	#include "array__is_2d.cpp"
+	#include "array__is_3d.cpp"
+	#include "array__is_4d.cpp"
+	#include "array__is_square.cpp"
+	#include "array__is_deleted.cpp"
+	#include "array__is_constant.cpp"
 //
 };
 #endif

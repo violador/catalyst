@@ -1,17 +1,3 @@
-// ../src/array/array__subtraction.cpp ====================================================== //
-//
-// Catalyst Lib is free software:  you can redistribute it and/or modifyit under the terms of
-// the GNU General Public License as published bythe Free Software Foundation, either version
-// 3 of the License, or(at your option) any later version.
-//
-// Catalyst Lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-// See the GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License along with Catalyst Lib.
-// If not, see <http://www.gnu.org/licenses/>.
-//
-// ========================================================================================== //
 #include "array.hpp"
 //
 //
@@ -62,9 +48,9 @@ array array::operator -(const double &b)
     }
     if(this -> is_4d_array)
     {
-        array c(this -> sizeof_row, 
-                this -> sizeof_column, 
-                this -> sizeof_1st_layer, 
+        array c(this -> sizeof_row,
+                this -> sizeof_column,
+                this -> sizeof_1st_layer,
                 this -> sizeof_2nd_layer);
 //
         unsigned int i = 0, j = 0, m = 0, n = 0;
@@ -101,8 +87,8 @@ array array::operator -(const array &b)
 //
 //  Given the arrays A (the this pointer), B and C: C = A - B
 //
-    if(this -> is_1d_array 
-       and b.is_1d_array 
+    if(this -> is_1d_array
+       and b.is_1d_array
        and (this -> sizeof_row == b.sizeof_row))
     {
         array c(this -> sizeof_row);
@@ -111,15 +97,15 @@ array array::operator -(const array &b)
         cblas_daxpy(this -> sizeof_row,
                     -1.0,
                     b.user_1d_array,
-                    1,      
+                    1,
                     c.user_1d_array,
                     1);
 //
         return c;
     }
-    else if(this -> is_2d_array 
-            and b.is_2d_array 
-            and (this -> sizeof_row == b.sizeof_row) 
+    else if(this -> is_2d_array
+            and b.is_2d_array
+            and (this -> sizeof_row == b.sizeof_row)
             and (this -> sizeof_column == b.sizeof_column))
     {
         array c(this -> sizeof_row, this -> sizeof_column);
@@ -166,9 +152,9 @@ array array::operator -(const array &b)
             and (this -> sizeof_1st_layer == b.sizeof_1st_layer)
             and (this -> sizeof_2nd_layer == b.sizeof_2nd_layer))
     {
-        array c(this -> sizeof_row, 
-                this -> sizeof_column, 
-                this -> sizeof_1st_layer, 
+        array c(this -> sizeof_row,
+                this -> sizeof_column,
+                this -> sizeof_1st_layer,
                 this -> sizeof_2nd_layer);
 //
         unsigned int i = 0, j = 0, m = 0, n = 0;

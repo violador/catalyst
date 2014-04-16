@@ -1,6 +1,6 @@
 // ../src/include/lcao_wavefunction.hpp ------------------------------------------------ //
 //
-// File author: Humberto Jr. 
+// File author: Humberto Jr.
 //
 // Date: 10/2013
 //
@@ -247,6 +247,47 @@ class lcao_wavefunction
     #include "lcao_wavefunction__count_orbitals.cpp"
     #include "lcao_wavefunction__angular_component_.cpp"
 //
+//  Buffer for calculations of the overlap equation:
+/*
+	namespace overlap
+	{
+		double a;
+		double b;
+		double c;
+		double d;
+		double e;
+		double f;
+		double g;
+		double h;
+		double m;
+		double integral;
+		inline void set_zero()
+		{
+			a = b = c = d = e = f = g = h = m = integral = 0.0;
+		};
+		inline void two_center_integral()
+		{
+//
+//			Minhhuy Hô and Julio Manuel Hernández-Pérez;
+//			The Mathematica Journal;
+//			Evaluation of gaussian molecular integrals I - overlap integral;
+//			equation (6):
+            #pragma omp atomic
+			integral += a*b*c*d*e*f/g;
+		};
+		inline void three_center_integral()
+		{
+//
+//			S. Obara and A. Saika;
+//			The Journal of Chemical Physics;
+//			Efficient recursive computation of molecular integrals over cartesian Gaussian functions;
+//			equation (17):
+            #pragma omp atomic
+			integral += a*b*c*d*e*f*g*h/m;
+		};
+	};
+	*/
+//
     public:
 //
 //  Class identifier:
@@ -257,9 +298,9 @@ class lcao_wavefunction
 //
 //  Declaring the class constructor:
     lcao_wavefunction(array &type,
-                      array &x, 
-                      array &y, 
-                      array &z, 
+                      array &x,
+                      array &y,
+                      array &z,
                       const unsigned int given_level = DEFAULT_TASK_NUMBER);
 //
 //  build_hamiltonian_matrix(): To calculate the Core-Hamiltonian, H, matrix.
@@ -289,7 +330,7 @@ class lcao_wavefunction
                               array &z,
                               unsigned int level = 1);
 //
-//  build_repulsion_matrix_1(): To calculate the one electron repulsion integral, V, 
+//  build_repulsion_matrix_1(): To calculate the one electron repulsion integral, V,
 //                              and to build the repulsion matrix.
     void build_repulsion_matrix_1(array &v_matrix1,
                                   array &type,
@@ -298,7 +339,7 @@ class lcao_wavefunction
                                   array &z,
                                   unsigned int level = 1);
 //
-//  build_repulsion_matrix_2(): To calculate the two electron repulsion integral, V, 
+//  build_repulsion_matrix_2(): To calculate the two electron repulsion integral, V,
 //                              and to build the repulsion matrix (four dimensions).
     void build_repulsion_matrix_2(array &v_matrix2,
                                   array &type,
@@ -306,7 +347,7 @@ class lcao_wavefunction
                                   array &y,
                                   array &z,
                                   unsigned int level = 1);
-// 
+//
 //
     double boys_function(const double &given_order,
                          const double &given_value);
@@ -316,7 +357,7 @@ class lcao_wavefunction
 //
 //  Including the inline/template/public member functions:
     #include "lcao_wavefunction__get_overlap_matrix.cpp"
-    #include "lcao_wavefunction__get_kinetic_matrix.cpp" 
+    #include "lcao_wavefunction__get_kinetic_matrix.cpp"
     #include "lcao_wavefunction__get_core_hamiltonian_matrix.cpp"
     #include "lcao_wavefunction__get_one_electron_repulsion_matrix.cpp"
     #include "lcao_wavefunction__get_two_electron_repulsion_matrix.cpp"

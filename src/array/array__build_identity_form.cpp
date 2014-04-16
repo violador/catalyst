@@ -1,27 +1,24 @@
-// ../src/array/array__build_identity_form.cpp ============================================== //
-//
-// Catalyst Lib is free software:  you can redistribute it and/or modifyit under the terms of
-// the GNU General Public License as published bythe Free Software Foundation, either version
-// 3 of the License, or(at your option) any later version.
-//
-// Catalyst Lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-// See the GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License along with Catalyst Lib.
-// If not, see <http://www.gnu.org/licenses/>.
-//
-// ========================================================================================== //
 //
 //
+//
+/// @brief Works only on 2D, not deleted and non-constant
+///        arrays invoking the GSL library to build its
+///        identity form, where @f$ A_{i = j} = 1 @f$ and
+///        @f$ A_{i \neq j} = 0 @f$.
+//
+/// @return None.
 //
 inline void build_identity_form()
 {
-    switch(is_2d_array 
-           and (not deleted_array) 
-           and (not is_const_array))
-    {
-        case false: break;
-        case  true: gsl_matrix_set_identity(&gsl_2d_view.matrix); break;
-    }
+//
+/// @warning @modification_warn
+//
+	switch(is_2d_array
+	       && (!is_deleted())
+	       && (!is_const_array))
+	{
+		case true:
+		gsl_matrix_set_identity(&gsl_2d_view.matrix);
+		break;
+	}
 };

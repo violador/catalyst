@@ -48,5 +48,8 @@ namespace math
 	#include "math__error_function.cpp"
 	#include "math__random_number.cpp"
 	#include "math__kronecker_delta.cpp"
+	#include "math__exp.cpp"
+	#include "math__sqrt.cpp"
+	#include "math__pow.cpp"
 };
 #endif

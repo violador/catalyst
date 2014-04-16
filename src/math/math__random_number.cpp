@@ -83,13 +83,10 @@ inline data_type random_number(const unsigned long int seed)
 //
 //
 //
-/// @brief Calculates a random number The default @c ctime member, @c
-///        time(), is used as seed; and the GSL @c taus2 is used as the
-///        generator.
+/// @brief Calculates a random number using the @c ctime member @c
+///        time() as seed; and the GSL @c taus2 as generator.
 //
-/// @return A random number in the type requested.
-//
-/// @cite gsl
+/// @return A random number of the type requested.
 //
 template<typename data_type>
 inline data_type random_number()
@@ -99,9 +96,9 @@ inline data_type random_number()
 ///       in the function call by the @c "class::function<output>(input)"
 ///       layout.
 //
-	gsl_rng *generator = gsl_rng_alloc(gsl_rng_taus2);
-	gsl_rng_set(generator, (unsigned long int) time(NULL));
-	data_type random_number = gsl_rng_uniform(generator);
-	gsl_rng_free(generator);
-	return random_number;
+	gsl_rng *g = gsl_rng_alloc(gsl_rng_taus2);
+	gsl_rng_set(g, (unsigned long int) time(NULL));
+	data_type number = gsl_rng_uniform(g);
+	gsl_rng_free(g);
+	return number;
 };

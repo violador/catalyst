@@ -1,43 +1,45 @@
-// ../src/log_file_handler/log_file_handler__fill_line_with.cpp ============================= //
-//
-// Catalyst Lib is free software:  you can redistribute it and/or modifyit under the terms of
-// the GNU General Public License as published bythe Free Software Foundation, either version
-// 3 of the License, or(at your option) any later version.
-//
-// Catalyst Lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-// See the GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License along with Catalyst Lib.
-// If not, see <http://www.gnu.org/licenses/>.
-//
-// ========================================================================================== //
 //
 //
 //
-inline void fill_line_with(const unsigned int width, 
-                           const std::string text)
+/// @param [in] width A non-negative number of characters.
+//
+/// @param [in] filling The character used to fill.
+//
+/// @brief This function fills a line of the current log file with @c
+///        width characters given by @c filling.
+//
+/// @return None.
+//
+inline void fill_line_with(const unsigned int &width,
+						   const std::string &filling)
 {
-    switch(log_file_ready)
-    {
-        case true:
-        log_file.std::fstream::width(width);
-        log_file.std::fstream::fill(tools::convert<char>(text));
-        log_file << "";
-        break;
-    }
+	switch(log_file_ready)
+	{
+		case true:
+		log_file.std::fstream::width(width);
+		log_file.std::fstream::fill(tools::convert<char>(filling));
+		log_file << "";
+		break;
+	}
 };
 //
 //
 //
-inline void fill_line_with(const unsigned int width)
+/// @param [in] width A non-negative number of characters.
+//
+/// @brief This function fills a line of the current log file with @c
+///        width blank spaces characters.
+//
+/// @return None.
+//
+inline void fill_line_with(const unsigned int &width)
 {
-    switch(log_file_ready)
-    {
-        case true:
-        log_file.std::fstream::width(width);
-        log_file.std::fstream::fill(' ');
-        log_file << "";
-        break;
-    }
+	switch(log_file_ready)
+	{
+		case true:
+		log_file.std::fstream::width(width);
+		log_file.std::fstream::fill(' ');
+		log_file << "";
+		break;
+	}
 };
