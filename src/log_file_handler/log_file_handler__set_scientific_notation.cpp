@@ -18,7 +18,7 @@ inline void set_scientific_notation(const unsigned int &width)
 		log_file.std::fstream::width(width);
 		log_file.std::fstream::precision(config -> numeric_precision());
 		log_file << std::right;
-		break;
+		return;
 	}
 };
 //
@@ -38,6 +38,6 @@ inline void set_scientific_notation()
 		log_file.std::fstream::width(MAX_PRECISION + SPACE_LENGTH);
 		log_file.std::fstream::precision(config -> numeric_precision());
 		log_file << std::right;
-		break;
+		return;
 	}
 };

@@ -9,9 +9,9 @@
 void log_file_handler::init_log_file()
 {
 	#pragma omp critical
-	switch(not manager.file_system::exists()
-			and config -> output_mode()
-			and log_file_ready)
+	switch(!manager.file_system::exists()
+	       && config -> output_mode()
+	       && log_file_ready)
 	{
 		case true:
 //
@@ -65,9 +65,9 @@ void log_file_handler::init_log_file()
 				 << "\n- Message passing interface           = off"
 				 #endif
 				 << "\n- Settings memory usage               = "
-				 << config -> my_size()
+				 << tools::kB(config -> my_size())
 				 << " kB"
 				 << "\n" << std::endl;
-		break;
+		return;
 	}
 }

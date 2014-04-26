@@ -27,21 +27,23 @@ class timer
 {
     private:
 //
-    boost::timer::cpu_timer chronometer;             // The boost::timer::cpu_timer type variable to get the elapsed time.
+    boost::timer::cpu_timer clock;             // The boost::timer::cpu_timer type variable to get the elapsed time.
     bool stopped;                                    // The chronometer state. True if it is stopped, false otherwise.
 	short int timer_length;
     unsigned int counter;                            // The measurements counter.
-    std::map<unsigned int, std::string> wall_time;   // The container to store the wall time for a given counter value.
-    std::map<unsigned int, std::string> system_time; // The container to store the system time for a given counter value.
-    std::map<unsigned int, std::string> user_time;   // The container to store the user time for a given counter value.
-    std::map<unsigned int, std::string> cpu_usage;   // The container to store the CPU usage (%) for a given counter value.
+    std::map<unsigned int, std::string> wtime;   // The container to store the wall time for a given counter value.
+    std::map<unsigned int, std::string> stime; // The container to store the system time for a given counter value.
+    std::map<unsigned int, std::string> utime;   // The container to store the user time for a given counter value.
+    std::map<unsigned int, std::string> usage;   // The container to store the CPU usage (%) for a given counter value.
     std::string name;
     settings *config;                                // A pointer-object to link with any object of settings type.
 //
-	#include "timer__elapsed_wall_time.cpp"
-	#include "timer__elapsed_user_time.cpp"
-	#include "timer__elapsed_system_time.cpp"
-	#include "timer__elapsed_cpu_usage.cpp"
+	void save_timing();
+//
+	#include "timer__elapsed_wtime.cpp"
+	#include "timer__elapsed_utime.cpp"
+	#include "timer__elapsed_stime.cpp"
+	#include "timer__elapsed_usage.cpp"
 //
     public:
 //
@@ -54,23 +56,15 @@ class timer
 //  Declaring the class constructor:
     timer(std::string &given_name);
 //
-//  get(): To return the measured time.
-    std::string get(unsigned int option, unsigned int measurement_number = 0);
-//
-//
-    void stop();
-//
-//  Defining some alias for the get() member function options:
-    #define WALL_TIME   1
-    #define SYSTEM_TIME 2
-    #define USER_TIME   3
-    #define CPU_USAGE   4
-    #define TIMER_NAME  5
-//
 //  Including the inline/template/public member functions:
     #include "timer__start.cpp"
+	#include "timer__stop.cpp"
     #include "timer__set_name.cpp"
     #include "timer__basic_assignment.cpp"
 	#include "timer__set_timer_length.cpp"
+	#include "timer__wall_time.cpp"
+	#include "timer__user_time.cpp"
+	#include "timer__system_time.cpp"
+	#include "timer__cpu_usage.cpp"
 };
 #endif

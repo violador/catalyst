@@ -3,23 +3,19 @@
 //
 //
 /// @brief Checks if the current values of the array are null,
-///        only if it is not a deleted object.
+///        only if it is !a is_deleted object.
 //
 /// @return @c true if the current array is null, and @c false
 ///         otherwise.
 //
-bool array::is_null()
+bool array::is_null() const
 {
-//
-/// @warning The current functions is not yet implemented
-///          for 3D and 4D arrays.
-//
 	bool buffer = false;
 	#pragma omp sections nowait
 	{
 		#pragma omp section
 		{
-			switch(is_1d_array and (not deleted_array))
+			switch(is_1d() and (!is_deleted()))
 			{
 				case true:
 				buffer = bool(gsl_vector_isnull(&gsl_1d_view.vector));
@@ -28,16 +24,20 @@ bool array::is_null()
 		}
 		#pragma omp section
 		{
-			switch(is_2d_array and (not deleted_array))
+			switch(is_2d() and (!is_deleted()))
 			{
 				case true:
 				buffer = bool(gsl_matrix_isnull(&gsl_2d_view.matrix));
 				break;
 			}
 		}
+//
+/// @warning The current functions is !yet implemented
+///          for 3D and 4D arrays.
+//
 		#pragma omp section
 		{
-			switch(is_3d_array and (not deleted_array))
+			switch(is_3d() and (!is_deleted()))
 			{
 				case true:
 				buffer = false;
@@ -46,7 +46,7 @@ bool array::is_null()
 		}
 		#pragma omp section
 		{
-			switch(is_4d_array and (not deleted_array))
+			switch(is_4d() and (!is_deleted()))
 			{
 				case true:
 				buffer = false;

@@ -1,7 +1,7 @@
 //
 //
 //
-inline void close(std::fstream &file) const
+inline void close(std::fstream &file)
 {
 	file.std::fstream::close();
 	stream_ready = false;
@@ -11,7 +11,7 @@ inline void close(std::fstream &file) const
 //
 inline void close()
 {
-	#pragma omp sections
+	#pragma omp sections nowait
 	{
 		#pragma omp section
 		{

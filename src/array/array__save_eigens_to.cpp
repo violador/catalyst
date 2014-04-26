@@ -1,17 +1,3 @@
-// ../src/array/array__save_eigens_to.cpp =================================================== //
-//
-// Catalyst Lib is free software:  you can redistribute it and/or modifyit under the terms of
-// the GNU General Public License as published bythe Free Software Foundation, either version
-// 3 of the License, or(at your option) any later version.
-//
-// Catalyst Lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-// See the GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License along with Catalyst Lib.
-// If not, see <http://www.gnu.org/licenses/>.
-//
-// ========================================================================================== //
 #include "array.hpp"
 //
 //
@@ -33,7 +19,7 @@ void array::save_eigens_to(array &values, array &vectors)
                 switch(this -> sizeof_row == values.sizeof_row)
                 {
                     case false:
-                    values.resize_array(this -> sizeof_row); 
+                    values.resize(this -> sizeof_row);
                     break;
                 }
             }
@@ -43,16 +29,16 @@ void array::save_eigens_to(array &values, array &vectors)
                        and (this -> sizeof_column == vectors.sizeof_column))
                 {
                     case false:
-                    vectors.resize_array(this -> sizeof_row, this -> sizeof_column); 
+                    vectors.resize(this -> sizeof_row, this -> sizeof_column);
                     break;
                 }
             }
         }
         gsl_eigen_symmv_workspace *memory_allocation = gsl_eigen_symmv_alloc(this -> sizeof_row*4);
 //
-        gsl_eigen_symmv(&gsl_2d_view.matrix, 
-                        &values.gsl_1d_view.vector, 
-                        &vectors.gsl_2d_view.matrix, 
+        gsl_eigen_symmv(&gsl_2d_view.matrix,
+                        &values.gsl_1d_view.vector,
+                        &vectors.gsl_2d_view.matrix,
                         memory_allocation);
 //
         gsl_eigen_symmv_free(memory_allocation);

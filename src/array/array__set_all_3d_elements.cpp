@@ -11,9 +11,7 @@
 //
 inline void set_all_3d_elements(const double &value)
 {
-	switch(is_3d_array
-	       and (not deleted_array)
-	       and (not is_const_array))
+	switch(is_3d() && is_okay())
 	{
 		case true:
 		#pragma omp for schedule(static) nowait
@@ -27,6 +25,6 @@ inline void set_all_3d_elements(const double &value)
 				}
 			}
 		}
-		break;
+		return;
 	}
 };

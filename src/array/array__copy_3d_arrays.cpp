@@ -3,9 +3,9 @@
 //
 inline void copy_3d_arrays(const array &B)
 {
-	resize_array(B.sizeof_row,
-	             B.sizeof_column,
-	             B.sizeof_1st_layer);
+	resize(B.sizeof_row,
+	       B.sizeof_column,
+	       B.sizeof_1st_layer);
 	#pragma omp for schedule(static) nowait
 	for(unsigned int i = 0; i < sizeof_row; ++i)
 	{

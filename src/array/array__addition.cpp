@@ -20,7 +20,7 @@ array array::operator +(const double &b)
 			switch(is_1d())
 			{
 				case true:
-				add_1d_array(A, b);
+				add_1d_arrays(A, b);
 				break;
 			}
 		}
@@ -29,7 +29,7 @@ array array::operator +(const double &b)
 			switch(is_2d())
 			{
 				case true:
-				add_2d_array(A, b);
+				add_2d_arrays(A, b);
 				break;
 			}
 		}
@@ -38,7 +38,7 @@ array array::operator +(const double &b)
 			switch(is_3d())
 			{
 				case true:
-				add_3d_array(A, b);
+				add_3d_arrays(A, b);
 				break;
 			}
 		}
@@ -47,7 +47,7 @@ array array::operator +(const double &b)
 			switch(is_4d())
 			{
 				case true:
-				add_4d_array(A, b);
+				add_4d_arrays(A, b);
 				break;
 			}
 		}
@@ -80,7 +80,7 @@ array array::operator +(const array &B)
 			switch(A.is_1d() && B.is_1d())
 			{
 				case true:
-				add_1d_array(A, B);
+				add_1d_arrays(A, B);
 				break;
 			}
 		}
@@ -89,7 +89,7 @@ array array::operator +(const array &B)
 			switch(A.is_2d() && B.is_2d())
 			{
 				case true:
-				add_2d_array(A, B);
+				add_2d_arrays(A, B);
 				break;
 			}
 		}
@@ -98,7 +98,7 @@ array array::operator +(const array &B)
 			switch(A.is_3d() && B.is_3d())
 			{
 				case true:
-				add_3d_array(A, B);
+				add_3d_arrays(A, B);
 				break;
 			}
 		}
@@ -107,7 +107,7 @@ array array::operator +(const array &B)
 			switch(A.is_4d() && B.is_4d())
 			{
 				case true:
-				add_4d_array(A, B);
+				add_4d_arrays(A, B);
 				break;
 			}
 		}

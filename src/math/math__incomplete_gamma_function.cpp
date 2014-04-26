@@ -8,12 +8,12 @@
 /// @brief Calls the GSL library to calculate the incomplete
 ///        gamma function.
 //
-/// @return @f[ \int_{b}^{\infty} t^{a - 1} \exp(-t)dt @f]
+/// @return @f[ := \int_{b}^{\infty} t^{a - 1} \exp(-t)dt @f]
 ///         If @f$ b @f$ is out of range, the function
 ///         returns zero.
 //
 inline double incomplete_gamma_function(const double &a,
-										const double &b)
+                                        const double &b)
 {
 	switch(b >= 0.0)
 	{

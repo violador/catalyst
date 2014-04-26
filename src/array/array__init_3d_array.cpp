@@ -16,7 +16,6 @@ inline void init_3d_array(const unsigned int &row,
                           const unsigned int &layer)
 {
 	user_3d_array = new double **[row]();
-	#pragma omp for schedule(static) nowait
 	for(unsigned int i = 0; i < row; ++i)
 	{
 		user_3d_array[i] = new double *[column]();

@@ -42,6 +42,10 @@ struct array
     unsigned int sizeof_column;    // The size of column.
     unsigned int sizeof_1st_layer; // The size of first layer.
     unsigned int sizeof_2nd_layer; // The size of second layer.
+	unsigned int dim1;
+	unsigned int dim2;
+	unsigned int dim3;
+	unsigned int dim4;
     unsigned int array_id;         // To tag the current array.
     bool is_1d_array;              // True, if it is a 1D array, false otherwise.
     bool is_2d_array;              // True, if it is a 2D array, false otherwise.
@@ -64,15 +68,6 @@ struct array
 //  book_data(): To start the temp file (as binary) and to store the current array if set_lowend_mode()
 //               was invoked.
     void book_data();
-//
-//
-    bool is_positive();
-//
-//
-    bool is_negative();
-//
-//
-    bool is_null();
 //
 //
     void reset_properties();
@@ -105,10 +100,10 @@ struct array
     #include "array__delete_3d_array.cpp"
     #include "array__delete_4d_array.cpp"
     #include "array__build_filename.cpp"
-    #include "array__add_1d_array.cpp"
-    #include "array__add_2d_array.cpp"
-    #include "array__add_3d_array.cpp"
-    #include "array__add_4d_array.cpp"
+    #include "array__add_1d_arrays.cpp"
+    #include "array__add_2d_arrays.cpp"
+    #include "array__add_3d_arrays.cpp"
+    #include "array__add_4d_arrays.cpp"
     #include "array__copy_1d_arrays.cpp"
     #include "array__copy_2d_arrays.cpp"
     #include "array__copy_3d_arrays.cpp"
@@ -117,6 +112,8 @@ struct array
 	#include "array__set_all_2d_elements.cpp"
 	#include "array__set_all_3d_elements.cpp"
 	#include "array__set_all_4d_elements.cpp"
+	#include "array__is_okay.cpp"
+//
 //
     public:
 //
@@ -212,6 +209,14 @@ struct array
 //
     void build_orthonormalizer_form();
 //
+//
+	int build_jacobi_svd(array &V, array &S);
+//
+//
+	bool is_null() const;
+	bool is_negative() const;
+	bool is_positive() const;
+//
 //  Including the inline/template/public member functions:
     #include "array__create_array.cpp"
     #include "array__size_of.cpp"
@@ -225,17 +230,15 @@ struct array
     #include "array__get_name.cpp"
     #include "array__build_identity_form.cpp"
     #include "array__set_config.cpp"
-    #include "array__set_transpose.cpp"
+    #include "array__transpose.cpp"
     #include "array__norm.cpp"
     #include "array__my_size.cpp"
     #include "array__save.cpp"
     #include "array__open.cpp"
     #include "array__save_transpose_to.cpp"
-    #include "array__save_jacobi_svd_to.cpp"
     #include "array__function_call.cpp"
     #include "array__set_diagonal.cpp"
-    #include "array__resize_array.cpp"
-    #include "array__check_if.cpp"
+    #include "array__resize.cpp"
 	#include "array__is_1d.cpp"
 	#include "array__is_2d.cpp"
 	#include "array__is_3d.cpp"
@@ -243,6 +246,7 @@ struct array
 	#include "array__is_square.cpp"
 	#include "array__is_deleted.cpp"
 	#include "array__is_constant.cpp"
+	#include "array__trace.cpp"
 //
 };
 #endif

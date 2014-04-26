@@ -11,8 +11,7 @@ inline void start()
 	{
 		case true:
 		stopped = false;
-		++counter;
-		chronometer.boost::timer::cpu_timer::start();
-		break;
+		clock.boost::timer::cpu_timer::start();
+		return;
 	}
 };

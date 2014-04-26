@@ -5,9 +5,9 @@
 //
 /// @return The time value in a string pattern.
 //
-inline std::string elapsed_wall_time()
+inline std::string elapsed_wtime()
 {
-	return boost::timer::format(chronometer.boost::timer::cpu_timer::elapsed(),
+	return boost::timer::format(clock.boost::timer::cpu_timer::elapsed(),
 	                            timer_length,
 	                            "%w");
 };

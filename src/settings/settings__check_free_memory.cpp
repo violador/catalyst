@@ -18,33 +18,24 @@ double settings::check_free_memory()
 ///          implemented for this member.
 //
 	std::ifstream file(LINUX_MEMINFO_FILE, std::ios::in);
-	switch(file.std::ifstream::is_open() and file.std::ifstream::good())
+	switch(file.std::ifstream::is_open() && file.std::ifstream::good())
 	{
-		case false:
-		{
-			return 0.0;
-		}
-		break;
 		case true:
+		std::string line = "";
+		while(getline(file, line))
 		{
-			std::string line = "";
-			while(getline(file, line))
+			switch(tools::is_equal("MemFree:", line))
 			{
-				switch(tools::is_equal("MemFree:", line))
-				{
-					case true:
-					tools::remove_blank_spaces(line);
-					tools::remove_char(line, 'k');
-					tools::remove_char(line, 'B');
-					tools::remove(line, 0, 8);
-					return tools::convert<double>(line)
-							*tools::kilobyte_to_gigabyte();
-					break;
-				}
+				case true:
+				tools::remove_blank_spaces(line);
+				tools::remove_char(line, 'k');
+				tools::remove_char(line, 'B');
+				tools::remove(line, 0, 8);
+				return tools::convert<double>(line)*0.000000953674316;
 			}
-			file.std::ifstream::close();
-			return 0.0;
 		}
-		break;
+		file.std::ifstream::close();
+		return 0.0;
 	}
+	return 0.0;
 }

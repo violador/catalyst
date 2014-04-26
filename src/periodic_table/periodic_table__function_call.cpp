@@ -14,6 +14,6 @@ inline void operator ()(const unsigned int &element)
 		case true:
 		current_element = element;
 		update_data();
-		break;
+		return;
 	}
 };

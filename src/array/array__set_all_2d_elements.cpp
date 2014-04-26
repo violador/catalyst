@@ -11,12 +11,10 @@
 //
 inline void set_all_2d_elements(const double &value)
 {
-	switch(is_2d_array
-	       and (not deleted_array)
-	       and (not is_const_array))
+	switch(is_2d() && is_okay())
 	{
 		case true:
 		gsl_matrix_set_all(&gsl_2d_view.matrix, value);
-		break;
+		return;
 	}
 };

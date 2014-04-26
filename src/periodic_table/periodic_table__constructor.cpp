@@ -60,7 +60,7 @@ periodic_table::periodic_table(const std::string &element): current_element(0),
 		++current_element;
 		update_data();
 	}
-	while(element.std::string::compare(current_symbol) not_eq 0);
+	while(element.std::string::compare(current_symbol) != 0);
 }
 //
 //

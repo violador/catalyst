@@ -6,7 +6,7 @@
 /// @return @c true if it is constant, and @c false
 ///         otherwise.
 //
-inline bool &is_constant() const
+inline bool &is_constant()
 {
 	return is_const_array;
 };

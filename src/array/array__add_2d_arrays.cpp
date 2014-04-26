@@ -11,7 +11,7 @@
 //
 /// @return None.
 //
-inline void add_2d_array(array &A, const double &b)
+inline void add_2d_arrays(array &A, const double &b)
 {
 	gsl_matrix_add_constant(&A.gsl_2d_view.matrix, b);
 };
@@ -26,7 +26,7 @@ inline void add_2d_array(array &A, const double &b)
 ///        the given @c A if they are both 2D type and its dimension
 ///        sizes fits, using the CBLAS library.
 //
-inline void add_2d_array(array &A, const array &B)
+inline void add_2d_arrays(array &A, const array &B)
 {
 	switch(A.sizeof_row == B.sizeof_row
 	       && A.sizeof_column == B.sizeof_column)

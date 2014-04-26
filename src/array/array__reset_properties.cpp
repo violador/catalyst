@@ -20,7 +20,7 @@ void array::reset_properties()
 	is_square_array = false;
 	is_transposed = false;
 	deleted_array = true;
-	array_name = DEFAULT_ARRAY_NAME;
+	array_name = "";
 	config = &global_settings::config;
 }
 //
@@ -44,7 +44,7 @@ void array::reset_properties(const unsigned int &row_size)
 	is_square_array = false;
 	is_transposed = false;
 	deleted_array = false;
-	array_name = DEFAULT_ARRAY_NAME;
+	array_name = "";
 	config = &global_settings::config;
 }
 //
@@ -69,7 +69,7 @@ void array::reset_properties(const unsigned int &row_size,
 	is_square_array = (row_size == column_size? true : false);
 	is_transposed = false;
 	deleted_array = false;
-	array_name = DEFAULT_ARRAY_NAME;
+	array_name = "";
 	config = &global_settings::config;
 }
 //
@@ -95,7 +95,7 @@ void array::reset_properties(const unsigned int &row_size,
 	is_square_array = false;
 	is_transposed = false;
 	deleted_array = false;
-	array_name = DEFAULT_ARRAY_NAME;
+	array_name = "";
 	config = &global_settings::config;
 }
 //
@@ -122,6 +122,6 @@ void array::reset_properties(const unsigned int &row_size,
 	is_square_array = false;
 	is_transposed = false;
 	deleted_array = false;
-	array_name = DEFAULT_ARRAY_NAME;
+	array_name = "";
 	config = &global_settings::config;
 }

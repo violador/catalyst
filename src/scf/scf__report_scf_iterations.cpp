@@ -16,9 +16,9 @@
 //
 //
 //
-void algorithm::scf::report_scf_iterations() 
+void algorithm::scf::report_scf_iterations()
 {
-    switch(config -> output_mode())                                                                   
+    switch(config -> output_mode())
     {
         case true:
         #ifdef FIRST_COLUMN_LENGTH
@@ -40,7 +40,7 @@ void algorithm::scf::report_scf_iterations()
             #define THIRD_COLUMN_LENGTH 10
         #endif
         global_log::file.write_title_bar("SCF algorithm iterations",
-                                         FIRST_COLUMN_LENGTH 
+                                         FIRST_COLUMN_LENGTH
                                          + SECOND_COLUMN_LENGTH
                                          + THIRD_COLUMN_LENGTH
                                          + SPACE_LENGTH
@@ -65,11 +65,11 @@ void algorithm::scf::report_scf_iterations()
         global_log::file << "Correction";
 //
         global_log::file.set_new_line();
-        global_log::file.fill_line_with(FIRST_COLUMN_LENGTH 
-                                        + SECOND_COLUMN_LENGTH 
-                                        + THIRD_COLUMN_LENGTH 
-                                        + 2*SPACE_LENGTH 
-                                        + 7, 
+        global_log::file.fill_line_with(FIRST_COLUMN_LENGTH
+                                        + SECOND_COLUMN_LENGTH
+                                        + THIRD_COLUMN_LENGTH
+                                        + 2*SPACE_LENGTH
+                                        + 7,
                                         "-");
         global_log::file.set_new_line();
         for(unsigned int i = 1; i <= iteration; ++i)
@@ -102,8 +102,8 @@ void algorithm::scf::report_scf_iterations()
         global_log::file << lowest_mo();
         global_log::file << "\n- Highest molecular orbital number = ";
         global_log::file << highest_mo();
-        global_log::file << "\n- Iteration wall time              = "; 
-        global_log::file << iterations_time.timer::get(WALL_TIME, 1);
+        global_log::file << "\n- Iteration wall time              = ";
+        global_log::file << iterations_time.timer::wall_time();
         global_log::file.set_new_line();
         #ifdef FOURTH_COLUMN_LENGTH
             #undef FOURTH_COLUMN_LENGTH
@@ -130,7 +130,7 @@ void algorithm::scf::report_scf_iterations()
                                          + SPACE_LENGTH
                                          + 7);
 //
-//      To print "Num.":      
+//      To print "Num.":
 //
         global_log::file.set_width(FOURTH_COLUMN_LENGTH);
         global_log::file.set_right();
@@ -149,10 +149,10 @@ void algorithm::scf::report_scf_iterations()
         global_log::file << "Type";
 //
         global_log::file.set_new_line();
-        global_log::file.fill_line_with(FOURTH_COLUMN_LENGTH 
-                                        + FIFTH_COLUMN_LENGTH 
-                                        + SIXTH_COLUMN_LENGTH 
-                                        + 2*SPACE_LENGTH 
+        global_log::file.fill_line_with(FOURTH_COLUMN_LENGTH
+                                        + FIFTH_COLUMN_LENGTH
+                                        + SIXTH_COLUMN_LENGTH
+                                        + 2*SPACE_LENGTH
                                         + 7,
                                         "-");
         global_log::file.set_new_line();

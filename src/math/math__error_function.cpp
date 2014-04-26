@@ -5,7 +5,7 @@
 //
 /// @brief Calls the GSL library to calculate the error function.
 //
-/// @return @f$ erf(a) @f$.
+/// @return @f$ := erf(a) @f$.
 //
 inline double error_function(const double &a)
 {

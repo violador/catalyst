@@ -11,6 +11,6 @@ inline void operator ()(const unsigned int &new_iter)
 {
 	switch(new_iter <= current_set_size)
 	{
-		case true: iter = new_iter; break;
+		case true: iter = new_iter;
 	}
 };

@@ -17,7 +17,7 @@ inline void operator ++()
 		case true:
 		++current_element;
 		update_data();
-		break;
+		return;
 	}
 };
 //
@@ -39,6 +39,6 @@ inline void operator ++(int)
 		case true:
 		++current_element;
 		update_data();
-		break;
+		return;
 	}
 };

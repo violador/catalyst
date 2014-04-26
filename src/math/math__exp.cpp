@@ -6,7 +6,7 @@
 /// @brief Calls the GSL library to calculate
 ///        the exponential function of @c a.
 //
-/// @return @f$ exp(a) @f$
+/// @return @f$ := exp(a) @f$
 //
 inline double exp(const double &a)
 {

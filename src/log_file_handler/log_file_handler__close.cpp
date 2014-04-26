@@ -12,6 +12,6 @@ inline void close()
 		case true:
 		manager.file_system::close(log_file);
 		log_file_ready = false;
-		break;
+		return;
 	}
 };

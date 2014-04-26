@@ -31,7 +31,7 @@ void log_file_handler::report_input_list()
             #define FOURTH_COLUMN_LENGTH 9
         #else
             #define FOURTH_COLUMN_LENGTH 9
-        #endif 
+        #endif
 //
 //      To print the title bar:
 //
@@ -98,7 +98,7 @@ void log_file_handler::report_input_list()
 //
             set_width(THIRD_COLUMN_LENGTH + SPACE_LENGTH);
             set_right();
-            log_file << tools::byte_to_kilobyte(input.file_system::size());
+            log_file << tools::kB(input.file_system::size());
 //
 //          To print the status in the status column:
 //

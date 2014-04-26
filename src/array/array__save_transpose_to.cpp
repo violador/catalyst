@@ -16,7 +16,7 @@ inline void save_transpose_to(array &output)
 			and (not output.is_const_array))
 	{
 		case true:
-		output.resize_array(this -> sizeof_row, this -> sizeof_column);
+		output.resize(this -> sizeof_row, this -> sizeof_column);
 //
 /// 	@notice Notice that the content of @c output is going to be modified.
 		gsl_matrix_transpose_memcpy(&output.gsl_2d_view.matrix,

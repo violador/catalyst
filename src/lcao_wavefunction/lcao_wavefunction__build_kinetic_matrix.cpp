@@ -10,15 +10,15 @@ void lcao_wavefunction::build_kinetic_matrix(array &t_matrix,    // The kinetic 
                                              unsigned int level) // The basis set type.
 {
 //
-    unsigned int i = 1; 
-    unsigned int j = i; 
+    unsigned int i = 1;
+    unsigned int j = i;
     unsigned int total_orbitals = count_orbitals(type);
     periodic_table a_data, b_data;
-    switch(t_matrix.array::check_if(IS_CONSTANT))
+    switch(t_matrix.array::is_constant())
     {
         case false:
         {
-            check_matrix_size(t_matrix, total_orbitals); 
+            check_matrix_size(t_matrix, total_orbitals);
             t_matrix.array::set_name("Kinetic matrix");
         }
         break;

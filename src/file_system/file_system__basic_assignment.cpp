@@ -11,7 +11,7 @@
 //
 void file_system::operator =(const file_system &input)
 {
-	#pragma omp parallel sections num_threads(9)
+	#pragma omp sections
 	{
 		#pragma omp section
 		{

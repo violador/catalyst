@@ -2,15 +2,15 @@
 //
 //  This file is part of Catalyst lib.
 //
-//  Catalyst lib is free software: you can redistribute it and/or modify it under the terms 
-//  of the GNU General Public License as published by the Free Software Foundation, either 
+//  Catalyst lib is free software: you can redistribute it and/or modify it under the terms
+//  of the GNU General Public License as published by the Free Software Foundation, either
 //  version 3 of the License, or (at your option) any later version.
 //
-//  Catalyst lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; 
-//  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
+//  Catalyst lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+//  without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 //  See the GNU General Public License for more details.
 //
-//  You should have received a copy of the GNU General Public License along with Catalyst lib. 
+//  You should have received a copy of the GNU General Public License along with Catalyst lib.
 //  If not, see <http://www.gnu.org/licenses/>.
 //
 // ------------------------------------------------------------------------------------------ //
@@ -20,22 +20,22 @@
 //
 //
 //
-/// @author Humberto Jr. 
+/// @author Humberto Jr.
 //
 /// @date 06/2013
 //
 /// @brief Generic data and functions for general tasks.
 //
-/// @details: The aiming is to group under the scope of 'tools', all the 
-///           data members or data functions for general tasks and that 
-///           does not belong to any class or struct. All the members are 
-///           of public access by any client. The only requirement is that 
-///           its header file should be included where it is needed. 
+/// @details: The aiming is to group under the scope of 'tools', all the
+///           data members or data functions for general tasks and that
+///           does not belong to any class or struct. All the members are
+///           of public access by any client. The only requirement is that
+///           its header file should be included where it is needed.
 //
 // References: http://www.codata.org/
-//             
+//
 //             R. T. Sanderson. Inorganic Chemistry, Reinhold, 1967.
-//             
+//
 //             CRC Handbook of Chemistry and Physics, 1989.
 //
 namespace tools
@@ -85,9 +85,9 @@ namespace tools
     #include "tools__on_ctrl_key.cpp"
     #include "tools__off_ctrl_key.cpp"
     #include "tools__max_precision.cpp"
-    #include "tools__byte_to_gigabyte.cpp"
-    #include "tools__byte_to_megabyte.cpp"
-    #include "tools__byte_to_kilobyte.cpp"
+    #include "tools__GB.cpp"
+    #include "tools__MB.cpp"
+    #include "tools__kB.cpp"
     #include "tools__kilobyte_to_gigabyte.cpp"
     #include "tools__default_current_dir.cpp"
     #include "tools__bohr_radius.cpp"
@@ -102,5 +102,6 @@ namespace tools
     #include "tools__planck_const.cpp"
     #include "tools__proton_mass.cpp"
     #include "tools__neutron_mass.cpp"
+	#include "tools__omp_chunk.cpp"
 };
 #endif

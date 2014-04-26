@@ -14,7 +14,7 @@ void array::delete_array()
 	{
 		#pragma omp section
 		{
-			switch(is_1d_array)
+			switch(is_1d())
 			{
 				case true:
 				delete_1d_array();
@@ -23,7 +23,7 @@ void array::delete_array()
 		}
 		#pragma omp section
 		{
-			switch(is_2d_array)
+			switch(is_2d())
 			{
 				case true:
 				delete_2d_array();
@@ -32,7 +32,7 @@ void array::delete_array()
 		}
 		#pragma omp section
 		{
-			switch(is_3d_array)
+			switch(is_3d())
 			{
 				case true:
 				delete_3d_array();
@@ -41,18 +41,20 @@ void array::delete_array()
 		}
 		#pragma omp section
 		{
-			switch(is_4d_array)
+			switch(is_4d())
 			{
 				case true:
 				delete_4d_array();
 				break;
 			}
 		}
+/*
 		#pragma omp section
 		{
 			reset_properties();
 			deleted_array = true;
 		}
+*/
 	}
 //
 /// @note This function do not replace the class destructor which

@@ -11,12 +11,10 @@
 //
 inline void set_all_1d_elements(const double &value)
 {
-	switch(is_1d_array
-	       and (not deleted_array)
-	       and (not is_const_array))
+	switch(is_1d() && is_okay())
 	{
 		case true:
 		gsl_vector_set_all(&gsl_1d_view.vector, value);
-		break;
+		return;
 	}
 };

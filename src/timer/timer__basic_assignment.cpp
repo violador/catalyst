@@ -10,7 +10,7 @@
 //
 inline void operator =(const timer &input)
 {
-	#pragma omp sections
+	#pragma omp sections nowait
 	{
 		#pragma omp section
 		{
@@ -18,23 +18,27 @@ inline void operator =(const timer &input)
 		}
 		#pragma omp section
 		{
-			this -> wall_time = input.wall_time;
+			this -> wtime = input.wtime;
 		}
 		#pragma omp section
 		{
-			this -> system_time = input.system_time;
+			this -> stime = input.stime;
 		}
 		#pragma omp section
 		{
-			this -> user_time = input.user_time;
+			this -> utime = input.utime;
 		}
 		#pragma omp section
 		{
-			this -> cpu_usage = input.cpu_usage;
+			this -> usage = input.usage;
 		}
 		#pragma omp section
 		{
 			this -> name = input.name;
+		}
+		#pragma omp section
+		{
+			this -> counter = input.counter;
 		}
 	}
 };

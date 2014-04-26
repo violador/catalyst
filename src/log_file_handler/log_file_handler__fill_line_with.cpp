@@ -11,7 +11,7 @@
 /// @return None.
 //
 inline void fill_line_with(const unsigned int &width,
-						   const std::string &filling)
+                           const std::string &filling)
 {
 	switch(log_file_ready)
 	{
@@ -19,7 +19,7 @@ inline void fill_line_with(const unsigned int &width,
 		log_file.std::fstream::width(width);
 		log_file.std::fstream::fill(tools::convert<char>(filling));
 		log_file << "";
-		break;
+		return;
 	}
 };
 //
@@ -40,6 +40,6 @@ inline void fill_line_with(const unsigned int &width)
 		log_file.std::fstream::width(width);
 		log_file.std::fstream::fill(' ');
 		log_file << "";
-		break;
+		return;
 	}
 };

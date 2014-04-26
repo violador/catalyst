@@ -6,7 +6,7 @@
 /// @return @c true if @c sizeof_row @c == @c sizeof_column, and @c false
 ///         otherwise.
 //
-inline bool is_square()
+inline bool is_square() const
 {
-	return ((sizeof_row == sizeof_column) && (!is_deleted()) && is_2d());
+	return (is_2d() && (!is_deleted()) && sizeof_row == sizeof_column);
 };

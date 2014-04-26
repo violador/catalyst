@@ -19,7 +19,6 @@ inline void init_4d_array(const unsigned int &row,
                           const unsigned int &layer2)
 {
 	user_4d_array = new double ***[row]();
-	#pragma omp for schedule(static) nowait
 	for(unsigned int i = 0; i < row; ++i)
 	{
 		user_4d_array[i] = new double **[column]();

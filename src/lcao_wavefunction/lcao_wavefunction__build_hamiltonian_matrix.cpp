@@ -10,10 +10,10 @@ void lcao_wavefunction::build_hamiltonian_matrix(array &h_matrix,
                                                  const unsigned int given_theory_level)
 {
 //
-    switch(h_matrix.array::check_if(IS_CONSTANT))
+    switch(h_matrix.array::is_constant())
     {
-        case false: 
-        check_matrix_size(h_matrix, type.array::size_of_row()); 
+        case false:
+        check_matrix_size(h_matrix, type.array::size_of_row());
         h_matrix.array::set_name("Core-Hamiltonian matrix");
         break;
     }
@@ -23,7 +23,7 @@ void lcao_wavefunction::build_hamiltonian_matrix(array &h_matrix,
     {
         #pragma omp section
         {
-            global_log::file.write_debug_msg("lcao_wavefunction::build_hamiltonian_matrix(): ", 
+            global_log::file.write_debug_msg("lcao_wavefunction::build_hamiltonian_matrix(): ",
                                              "Invoking lcao_wavefunction::build_kinetic_matrix()...");
             t_matrix.array::create_array(type.array::size_of_row(), type.array::size_of_row());
             build_kinetic_matrix(t_matrix,
@@ -35,7 +35,7 @@ void lcao_wavefunction::build_hamiltonian_matrix(array &h_matrix,
         }
         #pragma omp section
         {
-            global_log::file.write_debug_msg("lcao_wavefunction::build_hamiltonian_matrix(): ", 
+            global_log::file.write_debug_msg("lcao_wavefunction::build_hamiltonian_matrix(): ",
                                              "Invoking lcao_wavefunction::build_repulsion_matrix_1()...");
             v_matrix1.array::create_array(type.array::size_of_row(), type.array::size_of_row());
             build_repulsion_matrix_1(v_matrix1,
@@ -48,7 +48,7 @@ void lcao_wavefunction::build_hamiltonian_matrix(array &h_matrix,
     }
 //
     h_matrix.array::set_all(0.0);
-    h_matrix += t_matrix; 
+    h_matrix += t_matrix;
     h_matrix += v_matrix1;
 //
     #pragma omp parallel sections num_threads(4)

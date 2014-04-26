@@ -6,7 +6,7 @@
 //
 /// @return A string pattern.
 //
-inline std::string build_slash()
+inline std::string build_slash() const
 {
 	#if defined(LINUX)
 	return std::string("/");

@@ -11,9 +11,7 @@
 //
 inline void set_all_4d_elements(const double &value)
 {
-	switch(is_4d_array
-	       && (!deleted_array)
-	       && (!is_const_array))
+	switch(is_4d() && is_okay())
 	{
 		case true:
 		#pragma omp for schedule(static) nowait
@@ -30,6 +28,6 @@ inline void set_all_4d_elements(const double &value)
 				}
 			}
 		}
-		break;
+		return;
 	}
 };

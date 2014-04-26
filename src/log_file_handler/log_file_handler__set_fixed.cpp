@@ -13,6 +13,6 @@ inline void set_fixed()
 		case true:
 		log_file.std::fstream::precision(config -> numeric_precision());
 		log_file << std::fixed;
-		break;
+		return;
 	}
 };

@@ -10,7 +10,7 @@
 //
 /// @return None.
 //
-inline void add_3d_array(array &A, const double &b)
+inline void add_3d_arrays(array &A, const double &b)
 {
 	#pragma omp for schedule(static) nowait
 	for(unsigned int i = 0; i < A.sizeof_row; ++i)
@@ -32,21 +32,29 @@ inline void add_3d_array(array &A, const double &b)
 //  @param [out] A A 3D and non-constant array.
 //
 /// @brief A private helper function to add the given array @c B
-///        to the given array @c A.
+///        to the given array @c A, if they are both 3D type and
+///        its dimension sizes fits.
 //
 /// @return None.
 //
-inline void add_3d_array(array &A, const array &B)
+inline void add_3d_arrays(array &A, const array &B)
 {
-	#pragma omp for schedule(static) nowait
-	for(unsigned int i = 0; i < A.sizeof_row; ++i)
+	switch(A.sizeof_row == B.sizeof_row
+	       && A.sizeof_column == B.sizeof_column
+	       && A.sizeof_1st_layer == B.sizeof_1st_layer)
 	{
-		for(unsigned int j = 0; j < A.sizeof_column; ++j)
+		case true:
+		#pragma omp for schedule(static) nowait
+		for(unsigned int i = 0; i < A.sizeof_row; ++i)
 		{
-			for(unsigned int m = 0; m < A.sizeof_1st_layer; ++m)
+			for(unsigned int j = 0; j < A.sizeof_column; ++j)
 			{
-				A.user_3d_array[i][j][m] += B.user_3d_array[i][j][m];
+				for(unsigned int m = 0; m < A.sizeof_1st_layer; ++m)
+				{
+					A.user_3d_array[i][j][m] += B.user_3d_array[i][j][m];
+				}
 			}
 		}
+		break;
 	}
 };

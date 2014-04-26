@@ -11,7 +11,7 @@
 //
 /// @return None.
 //
-inline void add_1d_array(array &A, const double &b)
+inline void add_1d_arrays(array &A, const double &b)
 {
 	gsl_vector_add_constant(&A.gsl_1d_view.vector, b);
 };
@@ -28,7 +28,7 @@ inline void add_1d_array(array &A, const double &b)
 //
 /// @return None.
 //
-inline void add_1d_array(array &A, const array &B)
+inline void add_1d_arrays(array &A, const array &B)
 {
 	switch(A.sizeof_row == B.sizeof_row)
 	{
