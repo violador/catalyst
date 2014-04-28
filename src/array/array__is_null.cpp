@@ -15,7 +15,7 @@ bool array::is_null() const
 	{
 		#pragma omp section
 		{
-			switch(is_1d() and (!is_deleted()))
+			switch(!is_deleted() && is_1d())
 			{
 				case true:
 				buffer = bool(gsl_vector_isnull(&gsl_1d_view.vector));
@@ -24,10 +24,11 @@ bool array::is_null() const
 		}
 		#pragma omp section
 		{
-			switch(is_2d() and (!is_deleted()))
+			switch(!is_deleted() && is_2d())
 			{
 				case true:
-				buffer = bool(gsl_matrix_isnull(&gsl_2d_view.matrix));
+				buffer = std::all_of(data2, data2 + (rank1*rank2), tools::is_null);
+				//buffer = bool(gsl_matrix_isnull(&gsl_2d_view.matrix));
 				break;
 			}
 		}

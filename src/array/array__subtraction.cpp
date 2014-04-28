@@ -7,66 +7,66 @@ array array::operator -(const double &b)
 //
 //  Given the arrays A (the this pointer), C and the number B: C = A - B
 //
-    if(this -> is_1d_array)
+    if(this -> is_1d())
     {
-        array c(this -> sizeof_row);
+        array c(this -> rank1);
         gsl_vector_memcpy(&c.gsl_1d_view.vector, &this -> gsl_1d_view.vector);
 //
         gsl_vector_add_constant(&c.gsl_1d_view.vector, -b);
 //
         return c;
     }
-    if(this -> is_2d_array)
+    if(this -> is_2d())
     {
-        array c(this -> sizeof_row, this -> sizeof_column);
+        array c(this -> rank1, this -> rank2);
         gsl_matrix_memcpy(&c.gsl_2d_view.matrix, &this -> gsl_2d_view.matrix);
 //
         gsl_matrix_add_constant(&c.gsl_2d_view.matrix, -b);
 //
         return c;
     }
-    if(this -> is_3d_array)
+    if(this -> is_3d())
     {
-        array c(this -> sizeof_row, this -> sizeof_column, this -> sizeof_1st_layer);
+        array c(this -> rank1, this -> rank2, this -> rank3);
 //
         unsigned int i = 0, j = 0, m = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
-        for(i = 0; i < this -> sizeof_row; i++)
+        for(i = 0; i < this -> rank1; i++)
         {
             #pragma omp parallel for private(j) ordered schedule(dynamic)
-            for(j = 0; j < this -> sizeof_column; j++)
+            for(j = 0; j < this -> rank2; j++)
             {
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
-                for(m = 0; m < this -> sizeof_1st_layer; m++)
+                for(m = 0; m < this -> rank3; m++)
                 {
-                    c.user_3d_array[i][j][m] = this -> user_3d_array[i][j][m] - b;
+                    c.data3[i][j][m] = this -> data3[i][j][m] - b;
                 }
             }
         }
 //
         return c;
     }
-    if(this -> is_4d_array)
+    if(this -> is_4d())
     {
-        array c(this -> sizeof_row,
-                this -> sizeof_column,
-                this -> sizeof_1st_layer,
-                this -> sizeof_2nd_layer);
+        array c(this -> rank1,
+                this -> rank2,
+                this -> rank3,
+                this -> rank4);
 //
         unsigned int i = 0, j = 0, m = 0, n = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
-        for(i = 0; i < this -> sizeof_row; i++)
+        for(i = 0; i < this -> rank1; i++)
         {
             #pragma omp parallel for private(j) ordered schedule(dynamic)
-            for(j = 0; j < this -> sizeof_column; j++)
+            for(j = 0; j < this -> rank2; j++)
             {
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
-                for(m = 0; m < this -> sizeof_1st_layer; m++)
+                for(m = 0; m < this -> rank3; m++)
                 {
                     #pragma omp parallel for private(n) ordered schedule(dynamic)
-                    for(n = 0; n < this -> sizeof_2nd_layer; n++)
+                    for(n = 0; n < this -> rank4; n++)
                     {
-                        c.user_4d_array[i][j][m][n] = this -> user_4d_array[i][j][m][n] - b;
+                        c.data4[i][j][m][n] = this -> data4[i][j][m][n] - b;
                     }
                 }
             }
@@ -87,91 +87,91 @@ array array::operator -(const array &b)
 //
 //  Given the arrays A (the this pointer), B and C: C = A - B
 //
-    if(this -> is_1d_array
-       and b.is_1d_array
-       and (this -> sizeof_row == b.sizeof_row))
+    if(this -> is_1d()
+       and b.is_1d()
+       and (this -> rank1 == b.rank1))
     {
-        array c(this -> sizeof_row);
+        array c(this -> rank1);
         gsl_vector_memcpy(&c.gsl_1d_view.vector, &this -> gsl_1d_view.vector);
 //
-        cblas_daxpy(this -> sizeof_row,
+        cblas_daxpy(this -> rank1,
                     -1.0,
-                    b.user_1d_array,
+                    b.data1,
                     1,
-                    c.user_1d_array,
+                    c.data1,
                     1);
 //
         return c;
     }
-    else if(this -> is_2d_array
-            and b.is_2d_array
-            and (this -> sizeof_row == b.sizeof_row)
-            and (this -> sizeof_column == b.sizeof_column))
+    else if(this -> is_2d()
+            and b.is_2d()
+            and (this -> rank1 == b.rank1)
+            and (this -> rank2 == b.rank2))
     {
-        array c(this -> sizeof_row, this -> sizeof_column);
+        array c(this -> rank1, this -> rank2);
         gsl_matrix_memcpy(&c.gsl_2d_view.matrix, &this -> gsl_2d_view.matrix);
 //
-        cblas_daxpy((this -> sizeof_row)*(this -> sizeof_column),
+        cblas_daxpy((this -> rank1)*(this -> rank2),
                     -1.0,
-                    b.user_2d_array,
+                    b.data2,
                     1,
-                    c.user_2d_array,
+                    c.data2,
                     1);
 //
         return c;
     }
-    else if(this -> is_3d_array
-            and b.is_3d_array
-            and (this -> sizeof_row == b.sizeof_row)
-            and (this -> sizeof_column == b.sizeof_column)
-            and (this -> sizeof_1st_layer == b.sizeof_1st_layer))
+    else if(this -> is_3d()
+            and b.is_3d()
+            and (this -> rank1 == b.rank1)
+            and (this -> rank2 == b.rank2)
+            and (this -> rank3 == b.rank3))
     {
-        array c(this -> sizeof_row, this -> sizeof_column, this -> sizeof_1st_layer);
+        array c(this -> rank1, this -> rank2, this -> rank3);
 //
         unsigned int i = 0, j = 0, m = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
-        for(i = 0; i < this -> sizeof_row; i++)
+        for(i = 0; i < this -> rank1; i++)
         {
             #pragma omp parallel for private(j) ordered schedule(dynamic)
-            for(j = 0; j < this -> sizeof_column; j++)
+            for(j = 0; j < this -> rank2; j++)
             {
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
-                for(m = 0; m < this -> sizeof_1st_layer; m++)
+                for(m = 0; m < this -> rank3; m++)
                 {
-                    c.user_3d_array[i][j][m] = this -> user_3d_array[i][j][m] - b.user_3d_array[i][j][m];
+                    c.data3[i][j][m] = this -> data3[i][j][m] - b.data3[i][j][m];
                 }
             }
         }
 //
         return c;
     }
-    else if(this -> is_4d_array
-            and b.is_4d_array
-            and (this -> sizeof_row == b.sizeof_row)
-            and (this -> sizeof_column == b.sizeof_column)
-            and (this -> sizeof_1st_layer == b.sizeof_1st_layer)
-            and (this -> sizeof_2nd_layer == b.sizeof_2nd_layer))
+    else if(this -> is_4d()
+            and b.is_4d()
+            and (this -> rank1 == b.rank1)
+            and (this -> rank2 == b.rank2)
+            and (this -> rank3 == b.rank3)
+            and (this -> rank4 == b.rank4))
     {
-        array c(this -> sizeof_row,
-                this -> sizeof_column,
-                this -> sizeof_1st_layer,
-                this -> sizeof_2nd_layer);
+        array c(this -> rank1,
+                this -> rank2,
+                this -> rank3,
+                this -> rank4);
 //
         unsigned int i = 0, j = 0, m = 0, n = 0;
         #pragma omp parallel for private(i) ordered schedule(dynamic)
-        for(i = 0; i < this -> sizeof_row; i++)
+        for(i = 0; i < this -> rank1; i++)
         {
             #pragma omp parallel for private(j) ordered schedule(dynamic)
-            for(j = 0; j < this -> sizeof_column; j++)
+            for(j = 0; j < this -> rank2; j++)
             {
                 #pragma omp parallel for private(m) ordered schedule(dynamic)
-                for(m = 0; m < this -> sizeof_1st_layer; m++)
+                for(m = 0; m < this -> rank3; m++)
                 {
                     #pragma omp parallel for private(n) ordered schedule(dynamic)
-                    for(n = 0; n < this -> sizeof_2nd_layer; n++)
+                    for(n = 0; n < this -> rank4; n++)
                     {
-                        c.user_4d_array[i][j][m][n] = this -> user_4d_array[i][j][m][n]
-                                                    - b.user_4d_array[i][j][m][n];
+                        c.data4[i][j][m][n] = this -> data4[i][j][m][n]
+                                                    - b.data4[i][j][m][n];
                     }
                 }
             }

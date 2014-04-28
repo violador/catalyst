@@ -11,16 +11,16 @@ inline int transpose()
 	switch(is_2d() && is_okay() && is_square())
 	{
 		case true:
-		#define CHUNK tools::omp_chunk(sizeof_row - 1)
+		#define CHUNK tools::omp_chunk(rank1 - 1)
 		#pragma omp for schedule(dynamic, CHUNK) nowait
-		for(unsigned int i = 0; i < sizeof_row - 1; ++i)
+		for(unsigned int i = 0; i < rank1 - 1; ++i)
 		{
-			for(unsigned int j = i + 1; j < sizeof_column; ++j)
+			for(unsigned int j = i + 1; j < rank2; ++j)
 			{
-				double ij = user_2d_array[i*sizeof_row + j];
-				double ji = user_2d_array[j*sizeof_row + i];
-				user_2d_array[i*sizeof_row + j] = ji;
-				user_2d_array[j*sizeof_row + i] = ij;
+				double ij = data2[i*rank1 + j];
+				double ji = data2[j*rank1 + i];
+				data2[i*rank1 + j] = ji;
+				data2[j*rank1 + i] = ij;
 			}
 		}
 		#undef CHUNK

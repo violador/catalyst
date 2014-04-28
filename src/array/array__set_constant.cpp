@@ -9,10 +9,10 @@
 //
 inline void set_constant()
 {
-	switch(not deleted_array)
+	switch(not is_deleted())
 	{
 		case true:
-		is_const_array = true;
+		constant = true;
 		break;
 	}
 };

@@ -25,59 +25,59 @@ void array::operator -=(const array &b)
     {
         #pragma omp section
         {
-            if(this -> is_1d_array 
-               and b.is_1d_array 
-               and (this -> sizeof_row == b.sizeof_row)
-               and (not this -> is_const_array)
-               and (not this -> deleted_array))
+            if(this -> is_1d() 
+               and b.is_1d() 
+               and (this -> rank1 == b.rank1)
+               and (not this -> constant)
+               and (not this -> is_deleted()))
             {
-                cblas_daxpy(this -> sizeof_row,
+                cblas_daxpy(this -> rank1,
                             -1.0,
-                            b.user_1d_array,
+                            b.data1,
                             1,
-                            this -> user_1d_array,
+                            this -> data1,
                             1);
             }
         }
         #pragma omp section
         {
-            if(this -> is_2d_array 
-               and b.is_2d_array 
-               and (this -> sizeof_row == b.sizeof_row) 
-               and (this -> sizeof_column == b.sizeof_column)
-               and (not this -> is_const_array)
-               and (not this -> deleted_array))
+            if(this -> is_2d() 
+               and b.is_2d() 
+               and (this -> rank1 == b.rank1) 
+               and (this -> rank2 == b.rank2)
+               and (not this -> constant)
+               and (not this -> is_deleted()))
             {
-                cblas_daxpy((this -> sizeof_row)*(this -> sizeof_column),
+                cblas_daxpy((this -> rank1)*(this -> rank2),
                             -1.0,
-                            b.user_2d_array,
+                            b.data2,
                             1,
-                            this -> user_2d_array,
+                            this -> data2,
                             1);
             }
         }
         #pragma omp section
         {
-            if(this -> is_3d_array 
-               and b.is_3d_array 
-               and (this -> sizeof_row == b.sizeof_row) 
-               and (this -> sizeof_column == b.sizeof_column) 
-               and (this -> sizeof_1st_layer == b.sizeof_1st_layer)
-               and (not this -> is_const_array)
-               and (not this -> deleted_array))
+            if(this -> is_3d() 
+               and b.is_3d() 
+               and (this -> rank1 == b.rank1) 
+               and (this -> rank2 == b.rank2) 
+               and (this -> rank3 == b.rank3)
+               and (not this -> constant)
+               and (not this -> is_deleted()))
             {
                 unsigned int i = 0, j = 0, m = 0;
                 #pragma omp parallel for private(i) ordered schedule(dynamic)
-                for(i = 0; i < this -> sizeof_row; i++)
+                for(i = 0; i < this -> rank1; i++)
                 {
                     #pragma omp parallel for private(j) ordered schedule(dynamic)
-                    for(j = 0; j < this -> sizeof_column; j++)
+                    for(j = 0; j < this -> rank2; j++)
                     {
                         #pragma omp parallel for private(m) ordered schedule(dynamic)
-                        for(m = 0; m < this -> sizeof_1st_layer; m++)
+                        for(m = 0; m < this -> rank3; m++)
                         {
-                            this -> user_3d_array[i][j][m] = this -> user_3d_array[i][j][m] 
-                                                           - b.user_3d_array[i][j][m];
+                            this -> data3[i][j][m] = this -> data3[i][j][m] 
+                                                           - b.data3[i][j][m];
                         }
                     }
                 }
@@ -85,30 +85,30 @@ void array::operator -=(const array &b)
         }
         #pragma omp section
         {
-            if(this -> is_4d_array    
-               and b.is_4d_array 
-               and (this -> sizeof_row == b.sizeof_row) 
-               and (this -> sizeof_column == b.sizeof_column) 
-               and (this -> sizeof_1st_layer == b.sizeof_1st_layer)
-               and (this -> sizeof_2nd_layer == b.sizeof_2nd_layer)
-               and (not this -> is_const_array)
-               and (not this -> deleted_array))
+            if(this -> is_4d()    
+               and b.is_4d() 
+               and (this -> rank1 == b.rank1) 
+               and (this -> rank2 == b.rank2) 
+               and (this -> rank3 == b.rank3)
+               and (this -> rank4 == b.rank4)
+               and (not this -> constant)
+               and (not this -> is_deleted()))
             {
                 unsigned int i = 0, j = 0, m = 0, n = 0;
                 #pragma omp parallel for private(i) ordered schedule(dynamic)
-                for(i = 0; i < this -> sizeof_row; i++)
+                for(i = 0; i < this -> rank1; i++)
                 {
                     #pragma omp parallel for private(j) ordered schedule(dynamic)
-                    for(j = 0; j < this -> sizeof_column; j++)
+                    for(j = 0; j < this -> rank2; j++)
                     {
                         #pragma omp parallel for private(m) ordered schedule(dynamic)
-                        for(m = 0; m < this -> sizeof_1st_layer; m++)
+                        for(m = 0; m < this -> rank3; m++)
                         {
                             #pragma omp parallel for private(n) ordered schedule(dynamic)
-                            for(n = 0; n < this -> sizeof_2nd_layer; n++)
+                            for(n = 0; n < this -> rank4; n++)
                             {
-                                 this -> user_4d_array[i][j][m][n] = this -> user_4d_array[i][j][m][n] 
-                                                                   - b.user_4d_array[i][j][m][n];
+                                 this -> data4[i][j][m][n] = this -> data4[i][j][m][n] 
+                                                                   - b.data4[i][j][m][n];
                             }
                         }
                     }

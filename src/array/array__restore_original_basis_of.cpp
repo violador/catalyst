@@ -18,28 +18,28 @@
 //
 void array::restore_original_basis_of(array &given_array)
 {
-    switch(not given_array.is_const_array)
+    switch(not given_array.constant)
     {
         case true:
-        double *array_buffer = new double[given_array.sizeof_row*given_array.sizeof_column];
-        gsl_matrix_view gsl_buffer_view = gsl_matrix_view_array(array_buffer, given_array.sizeof_row, given_array.sizeof_column);
+        double *array_buffer = new double[given_array.rank1*given_array.rank2];
+        gsl_matrix_view gsl_buffer_view = gsl_matrix_view_array(array_buffer, given_array.rank1, given_array.rank2);
         gsl_matrix_set_zero(&gsl_buffer_view.matrix);
         gsl_matrix_swap(&gsl_buffer_view.matrix, &given_array.gsl_2d_view.matrix);
 //
         cblas_dgemm(CblasRowMajor,
                     CblasNoTrans,
                     CblasNoTrans,
-                    sizeof_row,
-                    sizeof_column,
-                    given_array.sizeof_row,
+                    rank1,
+                    rank2,
+                    given_array.rank1,
                     1.0,
-                    user_2d_array,
-                    sizeof_column,
+                    data2,
+                    rank2,
                     array_buffer,
-                    given_array.sizeof_column,
+                    given_array.rank2,
                     1.0,
-                    given_array.user_2d_array,
-                    given_array.sizeof_column);
+                    given_array.data2,
+                    given_array.rank2);
 //
         delete[] array_buffer;
         break;

@@ -30,15 +30,15 @@ inline void add_1d_arrays(array &A, const double &b)
 //
 inline void add_1d_arrays(array &A, const array &B)
 {
-	switch(A.sizeof_row == B.sizeof_row)
+	switch(A.rank1 == B.rank1)
 	{
 		case true:
-		cblas_daxpy(A.sizeof_row,
+		cblas_daxpy(A.rank1,
 		            1.0,
-		            B.user_1d_array,
+		            B.data1,
 		            1,
-		            A.user_1d_array,
+		            A.data1,
 		            1);
-		break;
+		return;
 	}
 };

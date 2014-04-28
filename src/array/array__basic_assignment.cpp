@@ -21,7 +21,6 @@ void array::operator =(const array &input)
 			switch(input.is_1d() && this -> is_okay())
 			{
 				case true:
-				resize(input.sizeof_row);
 				copy_1d_arrays(input);
 				break;
 			}
@@ -31,8 +30,6 @@ void array::operator =(const array &input)
 			switch(input.is_2d() && this -> is_okay())
 			{
 				case true:
-				resize(input.sizeof_row,
-				       input.sizeof_column);
 				copy_2d_arrays(input);
 				break;
 			}
@@ -42,9 +39,6 @@ void array::operator =(const array &input)
 			switch(input.is_3d() && this -> is_okay())
 			{
 				case true:
-				resize(input.sizeof_row,
-				       input.sizeof_column,
-				       input.sizeof_1st_layer);
 				copy_3d_arrays(input);
 				break;
 			}
@@ -54,10 +48,6 @@ void array::operator =(const array &input)
 			switch(input.is_4d() && this -> is_okay())
 			{
 				case true:
-				resize(input.sizeof_row,
-				       input.sizeof_column,
-				       input.sizeof_1st_layer,
-				       input.sizeof_2nd_layer);
 				copy_4d_arrays(input);
 				break;
 			}

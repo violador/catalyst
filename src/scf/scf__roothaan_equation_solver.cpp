@@ -1,17 +1,3 @@
-// ../src/scf/scf__roothaan_equation_solver.cpp ============================================= //
-//
-// Catalyst Lib is free software:  you can redistribute it and/or modifyit under the terms of
-// the GNU General Public License as published bythe Free Software Foundation, either version
-// 3 of the License, or(at your option) any later version.
-//
-// Catalyst Lib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
-// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-// See the GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License along with Catalyst Lib.
-// If not, see <http://www.gnu.org/licenses/>.
-//
-// ========================================================================================== //
 #include "scf.hpp"
 //
 //
@@ -67,7 +53,7 @@ void algorithm::scf::roothaan_equation_solver(array &h_matrix, array &s_matrix, 
 //  SCF iteration 1:
 //  (5)  To check the energy of the current Fock matrix.
 //  (6)  To use the overlap matrix, s_matrix, to orthonormalize the current Fock matrix.
-//  (7)  To calculate the eigenvectors (orbitals) and eigenvalues (energies) of the Fock matrix. 
+//  (7)  To calculate the eigenvectors (orbitals) and eigenvalues (energies) of the Fock matrix.
 //  (8)  To restore the eigenvectors in the original non-orthonormal basis.
 //  (9)  To use the new eigenvectors to (re)build up the density matrix.
 //  (10) To use the new density matrix to (re)build the Fock matrix.
@@ -75,7 +61,7 @@ void algorithm::scf::roothaan_equation_solver(array &h_matrix, array &s_matrix, 
 //  (12) To repeat the process until reach the given energy convergence criteria.
     scf_energy.insert(std::pair<unsigned int, double>(iteration, get_energy(p_matrix, h_matrix, f_matrix)));   // (5)
     s_matrix.array::orthonormalize(f_matrix);                                                                  // (6)
-    f_matrix.array::save_eigens_to(f_eigenvalues, f_eigenvectors);                                             // (7)
+    f_matrix.array::eigen(f_eigenvalues, f_eigenvectors);                                             // (7)
     s_matrix.array::restore_original_basis_of(f_eigenvectors);                                                 // (8)
     build_density_matrix(f_eigenvectors, p_matrix);                                                            // (9)
     update_fock_matrix(f_matrix, h_matrix, p_matrix, v_matrix);                                                // (10)
@@ -83,7 +69,7 @@ void algorithm::scf::roothaan_equation_solver(array &h_matrix, array &s_matrix, 
 //  SCF iteration 2:
     scf_energy.insert(std::pair<unsigned int, double>(++iteration, get_energy(p_matrix, h_matrix, f_matrix))); // (11)
     s_matrix.array::orthonormalize(f_matrix);
-    f_matrix.array::save_eigens_to(f_eigenvalues, f_eigenvectors);
+    f_matrix.array::eigen(f_eigenvalues, f_eigenvectors);
     s_matrix.array::restore_original_basis_of(f_eigenvectors);
     build_density_matrix(f_eigenvectors, p_matrix);
     update_fock_matrix(f_matrix, h_matrix, p_matrix, v_matrix);
@@ -97,7 +83,7 @@ void algorithm::scf::roothaan_equation_solver(array &h_matrix, array &s_matrix, 
         std::cout << "iter = " << iteration << ", energy = " << scf_energy[iteration] << std::endl;
 //
         s_matrix.array::orthonormalize(f_matrix);
-        f_matrix.array::save_eigens_to(f_eigenvalues, f_eigenvectors);
+        f_matrix.array::eigen(f_eigenvalues, f_eigenvectors);
         s_matrix.array::restore_original_basis_of(f_eigenvectors);
         build_density_matrix(f_eigenvectors, p_matrix);
         update_fock_matrix(f_matrix, h_matrix, p_matrix, v_matrix);
@@ -133,7 +119,7 @@ void algorithm::scf::roothaan_equation_solver(array &h_matrix, array &s_matrix, 
                     p_matrix.array::set_name("Unconverged density matrix");
                 }
                 break;
-                case true:          
+                case true:
                 {
                     f_matrix.array::set_name("Converged Fock matrix");
                     f_eigenvectors.array::set_name("Converged wavefunction matrix");

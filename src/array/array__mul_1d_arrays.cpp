@@ -12,5 +12,5 @@
 //
 inline void mul_1d_arrays(array &A, const double &b)
 {
-	cblas_dscal(A.sizeof_row, b, A.user_1d_array, 1);
+	cblas_dscal(A.rank1, b, A.data1, 1);
 };

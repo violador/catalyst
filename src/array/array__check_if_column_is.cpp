@@ -18,9 +18,9 @@
 //
 bool array::check_if_column_is(const unsigned int &option, const unsigned int &j)
 {
-    if(is_2d_array)
+    if(is_2d())
     {
-        if((j > 0) && (j <= sizeof_column))
+        if((j > 0) && (j <= rank2))
         {
             switch(option)
             {

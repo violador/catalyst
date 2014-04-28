@@ -8,5 +8,5 @@
 //
 inline bool &is_constant()
 {
-	return is_const_array;
+	return constant;
 };

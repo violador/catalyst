@@ -5,14 +5,14 @@
 //
 /// @return A @c double type number.
 //
-inline double &operator ()(const unsigned int &i)
+inline double &operator ()(const unsigned int &i) const
 {
 //
 /// @warning This function do not checks the array bounds.
 ///          If the given element is out of range, it
 ///          throws the standard C/C++ out of range error.
 //
-	return user_1d_array[i - 1];
+	return data1[i - 1];
 };
 //
 //
@@ -33,7 +33,7 @@ inline void operator ()(const unsigned int &i,
 	switch(is_okay())
 	{
 		case true:
-		user_1d_array[i - 1] = value;
+		data1[i - 1] = value;
 		return;
 	}
 };
@@ -46,14 +46,14 @@ inline void operator ()(const unsigned int &i,
 /// @return A @c double type number.
 //
 inline double &operator ()(const unsigned int &i,
-                           const unsigned int &j)
+                           const unsigned int &j) const
 {
 //
 /// @warning This function do not checks the array bounds.
 ///          If the given element is out of range, it
 ///          throws the standard C/C++ out of range error.
 //
-	return user_2d_array[(i - 1)*sizeof_row + (j - 1)];
+	return data2[(i - 1)*rank1 + (j - 1)];
 };
 //
 //
@@ -75,7 +75,7 @@ inline void operator ()(const unsigned int &i,
 	switch(is_okay())
 	{
 		case true:
-		user_2d_array[(i - 1)*sizeof_row + (j - 1)] = value;
+		data2[(i - 1)*rank1 + (j - 1)] = value;
 		return;
 	}
 };
@@ -89,14 +89,14 @@ inline void operator ()(const unsigned int &i,
 //
 inline double &operator ()(const unsigned int &i,
                            const unsigned int &j,
-                           const unsigned int &m)
+                           const unsigned int &m) const
 {
 //
 /// @warning This function do not checks the array bounds.
 ///          If the given element is out of range, it
 ///          throws the standard C/C++ out of range error.
 //
-	return user_3d_array[i - 1][j - 1][m - 1];
+	return data3[i - 1][j - 1][m - 1];
 };
 //
 //
@@ -120,7 +120,7 @@ inline void operator ()(const unsigned int &i,
 	switch(is_okay())
 	{
 		case true:
-		user_3d_array[i - 1][j - 1][m - 1] = value;
+		data3[i - 1][j - 1][m - 1] = value;
 		return;
 	}
 };
@@ -135,14 +135,14 @@ inline void operator ()(const unsigned int &i,
 inline double &operator ()(const unsigned int &i,
                            const unsigned int &j,
                            const unsigned int &m,
-                           const unsigned int &n)
+                           const unsigned int &n) const
 {
 //
 /// @warning This function do not checks the array bounds.
 ///          If the given element is out of range, it
 ///          throws the standard C/C++ out of range error.
 //
-	return user_4d_array[i - 1][j - 1][m - 1][n - 1];
+	return data4[i - 1][j - 1][m - 1][n - 1];
 };
 //
 //
@@ -167,7 +167,7 @@ inline void operator ()(const unsigned int &i,
 	switch(is_okay())
 	{
 		case true:
-		user_4d_array[i - 1][j - 1][m - 1][n - 1] = value;
+		data4[i - 1][j - 1][m - 1][n - 1] = value;
 		return;
 	}
 };

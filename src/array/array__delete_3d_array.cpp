@@ -9,14 +9,14 @@
 inline void delete_3d_array()
 {
 	#pragma omp for schedule(static) nowait
-	for(unsigned int i = 0; i < sizeof_row; ++i)
+	for(unsigned int i = 0; i < rank1; ++i)
 	{
-		for(unsigned int j = 0; j < sizeof_column; ++j)
+		for(unsigned int j = 0; j < rank2; ++j)
 		{
-			delete[] user_3d_array[i][j];
+			delete[] data3[i][j];
 		}
-		delete[] user_3d_array[i];
+		delete[] data3[i];
 	}
-	delete[] user_3d_array;
-	user_3d_array = NULL;
+	delete[] data3;
+	data3 = NULL;
 };

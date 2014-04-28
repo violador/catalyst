@@ -9,5 +9,5 @@
 //
 inline bool is_2d() const
 {
-	return (user_2d_array != NULL);
+	return (data2 != NULL);
 };

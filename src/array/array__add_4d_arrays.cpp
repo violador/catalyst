@@ -13,15 +13,15 @@
 inline void add_4d_arrays(array &A, const double &b)
 {
 	#pragma omp for schedule(static)
-	for(unsigned int i = 0; i < A.sizeof_row; ++i)
+	for(unsigned int i = 0; i < A.rank1; ++i)
 	{
-		for(unsigned int j = 0; j < A.sizeof_column; ++j)
+		for(unsigned int j = 0; j < A.rank2; ++j)
 		{
-			for(unsigned int m = 0; m < A.sizeof_1st_layer; ++m)
+			for(unsigned int m = 0; m < A.rank3; ++m)
 			{
-				for(unsigned int n = 0; n < A.sizeof_2nd_layer; ++n)
+				for(unsigned int n = 0; n < A.rank4; ++n)
 				{
-					A.user_4d_array[i][j][m][n] += b;
+					A.data4[i][j][m][n] += b;
 				}
 			}
 		}
@@ -42,26 +42,26 @@ inline void add_4d_arrays(array &A, const double &b)
 //
 inline void add_4d_arrays(array &A, const array &B)
 {
-	switch(A.sizeof_row == B.sizeof_row
-	       && A.sizeof_column == B.sizeof_column
-	       && A.sizeof_1st_layer == B.sizeof_1st_layer
-	       && A.sizeof_2nd_layer == B.sizeof_2nd_layer)
+	switch(A.rank1 == B.rank1
+	       && A.rank2 == B.rank2
+	       && A.rank3 == B.rank3
+	       && A.rank4 == B.rank4)
 	{
 		case true:
 		#pragma omp for schedule(static)
-		for(unsigned int i = 0; i < A.sizeof_row; ++i)
+		for(unsigned int i = 0; i < A.rank1; ++i)
 		{
-			for(unsigned int j = 0; j < A.sizeof_column; ++j)
+			for(unsigned int j = 0; j < A.rank2; ++j)
 			{
-				for(unsigned int m = 0; m < A.sizeof_1st_layer; ++m)
+				for(unsigned int m = 0; m < A.rank3; ++m)
 				{
-					for(unsigned int n = 0; n < A.sizeof_2nd_layer; ++n)
+					for(unsigned int n = 0; n < A.rank4; ++n)
 					{
-						A.user_4d_array[i][j][m][n] += B.user_4d_array[i][j][m][n];
+						A.data4[i][j][m][n] += B.data4[i][j][m][n];
 					}
 				}
 			}
 		}
-		break;
+		return;
 	}
 };

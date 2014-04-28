@@ -68,6 +68,5 @@ void log_file_handler::init_log_file()
 				 << tools::kB(config -> my_size())
 				 << " kB"
 				 << "\n" << std::endl;
-		return;
 	}
 }

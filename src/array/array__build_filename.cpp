@@ -10,6 +10,6 @@
 inline std::string build_filename() const
 {
 	return "array"
-	       + tools::convert<std::string>(array_id)
+	       + tools::convert<std::string>(data_id)
 	       + ".bin";
 };

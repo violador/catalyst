@@ -9,18 +9,18 @@
 inline void delete_4d_array()
 {
 	#pragma omp for schedule(static) nowait
-	for(unsigned int i = 0; i < sizeof_row; ++i)
+	for(unsigned int i = 0; i < rank1; ++i)
 	{
-		for(unsigned int j = 0; j < sizeof_column; ++j)
+		for(unsigned int j = 0; j < rank2; ++j)
 		{
-			for(unsigned int m = 0; m < sizeof_column; ++m)
+			for(unsigned int m = 0; m < rank3; ++m)
 			{
-				delete[] user_4d_array[i][j][m];
+				delete[] data4[i][j][m];
 			}
-			delete[] user_4d_array[i][j];
+			delete[] data4[i][j];
 		}
-		delete[] user_4d_array[i];
+		delete[] data4[i];
 	}
-	delete[] user_4d_array;
-	user_4d_array = NULL;
+	delete[] data4;
+	data4 = NULL;
 };

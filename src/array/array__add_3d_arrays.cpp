@@ -13,13 +13,13 @@
 inline void add_3d_arrays(array &A, const double &b)
 {
 	#pragma omp for schedule(static) nowait
-	for(unsigned int i = 0; i < A.sizeof_row; ++i)
+	for(unsigned int i = 0; i < A.rank1; ++i)
 	{
-		for(unsigned int j = 0; j < A.sizeof_column; ++j)
+		for(unsigned int j = 0; j < A.rank2; ++j)
 		{
-			for(unsigned int m = 0; m < A.sizeof_1st_layer; ++m)
+			for(unsigned int m = 0; m < A.rank3; ++m)
 			{
-				A.user_3d_array[i][j][m] += b;
+				A.data3[i][j][m] += b;
 			}
 		}
 	}
@@ -39,22 +39,22 @@ inline void add_3d_arrays(array &A, const double &b)
 //
 inline void add_3d_arrays(array &A, const array &B)
 {
-	switch(A.sizeof_row == B.sizeof_row
-	       && A.sizeof_column == B.sizeof_column
-	       && A.sizeof_1st_layer == B.sizeof_1st_layer)
+	switch(A.rank1 == B.rank1
+	       && A.rank2 == B.rank2
+	       && A.rank3 == B.rank3)
 	{
 		case true:
 		#pragma omp for schedule(static) nowait
-		for(unsigned int i = 0; i < A.sizeof_row; ++i)
+		for(unsigned int i = 0; i < A.rank1; ++i)
 		{
-			for(unsigned int j = 0; j < A.sizeof_column; ++j)
+			for(unsigned int j = 0; j < A.rank2; ++j)
 			{
-				for(unsigned int m = 0; m < A.sizeof_1st_layer; ++m)
+				for(unsigned int m = 0; m < A.rank3; ++m)
 				{
-					A.user_3d_array[i][j][m] += B.user_3d_array[i][j][m];
+					A.data3[i][j][m] += B.data3[i][j][m];
 				}
 			}
 		}
-		break;
+		return;
 	}
 };

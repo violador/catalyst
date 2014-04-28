@@ -17,10 +17,10 @@
 //
 inline unsigned int size_of_row()
 {
-    switch(not deleted_array)
+    switch(not is_deleted())
     {
         case false: return 0; break;
-        case  true: return sizeof_row; break;
+        case  true: return rank1; break;
     }
 };
 //
@@ -28,10 +28,10 @@ inline unsigned int size_of_row()
 //
 inline unsigned int size_of_column()
 {
-    switch(not deleted_array)
+    switch(not is_deleted())
     {
         case false: return 0; break;
-        case  true: return sizeof_column; break;
+        case  true: return rank2; break;
     }
 };
 //
@@ -39,10 +39,10 @@ inline unsigned int size_of_column()
 //
 inline unsigned int size_of_1st_layer()
 {
-    switch(not deleted_array)
+    switch(not is_deleted())
     {
         case false: return 0; break;
-        case  true: return sizeof_1st_layer; break;
+        case  true: return rank3; break;
     }
 };
 //
@@ -50,9 +50,9 @@ inline unsigned int size_of_1st_layer()
 //
 inline unsigned int size_of_2nd_layer()
 {
-    switch(not deleted_array)
+    switch(not is_deleted())
     {
         case false: return 0; break;
-        case  true: return sizeof_2nd_layer; break;
+        case  true: return rank4; break;
     }
 };

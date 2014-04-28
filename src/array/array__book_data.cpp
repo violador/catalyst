@@ -28,7 +28,7 @@ void array::book_data()
 	{
 		#pragma omp section
 		{
-			switch(is_1d_array and (not deleted_array))
+			switch(is_1d() and (not is_deleted()))
 			{
 				case true:
 				FILE *file = NULL;
@@ -39,7 +39,7 @@ void array::book_data()
 		}
 		#pragma omp section
 		{
-			switch(is_2d_array and (not deleted_array))
+			switch(is_2d() and (not is_deleted()))
 			{
 				case true:
 				FILE *file = NULL;
@@ -50,18 +50,18 @@ void array::book_data()
 		}
 		#pragma omp section
 		{
-			switch(is_3d_array and (not deleted_array))
+			switch(is_3d() and (not is_deleted()))
 			{
 				case true:
 				std::fstream file;
 				input.file_system::open_bin_output(file);
-				for(unsigned int i = 0; i < sizeof_row; ++i)
+				for(unsigned int i = 0; i < rank1; ++i)
 				{
-					for(unsigned int j = 0; j < sizeof_column; ++j)
+					for(unsigned int j = 0; j < rank2; ++j)
 					{
-						for(unsigned int m = 0; m < sizeof_1st_layer; ++m)
+						for(unsigned int m = 0; m < rank3; ++m)
 						{
-							file.std::fstream::write((char*) &user_3d_array[i][j][m],
+							file.std::fstream::write((char*) &data3[i][j][m],
 																	   sizeof(double));
 						}
 					}
@@ -72,20 +72,20 @@ void array::book_data()
 		}
 		#pragma omp section
 		{
-			switch(is_4d_array and (not deleted_array))
+			switch(is_4d() and (not is_deleted()))
 			{
 				case true:
 				std::fstream file;
 				input.file_system::open_bin_output(file);
-				for(unsigned int i = 0; i < sizeof_row; ++i)
+				for(unsigned int i = 0; i < rank1; ++i)
 				{
-					for(unsigned int j = 0; j < sizeof_column; ++j)
+					for(unsigned int j = 0; j < rank2; ++j)
 					{
-						for(unsigned int m = 0; m < sizeof_1st_layer; ++m)
+						for(unsigned int m = 0; m < rank3; ++m)
 						{
-							for(unsigned int n = 0; n < sizeof_2nd_layer; ++n)
+							for(unsigned int n = 0; n < rank4; ++n)
 							{
-								file.std::fstream::write((char*) &user_4d_array[i][j][m][n],
+								file.std::fstream::write((char*) &data4[i][j][m][n],
 																	 		  sizeof(double));
 							}
 						}
@@ -97,7 +97,7 @@ void array::book_data()
 		}
 	}
 	global_log::file.write_debug_msg("array::book_data(): Array ID = ",
-									 array_id,
+									 data_id,
 									 ", file = ",
 									 input.file_system::full_name());
 };

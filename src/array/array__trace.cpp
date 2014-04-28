@@ -12,10 +12,11 @@ inline double trace()
 	{
 		case true:
 		double trace = 0.0;
-		#pragma omp for schedule(static) reduction(+: trace) nowait
-		for(unsigned int i = 0; i < sizeof_row; ++i)
+		#pragma omp for schedule(static) nowait
+		for(unsigned int i = 0; i < rank1; ++i)
 		{
-			trace += user_2d_array[i*sizeof_row + i];
+			#pragma omp atomic
+			trace += data2[i*rank1 + i];
 		}
 		return trace;
 	}

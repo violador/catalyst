@@ -20,7 +20,7 @@ double array::read_temp_file(const unsigned int &i_given)
 {
     double temp_value = 0.0;
     array_file_reader.std::ifstream::open(temp_filename.c_str(), std::ofstream::binary);
-    for(unsigned int i = 0; i < sizeof_row; i++)
+    for(unsigned int i = 0; i < rank1; i++)
     {
 //
         array_file_reader.std::ifstream::read((char*) &temp_value, sizeof(double));
@@ -33,7 +33,7 @@ double array::read_temp_file(const unsigned int &i_given)
     } 
     array_file_reader.std::ifstream::close();
     global_log::file.write_debug_msg("array::get(): Array ID = ",
-                                     array_id,
+                                     data_id,
                                      ", requested element not found in the temp file! Returning safe double-type null value...");
     return 0.0;
 }
@@ -45,9 +45,9 @@ double array::read_temp_file(const unsigned int &i_given,
 {
     double temp_value = 0.0;
     array_file_reader.std::ifstream::open(temp_filename.c_str(), std::ofstream::binary);
-    for(unsigned int i = 0; i < sizeof_row; i++)
+    for(unsigned int i = 0; i < rank1; i++)
     {
-        for(unsigned int j = 0; j < sizeof_column; j++)
+        for(unsigned int j = 0; j < rank2; j++)
         {
 //
             array_file_reader.std::ifstream::read((char*) &temp_value, sizeof(double));
@@ -61,7 +61,7 @@ double array::read_temp_file(const unsigned int &i_given,
     }
     array_file_reader.std::ifstream::close();
     global_log::file.write_debug_msg("array::get(): Array ID = ",
-                                     array_id,
+                                     data_id,
                                      ", requested element not found in the temp file! Returning safe double-type null value...");
     return 0.0;
 }
@@ -74,11 +74,11 @@ double array::read_temp_file(const unsigned int &i_given,
 {
     double temp_value = 0.0;
     array_file_reader.std::ifstream::open(temp_filename.c_str(), std::ofstream::binary);
-    for(unsigned int i = 0; i < sizeof_row; i++)
+    for(unsigned int i = 0; i < rank1; i++)
     {
-        for(unsigned int j = 0; j < sizeof_column; j++)
+        for(unsigned int j = 0; j < rank2; j++)
         {
-            for(unsigned int m = 0; m < sizeof_1st_layer; m++)
+            for(unsigned int m = 0; m < rank3; m++)
             {
 //
                 array_file_reader.std::ifstream::read((char*) &temp_value, sizeof(double));
@@ -93,7 +93,7 @@ double array::read_temp_file(const unsigned int &i_given,
     }
     array_file_reader.std::ifstream::close();
     global_log::file.write_debug_msg("array::get(): Array ID = ",
-                                     array_id,
+                                     data_id,
                                      ", requested element not found in the temp file! Returning safe double-type null value...");
     return 0.0;
 }
@@ -107,13 +107,13 @@ double array::read_temp_file(const unsigned int &i_given,
 {
     double temp_value = 0.0;
     array_file_reader.std::ifstream::open(temp_filename.c_str(), std::ofstream::binary);
-    for(unsigned int i = 0; i < sizeof_row; i++)
+    for(unsigned int i = 0; i < rank1; i++)
     {
-        for(unsigned int j = 0; j < sizeof_column; j++)
+        for(unsigned int j = 0; j < rank2; j++)
         {
-            for(unsigned int m = 0; m < sizeof_1st_layer; m++)
+            for(unsigned int m = 0; m < rank3; m++)
             {
-                for(unsigned int n = 0; n < sizeof_2nd_layer; n++)
+                for(unsigned int n = 0; n < rank4; n++)
                 {
 //
                     array_file_reader.std::ifstream::read((char*) &temp_value, sizeof(double));
@@ -132,7 +132,7 @@ double array::read_temp_file(const unsigned int &i_given,
     }
     array_file_reader.std::ifstream::close();
     global_log::file.write_debug_msg("array::get(): Array ID = ",
-                                     array_id,
+                                     data_id,
                                      ", requested element not found in the temp file! Returning safe double-type null value...");
     return 0.0;
 }

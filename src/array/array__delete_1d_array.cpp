@@ -8,6 +8,6 @@
 //
 inline void delete_1d_array()
 {
-	delete[] user_1d_array;
-	user_1d_array = NULL;
+	delete[] data1;
+	data1 = NULL;
 };

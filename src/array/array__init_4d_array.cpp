@@ -18,16 +18,16 @@ inline void init_4d_array(const unsigned int &row,
                           const unsigned int &layer1,
                           const unsigned int &layer2)
 {
-	user_4d_array = new double ***[row]();
+	data4 = new double ***[row]();
 	for(unsigned int i = 0; i < row; ++i)
 	{
-		user_4d_array[i] = new double **[column]();
+		data4[i] = new double **[column]();
 		for(unsigned int j = 0; j < column; ++j)
 		{
-			user_4d_array[i][j] = new double *[layer1]();
+			data4[i][j] = new double *[layer1]();
 			for(unsigned int m = 0; m < layer1; ++m)
 			{
-				user_4d_array[i][j][m] = new double[layer2]();
+				data4[i][j][m] = new double[layer2]();
 			}
 		}
 	}

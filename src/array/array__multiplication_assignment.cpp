@@ -25,29 +25,29 @@ void array::operator *=(const array &b)
     {
         #pragma omp section
         {
-            if(this -> is_2d_array                         // To check the A array type.
-               and b.is_1d_array                           // To check the B array type.
-               and (this -> sizeof_column == b.sizeof_row) // To check if A column size fits the B row size.
-               and (not this -> is_const_array)            // To check if A has permision to be rewritten.
-               and (not this -> deleted_array))            // To check if A is not a deleted array.
+            if(this -> is_2d()                         // To check the A array type.
+               and b.is_1d()                           // To check the B array type.
+               and (this -> rank2 == b.rank1) // To check if A column size fits the B row size.
+               and (not this -> constant)            // To check if A has permision to be rewritten.
+               and (not this -> is_deleted()))            // To check if A is not a deleted array.
             {
-                double *array_buffer = new double[(this -> sizeof_row)*(this -> sizeof_column)];
+                double *array_buffer = new double[(this -> rank1)*(this -> rank2)];
                 memcpy(array_buffer,
-                       this -> user_2d_array,
-                       (this -> sizeof_row)*(this -> sizeof_column)*sizeof this -> user_2d_array[0]);
-                resize(this -> sizeof_row, 1);
+                       this -> data2,
+                       (this -> rank1)*(this -> rank2)*sizeof this -> data2[0]);
+                resize(this -> rank1, 1);
 //
                 cblas_dgemv(CblasRowMajor,
                             CblasNoTrans,
-                            this -> sizeof_row,
-                            this -> sizeof_column,
+                            this -> rank1,
+                            this -> rank2,
                             1.0,
                             array_buffer,
                             1,
-                            b.user_1d_array,
+                            b.data1,
                             1,
                             1.0,
-                            user_2d_array,
+                            data2,
                             1);
 //
                 delete[] array_buffer;
@@ -55,32 +55,32 @@ void array::operator *=(const array &b)
         }
         #pragma omp section
         {
-            if(this -> is_2d_array                         // To check the A array type.
-               and b.is_2d_array                           // To check the B array type.
-               and (this -> sizeof_column == b.sizeof_row) // To check if A column size fits the B row size.
-               and (not this -> is_const_array)            // To check if A has permision to be rewritten.
-               and (not this -> deleted_array))            // To check if A is not a deleted array.
+            if(this -> is_2d()                         // To check the A array type.
+               and b.is_2d()                           // To check the B array type.
+               and (this -> rank2 == b.rank1) // To check if A column size fits the B row size.
+               and (not this -> constant)            // To check if A has permision to be rewritten.
+               and (not this -> is_deleted()))            // To check if A is not a deleted array.
             {
-                double *array_buffer = new double[(this -> sizeof_row)*(this -> sizeof_column)];
+                double *array_buffer = new double[(this -> rank1)*(this -> rank2)];
                 memcpy(array_buffer,
-                       this -> user_2d_array,
-                       (this -> sizeof_row)*(this -> sizeof_column)*sizeof this -> user_2d_array[0]);
-                resize(this -> sizeof_row, b.sizeof_column);
+                       this -> data2,
+                       (this -> rank1)*(this -> rank2)*sizeof this -> data2[0]);
+                resize(this -> rank1, b.rank2);
 //
                 cblas_dgemm(CblasRowMajor,
                             CblasNoTrans,
                             CblasNoTrans,
-                            this -> sizeof_row,
-                            b.sizeof_column,
-                            this -> sizeof_column,
+                            this -> rank1,
+                            b.rank2,
+                            this -> rank2,
                             1.0,
                             array_buffer,
-                            this -> sizeof_column,
-                            b.user_2d_array,
-                            b.sizeof_column,
+                            this -> rank2,
+                            b.data2,
+                            b.rank2,
                             1.0,
-                            this -> user_2d_array,
-                            this -> sizeof_column);
+                            this -> data2,
+                            this -> rank2);
 //
                 delete[] array_buffer;
             }

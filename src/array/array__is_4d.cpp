@@ -9,5 +9,5 @@
 //
 inline bool is_4d() const
 {
-	return (user_4d_array != NULL);
+	return (data4 != NULL);
 };

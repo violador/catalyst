@@ -5,14 +5,13 @@
 ///        if it is an 1D and not deleted object.
 //
 /// @return @f$ \sqrt{A^{2}_{1} + \ldots + A^{2}_{n}} @f$, where @f$ n := @f$ @c
-///         sizeof_row.
+///         rank1.
 //
 inline double norm()
 {
-	switch(is_1d() && (!is_deleted()))
+	switch(is_1d() && not_deleted())
 	{
-		case true:
-		return cblas_dnrm2(sizeof_row, user_1d_array, 1);
+		case false: return 0.0;
+		case  true: return cblas_dnrm2(rank1, data1, 1);
 	}
-	return 0.0;
 };

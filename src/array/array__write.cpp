@@ -11,7 +11,7 @@ void array::write()
 	#pragma omp critical
 	switch(config -> output_mode()
 			and true /*config -> state_of(option::logging_matrices)*/
-			and is_2d_array)
+			and is_2d())
 	{
 		case true:
 		global_log::file << "\n- ";

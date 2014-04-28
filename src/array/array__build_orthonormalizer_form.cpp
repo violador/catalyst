@@ -25,24 +25,24 @@ void array::build_orthonormalizer_form()
 //      (4) Computes the s and U.
 //      (5) Deallocates the memory for the eigen system computation.
 //      (6) Build the transformation matrix form, X.
-		gsl_matrix *U = gsl_matrix_calloc(sizeof_row, sizeof_column);                // (1)
-		gsl_vector *s = gsl_vector_calloc(sizeof_row);                               // (2)
-		gsl_eigen_symmv_workspace *work_space = gsl_eigen_symmv_alloc(4*sizeof_row); // (3)
-		gsl_eigen_symmv(&gsl_2d_view.matrix, s, U, work_space);                      // (4)
-		gsl_eigen_symmv_free(work_space);                                            // (5)
+		gsl_matrix *U = gsl_matrix_calloc(rank1, rank2);        // (1)
+		gsl_vector *s = gsl_vector_calloc(rank1);               // (2)
+		work_space = gsl_eigen_symmv_alloc(4*rank1);            // (3)
+		gsl_eigen_symmv(&gsl_2d_view.matrix, s, U, work_space); // (4)
+		gsl_eigen_symmv_free(work_space);                       // (5)
 		gsl_matrix_set_zero(&gsl_2d_view.matrix);
 		#pragma omp for schedule(static) nowait
-		for(unsigned int i = 0; i < sizeof_row; ++i)
+		for(unsigned int i = 0; i < rank1; ++i)
 		{
-			for(unsigned int j = 0; j < sizeof_column; ++j)
+			for(unsigned int j = 0; j < rank2; ++j)
 			{
-				user_2d_array[i*sizeof_row + j] = U -> data[i*U -> tda + j]
-				/std::sqrt(s -> data[j*s -> stride]);                                // (6)
+				data2[i*rank1 + j] = U -> data[i*U -> tda + j]
+				/std::sqrt(s -> data[j*s -> stride]);           // (6)
 			}
 		}
 		gsl_matrix_free(U);
 		gsl_vector_free(s);
-		is_const_array = true;
+		constant = true;
 		return;
 	}
 }

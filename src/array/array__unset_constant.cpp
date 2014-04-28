@@ -8,8 +8,8 @@
 //
 inline void unset_constant()
 {
-	switch(not deleted_array and is_const_array)
+	switch(not is_deleted() and constant)
 	{
-		case true: is_const_array = false; break;
+		case true: constant = false; break;
 	}
 };

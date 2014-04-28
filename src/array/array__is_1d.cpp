@@ -9,5 +9,5 @@
 //
 inline bool is_1d() const
 {
-	return (user_1d_array != NULL);
+	return (data1 != NULL);
 };

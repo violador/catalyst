@@ -9,6 +9,6 @@
 //
 inline void delete_2d_array()
 {
-	delete[] user_2d_array;
-	user_2d_array = NULL;
+	delete[] data2;
+	data2 = NULL;
 };

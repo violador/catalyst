@@ -13,8 +13,7 @@ inline void create_array(const unsigned int &row)
 	switch(is_deleted())
 	{
 		case true:
-		//is_deleted() = false;
-		sizeof_row = row;
+		rank1 = row;
 		init_1d_array(row);
 		return;
 	}
@@ -38,11 +37,9 @@ inline void create_array(const unsigned int &row,
 	switch(is_deleted())
 	{
 		case true:
-		//is_deleted() = false;
-		sizeof_row = row;
-		sizeof_column = column;
+		rank1 = row;
+		rank2 = column;
 		init_2d_array(row, column);
-		//row == column? is_square_array = true : is_square_array = false;
 		return;
 	}
 };
@@ -68,10 +65,9 @@ inline void create_array(const unsigned int &row,
 	switch(is_deleted())
 	{
 		case true:
-		//is_deleted() = false;
-		sizeof_row = row;
-		sizeof_column = column;
-		sizeof_1st_layer = layer;
+		rank1 = row;
+		rank2 = column;
+		rank3 = layer;
 		init_3d_array(row, column, layer);
 		return;
 	}
@@ -101,11 +97,10 @@ inline void create_array(const unsigned int &row,
 	switch(is_deleted())
 	{
 		case true:
-		//is_deleted() = false;
-		sizeof_row = row;
-		sizeof_column = column;
-		sizeof_1st_layer = layer1;
-		sizeof_2nd_layer = layer2;
+		rank1 = row;
+		rank2 = column;
+		rank3 = layer1;
+		rank4 = layer2;
 		init_4d_array(row, column, layer1, layer2);
 		return;
 	}

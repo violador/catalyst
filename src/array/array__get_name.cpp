@@ -7,5 +7,5 @@
 //
 inline std::string &get_name()
 {
-	return array_name;
+	return name;
 };

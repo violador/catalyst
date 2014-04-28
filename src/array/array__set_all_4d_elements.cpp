@@ -15,15 +15,15 @@ inline void set_all_4d_elements(const double &value)
 	{
 		case true:
 		#pragma omp for schedule(static) nowait
-		for(unsigned int i = 0; i < sizeof_row; ++i)
+		for(unsigned int i = 0; i < rank1; ++i)
 		{
-			for(unsigned int j = 0; j < sizeof_column; ++j)
+			for(unsigned int j = 0; j < rank2; ++j)
 			{
-				for(unsigned int m = 0; m < sizeof_1st_layer; ++m)
+				for(unsigned int m = 0; m < rank3; ++m)
 				{
-					for(unsigned int n = 0; n < sizeof_2nd_layer; ++n)
+					for(unsigned int n = 0; n < rank4; ++n)
 					{
-						user_4d_array[i][j][m][n] = value;
+						data4[i][j][m][n] = value;
 					}
 				}
 			}

@@ -2,9 +2,12 @@
 //
 //
 //
-/// @brief Works on not deleted arrays and deallocates the current
-///        memory used, resets the internal properties and turns @c
-///        true the private @c deleted_array data member.
+/// @brief Deallocates the current memory used to store the array. This
+///        function do not replace the class destructor which will be
+///        invoked by default at the right moment but prevents the user
+///        to access the object internal content since some of them may
+///        be unavailable. If the object is needed after while the user
+///        should invoke the array::create() member first.
 //
 /// @return None.
 //
@@ -27,6 +30,7 @@ void array::delete_array()
 			{
 				case true:
 				delete_2d_array();
+				gsl_eigen_symmv_free(work_space);
 				break;
 			}
 		}
@@ -48,16 +52,5 @@ void array::delete_array()
 				break;
 			}
 		}
-/*
-		#pragma omp section
-		{
-			reset_properties();
-			deleted_array = true;
-		}
-*/
 	}
-//
-/// @note This function do not replace the class destructor which
-///       will be invoked by default at the right moment.
-//
 }

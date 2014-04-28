@@ -9,5 +9,5 @@
 //
 inline bool is_3d() const
 {
-	return (user_3d_array != NULL);
+	return (data3 != NULL);
 };

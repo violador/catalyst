@@ -8,8 +8,8 @@
 //
 inline void set_name(const std::string &given_name)
 {
-	switch(not deleted_array)
+	switch(not is_deleted())
 	{
-		case true: array_name = given_name; break;
+		case true: name = given_name; break;
 	}
 };

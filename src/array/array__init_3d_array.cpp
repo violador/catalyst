@@ -15,13 +15,13 @@ inline void init_3d_array(const unsigned int &row,
                           const unsigned int &column,
                           const unsigned int &layer)
 {
-	user_3d_array = new double **[row]();
+	data3 = new double **[row]();
 	for(unsigned int i = 0; i < row; ++i)
 	{
-		user_3d_array[i] = new double *[column]();
+		data3[i] = new double *[column]();
 		for(unsigned int j = 0; j < column; ++j)
 		{
-			user_3d_array[i][j] = new double [layer]();
+			data3[i][j] = new double [layer]();
 		}
 	}
 };

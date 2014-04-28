@@ -3,13 +3,13 @@
 //
 inline void resize(const unsigned int &given_row)
 {
-	switch(sizeof_row == given_row)
+	switch(rank1 == given_row)
 	{
-		case true: return; break;
+		case true: return;
 	}
 	delete_array();
 	init_1d_array(given_row);
-	sizeof_row = given_row;
+	rank1 = given_row;
 };
 //
 //
@@ -17,10 +17,10 @@ inline void resize(const unsigned int &given_row)
 inline void resize(const unsigned int &given_row,
                    const unsigned int &given_column)
 {
-	switch(sizeof_row == given_row
-	       && sizeof_column == given_column)
+	switch(rank1 == given_row
+	       && rank2 == given_column)
 	{
-		case true: return; break;
+		case true: return;
 	}
 	#pragma omp sections nowait
 	{
@@ -32,8 +32,8 @@ inline void resize(const unsigned int &given_row,
 		}
 		#pragma omp section
 		{
-			sizeof_row = given_row;
-			sizeof_column = given_column;
+			rank1 = given_row;
+			rank2 = given_column;
 		}
 	}
 };
@@ -44,11 +44,11 @@ inline void resize(const unsigned int &given_row,
                    const unsigned int &given_column,
                    const unsigned int &given_1st_layer)
 {
-	switch(sizeof_row == given_row
-	       && sizeof_column == given_column
-	       && sizeof_1st_layer == given_1st_layer)
+	switch(rank1 == given_row
+	       && rank2 == given_column
+	       && rank3 == given_1st_layer)
 	{
-		case true: return; break;
+		case true: return;
 	}
 	#pragma omp sections nowait
 	{
@@ -61,9 +61,9 @@ inline void resize(const unsigned int &given_row,
 		}
 		#pragma omp section
 		{
-			sizeof_row = given_row;
-			sizeof_column = given_column;
-			sizeof_1st_layer = given_1st_layer;
+			rank1 = given_row;
+			rank2 = given_column;
+			rank3 = given_1st_layer;
 		}
 	}
 };
@@ -75,12 +75,12 @@ inline void resize(const unsigned int &given_row,
                    const unsigned int &given_1st_layer,
                    const unsigned int &given_2nd_layer)
 {
-	switch(sizeof_row == given_row
-	       && sizeof_column == given_column
-	       && sizeof_1st_layer == given_1st_layer
-	       && sizeof_2nd_layer == given_2nd_layer)
+	switch(rank1 == given_row
+	       && rank2 == given_column
+	       && rank3 == given_1st_layer
+	       && rank4 == given_2nd_layer)
 	{
-		case true: return; break;
+		case true: return;
 	}
 	#pragma omp sections nowait
 	{
@@ -94,10 +94,10 @@ inline void resize(const unsigned int &given_row,
 		}
 		#pragma omp section
 		{
-			sizeof_row = given_row;
-			sizeof_column = given_column;
-			sizeof_1st_layer = given_1st_layer;
-			sizeof_2nd_layer = given_2nd_layer;
+			rank1 = given_row;
+			rank2 = given_column;
+			rank3 = given_1st_layer;
+			rank4 = given_2nd_layer;
 		}
 	}
 };

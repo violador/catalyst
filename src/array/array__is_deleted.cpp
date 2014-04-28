@@ -8,7 +8,7 @@
 //
 inline bool is_deleted() const
 {
-	return ((user_1d_array == NULL) && (user_2d_array == NULL)
-	                                && (user_3d_array == NULL)
-									&& (user_4d_array == NULL));
+	return ((data1 == NULL) && (data2 == NULL)
+	                        && (data3 == NULL)
+							&& (data4 == NULL));
 };

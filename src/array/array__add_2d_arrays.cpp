@@ -28,15 +28,15 @@ inline void add_2d_arrays(array &A, const double &b)
 //
 inline void add_2d_arrays(array &A, const array &B)
 {
-	switch(A.sizeof_row == B.sizeof_row
-	       && A.sizeof_column == B.sizeof_column)
+	switch(A.rank1 == B.rank1
+	       && A.rank2 == B.rank2)
 	{
 		case true:
-		cblas_daxpy(A.sizeof_row*A.sizeof_column,
+		cblas_daxpy(A.rank1*A.rank2,
 		            1.0,
-		            B.user_2d_array,
+		            B.data2,
 		            1,
-		            A.user_2d_array,
+		            A.data2,
 		            1);
 		break;
 	}
