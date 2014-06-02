@@ -1,6 +1,6 @@
 // ../src/include/molecular_system.hpp -------------------------------------------------- //
 //
-// File author: Humberto Jr. 
+// File author: Humberto Jr.
 //
 // Date: 06/2013
 //
@@ -36,12 +36,12 @@ class molecular_system
     unsigned int total_electrons; // The total number of electrons.
     unsigned int total_atoms;     // The total number of atoms.
     array atom_type;              // The type of each atom (Z) as a non negative integral type.
-    array position_x;             // The atom position in the x axis.
-    array position_y;             // The atom position in the y axis.
-    array position_z;             // The atom position in the z axis.
-    array velocity_x;             // The atom velocity in the x axis.
-    array velocity_y;             // The atom velocity in the y axis.
-    array velocity_z;             // The atom velocity in the z axis.
+    array<double, 1> position_x;             // The atom position in the x axis.
+    array<double, 1> position_y;             // The atom position in the y axis.
+    array<double, 1> position_z;             // The atom position in the z axis.
+    array<double, 1> velocity_x;             // The atom velocity in the x axis.
+    array<double, 1> velocity_y;             // The atom velocity in the y axis.
+    array<double, 1> velocity_z;             // The atom velocity in the z axis.
     double total_mass;            // The molecular system mass.
     double charge;                // The molecular system charge.
     double nuclear_repulsion;     // The nuclei-nuclei repulsion energy.
@@ -62,10 +62,10 @@ class molecular_system
 //
 //  get_total_atoms(): To count the number of lines in a given input file,
 //                     i.e. the number of atoms.
-    unsigned int get_total_atoms(const std::string &input_filename); 
+    unsigned int get_total_atoms(const std::string &input_filename);
 //
 //  read_geometry(): To read the molecular system's geometry from a given ifstream file.
-    void read_input_file(const std::string &input_filename); 
+    void read_input_file(const std::string &input_filename);
 //
 //  get_system_com(): To calculate the system center of mass.
     void get_system_com();
@@ -77,7 +77,7 @@ class molecular_system
     void report_input_reading();
 //
 //  get_wavefunction(): To start the calculation of all ab-initio datas. Caution: The usage of this member function
-//                      may be the most expensive part of the entire runtime. 
+//                      may be the most expensive part of the entire runtime.
     void get_wavefunction();
 //
     public:
@@ -105,7 +105,7 @@ class molecular_system
     #include "molecular_system__nuclear_repulsion_energy.cpp"
     #include "molecular_system__electronic_energy.cpp"
     #include "molecular_system__name.cpp"
-    #include "molecular_system__set_task_number.cpp" 
+    #include "molecular_system__set_task_number.cpp"
     #include "molecular_system__set_name.cpp"
     #include "molecular_system__set_system_com.cpp"
     #include "molecular_system__density.cpp"

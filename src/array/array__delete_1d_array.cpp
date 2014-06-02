@@ -2,12 +2,15 @@
 //
 //
 /// @brief A help function used to deallocate the current
-///        memory for a 1D array.
+///        memory for a 1D array and to set @c rank1 @c =
+///        0.
 //
-/// @return None.
+/// @return @c EXIT_SUCCESS.
 //
-inline void delete_1d_array()
+inline int delete_1d_array()
 {
-	delete[] data1;
-	data1 = NULL;
+	delete[] data;
+	data = NULL;
+	rank1 = 0;
+	return EXIT_SUCCESS;
 };

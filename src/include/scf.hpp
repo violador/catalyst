@@ -1,14 +1,14 @@
 // ../src/include/scf.hpp --------------------------------------------------------------- //
 //
-// File author: Humberto Jr. 
+// File author: Humberto Jr.
 //
 // Date: 08/2013
 //
 // Description: The SCF class defines the type of variables that handle the self-
-//              consistent field algorithm for a given Core-Hamiltonian, overlap 
+//              consistent field algorithm for a given Core-Hamiltonian, overlap
 //              and two electrons interaction matrix of array type or in a file.
 //
-// References: 
+// References:
 //
 // ------------------------------------------------------------------------------------- //
 #ifndef __SCF_HPP
@@ -31,36 +31,36 @@ namespace algorithm
 //
 //      Declaring the data members:
         settings *config;                          // An empty object to the settings class.
-        bool scf_converged;                        // To store the convergence state (converged/true or not converged/false).  
+        bool scf_converged;                        // To store the convergence state (converged/true or not converged/false).
         bool scf_iterations_ready;                 // To store the current iterations state (running/true or not running/false).
         unsigned int iteration;                    // To store the number of iterations.
         std::map<unsigned int, double> scf_energy; // To store the SCF energy for each iteration.
-        array p_matrix;                            // To store the density matrix.
-        array f_matrix;                            // To store the Fock matrix.
-        array f_eigenvalues;                       // To store the Fock eigenvalues.
-        array f_eigenvectors;                      // To store the Fock eigenvectors.
-        timer iterations_time;                     // 
+        array<double, 2> p_matrix;                            // To store the density matrix.
+        array<double, 2> f_matrix;                            // To store the Fock matrix.
+        array<double, 1> f_eigenvalues;                       // To store the Fock eigenvalues.
+        array<double, 2> f_eigenvectors;                      // To store the Fock eigenvectors.
+        timer iterations_time;                     //
 //
 //      roothaan_equation_solver(): Given a Core-Hamiltonian matrix, an overlap matrix and a
 //                                  multidimensional array with all two electron interaction
 //                                  terms; this function iterates until reach the self cons-
-//                                  istence. And stores the resulting Fock matrix, density 
+//                                  istence. And stores the resulting Fock matrix, density
 //                                  matrix, Fock eigenvectors (the orbitals) and the Fock e-
 //                                  igenvalues (the energies) in the data members.
         void roothaan_equation_solver(array &core_hamiltonian,
                                       array &overlap,
                                       array &two_electrons_interaction);
 //
-//      build_density_matrix(): To build up a density matrix from a set of given Fock matrix 
+//      build_density_matrix(): To build up a density matrix from a set of given Fock matrix
 //                              eigenvectors (also a matrix).
         void build_density_matrix(array &f_eigenvectors, array &p_matrix);
 //
 //      update_fock_matrix(): Given a Core-Hamiltonian matrix, a density matrix, a multidime-
 //                            nsional array with all two electrons interaction terms; this f-
 //                            unction update the Fock matrix.
-        void update_fock_matrix(array &f_matrix, 
-                                array &h_matrix, 
-                                array &p_matrix, 
+        void update_fock_matrix(array &f_matrix,
+                                array &h_matrix,
+                                array &p_matrix,
                                 array &v_matrix2);
 //
 //      get_energy(): To calculate the energy using the density matrix, the Core-Hamiltonian

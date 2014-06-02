@@ -1,43 +1,51 @@
 //
 //
 //
-/// @param [out] A An 1D and non-constant array.
+/// @param [out] output A previously declared 1D array object.
 //
-/// @param [in] b A real number.
+/// @param [in] input A number of the same type of the current array.
 //
-/// @brief A private help function to add the factor @c b to all
-///        the elements of the given @c A array, using the GSL
-///        library.
+/// @brief A private member function to add the given constant @c input to all
+///        the elements.
 //
 /// @return None.
 //
-inline void add_1d_arrays(array &A, const double &b)
+inline void add_1d_arrays(array<data_type, 1> &output, const data_type &input)
 {
-	gsl_vector_add_constant(&A.gsl_1d_view.vector, b);
+	auto add = [&input](data_type &iter)
+	{
+		iter += input;
+	};
+	std::for_each(output.data, output.data + output.rank1, add);
+	return;
 };
 //
 //
 //
-/// @param [out] A An 1D and non-constant array.
+/// @param [out] output A previously declared 1D array object.
 //
-/// @param [in] B An 1D array.
+/// @param [in] input A previously declared 1D array object.
 //
-/// @brief A private help function to add the given array @c B to
-///        the given array @c A if they are both 1D type and its
-///        dimension sizes fits, using the CBLAS library.
+/// @param [in] scale_factor A numeric data (optional).
+//
+/// @brief A private member function to add the given @c input array to
+///        the given @c output one if the first ranks fits each other.
+///        The summmation is done through the CBLAS library.
 //
 /// @return None.
 //
-inline void add_1d_arrays(array &A, const array &B)
+inline void add_1d_arrays(array<data_type, 1> &output,
+                          const array<data_type, 1> &input,
+						  const data_type scale_factor = 1.0)
 {
-	switch(A.rank1 == B.rank1)
+	switch(output.rank1 == input.rank1)
 	{
 		case true:
-		cblas_daxpy(A.rank1,
-		            1.0,
-		            B.data1,
+		cblas_daxpy(input.rank1,
+		            scale_factor,
+		            input.data,
 		            1,
-		            A.data1,
+		            output.data,
 		            1);
 		return;
 	}

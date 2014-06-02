@@ -29,11 +29,11 @@ class lcao_wavefunction
 //
 //  Declaring the data members:
     settings *config;                 //
-    array s_matrix;                   //
-    array t_matrix;                   //
-    array v_matrix1;                  //
-    array v_matrix2;                  //
-    array h_matrix;                   //
+    array<double, 2> s_matrix;                   //
+    array<double, 2> t_matrix;                   //
+    array<double, 2> v_matrix1;                  //
+    array<double, 2> v_matrix2;                  //
+    array<double, 2> h_matrix;                   //
     array *f_matrix;                  //
     array *p_matrix;                  //
     array *wavefunction;              //

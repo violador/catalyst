@@ -7,11 +7,7 @@
 ///         array is not deleted, and zero
 ///         otherwise.
 //
-inline unsigned int check_id()
+inline unsigned int &check_id()
 {
-	switch(not_deleted())
-	{
-		case false: return 0;
-		case  true: return data_id;
-	}
+	return data_id;
 };

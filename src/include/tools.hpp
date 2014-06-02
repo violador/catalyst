@@ -103,5 +103,6 @@ namespace tools
     #include "tools__proton_mass.cpp"
     #include "tools__neutron_mass.cpp"
 	#include "tools__omp_chunk.cpp"
+	#include "tools__is_null.cpp"
 };
 #endif

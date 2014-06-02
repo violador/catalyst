@@ -12,7 +12,7 @@ inline double &operator ()(const unsigned int &i) const
 ///          If the given element is out of range, it
 ///          throws the standard C/C++ out of range error.
 //
-	return data1[i - 1];
+	return data[i - 1];
 };
 //
 //
@@ -23,17 +23,17 @@ inline double &operator ()(const unsigned int &i) const
 /// @return None.
 //
 inline void operator ()(const unsigned int &i,
-                        const double &value)
+                        const double &input)
 {
 //
 /// @warning This function do not checks the array bounds.
 ///          If the given element is out of range, it
 ///          throws the standard C/C++ out of range error.
 //
-	switch(is_okay())
+	switch(data != NULL)
 	{
 		case true:
-		data1[i - 1] = value;
+		data[i - 1] = input;
 		return;
 	}
 };

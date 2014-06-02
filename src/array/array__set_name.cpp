@@ -6,10 +6,7 @@
 //
 /// @return None.
 //
-inline void set_name(const std::string &given_name)
+inline void set_name(const std::string &new_name)
 {
-	switch(not is_deleted())
-	{
-		case true: name = given_name; break;
-	}
+	name = new_name;
 };

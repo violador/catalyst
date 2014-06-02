@@ -7,9 +7,8 @@
 //
 /// @return None.
 //
-inline std::string build_filename() const
+inline std::string build_filename()
 {
-	return "array"
-	       + tools::convert<std::string>(data_id)
-	       + ".bin";
+	int id = tools::random_number<int>(time(NULL)*rank1);
+	return "array" + tools::convert<std::string>(id) + ".bin";
 };
