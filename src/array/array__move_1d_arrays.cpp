@@ -8,7 +8,7 @@ int move_1d_arrays(array<data_type, 1> &output,
 	{
 		case false:
 		{
-			output.delete_1d_array();
+			output.delete_data();
 			switch(output.init_1d_array(input.rank1))
 			{
 				case EXIT_FAILURE:

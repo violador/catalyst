@@ -1,14 +1,15 @@
 //
 //
 //
-/// @brief A private help function that uses the current
-///        array ID to build a filename used to store its
-///        content in the disk (and other applications).
+/// @brief A private help function that builds a filename with the
+///        pattern @c 'array[number]' for the current object. Where,
+///        the number is a random number generated between 0 and 10000.
 //
-/// @return None.
+/// @return A string pattern.
 //
 inline std::string build_filename()
 {
-	int id = tools::random_number<int>(time(NULL)*rank1);
-	return "array" + tools::convert<std::string>(id) + ".bin";
+	std::default_random_engine generator(time(NULL));
+	std::uniform_real_distribution<double> id(0, 10000);
+	return "array" + tools::convert<std::string>(id(generator));
 };

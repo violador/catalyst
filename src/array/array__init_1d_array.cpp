@@ -1,7 +1,7 @@
 //
 //
 //
-/// @param [in] row The first rank length.
+/// @param [in] size The first rank length.
 //
 /// @brief A help function to allocate memory for an 1D array.
 //

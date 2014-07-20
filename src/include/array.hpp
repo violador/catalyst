@@ -42,7 +42,7 @@
 //
 //
 // Class specializations:
-	#include "rank_1_array.hpp"
+	#include "array__rank_1.hpp"
 #endif
 /*
 //

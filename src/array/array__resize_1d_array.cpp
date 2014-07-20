@@ -7,9 +7,8 @@ inline int resize_1d_array(const unsigned int &new_size)
 	{
 		case false:
 		{
-			reset();
-			init_1d_array(new_size);
-			rank1 = new_size;
+			clear();
+			init_data(new_size);
 			return EXIT_SUCCESS;
 		}
 		case true:
