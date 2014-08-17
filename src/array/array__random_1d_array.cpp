@@ -2,7 +2,7 @@
 //
 //
 /// @brief A private member function to generate elements randomly,
-///        using @c time(NULL)/rank1 as seed.
+///        using @c 'time(NULL)/rank1' as seed.
 //
 /// @return @c EXIT_SUCCESS.
 //

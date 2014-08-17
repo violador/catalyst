@@ -2,7 +2,7 @@
 //
 //
 /// @brief Calls the CBLAS library to calculate the euclidean norm of the array.
-///        Rank one only.
+///        Valid for rank one arrays only.
 //
 /// @return @f$ \sqrt{A^{2}_{1} + \ldots + A^{2}_{n}} @f$, where @f$ n := @f$ @c
 ///         array::first_rank().

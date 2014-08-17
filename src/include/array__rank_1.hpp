@@ -129,6 +129,7 @@ class array<data_type, 1>
 	inline void operator ()(const unsigned int &i,
                             const data_type &input)
 	{
+		#pragma omp critical
 		data[offset(i)] = input;
 	};
 //
@@ -323,7 +324,11 @@ class array<data_type, 1>
 // Including the inline/template/public member functions
 // =====================================================
 //
-	#include "array__norm.cpp"
+	#include "array/norm.cpp"
+	#include "array/first_rank.cpp"
+	#include "array/third_rank.cpp"
+	#include "array/fourth_rank.cpp"
+	#include "array/second.rank.cpp"
 //
 // ==============================================================
 // Declaring and defining the specialized/public member functions
@@ -383,6 +388,7 @@ class array<data_type, 1>
 //
 /// @return A nonnegative integer number.
 //
+/*
 	inline short unsigned int rank() const
 	{
 		return 1;
@@ -431,17 +437,7 @@ class array<data_type, 1>
 	{
 		return 0;
 	};
-//
-//
-//
-/// @brief Returns the length of the fourth rank.
-//
-/// @return A nonnegative integer number.
-//
-	inline bool is_ready() const
-	{
-		return (data != NULL);
-	};
+	*/
 //
 //
 //
@@ -462,6 +458,7 @@ class array<data_type, 1>
 		switch(offset(i) < rank1)
 		{
 			case true:
+			#pragma omp critical
 			data[offset(i)] = input;
 			return;
 		}
@@ -485,89 +482,6 @@ class array<data_type, 1>
 			case  true: return data[offset(i)];
 		}
 	};
-//
-//
-//
-/// @param [in] input A new value for all the elements.
-//
-/// @brief Sets the given @c input in all the elements, if the array
-///        was previously initialized either by the constructor or
-///        the array::create() member function. Otherwise nothing is
-///        really done.
-//
-/// @return @c EXIT_SUCCESS or @c EXIT_FAILURE.
-//
-	inline int set_all(const data_type &input)
-	{
-		switch(data != NULL)
-		{
-			case false:
-			{
-				return EXIT_FAILURE;
-			}
-			case true:
-			{
-				std::fill(data, data_end(), input);
-				return EXIT_SUCCESS;
-			}
-		}
-	};
-//
-//
-//
-/// @brief Sets zero in all the elements, if the array was previously
-///        initialized either by the constructor or the array::create()
-///        member function. Otherwise nothing is really done.
-//
-/// @return @c EXIT_SUCCESS or @c EXIT_FAILURE.
-//
-	inline int set_zero()
-	{
-		switch(data != NULL)
-		{
-			case false:
-			{
-				return EXIT_FAILURE;
-			}
-			case true:
-			{
-				std::fill(data, data_end(), data_type(0.0));
-				return EXIT_SUCCESS;
-			}
-		}
-	};
-//
-//
-//
-/// @brief If the current array was previously initialized,
-///        either by the constructor or the array::create()
-///        member function, array::clear() will delete the
-///        current data, deallocating the memory used. After
-///        this, to use the object again, array::create()
-///        should be invoked first, to reallocate the memory.
-//
-/// @return @c EXIT_SUCCESS or @c EXIT_FAILURE.
-//
-/// @note Please notice, this member function does not replace
-///       the class destructor that is going to be called by
-///       default in the right moment. The main usage of this
-///       function is to free memory when desired.
-//
-	inline int clear()
-	{
-		switch(data != NULL)
-		{
-			case false: return EXIT_FAILURE;
-			case  true: return delete_data();
-		}
-	};
-//
-//
-//
-	inline int move_to(array<data_type, 1> &output)
-	{
-		return move_1d_arrays(output, this);
-	}
 /*
 //
 //
@@ -615,101 +529,6 @@ class array<data_type, 1>
 		}
 	};
 */
-//
-//
-//
-/// @brief If the current array was previously initialized, either
-///        by the constructor or the array::create() member function,
-///        array::build_randomly() replaces the data by random numbers
-///        generated in the range between zero and five times the rank
-///        size.
-//
-/// @return @c EXIT_SUCCESS or @c EXIT_FAILURE.
-//
-	inline int build_randomly()
-	{
-		switch(data != NULL)
-		{
-			case false: return EXIT_FAILURE;
-			case  true: return random_1d_array();
-		}
-	};
-//
-//
-//
-/// @brief If the current array was previously initialized, either by the
-///        constructor or the array::create() member function, array::min()
-///        returns the smaller element. Or returns zero, otherwise.
-//
-/// @return A numerical data of the same type of the current array.
-//
-	inline data_type min() const
-	{
-		switch(data != NULL)
-		{
-			case false: return data_type(0.0);
-			case  true: return *std::min_element(data, data_end());
-		}
-	};
-//
-//
-//
-/// @brief If the current array was previously initialized, either by the
-///        constructor or the array::create() member function, array::max()
-///        returns the higher element. Or returns zero, otherwise.
-//
-/// @return A numerical data of the same type of the current array.
-//
-	inline data_type max() const
-	{
-		switch(data != NULL)
-		{
-			case false: return data_type(0.0);
-			case  true: return *std::max_element(data, data_end());
-		}
-	};
-//
-//
-//
-/// @brief If the current array was previously initialized, either by the
-///        constructor or the array::create() member function, array::sort()
-///        sorts the current values in some order.
-//
-/// @return @c EXIT_SUCCESS or @c EXIT_FAILURE.
-//
-	inline int sort()
-	{
-		switch(data != NULL)
-		{
-			case false:
-			{
-				return EXIT_FAILURE;
-			}
-			case true:
-			{
-				std::sort(data, data_end());
-				return EXIT_SUCCESS;
-			}
-		}
-	};
-//
-//
-//
-/// @brief If the current array was previously initialized, either by the
-///        constructor or the array::create() member function, array::sum()
-///        returns the summation of all the elements. Or returns zero,
-///        otherwise.
-//
-/// @return A numerical data of the same type of the current array.
-//
-	inline data_type sum()
-	{
-		switch(data != NULL)
-		{
-			case false: return 0.0;
-			case  true: return std::accumulate(data, data_end(), data_type(0.0));
-		}
-	};
 //
 //
 	inline void write()
@@ -789,91 +608,20 @@ class array<data_type, 1>
 		}
 		return EXIT_FAILURE;
 	};
-//
-//
-//
-/// @brief Checks if all the elements of the current array are zero.
-//
-/// @return @c true if all the elements are zero or if the current
-///         array was not previously initialized by the constructor
-///         or the array::create() member funtion. @c false
-///         otherwise.
-//
-	inline bool is_null() const
-	{
-		auto check = [](int iter)
-		{
-			return (iter == 0.0);
-		};
-		switch(data != NULL)
-		{
-			case false: return true;
-			case  true: return std::all_of(data, data_end(), check);
-		}
-	};
-//
-//
-//
-/// @brief Checks if all the elements of the current array are positive,
-///        including zero as an unsigned number, i.e. nonegative.
-//
-/// @return @c true if all the elements are positive, @c false otherwise,
-///         or if the current array was not previously initialized by the
-///         constructor or the array::create() member funtion.
-//
-	inline bool is_positive() const
-	{
-		auto check = [](int iter)
-		{
-			return (iter >= 0.0);
-		};
-		switch(data != NULL)
-		{
-			case false: return false;
-			case  true: return std::all_of(data, data_end(), check);
-		}
-	};
-//
-//
-//
-/// @brief Checks if all the elements of the current array are negative.
-//
-/// @return @c true if all the elements are negative, @c false otherwise,
-///         or if the current array was not previously initialized by the
-///         constructor or the array::create() member funtion.
-//
-	inline bool is_negative() const
-	{
-		auto check = [](int iter)
-		{
-			return (iter < 0.0);
-		};
-		switch(data != NULL)
-		{
-			case false: return false;
-			case  true: return std::all_of(data, data_end(), check);
-		}
-	};
-//
-//
-//
-/// @brief Checks if at least one element of the current array is a @c nan,
-///        i.e. not-a-number, like @c '0/0' or @c 'std::sqrt(-1)'.
-//
-/// @return @c true if it has one or more @c nan, @c false otherwise.
-//
-	inline bool has_nan() const
-	{
-		auto check = [](int iter)
-		{
-			return std::isnan(iter);
-		};
-		switch(data != NULL)
-		{
-			case false: return false;
-			case  true: return std::any_of(data, data_end(), check);
-		}
-	};
+	#include "array/min.cpp"
+	#include "array/max.cpp"
+	#include "array/sum.cpp"
+	#include "array/sort.cpp"
+	#include "array/clear.cpp"
+	#include "array/has_nan.cpp"
+	#include "array/is_null.cpp"
+	#include "array/move_to.cpp"
+	#include "array/set_all.cpp"
+	#include "array/set_zero.cpp"
+	#include "array/is_ready.cpp"
+	#include "array/is_positive.cpp"
+	#include "array/is_negative.cpp"
+	#include "array/build_randomly.cpp"
 //
 //
 //
@@ -899,6 +647,11 @@ class array<data_type, 1>
 	#include "array__random_1d_array.cpp"
 	#include "array__resize_1d_array.cpp"
 	#include "array__move_1d_arrays.cpp"
+	#include "array/offset.cpp"
+	#include "array/data_end.cpp"
+	#include "array/init_data.cpp"
+	#include "array/data_length.cpp"
+	#include "array/delete_data.cpp"
 //
 // ===============================================================
 // Declaring and defining the specialized/private member functions
@@ -914,10 +667,25 @@ class array<data_type, 1>
 //
 /// @return @f$ := i - 1 @f$
 //
-	inline unsigned int offset(unsigned int i) const
-	{
-		return (--i);
-	};
+//	inline unsigned int offset(unsigned int i) const
+//	{
+//		return (--i);
+//	};
+//
+//
+//
+/// @brief A help function used to calculate the real position of
+///        a given element, since even the higher rank arrays are
+///        common C vectors. Please notice that the arguments are
+///        given by value and not by reference, in such way we can
+///        safely change it.
+//
+/// @return @f$ := i - 1 @f$
+//
+//	inline unsigned int offset(unsigned int i) const
+//	{
+//		return (--i);
+//	};
 //
 //
 //
@@ -927,6 +695,7 @@ class array<data_type, 1>
 //
 /// @return A pointer of the same type of the current array.
 //
+/*
 	inline data_type *data_end() const
 	{
 		return data + rank1;
@@ -958,14 +727,14 @@ class array<data_type, 1>
 		data = new (std::nothrow) data_type[size]();
 		switch(data != NULL)
 		{
-			case false:
-			{
-				return EXIT_FAILURE;
-			}
 			case true:
 			{
 				rank1 = size;
 				return EXIT_SUCCESS;
+			}
+			case false:
+			{
+				return EXIT_FAILURE;
 			}
 		}
 	};
@@ -984,4 +753,5 @@ class array<data_type, 1>
 		rank1 = 0;
 		return EXIT_SUCCESS;
 	};
+	*/
 };
