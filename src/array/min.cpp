@@ -9,7 +9,7 @@
 //
 inline data_type min() const
 {
-	switch(data != NULL)
+	switch(is_ready())
 	{
 		case  true: return *std::min_element(data, data_end());
 		case false: return data_type(0.0);

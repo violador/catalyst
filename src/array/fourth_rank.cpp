@@ -5,11 +5,15 @@
 //
 /// @return A nonnegative integer number.
 //
-inline unsigned int fourth_rank() const
+constexpr unsigned int fourth_rank() const
 {
-	#if defined(RANK_FOUR_ARRAY)
+	#if CURRENT_RANK == 4
+	{
 		return rank4;
+	}
 	#else
+	{
 		return 0;
+	}
 	#endif
 };

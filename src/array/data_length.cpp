@@ -1,26 +1,70 @@
 //
 //
 //
-/// @brief A help function used to check the internal real length
-///        of the current array.
+/// @brief A private member function used to check the internal
+/// real length of the current array.
 //
-/// @return A nonnegative integer.
+/// @return A non-negative integer.
 //
-inline unsigned int data_length() const
-{
-	#if defined(RANK_ONE_ARRAY)
+#if CURRENT_RANK == 1
+	constexpr unsigned int data_length() const
+	{
 		return rank1;
-	#endif
-	//
-	#if defined(RANK_TWO_ARRAY)
+	};
+#endif
+//
+//
+//
+/// @brief A private member function used to check the internal
+/// real length of the current array.
+//
+/// @return A non-negative integer.
+//
+#if CURRENT_RANK == 2
+	constexpr unsigned int data_length() const
+	{
 		return rank1*rank2;
-	#endif
-	//
-	#if defined(RANK_THREE_ARRAY)
+	};
+#endif
+//
+//
+//
+/// @brief A private member function used to check the internal
+/// real length of the current array.
+//
+/// @return A non-negative integer.
+//
+#if CURRENT_RANK == 3
+	constexpr unsigned int data_length() const
+	{
+		return rank1*rank2*rank3;
+	};
+#endif
+//
+//
+//
+/// @brief A private member function used to check the internal
+/// real length of the current array.
+//
+/// @return A non-negative integer.
+//
+#if CURRENT_RANK == 4
+	constexpr unsigned int data_length() const
+	{
+		return rank1*rank2*rank3*rank4;
+	};
+#endif
+//
+//
+//
+/// @brief Member specialization for bad initialized objects,
+/// with negative or bigger than four number of dimensions.
+//
+/// @return Zero.
+//
+#if CURRENT_RANK <= 0 || CURRENT_RANK > 4
+	constexpr unsigned int data_length() const
+	{
 		return 0;
-	#endif
-	//
-	#if defined(RANK_FOUR_ARRAY)
-		return 0;
-	#endif
-};
+	};
+#endif

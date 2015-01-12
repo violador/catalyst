@@ -1,0 +1,38 @@
+
+Catalyst ver. experimental
+- Compilation number = experimental
+
+[thread 0, 00:49:23] General settings =========================================
+
+- Invoked in                          = /home/violador/catalyst/src/data/
+- By                                  = violador
+- From                                = 8323329
+- At                                  = Sat Jan 18 00:49:23 2014
+- Number of tasks requested           = 3
+- Memory available at the starting up = 1.834648 of 3.810104 GB
+- Number of CPUs available            = 8
+- Log file                            = on
+- Log filename                        = test_from_the_catalystrc.log
+- Debug mode                          = off
+- Scratch directory                   = /home/violador/catalyst/src/scratch/
+- SCF convergence criteria            = 0.000001
+- Numeric precision                   = 6/10
+- Open multi-processing               = on
+- Message passing interface           = on
+- Settings memory usage               = 0.000079 MB
+
+
+[thread 0, 00:49:23] Input list ==============
+
+Tasks     Filenames     Size (kB)        Status
+-----------------------------------------------
+    1/home/violador/catalyst/src/data/HeH.xyz      0.000000     not found
+    2/home/violador/catalyst/src/data/CH4.xyz      0.000000     not found
+    3/home/violador/catalyst/src/data/H2O.xyz      0.000000     not found
+
+- unnamed array:
+                   1              2              3                              
+    1   0.000000e+00   0.000000e+00   0.000000e+00
+    2   0.000000e+00   0.000000e+00   0.000000e+00
+    3   0.000000e+00   0.000000e+00   0.000000e+00
+

@@ -1,29 +1,17 @@
 //
 //
 //
-/// @brief A help function to deallocate the current memory and to set
-///        zero the rank's lengths.
+/// @brief A private member function to deallocate the current memory
+/// and to clean the data members. The operation is carried out by the
+/// master thread only.
 //
-/// @return @c EXIT_SUCCESS.
+/// @return None.
 //
-inline int delete_data()
+inline void delete_data()
 {
-	delete[] data;
-	data = NULL;
-	#if defined(RANK_ONE_ARRAY)
-		rank1 = 0;
-	#endif
-	//
-	#if defined(RANK_TWO_ARRAY)
-		rank1 = rank2 = 0;
-	#endif
-	//
-	#if defined(RANK_THREE_ARRAY)
-		rank1 = rank2 = rank3 = 0;
-	#endif
-	//
-	#if defined(RANK_FOUR_ARRAY)
-		rank1 = rank2 = rank3 = rank4 = 0;
-	#endif
-	return EXIT_SUCCESS;
+	#pragma omp master
+	{
+		delete[] data;
+		reset_data_members();
+	}
 };

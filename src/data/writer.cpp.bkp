@@ -1,0 +1,275 @@
+#include "globals.hpp"
+#include "settings.hpp"
+#include "periodic_table.hpp"
+#include "sto3g.hpp"
+#include "molecular_system.hpp"
+#include "tools.hpp"
+#include "array.hpp"
+#include "file_system.hpp"
+#include "log_file_handler.hpp"
+#include "global_log.hpp"
+#include "timer.hpp"
+//
+//
+//
+int main()
+{
+    std::ifstream input("sto3g.set", std::ifstream::in);
+    std::ofstream output1("exponents.txt", std::ifstream::out);
+    std::ofstream output2("coefficients.txt", std::ifstream::out);
+    std::string line = "";
+    unsigned int atom_counter = 0;
+    unsigned int line_counter = 0;
+    unsigned int i = 0;
+    std::string backup1[3];
+    std::string backup2[3];
+//
+    output1 << "    switch(element)" << std::endl;
+    output1 << "    {" << std::endl;
+    output2 << "    switch(element)" << std::endl;
+    output2 << "    {" << std::endl;
+//
+    while(std::getline(input, line))
+    {
+        std::cout << "current line: " << line << std::endl;
+        if(line.compare(0, 1, "b") == 0)
+        {
+            atom_counter++;
+//
+            output1 << "        case " << atom_counter << ":" << std::endl;
+            output1 << "        {" << std::endl;
+            output2 << "        case " << atom_counter << ":" << std::endl;
+            output2 << "        {" << std::endl;
+//
+            std::cout << "current atom = " << atom_counter << std::endl;
+        }
+        if(line.compare(0, 1, " ") == 0)
+        {
+            std::string exp = "";
+            std::string coeff1 = "";
+            std::string coeff2 = "";
+            if(atom_counter <= 2)
+            {
+                line_counter++; 
+                exp = coeff1 = line;
+                exp = exp.erase(22, 42);
+                exp.erase(remove(exp.begin(), exp.end(), ' '), exp.end());
+                coeff1 = coeff1.erase(0, 22);
+                coeff1.erase(remove(coeff1.begin(), coeff1.end(), ' '), coeff1.end());
+//
+                output1 << "            exponent[" << line_counter << "] = " << exp << ";" << std::endl;
+                output2 << "            coefficient[" << line_counter << "] = " << coeff1 << ";" << std::endl;
+//
+            }
+            if(atom_counter > 2) 
+            {
+                line_counter++; 
+                if(line_counter <= 3)
+                {
+                    exp = coeff1 = line;
+                    exp = exp.erase(22, 42);
+                    exp.erase(remove(exp.begin(), exp.end(), ' '), exp.end());
+                    coeff1 = coeff1.erase(0, 22);
+                    coeff1.erase(remove(coeff1.begin(), coeff1.end(), ' '), coeff1.end());
+//
+                    output1 << "            exponent[" << line_counter << "] = " << exp << ";" << std::endl;
+                    output2 << "            coefficient[" << line_counter << "] = " << coeff1 << ";" << std::endl;
+//
+                }
+                if(line_counter > 3)
+                {
+                    exp = coeff1 = coeff2 = line;
+                    exp = exp.erase(22, 42);
+                    exp.erase(remove(exp.begin(), exp.end(), ' '), exp.end());
+                    backup1[i] = exp;
+                    coeff1 = coeff1.erase(0, 22);
+                    coeff1 = coeff1.erase(22, 23);
+                    coeff1.erase(remove(coeff1.begin(), coeff1.end(), ' '), coeff1.end());
+                    coeff2 = coeff2.erase(0, 45);
+                    coeff2.erase(remove(coeff2.begin(), coeff2.end(), ' '), coeff2.end());
+                    backup2[i] = coeff2;
+//
+                    output1 << "            exponent[" << line_counter << "] = " << exp << ";" << std::endl;
+                    output2 << "            coefficient[" << line_counter << "] = " << coeff1 << ";" << std::endl;
+//
+                    i++;
+                    if(i == 3)
+                    {
+                        if(atom_counter > 2 and atom_counter < 37 and line_counter + 3 <= 21)
+                        {
+                            output1 << "            exponent[" << line_counter + 1 << "] = " << backup1[0] << ";" << std::endl;
+                            output1 << "            exponent[" << line_counter + 2 << "] = " << backup1[1] << ";" << std::endl;
+                            output1 << "            exponent[" << line_counter + 3 << "] = " << backup1[2] << ";" << std::endl;
+                            output2 << "            coefficient[" << line_counter + 1 << "] = " << backup2[0] << ";" << std::endl;
+                            output2 << "            coefficient[" << line_counter + 2 << "] = " << backup2[1] << ";" << std::endl;
+                            output2 << "            coefficient[" << line_counter + 3 << "] = " << backup2[2] << ";" << std::endl;
+                            line_counter += 3;
+                        }
+                        if(atom_counter >= 37 and line_counter + 3 <= 30)
+                        {
+                            output1 << "            exponent[" << line_counter + 1 << "] = " << backup1[0] << ";" << std::endl;
+                            output1 << "            exponent[" << line_counter + 2 << "] = " << backup1[1] << ";" << std::endl;
+                            output1 << "            exponent[" << line_counter + 3 << "] = " << backup1[2] << ";" << std::endl;
+                            output2 << "            coefficient[" << line_counter + 1 << "] = " << backup2[0] << ";" << std::endl;
+                            output2 << "            coefficient[" << line_counter + 2 << "] = " << backup2[1] << ";" << std::endl;
+                            output2 << "            coefficient[" << line_counter + 3 << "] = " << backup2[2] << ";" << std::endl;
+                            line_counter += 3;
+                        }
+                        i = 0;
+                    }
+                }
+            }
+        }
+        if(line.compare(0, 1, "e") == 0)
+        {
+            line_counter = 0;
+//
+            output1 << "        }" << std::endl;
+            output1 << "        break;" << std::endl;
+            output2 << "        }" << std::endl;
+            output2 << "        break;" << std::endl;
+//
+            std::cout << "end found! line counter = 0" << std::endl;
+        }
+    }
+/*
+    settings a;
+    timer b(a);
+    array c(1000, 1000);
+    array d(1000, 1000);
+    c.set_all(4.1084761);
+    d.set_all(9.1097871);
+    b.start();
+    c *= d;
+    b.stop();
+    std::cout << "total time = " << b.get(WALL_TIME) << std::endl;
+*/
+/*
+    array S(2, 2);
+    S.set(1, 1, 1.0);
+    S.set(1, 2, 0.4508);
+    S.set(2, 1, 0.4508);
+    S.set(2, 2, 1.0);
+    S.array::build_orthonormalizer_form();
+    std::cout << S.get(1, 1) << std::endl;  
+    std::cout << S.get(1, 2) << std::endl;  
+    std::cout << S.get(2, 1) << std::endl;  
+    std::cout << S.get(2, 2) << std::endl;  
+    array F(2, 2);
+    F.set(1, 1, -2.6527);
+    F.set(1, 2, -1.3472);
+    F.set(2, 1, -1.3472);
+    F.set(2, 2, -1.7318);
+    S.array::orthonormalize(F);
+    std::cout << std::endl;
+    std::cout << F.get(1, 1) << std::endl;  
+    std::cout << F.get(1, 2) << std::endl;  
+    std::cout << F.get(2, 1) << std::endl;  
+    std::cout << F.get(2, 2) << std::endl;  
+    array C(2, 2);
+    C.set(1, 1,  0.9104);
+    C.set(1, 2,  0.4136);
+    C.set(2, 1,  0.4136);
+    C.set(2, 2, -0.9104);
+    S.restore_original_basis_of(C);
+    std::cout << std::endl;
+    std::cout << C.get(1, 1) << std::endl;  
+    std::cout << C.get(1, 2) << std::endl;  
+    std::cout << C.get(2, 1) << std::endl;  
+    std::cout << C.get(2, 2) << std::endl;  
+*/
+/*
+    unsigned int size = 2;
+//
+    array A(size, size);
+    array B(size, size);
+    array C(size, size);
+    array D(size, size);
+    array E(size, size);
+    array F(size, size);
+    array G(size, size);
+    array W(size);
+    int const1 = 2;
+    int const2 = 3;
+//
+    A.set(1, 1, 7.0);
+    A.set(1, 2, 3.0);
+    A.set(2, 1, 1.0);
+    A.set(2, 2, 0.0);
+//
+    B.set(1, 1, 2.0);
+    B.set(1, 2, 1.0);
+    B.set(2, 1, 4.0);
+    B.set(2, 2, 0.0);
+//
+    C = A*B;
+    D = A + B;
+    E = A - B;
+    F = A + const1;
+    G = A - const2;
+//
+    for(unsigned int i = 1; i <= size; i++)
+    {
+       for(unsigned int j = 1; j <= size; j++)
+       {
+        std::cout << "C("  << i << ", "  << j << ") = " << C.get(i, j) << std::endl;
+       }
+    }
+    for(unsigned int i = 1; i <= size; i++)
+    {
+       for(unsigned int j = 1; j <= size; j++)
+       {
+        std::cout << "D("  << i << ", "  << j << ") = " << D.get(i, j) << std::endl;
+       }
+    }
+    for(unsigned int i = 1; i <= size; i++)
+    {
+       for(unsigned int j = 1; j <= size; j++)
+       {
+        std::cout << "E("  << i << ", "  << j << ") = " << E.get(i, j) << std::endl;
+       }
+    }
+    for(unsigned int i = 1; i <= size; i++)
+    {
+       for(unsigned int j = 1; j <= size; j++)
+       {
+        std::cout << "F("  << i << ", "  << j << ") = " << F.get(i, j) << std::endl;
+       }
+    }
+    for(unsigned int i = 1; i <= size; i++)
+    {
+       for(unsigned int j = 1; j <= size; j++)
+       {
+        std::cout << "G("  << i << ", "  << j << ") = " << G.get(i, j) << std::endl;
+       }
+    }
+//
+    A *= B;
+    for(unsigned int i = 1; i <= size; i++)
+    {
+       for(unsigned int j = 1; j <= size; j++)
+       {
+        std::cout << "A = A*B("  << i << ", "  << j << ") = " << A.get(i, j) << std::endl;
+       }
+    }
+//
+    A += const1;
+    for(unsigned int i = 1; i <= size; i++)
+    {
+       for(unsigned int j = 1; j <= size; j++)
+       {
+        std::cout << "A = A + const1("  << i << ", "  << j << ") = " << A.get(i, j) << std::endl;
+       }
+    }
+//
+    A -= const1;
+    for(unsigned int i = 1; i <= size; i++)
+    {
+       for(unsigned int j = 1; j <= size; j++)
+       {
+        std::cout << "A = A - const1("  << i << ", "  << j << ") = " << A.get(i, j) << std::endl;
+       }
+    }
+*/
+    return 0;
+}

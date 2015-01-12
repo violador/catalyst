@@ -5,11 +5,15 @@
 //
 /// @return A nonnegative integer number.
 //
-inline unsigned int second_rank() const
+constexpr unsigned int second_rank() const
 {
-	#if defined(RANK_ONE_ARRAY)
+	#if CURRENT_RANK == 1
+	{
 		return 0;
+	}
 	#else
+	{
 		return rank2;
+	}
 	#endif
 };

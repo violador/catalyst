@@ -1,25 +1,24 @@
 //
 //
 //
-/// @brief If the current array was previously initialized,
-///        either by the constructor or the array::create()
-///        member function, array::clear() will delete the
-///        current data, deallocating the memory used. After
-///        this, to use the object again, array::create()
-///        should be invoked first, to reallocate the memory.
+/// @brief If the current array was previously initialized either by construction
+/// or the array::create() member function, the array::clear() deallocates the
+/// memory used and resets the object state for an uninitialized one. From this
+/// point on, array::create() should be invoked to reallocate memory, before any
+/// attempt to use it again. The operation is carried out by the master thread
+/// only.
 //
-/// @return @c EXIT_SUCCESS or @c EXIT_FAILURE.
+/// @return None.
 //
-/// @note Please notice, this member function does not replace
-///       the class destructor that is going to be called by
-///       default in the right moment. The main usage of this
-///       function is to free memory when desired.
+/// @note Please notice, this member function does not replace the class destructor
+/// that will be called by default at the end of the scope. Its main usage is to
+/// free memory when desired.
 //
-inline int clear()
+inline void clear()
 {
-	switch(data != NULL)
+	#pragma omp master
 	{
-		case  true: return delete_data();
-		case false: return EXIT_FAILURE;
+		delete[] data;
+		reset_data_members();
 	}
 };

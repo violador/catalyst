@@ -1,22 +1,24 @@
 //
 //
 //
-/// @brief Checks if all the elements of the current array are positive,
-///        including zero as an unsigned number, i.e. nonegative.
+/// @brief Checks if all the elements are positive, including zero. Only
+/// if the current array was previously initialized either by construction
+/// or the array::create().
 //
-/// @return @c true if all the elements are positive, @c false otherwise,
-///         or if the current array was not previously initialized by the
-///         constructor or the array::create() member funtion.
+/// @return @c true if all the elements are positive, and @c false otherwise.
 //
-inline bool is_positive() const
+bool is_positive() const
 {
-	auto check = [](int iter)
+	if(is_ready())
 	{
-		return (iter >= 0.0);
-	};
-	switch(data != NULL)
+		auto check = [](int iter)
+		{
+			return (iter >= 0.0);
+		};
+		return std::all_of(data, data_end(), check);
+	}
+	else
 	{
-		case  true: return std::all_of(data, data_end(), check);
-		case false: return false;
+		return false;
 	}
 };

@@ -1,0 +1,467 @@
+/home/violador/Dropbox/catalyst/src/array/array__build_jacobi_svd.cpp:48: warning: reached end of file while inside a f$ block!
+The command that should end the block seems to be missing!
+
+/home/violador/Dropbox/catalyst/src/include/array__rank_1.hpp:56: warning: include file array__build_filename.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/array__rank_1.hpp:57: warning: include file array__random_1d_array.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/array__rank_1.hpp:58: warning: include file array__resize_1d_array.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/array__rank_1.hpp:59: warning: include file array__move_1d_arrays.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/basis_set.hpp:38: warning: include file basis_set__init_set_size.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/basis_set.hpp:50: warning: include file basis_set__function_expon.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/basis_set.hpp:51: warning: include file basis_set__function_coeff.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/basis_set.hpp:52: warning: include file basis_set__size.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/basis_set.hpp:53: warning: include file basis_set__destructor.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/basis_set.hpp:54: warning: include file basis_set__ready.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/basis_set.hpp:55: warning: include file basis_set__increment.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/basis_set.hpp:56: warning: include file basis_set__decrement.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/basis_set.hpp:57: warning: include file basis_set__first.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/basis_set.hpp:58: warning: include file basis_set__last.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/basis_set.hpp:59: warning: include file basis_set__iterator.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/basis_set.hpp:60: warning: include file basis_set__set_iterator.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/basis_set.hpp:61: warning: include file basis_set__function_call.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/control.hpp:19: warning: include file control__config_file.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/control.hpp:20: warning: include file control__current_dir.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/control.hpp:21: warning: include file control__log_file.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/control.hpp:22: warning: include file control__max_precision.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/control.hpp:23: warning: include file control__scf_criteria.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/default.hpp:19: warning: include file default__config_file.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/default.hpp:20: warning: include file default__current_dir.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/default.hpp:21: warning: include file default__log_file.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/default.hpp:22: warning: include file default__no_file.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/default.hpp:23: warning: include file default__precision.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/default.hpp:24: warning: include file default__scf_criteria.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:43: warning: include file file_system__check_filename.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:44: warning: include file file_system__init_file.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:45: warning: include file file_system__init_path.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:46: warning: include file file_system__build_slash.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:47: warning: include file file_system__restart_file.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:48: warning: include file file_system__restart_path.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:49: warning: include file file_system__update.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:81: warning: include file file_system__extension.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:82: warning: include file file_system__full_name.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:83: warning: include file file_system__name.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:84: warning: include file file_system__is_dir.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:85: warning: include file file_system__is_file.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:86: warning: include file file_system__exists.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:87: warning: include file file_system__root_dir.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:88: warning: include file file_system__parent_dir.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:89: warning: include file file_system__relative_dir.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:90: warning: include file file_system__close.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:91: warning: include file file_system__is_open.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:92: warning: include file file_system__my_size.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:93: warning: include file file_system__size.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:94: warning: include file file_system__valid_dir.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:95: warning: include file file_system__check_disk_space.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:96: warning: include file file_system__check_disk_capacity.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:97: warning: include file file_system__rename_file.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:98: warning: include file file_system__rename_dir.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:99: warning: include file file_system__remove_file.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:100: warning: include file file_system__is_link.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/file_system.hpp:101: warning: include file file_system__init.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:237: warning: include file lcao_wavefunction__gf_product_const.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:238: warning: include file lcao_wavefunction__gf_midpoint.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:239: warning: include file lcao_wavefunction__gf_overlap_integral.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:240: warning: include file lcao_wavefunction__gf_product.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:241: warning: include file lcao_wavefunction__gf_overlap_factor.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:242: warning: include file lcao_wavefunction__gf_overlap_product.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:243: warning: include file lcao_wavefunction__error_function.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:244: warning: include file lcao_wavefunction__interatomic_distance.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:245: warning: include file lcao_wavefunction__init_matrices.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:246: warning: include file lcao_wavefunction__first_gf.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:247: warning: include file lcao_wavefunction__count_orbitals.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:248: warning: include file lcao_wavefunction__angular_component_.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:359: warning: include file lcao_wavefunction__get_overlap_matrix.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:360: warning: include file lcao_wavefunction__get_kinetic_matrix.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:361: warning: include file lcao_wavefunction__get_core_hamiltonian_matrix.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:362: warning: include file lcao_wavefunction__get_one_electron_repulsion_matrix.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:363: warning: include file lcao_wavefunction__get_two_electron_repulsion_matrix.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:364: warning: include file lcao_wavefunction__get_density_matrix.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:365: warning: include file lcao_wavefunction__get_fock_matrix.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:366: warning: include file lcao_wavefunction__get_wavefunction.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:367: warning: include file lcao_wavefunction__start_scf_iterations.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:368: warning: include file lcao_wavefunction__scf_ready.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/lcao_wavefunction.hpp:369: warning: include file lcao_wavefunction__energy.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:48: warning: include file log_file_handler__open.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:49: warning: include file log_file_handler__close.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:50: warning: include file log_file_handler__open_and_init.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:51: warning: include file log_file_handler__report_bad_init.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:68: warning: include file log_file_handler__write.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:69: warning: include file log_file_handler__exists.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:70: warning: include file log_file_handler__set_scientific_notation.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:71: warning: include file log_file_handler__set_fixed.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:72: warning: include file log_file_handler__set_width.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:73: warning: include file log_file_handler__set_right.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:74: warning: include file log_file_handler__set_left.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:75: warning: include file log_file_handler__set_new_line.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:76: warning: include file log_file_handler__fill_line_with.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:77: warning: include file log_file_handler__write_title_bar.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:78: warning: include file log_file_handler__timestamp.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:79: warning: include file log_file_handler__bitwise_left_shift.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:80: warning: include file log_file_handler__write_debug_msg.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:81: warning: include file log_file_handler__set_config.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/log_file_handler.hpp:82: warning: include file log_file_handler__destructor.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/math.hpp:40: warning: include file math__module.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/math.hpp:41: warning: include file math__square_module.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/math.hpp:42: warning: include file math__factorial.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/math.hpp:43: warning: include file math__double_factorial.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/math.hpp:44: warning: include file math__binomial_coeff.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/math.hpp:45: warning: include file math__point_distance.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/math.hpp:46: warning: include file math__gamma_function.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/math.hpp:47: warning: include file math__incomplete_gamma_function.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/math.hpp:48: warning: include file math__error_function.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/math.hpp:49: warning: include file math__random_number.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/math.hpp:50: warning: include file math__kronecker_delta.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/math.hpp:51: warning: include file math__exp.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/molecular_system.hpp:98: warning: include file molecular_system__number_of_atoms.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/molecular_system.hpp:99: warning: include file molecular_system__x.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/molecular_system.hpp:100: warning: include file molecular_system__y.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/molecular_system.hpp:101: warning: include file molecular_system__z.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/molecular_system.hpp:102: warning: include file molecular_system__mass.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/molecular_system.hpp:103: warning: include file molecular_system__atomic_number.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/molecular_system.hpp:104: warning: include file molecular_system__type.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/molecular_system.hpp:105: warning: include file molecular_system__nuclear_repulsion_energy.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/molecular_system.hpp:106: warning: include file molecular_system__electronic_energy.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/molecular_system.hpp:107: warning: include file molecular_system__name.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/molecular_system.hpp:108: warning: include file molecular_system__set_task_number.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/molecular_system.hpp:109: warning: include file molecular_system__set_name.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/molecular_system.hpp:110: warning: include file molecular_system__set_system_com.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/molecular_system.hpp:111: warning: include file molecular_system__density.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/periodic_table.hpp:54: warning: include file periodic_table__electrons.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/periodic_table.hpp:55: warning: include file periodic_table__mass.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/periodic_table.hpp:56: warning: include file periodic_table__name.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/periodic_table.hpp:57: warning: include file periodic_table__symbol.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/periodic_table.hpp:58: warning: include file periodic_table__type.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/periodic_table.hpp:59: warning: include file periodic_table__init.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/periodic_table.hpp:60: warning: include file periodic_table__sub_shells.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/periodic_table.hpp:61: warning: include file periodic_table__electronic_config.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/periodic_table.hpp:62: warning: include file periodic_table__increment.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/periodic_table.hpp:63: warning: include file periodic_table__decrement.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/periodic_table.hpp:64: warning: include file periodic_table__atomic_number.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/periodic_table.hpp:65: warning: include file periodic_table__destructor.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/periodic_table.hpp:66: warning: include file periodic_table__first.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/periodic_table.hpp:67: warning: include file periodic_table__last.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/periodic_table.hpp:68: warning: include file periodic_table__function_call.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:335: warning: include file array__set_config.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:336: warning: include file array__norm.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:763: warning: include file array__init_1d_array.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:764: warning: include file array__delete_1d_array.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:765: warning: include file array__build_filename.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:766: warning: include file array__add_1d_arrays.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:767: warning: include file array__mul_1d_arrays.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:768: warning: include file array__copy_1d_arrays.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:769: warning: include file array__sum_1d_array.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:770: warning: include file array__sort_1d_array.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:771: warning: include file array__fill_1d_array.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:772: warning: include file array__random_1d_array.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:773: warning: include file array__resize_1d_array.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:774: warning: include file array__move_1d_arrays.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/scf.hpp:88: warning: include file scf__start_iterations.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/scf.hpp:89: warning: include file scf__get_density_matrix.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/scf.hpp:90: warning: include file scf__number_of_iterations.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/scf.hpp:91: warning: include file scf__get_fock_matrix.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/scf.hpp:92: warning: include file scf__energy.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/scf.hpp:93: warning: include file scf__converged.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/scf.hpp:94: warning: include file scf__get_wavefunction.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/scf.hpp:95: warning: include file scf__highest_mo.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/scf.hpp:96: warning: include file scf__lowest_mo.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/scf.hpp:97: warning: include file scf__set_config.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/scf.hpp:98: warning: include file scf__iterations_ready.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/scf.hpp:99: warning: include file scf__check_mo_type.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:129: warning: include file settings__remove_option.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:158: warning: include file settings__numeric_precision.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:159: warning: include file settings__scf_convergence_criteria.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:160: warning: include file settings__task_level.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:161: warning: include file settings__my_size.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:162: warning: include file settings__check_current_username.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:163: warning: include file settings__check_current_hostname.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:164: warning: include file settings__check_current_time.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:165: warning: include file settings__check_current_cpus.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:166: warning: include file settings__scratch_dir.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:167: warning: include file settings__work_dir.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:168: warning: include file settings__check_current_disk_space.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:169: warning: include file settings__tasks.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:170: warning: include file settings__output_mode.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:171: warning: include file settings__vibration_mode.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:172: warning: include file settings__rotation_mode.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:173: warning: include file settings__translation_mode.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:174: warning: include file settings__input_filename.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:175: warning: include file settings__ctrl_key.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:176: warning: include file settings__log_file.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/settings.hpp:177: warning: include file settings__debug_mode.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/timer.hpp:43: warning: include file timer__elapsed_wtime.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/timer.hpp:44: warning: include file timer__elapsed_utime.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/timer.hpp:45: warning: include file timer__elapsed_stime.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/timer.hpp:46: warning: include file timer__elapsed_usage.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/timer.hpp:60: warning: include file timer__start.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/timer.hpp:61: warning: include file timer__stop.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/timer.hpp:62: warning: include file timer__set_name.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/timer.hpp:63: warning: include file timer__basic_assignment.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/timer.hpp:64: warning: include file timer__set_timer_length.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/timer.hpp:65: warning: include file timer__wall_time.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/timer.hpp:66: warning: include file timer__user_time.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/timer.hpp:67: warning: include file timer__system_time.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/timer.hpp:68: warning: include file timer__cpu_usage.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:61: warning: include file tools__module.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:62: warning: include file tools__square_module.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:63: warning: include file tools__pattern_length.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:64: warning: include file tools__factorial.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:65: warning: include file tools__double_factorial.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:66: warning: include file tools__binomial_coeff.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:67: warning: include file tools__point_distance.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:68: warning: include file tools__gamma_function.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:69: warning: include file tools__incomplete_gamma_function.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:70: warning: include file tools__error_function.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:71: warning: include file tools__random_number.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:72: warning: include file tools__kronecker_delta.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:73: warning: include file tools__convert.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:74: warning: include file tools__lower_case.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:75: warning: include file tools__remove_blank_spaces.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:76: warning: include file tools__remove_char.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:77: warning: include file tools__remove.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:78: warning: include file tools__comment_line.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:79: warning: include file tools__is_equal.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:80: warning: include file tools__default_precision.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:81: warning: include file tools__default_scf_criteria.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:82: warning: include file tools__default_log_file.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:83: warning: include file tools__default_config_file.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:84: warning: include file tools__default_no_file.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:85: warning: include file tools__on_ctrl_key.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:86: warning: include file tools__off_ctrl_key.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:87: warning: include file tools__max_precision.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:88: warning: include file tools__GB.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:89: warning: include file tools__MB.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:90: warning: include file tools__kB.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:91: warning: include file tools__kilobyte_to_gigabyte.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:92: warning: include file tools__default_current_dir.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:93: warning: include file tools__bohr_radius.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:94: warning: include file tools__electron_mass.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:95: warning: include file tools__atomic_mass.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:96: warning: include file tools__speed_of_light.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:97: warning: include file tools__mol.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:98: warning: include file tools__electron_charge.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:99: warning: include file tools__angstrom_length.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:100: warning: include file tools__electron_volt.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:101: warning: include file tools__boltzmann_const.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:102: warning: include file tools__planck_const.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:103: warning: include file tools__proton_mass.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:104: warning: include file tools__neutron_mass.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:105: warning: include file tools__omp_chunk.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/include/tools.hpp:106: warning: include file tools__is_null.cpp not found, perhaps you forgot to add its directory to INCLUDE_PATH?
+/home/violador/Dropbox/catalyst/src/array/array__addition.cpp:13: warning: no uniquely matching class member found for 
+  array array< data_type, rank >::operator+(const double &b)
+
+/home/violador/Dropbox/catalyst/src/array/array__addition.cpp:73: warning: no uniquely matching class member found for 
+  array array< data_type, rank >::operator+(const array &B)
+
+/home/violador/Dropbox/catalyst/src/array/array__addition_assignment.cpp:5: warning: documented symbol `void array< data_type, rank >::operator+=' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__basic_assignment.cpp:15: warning: no uniquely matching class member found for 
+  void array< data_type, rank >::operator=(const array &input)
+
+/home/violador/Dropbox/catalyst/src/array/array__book_data.cpp:25: warning: documented symbol `void array< data_type, rank >::book_data' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__build_orthonormalizer_form.cpp:14: warning: documented symbol `void array< data_type, rank >::build_orthonormalizer_form' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__check_if_column_is.cpp:19: warning: documented symbol `bool array< data_type, rank >::check_if_column_is' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__constructor.cpp:5: warning: no uniquely matching class member found for 
+  array< data_type, rank >::array()
+
+/home/violador/Dropbox/catalyst/src/array/array__constructor.cpp:25: warning: no uniquely matching class member found for 
+  array< data_type, rank >::array(const unsigned int &row_size)
+
+/home/violador/Dropbox/catalyst/src/array/array__constructor.cpp:45: warning: no uniquely matching class member found for 
+  array< data_type, rank >::array(const unsigned int &row_size, const unsigned int &column_size)
+
+/home/violador/Dropbox/catalyst/src/array/array__constructor.cpp:66: warning: no uniquely matching class member found for 
+  array< data_type, rank >::array(const unsigned int &row_size, const unsigned int &column_size, const unsigned int &layer_size)
+
+/home/violador/Dropbox/catalyst/src/array/array__constructor.cpp:88: warning: no uniquely matching class member found for 
+  array< data_type, rank >::array(const unsigned int &row_size, const unsigned int &column_size, const unsigned int &layer1_size, const unsigned int &layer2_size)
+
+/home/violador/Dropbox/catalyst/src/array/array__constructor.cpp:111: warning: no uniquely matching class member found for 
+  array< data_type, rank >::array(const array &input)
+
+/home/violador/Dropbox/catalyst/src/array/array__delete_array.cpp:14: warning: documented symbol `void array< data_type, rank >::delete_array' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__destructor.cpp:7: warning: no uniquely matching class member found for 
+  array< data_type, rank >::~array()
+
+/home/violador/Dropbox/catalyst/src/array/array__eigen.cpp:18: warning: documented symbol `int array< data_type, rank >::eigen' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__is_negative.cpp:11: warning: no uniquely matching class member found for 
+  bool array< data_type, rank >::is_negative() const
+
+/home/violador/Dropbox/catalyst/src/array/array__is_null.cpp:11: warning: no uniquely matching class member found for 
+  bool array< data_type, rank >::is_null() const
+
+/home/violador/Dropbox/catalyst/src/array/array__is_positive.cpp:11: warning: no uniquely matching class member found for 
+  bool array< data_type, rank >::is_positive() const
+
+/home/violador/Dropbox/catalyst/src/array/array__multiplication.cpp:13: warning: no uniquely matching class member found for 
+  array array< data_type, rank >::operator*(const double &b)
+
+/home/violador/Dropbox/catalyst/src/array/array__multiplication.cpp:107: warning: no uniquely matching class member found for 
+  array array< data_type, rank >::operator*(const array &b)
+
+/home/violador/Dropbox/catalyst/src/array/array__multiplication_assignment.cpp:19: warning: documented symbol `void array< data_type, rank >::operator*=' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__operator.cpp:5: warning: no uniquely matching class member found for 
+  void array< data_type, rank >::operator=(const array &b)
+
+/home/violador/Dropbox/catalyst/src/array/array__operator.cpp:185: warning: documented symbol `void array< data_type, rank >::operator+=' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__operator.cpp:280: warning: documented symbol `void array< data_type, rank >::operator-=' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__operator.cpp:375: warning: documented symbol `void array< data_type, rank >::operator*=' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__operator.cpp:410: warning: no uniquely matching class member found for 
+  array array< data_type, rank >::operator+(const double &b)
+
+/home/violador/Dropbox/catalyst/src/array/array__operator.cpp:494: warning: no uniquely matching class member found for 
+  array array< data_type, rank >::operator+(const array &b)
+
+/home/violador/Dropbox/catalyst/src/array/array__operator.cpp:594: warning: no uniquely matching class member found for 
+  array array< data_type, rank >::operator-(const double &b)
+
+/home/violador/Dropbox/catalyst/src/array/array__operator.cpp:681: warning: no uniquely matching class member found for 
+  array array< data_type, rank >::operator-(const array &b)
+
+/home/violador/Dropbox/catalyst/src/array/array__operator.cpp:781: warning: no uniquely matching class member found for 
+  array array< data_type, rank >::operator*(const double &b)
+
+/home/violador/Dropbox/catalyst/src/array/array__operator.cpp:859: warning: no uniquely matching class member found for 
+  array array< data_type, rank >::operator*(const array &b)
+
+/home/violador/Dropbox/catalyst/src/array/array__orthonormalize.cpp:19: warning: documented symbol `void array< data_type, rank >::orthonormalize' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__random_2d_array.cpp:9: warning: documented symbol `void array< data_type, rank >::random_2d_array' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__read_temp_file.cpp:19: warning: documented symbol `double array< data_type, rank >::read_temp_file' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__read_temp_file.cpp:43: warning: documented symbol `double array< data_type, rank >::read_temp_file' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__read_temp_file.cpp:71: warning: documented symbol `double array< data_type, rank >::read_temp_file' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__read_temp_file.cpp:103: warning: documented symbol `double array< data_type, rank >::read_temp_file' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__report.cpp:5: warning: no matching file member found for 
+void array< data_type, rank >::report()
+Possible candidates:
+ 'void report(const data_type &text)' at line 4 of file/home/violador/Dropbox/catalyst/src/log_file_handler/log_file_handler__report.cpp
+ 'void report(const data_type1 text1, const data_type2 text2)' at line 24 of file/home/violador/Dropbox/catalyst/src/log_file_handler/log_file_handler__report.cpp
+ 'void report(const data_type1 &text1, const data_type2 &text2, const data_type3 &text3)' at line 47 of file/home/violador/Dropbox/catalyst/src/log_file_handler/log_file_handler__report.cpp
+ 'void report(const data_type1 &text1, const data_type2 &text2, const data_type3 &text3, const data_type4 &text4)' at line 73 of file/home/violador/Dropbox/catalyst/src/log_file_handler/log_file_handler__report.cpp
+ 'void report(const data_type1 &text1, const data_type2 &text2, const data_type3 &text3, const data_type4 &text4, const data_type5 &text5)' at line 102 of file/home/violador/Dropbox/catalyst/src/log_file_handler/log_file_handler__report.cpp
+ 'void report(const data_type1 &text1, const data_type2 &text2, const data_type3 &text3, const data_type4 &text4, const data_type5 &text5, const data_type6 &text6)' at line 134 of file/home/violador/Dropbox/catalyst/src/log_file_handler/log_file_handler__report.cpp
+ 'void report(const data_type1 &text1, const data_type2 &text2, const data_type3 &text3, const data_type4 &text4, const data_type5 &text5, const data_type6 &text6, const data_type7 &text7)' at line 169 of file/home/violador/Dropbox/catalyst/src/log_file_handler/log_file_handler__report.cpp
+ 'void report(const data_type1 &text1, const data_type2 &text2, const data_type3 &text3, const data_type4 &text4, const data_type5 &text5, const data_type6 &text6, const data_type7 &text7, const data_type8 &text8)' at line 207 of file/home/violador/Dropbox/catalyst/src/log_file_handler/log_file_handler__report.cpp
+ 'void report(const data_type1 &text1, const data_type2 &text2, const data_type3 &text3, const data_type4 &text4, const data_type5 &text5, const data_type6 &text6, const data_type7 &text7, const data_type8 &text8, const data_type9 &text9)' at line 248 of file/home/violador/Dropbox/catalyst/src/log_file_handler/log_file_handler__report.cpp
+ 'void report(const data_type1 &text1, const data_type2 &text2, const data_type3 &text3, const data_type4 &text4, const data_type5 &text5, const data_type6 &text6, const data_type7 &text7, const data_type8 &text8, const data_type9 &text9, const data_type10 &text10)' at line 292 of file/home/violador/Dropbox/catalyst/src/log_file_handler/log_file_handler__report.cpp
+
+/home/violador/Dropbox/catalyst/src/array/array__reset_properties.cpp:9: warning: documented symbol `void array< data_type, rank >::reset_properties' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__reset_properties.cpp:26: warning: documented symbol `void array< data_type, rank >::reset_properties' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__reset_properties.cpp:43: warning: documented symbol `void array< data_type, rank >::reset_properties' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__reset_properties.cpp:61: warning: documented symbol `void array< data_type, rank >::reset_properties' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__reset_properties.cpp:80: warning: documented symbol `void array< data_type, rank >::reset_properties' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__restore_original_basis_of.cpp:19: warning: documented symbol `void array< data_type, rank >::restore_original_basis_of' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__save_eigens_to.cpp:5: warning: documented symbol `void array< data_type, rank >::save_eigens_to' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__subtraction.cpp:5: warning: no uniquely matching class member found for 
+  array array< data_type, rank >::operator-(const double &b)
+
+/home/violador/Dropbox/catalyst/src/array/array__subtraction.cpp:85: warning: no uniquely matching class member found for 
+  array array< data_type, rank >::operator-(const array &b)
+
+/home/violador/Dropbox/catalyst/src/array/array__subtraction_assignment.cpp:19: warning: documented symbol `void array< data_type, rank >::operator-=' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/array/array__write.cpp:9: warning: no matching class member found for 
+  void array< data_type, rank >::write()
+
+/home/violador/Dropbox/catalyst/src/array/array__write_2d_array.cpp:9: warning: documented symbol `void array< data_type, rank >::write_2d_array' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/data/lcao_wavefunction__os_scheme.cpp:5: warning: documented symbol `double lcao_wavefunction::os_scheme' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/lcao_wavefunction/lcao_wavefunction__build_density_matrix.cpp:5: warning: no matching class member found for 
+  void lcao_wavefunction::build_density_matrix(array &p_matrix, array &type, array &x, array &y, array &z, const unsigned int given_theory_level)
+
+/home/violador/Dropbox/catalyst/src/lcao_wavefunction/lcao_wavefunction__get_kinetic_integral.cpp:78: warning: documented symbol `double lcao_wavefunction::get_kinetic_integral' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/lcao_wavefunction/lcao_wavefunction__get_overlap_integral.cpp:5: warning: no matching class member found for 
+  double lcao_wavefunction::overlap_integral(const unsigned int &i_atom, const unsigned int &j_atom, const unsigned int &i_orbital_x, const unsigned int &i_orbital_y, const unsigned int &i_orbital_z, const unsigned int &j_orbital_x, const unsigned int &j_orbital_y, const unsigned int &j_orbital_z, array &type, array &x, array &y, array &z, const unsigned int &level)
+Possible candidates:
+  double lcao_wavefunction::overlap_integral(array &r, const unsigned int &atom_a, const unsigned int &atom_b, const unsigned int &a_orbital_r, const unsigned int &b_orbital_r, const double &alpha, const double &beta)
+  double lcao_wavefunction::overlap_integral(array &r, const unsigned int &atom_a, const unsigned int &atom_b, const unsigned int &atom_c, const unsigned int &a_orbital_r, const unsigned int &b_orbital_r, const unsigned int &c_orbital_r, const double &alpha, const double &beta, const double &gamma)
+  double lcao_wavefunction::overlap_integral(array &type, array &x, array &y, array &z, const unsigned int &atom_a, const unsigned int &atom_b, const unsigned int &level)
+
+/home/violador/Dropbox/catalyst/src/lcao_wavefunction/lcao_wavefunction__get_overlap_integral.cpp:101: warning: documented symbol `double lcao_wavefunction::get_overlap_integral' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/lcao_wavefunction/lcao_wavefunction__get_overlap_integral.cpp:173: warning: documented symbol `double lcao_wavefunction::get_overlap_integral' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/lcao_wavefunction/lcao_wavefunction__os_scheme_true_eri.cpp:5: warning: documented symbol `double lcao_wavefunction::os_scheme_true_eri' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/molecular_system/molecular_system__ab_initio_energy.cpp:5: warning: documented symbol `double molecular_system::ab_initio_energy' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/scf/scf__check_lowest_orbital.cpp:5: warning: documented symbol `double algorithm::scf::check_lowest_orbital' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/scf/scf__density_matrix.cpp:5: warning: no matching class member found for 
+  double algorithm::scf::density_matrix(const unsigned int &i, const unsigned int &j)
+
+/home/violador/Dropbox/catalyst/src/scf/scf__fock_matrix.cpp:5: warning: documented symbol `double algorithm::scf::fock_matrix' was not declared or defined.
+/home/violador/Dropbox/catalyst/src/scf/scf__init_scf.cpp:5: warning: no matching file member found for 
+void algorithm::scf::init(array &h_matrix, array &s_matrix, array &two_electrons_v, settings &runtime_setup)
+Possible candidates:
+ 'void init(const std::string &given_pathname, const std::string &given_filename)' at line 4 of file/home/violador/Dropbox/catalyst/src/file_system/file_system__init.cpp
+ 'void init(const unsigned int &element)' at line 10 of file/home/violador/Dropbox/catalyst/src/periodic_table/periodic_table__init.cpp
+ 'void init(const std::string &element)' at line 24 of file/home/violador/Dropbox/catalyst/src/periodic_table/periodic_table__init.cpp
+ 'void init(array &h_matrix, array &s_matrix, array &v_matrix)' at line 4 of file/home/violador/Dropbox/catalyst/src/scf/scf__init.cpp
+
+/home/violador/Dropbox/catalyst/src/settings/settings__read_value_of.cpp:6: warning: documented symbol `double settings::read_value_of' was not declared or defined.
+error: bib file references.bib not found!
+error: bib file references.bib not found!
+/home/violador/Dropbox/catalyst/src/settings/settings__constructor.cpp:12: warning: unexpected end of comment block while parsing the argument of command cite
+
+/home/violador/Dropbox/catalyst/src/array/array__add_2d_arrays.cpp:12: warning: The following parameters of add_2d_arrays(array &A, const double &b) are not documented:
+  parameter 'A'
+/home/violador/Dropbox/catalyst/src/array/array__add_3d_arrays.cpp:11: warning: The following parameters of add_3d_arrays(array &A, const double &b) are not documented:
+  parameter 'A'
+/home/violador/Dropbox/catalyst/src/array/array__add_3d_arrays.cpp:38: warning: The following parameters of add_3d_arrays(array &A, const array &B) are not documented:
+  parameter 'A'
+/home/violador/Dropbox/catalyst/src/array/array__add_4d_arrays.cpp:11: warning: The following parameters of add_4d_arrays(array &A, const double &b) are not documented:
+  parameter 'A'
+/home/violador/Dropbox/catalyst/src/array/array__add_4d_arrays.cpp:41: warning: The following parameters of add_4d_arrays(array &A, const array &B) are not documented:
+  parameter 'A'
+/home/violador/Dropbox/catalyst/src/array/array__build_randomly.cpp:7: warning: Found unknown command `\break'
+/home/violador/Dropbox/catalyst/src/array/array__create_array.cpp:27: warning: Found unknown command `\times'
+/home/violador/Dropbox/catalyst/src/array/array__create_array.cpp:54: warning: Found unknown command `\times'
+/home/violador/Dropbox/catalyst/src/array/array__create_array.cpp:54: warning: Found unknown command `\times'
+/home/violador/Dropbox/catalyst/src/array/array__create_array.cpp:85: warning: Found unknown command `\times'
+/home/violador/Dropbox/catalyst/src/array/array__create_array.cpp:85: warning: Found unknown command `\times'
+/home/violador/Dropbox/catalyst/src/array/array__create_array.cpp:85: warning: Found unknown command `\times'
+/home/violador/Dropbox/catalyst/src/array/array__create_array.cpp:27: warning: Found unknown command `\times'
+/home/violador/Dropbox/catalyst/src/array/array__create_array.cpp:54: warning: Found unknown command `\times'
+/home/violador/Dropbox/catalyst/src/array/array__create_array.cpp:54: warning: Found unknown command `\times'
+/home/violador/Dropbox/catalyst/src/array/array__create_array.cpp:85: warning: Found unknown command `\times'
+/home/violador/Dropbox/catalyst/src/array/array__create_array.cpp:85: warning: Found unknown command `\times'
+/home/violador/Dropbox/catalyst/src/array/array__create_array.cpp:85: warning: Found unknown command `\times'
+/home/violador/Dropbox/catalyst/src/array/array__save_transpose_to.cpp:21: warning: Found unknown command `\notice'
+/home/violador/Dropbox/catalyst/src/array/array__set_diagonal.cpp:10: warning: argument 'A' of command @param is not found in the argument list of set_diagonal(const double &value)
+/home/violador/Dropbox/catalyst/src/array/array__set_diagonal.cpp:10: warning: The following parameters of set_diagonal(const double &value) are not documented:
+  parameter 'value'
+/home/violador/Dropbox/catalyst/src/array/is_ready.cpp:10: warning: Found unknown command `\true'
+/home/violador/Dropbox/catalyst/src/array/is_ready.cpp:10: warning: Found unknown command `\false'
+/home/violador/Dropbox/catalyst/src/basis_set/basis_set__begin.cpp:29: warning: unexpected end of comment block while parsing the argument of command cite
+
+/home/violador/Dropbox/catalyst/src/basis_set/basis_set__begin.cpp:29: warning: unexpected end of comment block while parsing the argument of command cite
+
+/home/violador/Dropbox/catalyst/src/basis_set/basis_set__end.cpp:28: warning: unexpected end of comment block while parsing the argument of command cite
+
+/home/violador/Dropbox/catalyst/src/basis_set/basis_set__end.cpp:28: warning: unexpected end of comment block while parsing the argument of command cite
+
+/home/violador/Dropbox/catalyst/src/tools/tools__binomial_coeff.cpp:27: warning: unexpected end of comment block while parsing the argument of command cite
+
+citelist:3: warning: expected <dt> tag but found <dl> instead!
+citelist:4: warning: unexpected end of comment while looking for a html description title
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:37: warning: argument 'The' of command @param is not found in the argument list of array< data_type, 1 >::array(const unsigned int &size)
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:37: warning: The following parameters of array< data_type, 1 >::array(const unsigned int &size) are not documented:
+  parameter 'size'
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:59: warning: argument 'A' of command @param is not found in the argument list of array< data_type, 1 >::array(const array< data_type, 1 > &input)
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:59: warning: The following parameters of array< data_type, 1 >::array(const array< data_type, 1 > &input) are not documented:
+  parameter 'input'
+/home/violador/Dropbox/catalyst/src/array/build_randomly.cpp:11: warning: argument 'i' of command @param is not found in the argument list of array< data_type, 1 >::build_randomly()
+/home/violador/Dropbox/catalyst/src/array/data_length.cpp:8: warning: argument 'size' of command @param is not found in the argument list of array< data_type, 1 >::data_length() const
+/home/violador/Dropbox/catalyst/src/array/fourth_rank.cpp:7: warning: argument 'input' of command @param is not found in the argument list of array< data_type, 1 >::fourth_rank() const
+/home/violador/Dropbox/catalyst/src/array/is_ready.cpp:11: warning: Found unknown command `\true'
+/home/violador/Dropbox/catalyst/src/array/is_ready.cpp:11: warning: Found unknown command `\false'
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:372: warning: argument 'size' of command @param is not found in the argument list of array< data_type, 1 >::resize(const unsigned int &new_size)
+/home/violador/Dropbox/catalyst/src/include/rank_1_array.hpp:372: warning: The following parameters of array< data_type, 1 >::resize(const unsigned int &new_size) are not documented:
+  parameter 'new_size'
+/home/violador/Dropbox/catalyst/src/array/set_zero.cpp:9: warning: argument 'input' of command @param is not found in the argument list of array< data_type, 1 >::set_zero()
+/home/violador/Dropbox/catalyst/src/array/set_zero.cpp:9: warning: argument 'input' of command @param is not found in the argument list of array< data_type, 1 >::set_zero()
+/home/violador/Dropbox/catalyst/src/array/set_zero.cpp:9: warning: argument 'input' of command @param is not found in the argument list of array< data_type, 1 >::set_zero()
+/home/violador/Dropbox/catalyst/src/array/set_zero.cpp:9: warning: argument 'input' of command @param is not found in the argument list of array< data_type, 1 >::set_zero()
+/home/violador/Dropbox/catalyst/src/array/set_zero.cpp:9: warning: argument 'input' of command @param is not found in the argument list of array< data_type, 1 >::set_zero()
+/home/violador/Dropbox/catalyst/src/array/set_zero.cpp:9: warning: argument 'input' of command @param is not found in the argument list of array< data_type, 1 >::set_zero()
+/home/violador/Dropbox/catalyst/src/array/set_zero.cpp:9: warning: argument 'input' of command @param is not found in the argument list of array< data_type, 1 >::set_zero()
+/home/violador/Dropbox/catalyst/src/array/set_zero.cpp:9: warning: argument 'input' of command @param is not found in the argument list of array< data_type, 1 >::set_zero()
+/home/violador/Dropbox/catalyst/src/settings/settings__constructor.cpp:12: warning: unexpected end of comment block while parsing the argument of command cite
+
+/home/violador/Dropbox/catalyst/src/settings/settings__constructor.cpp:56: warning: unexpected end of comment block while parsing the argument of command cite
+
+/home/violador/Dropbox/catalyst/src/settings/settings__constructor.cpp:12: warning: unexpected end of comment block while parsing the argument of command cite
+
+/home/violador/Dropbox/catalyst/src/settings/settings__constructor.cpp:56: warning: unexpected end of comment block while parsing the argument of command cite
+

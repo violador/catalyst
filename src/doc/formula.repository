@@ -1,0 +1,64 @@
+\form#0:$ := A + b $
+\form#1:$ := A + B $
+\form#2:$ A_{i = j} = 1 $
+\form#3:$ A_{i \neq j} = 0 $
+\form#4:$ X $
+\form#5:\[ X_{i, j} = \frac{U_{i, j}}{\sqrt{s_{j}}} \]
+\form#6:$ U $
+\form#7:$ s $
+\form#8:$ A_{i, j} = A_{j, i} $
+\form#9:$ A_{i} $
+\form#10:$ A_{i, j} $
+\form#11:$ A_{i, j, m} $
+\form#12:$ A_{i, j, m, n} $
+\form#13:$ (A_{1} \cdot B_{1}) + (A_{2} \cdot B_{2}) + \ldots + (A_{n} \cdot B_{n}) $
+\form#14:$ n := $
+\form#15:$ := tr(A) $
+\form#16:$ \sqrt{A^{2}_{1} + \ldots + A^{2}_{n}} $
+\form#17:$ n = $
+\form#18:$ := i - 1 $
+\form#19:$ \frac{b!}{a!(b - a)!} $
+\form#20:$ := \frac{b!}{a!(b - a)!} $
+\form#21:$ 0 < a \leq 297 $
+\form#22:$ a!! $
+\form#23:$ a $
+\form#24:$ := erf(a) $
+\form#25:$ := exp(a) $
+\form#26:$ 0 < a \leq 170 $
+\form#27:$ a! $
+\form#28:$ 0.0 < a \leq 171.0 $
+\form#29:$ := \Gamma(a) \equiv (a - 1)! $
+\form#30:$ b \geq 0.0 $
+\form#31:\[ := \int_{b}^{\infty} t^{a - 1} \exp(-t)dt \]
+\form#32:$ b $
+\form#33:$ \delta_{a, b} $
+\form#34:$ a = b $
+\form#35:$ := |a| $
+\form#36:$ := |a - b| $
+\form#37:$ := |x_{2} - x_{1}| $
+\form#38:$ := \sqrt{(x_{2} - x_{1})^{2} + (y_{2} - y_{1})^{2}} $
+\form#39:$ := \sqrt{(x_{2} - x_{1})^{2} + (y_{2} - y_{1})^{2} + (z_{2} - z_{1})^{2}} $
+\form#40:$ := |a - b|^{2} $
+\form#41:$ Z $
+\form#42:$ a_0 $
+\form#43:$ K_b $
+\form#44:$ 10^{-6} $
+\form#45:$ e $
+\form#46:$ erf(a) $
+\form#47:$ \Gamma(a) \equiv (a - 1)! $
+\form#48:$ 0.000000000931322575 $
+\form#49:$ := \times 0.000000000931322575 $
+\form#50:\[ \int_{b}^{\infty} t^{a - 1} \exp(-t)dt \]
+\form#51:$ 0.0009765625 $
+\form#52:$ := \times 0.0009765625 $
+\form#53:$ a \times 0.000000953674316 $
+\form#54:$ 0.000000954 $
+\form#55:$ := \times 0.000000954 $
+\form#56:$ |a| $
+\form#57:$ |a - b| $
+\form#58:$ N_a $
+\form#59:$ h $
+\form#60:$ \sqrt[2]{(c - a)^{2} + (d - b)^{2}} $
+\form#61:$ \sqrt[2]{(d - a)^{2} + (e - b)^{2} + (f - c)^{2}} $
+\form#62:$ C $
+\form#63:$ |a - b|^{2} $

@@ -1,25 +1,21 @@
 //
 //
 //
-/// @brief Sets zero in all the elements, if the array was previously
-///        initialized either by the constructor or the array::create()
-///        member function. Otherwise nothing is really done.
+/// @brief Reset the array setting all the elements to zero. Only if it was
+/// previously initialized either by construction or the array::create()
+/// member function. Otherwise nothing is done. The array::is_null() member
+/// might be used to check if the array was properly reset.
 //
-/// @return @c EXIT_SUCCESS or @c EXIT_FAILURE.
+/// @return None.
 //
-inline int set_zero()
+/// @note Notice that array::set_zero() member function behaves just like the
+/// assignment operator between an array object and zero.
+//
+inline void set_zero()
 {
-	switch(data != NULL)
+	OMP_STATIC_LOOP_POLICY
+	for(INIT_ITER(i, 0); i < data_length(); ++i)
 	{
-		case true:
-		{
-			#pragma omp critical
-			std::fill(data, data_end(), data_type(0.0));
-			return EXIT_SUCCESS;
-		}
-		case false:
-		{
-			return EXIT_FAILURE;
-		}
+		data[i] = data_type(0.0);
 	}
 };

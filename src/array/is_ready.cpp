@@ -1,15 +1,12 @@
 //
 //
 //
-/// @brief Checks if the current array was previously 
-///        initialized either by the constructor or by 
-///        the array::create() member function. Case
-///        not, there is no memory allocated and the 
-///        array must be initialized first.
+/// @brief Checks if the current array was previously initialized
+/// either by construction or the array::create() member function.
 //
-/// @return @true if ready or @false, otherwise.
+/// @return @c true if it is ready and @c false otherwise.
 //
-inline bool is_ready() const
+constexpr bool is_ready() const
 {
-	return (data != NULL);
+	return bool(data != NULL);
 };

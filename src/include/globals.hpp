@@ -111,6 +111,7 @@
 	#include <cmath>
 	#include <string>
 	#include <random>
+	#include <vector>
 	#include <cstddef>
 	#include <iomanip>
 	#include <fstream>
@@ -120,6 +121,7 @@
 	#include <typeinfo>
 	#include <algorithm>
 	#include <functional>
+	#include <type_traits>
 //
 //  Including GSL headers ("-lgsl" and "-lgslcblas" to linkage):
 	#include <gsl/gsl_rng.h>

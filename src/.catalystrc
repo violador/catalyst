@@ -1,0 +1,21 @@
+#
+# == Settings ======================================= 
+#
+output                   = on
+vibration mode           = on
+rotation mode            = on
+translation mode         = on
+high-end mode            = on
+standby mode             = off
+debug mode               = on
+log filename             = test_from_the_catalystrc.log
+scratch directory        = /home/violador/Catalyst/scratch/
+SCF convergence criteria = 0.0001
+numeric precision        = 6
+#
+# == Tasks ==========================================
+#
+work directory = /home/violador/pyrene/test/
+tasks number   = 0
+1              = data/H.xyz
+2              = data/pyr.xyz

@@ -1,26 +1,21 @@
 //
 //
 //
-/// @param [in] size The first rank length.
+/// @brief A private member function to allocate memory for arrays of any
+/// rank order. Its behavior is driven by the array::data_length() member
+/// function and thus by the current values of @c rank1, @c rank2, @c rank3
+/// and @c rank4 data members. If the data length is null nothing is done.
+/// The operation is carried out by the master thread only.
 //
-/// @brief A help function to allocate memory for a rank one array.
+/// @return @c true if the memory was allocated properly, and @c false
+/// otherwise.
 //
-/// @return @c EXIT_SUCCESS if the allocation was successful, and
-///         @c EXIT_FAILURE otherwise.
-//
-inline int init_data(const unsigned int &size)
+inline bool init_data()
 {
-	data = new (std::nothrow) data_type[size]();
-	switch(data != NULL)
+	#pragma omp master
+	if(data_length() > 0)
 	{
-		case true:
-		{
-			rank1 = size;
-			return EXIT_SUCCESS;
-		}
-		case false:
-		{
-			return EXIT_FAILURE;
-		}
+		data = new (std::nothrow) data_type[data_length()]();
 	}
+	return is_ready();
 };

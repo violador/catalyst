@@ -1,28 +1,22 @@
 //
 //
 //
-/// @param [in] input A new value for all the elements.
+/// @param [in] input A numerical data with same type of the array.
 //
-/// @brief Sets the given @c input in all the elements, if the array
-///        was previously initialized either by the constructor or
-///        the array::create() member function. Otherwise nothing is
-///        really done.
+/// @brief Fills all the array elements with the given numerical data.
+/// Only if it was previously initialized either by construction or
+/// the array::create() member function. Otherwise nothing is done.
 //
-/// @return @c EXIT_SUCCESS or @c EXIT_FAILURE.
+/// @return None.
 //
-inline int set_all(const data_type &input)
+/// @note Notice that array::set_all() member function behaves just like the
+/// assignment operator between an array object and a given numerical data.
+//
+inline void set_all(data_type input)
 {
-	switch(data != NULL)
+	OMP_STATIC_LOOP_POLICY
+	for(INIT_ITER(i, 0); i < data_length(); ++i)
 	{
-		case true:
-		{
-			#pragma omp critical
-			std::fill(data, data_end(), input);
-			return EXIT_SUCCESS;
-		}
-		case false:
-		{
-			return EXIT_FAILURE;
-		}
+		data[i] = input;
 	}
 };
